@@ -1,0 +1,44 @@
+
+		#logo{
+			display: block;
+				width: 179px;
+			height: 45px;
+			position: relative;
+			top: 15px;
+		}
+		#header{
+                    
+                    background-color:#5aaf5b;
+                    height: 180px;
+			width: 100%;
+			top: 0;
+		}
+                #strip{
+                   
+                    background-color: #468847;
+                    height:10px;
+                    width:100%;
+                    z-index: 13;
+                }
+                #footer{
+                  position:fixed;
+                   bottom: 0;
+                    background-color: #5aaf5b;
+                        height:200px;
+			width: 100%;
+			margin-top: 210px;
+                }
+                
+		#header .row{
+			width: 940px;
+			margin: 0 auto;
+		}
+		a{
+			color: #888;
+		}
+		a:hover{
+			color: #888;
+		}
+		.btn.btn-primary{color:#ffffff!important;background-color:#883ced;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#fd6ef7), to(#883ced));background-image:-moz-linear-gradient(top, #fd6ef7, #883ced);background-image:-ms-linear-gradient(top, #fd6ef7, #883ced);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #fd6ef7), color-stop(100%, #883ced));background-image:-webkit-linear-gradient(top, #fd6ef7, #883ced);background-image:-o-linear-gradient(top, #fd6ef7, #883ced);background-image:linear-gradient(top, #fd6ef7, #883ced);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fd6ef7', endColorstr='#883ced', GradientType=0);text-shadow:0 -1px 0 rgba(0, 0, 0, 0.25);border-color:#883ced #883ced #003f81;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+		body { margin: 0px 0px 40px 0px; }
+	
