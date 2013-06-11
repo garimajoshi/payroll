@@ -87,7 +87,17 @@ input {
   *overflow: visible;
   line-height: normal;
 }
-
+#username{
+    height:30px;
+    font-size: 10pt;
+    padding-left: 10px;
+    
+}
+#password{
+    height:30px;
+    font-size: 10pt;
+    padding-left: 10px;
+}
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;
@@ -189,12 +199,28 @@ a:hover {
   float: left;
   margin-left: 20px;
 }
-
+#login{
+    
+    width: 420px;
+    margin-top: 15px;
+    margin-left: 250px;
+}
 .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
+  
   width: 940px;
 }
+.neogen{
+                    color: #333;
+	font-family: helvetica,arial, sans-serif;
+	font-size:22px;
+	line-height:26px;
+	font-weight:normal;
+	font-style: italic;
+	font-family: Georgia, Times New Roman, Times, serif;
+	max-width:290px;
+                }
 
 .span12 {
   width: 940px;
@@ -928,7 +954,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: rgba(82, 168, 236, 0.8);
+  border-color: rgba(80, 236,80, 0.8);
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
@@ -2805,6 +2831,7 @@ button.close {
 }
 
 .btn-success {
+    
   background-color: #5bb75b;
   *background-color: #51a351;
   background-image: -ms-linear-gradient(top, #62c462, #51a351);
@@ -2898,6 +2925,7 @@ button.btn,
 input[type="submit"].btn {
   *padding-top: 2px;
   *padding-bottom: 2px;
+  
 }
 
 button.btn::-moz-focus-inner,
@@ -2928,6 +2956,12 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   *margin-left: .3em;
   *zoom: 1;
+}
+
+#submitBtn{
+    width:100px;
+    position:fixed;
+    margin-left: 205px;
 }
 
 .btn-group:before,
