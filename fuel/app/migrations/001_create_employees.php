@@ -9,7 +9,7 @@ class Create_employees
 		\DBUtil::create_table('employees', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'name' => array('constraint' => 255, 'type' => 'varchar'),
-			'phone' => array('constraint' => 11, 'type' => 'int'),
+			'phone' => array('constraint' => 255, 'type' => 'varchar'),
 			'address' => array('constraint' => 255, 'type' => 'varchar'),
 			'city' => array('constraint' => 255, 'type' => 'varchar'),
 			'state' => array('constraint' => 255, 'type' => 'varchar'),
