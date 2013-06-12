@@ -15,8 +15,8 @@ class Create_companies
 			'pincode' => array('constraint' => 11, 'type' => 'int'),
 			'email' => array('constraint' => 255, 'type' => 'varchar'),
 			'website' => array('constraint' => 255, 'type' => 'varchar'),
-			'phone' => array('constraint' => 11, 'type' => 'int'),
-			'phone1' => array('constraint' => 11, 'type' => 'int'),
+			'phone' => array('constraint' => 255, 'type' => 'varchar'),
+			'phone1' => array('constraint' => 255, 'type' => 'varchar'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
