@@ -3,7 +3,7 @@ class Controller_Leaves extends Controller_Template{
 
 	public function action_index()
 	{
-		$data['leaves'] = Model_Leafe::find('all');
+		$data['leaves'] = Model_Leave::find('all');
 		$this->template->title = "Leaves";
 		$this->template->content = View::forge('leaves/index', $data);
 
@@ -13,13 +13,13 @@ class Controller_Leaves extends Controller_Template{
 	{
 		is_null($id) and Response::redirect('leaves');
 
-		if ( ! $data['leafe'] = Model_Leafe::find($id))
+		if ( ! $data['leave'] = Model_Leave::find($id))
 		{
-			Session::set_flash('error', 'Could not find leafe #'.$id);
+			Session::set_flash('error', 'Could not find leave #'.$id);
 			Response::redirect('leaves');
 		}
 
-		$this->template->title = "Leafe";
+		$this->template->title = "Leave";
 		$this->template->content = View::forge('leaves/view', $data);
 
 	}
@@ -28,27 +28,27 @@ class Controller_Leaves extends Controller_Template{
 	{
 		if (Input::method() == 'POST')
 		{
-			$val = Model_Leafe::validate('create');
+			$val = Model_Leave::validate('create');
 			
 			if ($val->run())
 			{
-				$leafe = Model_Leafe::forge(array(
+				$leave = Model_Leave::forge(array(
 					'employee_id' => Input::post('employee_id'),
 					'date_of_leave' => Input::post('date_of_leave'),
 					'reason' => Input::post('reason'),
 					'type' => Input::post('type'),
 				));
 
-				if ($leafe and $leafe->save())
+				if ($leave and $leave->save())
 				{
-					Session::set_flash('success', 'Added leafe #'.$leafe->id.'.');
+					Session::set_flash('success', 'Added leave #'.$leave->id.'.');
 
 					Response::redirect('leaves');
 				}
 
 				else
 				{
-					Session::set_flash('error', 'Could not save leafe.');
+					Session::set_flash('error', 'Could not save leave.');
 				}
 			}
 			else
@@ -66,31 +66,31 @@ class Controller_Leaves extends Controller_Template{
 	{
 		is_null($id) and Response::redirect('leaves');
 
-		if ( ! $leafe = Model_Leafe::find($id))
+		if ( ! $leave = Model_Leave::find($id))
 		{
-			Session::set_flash('error', 'Could not find leafe #'.$id);
+			Session::set_flash('error', 'Could not find leave #'.$id);
 			Response::redirect('leaves');
 		}
 
-		$val = Model_Leafe::validate('edit');
+		$val = Model_Leave::validate('edit');
 
 		if ($val->run())
 		{
-			$leafe->employee_id = Input::post('employee_id');
-			$leafe->date_of_leave = Input::post('date_of_leave');
-			$leafe->reason = Input::post('reason');
-			$leafe->type = Input::post('type');
+			$leave->employee_id = Input::post('employee_id');
+			$leave->date_of_leave = Input::post('date_of_leave');
+			$leave->reason = Input::post('reason');
+			$leave->type = Input::post('type');
 
-			if ($leafe->save())
+			if ($leave->save())
 			{
-				Session::set_flash('success', 'Updated leafe #' . $id);
+				Session::set_flash('success', 'Updated leave #' . $id);
 
 				Response::redirect('leaves');
 			}
 
 			else
 			{
-				Session::set_flash('error', 'Could not update leafe #' . $id);
+				Session::set_flash('error', 'Could not update leave #' . $id);
 			}
 		}
 
@@ -98,15 +98,15 @@ class Controller_Leaves extends Controller_Template{
 		{
 			if (Input::method() == 'POST')
 			{
-				$leafe->employee_id = $val->validated('employee_id');
-				$leafe->date_of_leave = $val->validated('date_of_leave');
-				$leafe->reason = $val->validated('reason');
-				$leafe->type = $val->validated('type');
+				$leave->employee_id = $val->validated('employee_id');
+				$leave->date_of_leave = $val->validated('date_of_leave');
+				$leave->reason = $val->validated('reason');
+				$leave->type = $val->validated('type');
 
 				Session::set_flash('error', $val->error());
 			}
 
-			$this->template->set_global('leafe', $leafe, false);
+			$this->template->set_global('leave', $leave, false);
 		}
 
 		$this->template->title = "Leaves";
@@ -118,16 +118,16 @@ class Controller_Leaves extends Controller_Template{
 	{
 		is_null($id) and Response::redirect('leaves');
 
-		if ($leafe = Model_Leafe::find($id))
+		if ($leave = Model_Leave::find($id))
 		{
-			$leafe->delete();
+			$leave->delete();
 
-			Session::set_flash('success', 'Deleted leafe #'.$id);
+			Session::set_flash('success', 'Deleted leave #'.$id);
 		}
 
 		else
 		{
-			Session::set_flash('error', 'Could not delete leafe #'.$id);
+			Session::set_flash('error', 'Could not delete leave #'.$id);
 		}
 
 		Response::redirect('leaves');

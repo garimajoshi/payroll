@@ -5,6 +5,7 @@ class Model_User extends Model
 {
 	protected static $_properties = array(
 		'id',
+		'user_id',
 		'username',
 		'password',
 		'last_login',
@@ -23,12 +24,21 @@ class Model_User extends Model
 		),
 	);
 
+	protected static $_table_name = 'users';
+	
+	protected static $_belongs_to = array('access_rights' => array(
+    		'model_to' => 'Model_Employee',
+        	'key_from' => 'user_id',
+        	'key_to' => 'id',
+        	'cascade_save' => true,
+        	'cascade_delete' => true,
+    	));
+
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('username', 'Username', 'required|max_length[255]');
-		$val->add_field('password', 'Password', 'required|max_length[255]');
-		$val->add_field('last_login', 'Last Login', 'required');
+		$val->add_field('username', 'Username', 'required|min_length[3]|max_length[100]');
+		$val->add_field('password', 'Password', 'required|min_length[3]|max_length[100]');
 
 		return $val;
 	}

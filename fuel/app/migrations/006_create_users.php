@@ -8,6 +8,7 @@ class Create_users
 	{
 		\DBUtil::create_table('users', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
+			'user_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
 			'username' => array('constraint' => 255, 'type' => 'varchar'),
 			'password' => array('constraint' => 255, 'type' => 'varchar'),
 			'last_login' => array('type' => 'datetime'),
