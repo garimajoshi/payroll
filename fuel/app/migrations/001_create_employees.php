@@ -8,9 +8,7 @@ class Create_employees
 	{
 		\DBUtil::create_table('employees', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'emp_id' => array('constraint' => 11, 'type' => 'int'),
 			'name' => array('constraint' => 255, 'type' => 'varchar'),
-			'designation' => array('constraint' => 255, 'type' => 'varchar'),
 			'phone' => array('constraint' => 11, 'type' => 'int'),
 			'address' => array('constraint' => 255, 'type' => 'varchar'),
 			'city' => array('constraint' => 255, 'type' => 'varchar'),
@@ -18,6 +16,7 @@ class Create_employees
 			'pincode' => array('constraint' => 11, 'type' => 'int'),
 			'email' => array('constraint' => 255, 'type' => 'varchar'),
 			'joining_date' => array('type' => 'date'),
+			'leaving_date' => array('type' => 'date'),
 			'date_of_birth' => array('type' => 'date'),
 			'sex' => array('constraint' => '"male","female"', 'type' => 'enum'),
 			'marital_status' => array('constraint' => '"single","married","divorced","widowed"', 'type' => 'enum'),

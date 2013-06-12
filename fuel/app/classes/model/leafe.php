@@ -1,13 +1,14 @@
 <?php
 use Orm\Model;
 
-class Model_User extends Model
+class Model_Leafe extends Model
 {
 	protected static $_properties = array(
 		'id',
-		'username',
-		'password',
-		'last_login',
+		'employee_id',
+		'date_of_leave',
+		'reason',
+		'type',
 		'created_at',
 		'updated_at',
 	);
@@ -26,9 +27,10 @@ class Model_User extends Model
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('username', 'Username', 'required|max_length[255]');
-		$val->add_field('password', 'Password', 'required|max_length[255]');
-		$val->add_field('last_login', 'Last Login', 'required');
+		$val->add_field('employee_id', 'Employee Id', 'required|valid_string[numeric]');
+		$val->add_field('date_of_leave', 'Date Of Leave', 'required');
+		$val->add_field('reason', 'Reason', 'required|max_length[255]');
+		$val->add_field('type', 'Type', 'required');
 
 		return $val;
 	}

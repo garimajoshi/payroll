@@ -1,11 +1,11 @@
-
 <?php
+use Orm\Model;
 
-class Model_Bank extends \Orm\Model
+class Model_Bank extends Model
 {
 	protected static $_properties = array(
 		'id',
-		'eid',
+		'employee_id',
 		'account_no',
 		'account_type',
 		'branch',
@@ -23,17 +23,24 @@ class Model_Bank extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 		'Orm\Observer_UpdatedAt' => array(
-			'events' => array('before_update'),
+			'events' => array('before_save'),
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'banks';
-    
-    protected static $_belongs_to = array('employees' => array(
-        'model_to' => 'Model_Employee',
-        'key_from' => 'eid',
-        'key_to' => 'emp_id',
-        'cascade_save' => true,
-        'cascade_delete' => true,
-    ));
+
+	public static function validate($factory)
+	{
+		$val = Validation::forge($factory);
+		$val->add_field('employee_id', 'Employee Id', 'required|valid_string[numeric]');
+		$val->add_field('account_no', 'Account No', 'required|valid_string[numeric]');
+		$val->add_field('account_type', 'Account Type', 'required');
+		$val->add_field('branch', 'Branch', 'required|max_length[255]');
+		$val->add_field('city', 'City', 'required|max_length[255]');
+		$val->add_field('state', 'State', 'required|max_length[255]');
+		$val->add_field('ifsc_code', 'Ifsc Code', 'required|max_length[255]');
+		$val->add_field('payment_type', 'Payment Type', 'required|max_length[255]');
+
+		return $val;
+	}
+
 }

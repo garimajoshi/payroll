@@ -12,7 +12,6 @@ class Create_companies
 			'address' => array('constraint' => 255, 'type' => 'varchar'),
 			'city' => array('constraint' => 255, 'type' => 'varchar'),
 			'state' => array('constraint' => 255, 'type' => 'varchar'),
-			'country' => array('constraint' => 255, 'type' => 'varchar'),
 			'pincode' => array('constraint' => 11, 'type' => 'int'),
 			'email' => array('constraint' => 255, 'type' => 'varchar'),
 			'website' => array('constraint' => 255, 'type' => 'varchar'),

@@ -10,8 +10,7 @@ class Create_users
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'username' => array('constraint' => 255, 'type' => 'varchar'),
 			'password' => array('constraint' => 255, 'type' => 'varchar'),
-			'last_login' => array('constraint' => 255, 'type' => 'varchar'),
-			'login_hash' => array('constraint' => 255, 'type' => 'varchar'),
+			'last_login' => array('type' => 'datetime'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 

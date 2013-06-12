@@ -8,9 +8,9 @@ class Create_banks
 	{
 		\DBUtil::create_table('banks', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'eid' => array('constraint' => 11, 'type' => 'int'),
-			'account_no' => array('constraint' => 255, 'type' => 'varchar'),
-			'account_type' => array('constraint' => 255, 'type' => 'varchar'),
+			'employee_id' => array('constraint' => 11, 'type' => 'int'),
+			'account_no' => array('constraint' => 11, 'type' => 'int'),
+			'account_type' => array('constraint' => '"current","saving"', 'type' => 'enum'),
 			'branch' => array('constraint' => 255, 'type' => 'varchar'),
 			'city' => array('constraint' => 255, 'type' => 'varchar'),
 			'state' => array('constraint' => 255, 'type' => 'varchar'),

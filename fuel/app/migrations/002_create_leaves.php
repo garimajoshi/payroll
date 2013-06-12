@@ -8,10 +8,10 @@ class Create_leaves
 	{
 		\DBUtil::create_table('leaves', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'eid' => array('constraint' => 11, 'type' => 'int'),
-			'date' => array('type' => 'date'),
+			'employee_id' => array('constraint' => 11, 'type' => 'int'),
+			'date_of_leave' => array('type' => 'date'),
 			'reason' => array('constraint' => 255, 'type' => 'varchar'),
-			'type' => array('constraint' => '"full","half"', 'type' => 'enum'),
+			'type' => array('constraint' => '"half","full"', 'type' => 'enum'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
