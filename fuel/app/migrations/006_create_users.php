@@ -7,11 +7,10 @@ class Create_users
 	public function up()
 	{
 		\DBUtil::create_table('users', array(
-			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'user_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
-			'username' => array('constraint' => 255, 'type' => 'varchar'),
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true, 'primary key' => true),
+			'name' => array('constraint' => 50, 'type' => 'varchar'),
 			'password' => array('constraint' => 255, 'type' => 'varchar'),
-			'last_login' => array('type' => 'datetime'),
+			'last_login_at' => array('type' => 'timestamp'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 

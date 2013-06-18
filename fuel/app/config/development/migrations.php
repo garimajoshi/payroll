@@ -6,12 +6,13 @@ return array(
 		array(
 			'default' => 
 			array(
-				0 => '001_create_users',
-				1 => '002_create_employees',
+				0 => '001_create_employees',
+				1 => '002_create_leaves',
 				2 => '003_create_companies',
-				3 => '004_create_leaves',
-				4 => '005_create_banks',
-				5 => '006_create_salaries',
+				3 => '004_create_banks',
+				4 => '005_create_salaries',
+				5 => '006_create_users',
+				6 => '007_create_access_rights',
 			),
 		),
 		'module' => 

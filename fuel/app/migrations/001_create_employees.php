@@ -21,7 +21,7 @@ class Create_employees
 			'date_of_birth' => array('type' => 'date'),
 			'sex' => array('constraint' => '"male","female"', 'type' => 'enum'),
 			'marital_status' => array('constraint' => '"single","married","divorced","widowed"', 'type' => 'enum'),
-			'activity_status' => array('constraint' => '"active","inactive"', 'type' => 'enum'),
+			'activity_status' => array('constraint' => '"active","inactive"', 'type' => 'enum', 'default' => 'active'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
