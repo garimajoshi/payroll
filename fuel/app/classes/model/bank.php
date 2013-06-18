@@ -5,7 +5,7 @@ class Model_Bank extends Model
 {
 	protected static $_properties = array(
 		'id',
-		'employee_id',
+                'employee_id',
 		'account_no',
 		'account_type',
 		'branch',
@@ -30,18 +30,17 @@ class Model_Bank extends Model
 
 	protected static $_table_name = 'banks';
 	
-	protected static $_belongs_to = array('employees' => array(
+	protected static $_belongs_to = array('employee' => array(
     		'model_to' => 'Model_Employee',
-        	'key_from' => 'employee_id',
         	'key_to' => 'id',
+        	'key_from' => 'employee_id',
         	'cascade_save' => true,
-        	'cascade_delete' => true,
+        	'cascade_delete' => false,
     	));
     
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('employee_id', 'Employee Id', 'required|valid_string[numeric]');
 		$val->add_field('account_no', 'Account No', 'required|max_length[255]');
 		$val->add_field('account_type', 'Account Type', 'required');
 		$val->add_field('branch', 'Branch', 'required|max_length[255]');

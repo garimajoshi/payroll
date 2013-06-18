@@ -33,7 +33,6 @@ class Controller_Leaves extends Controller_Template{
 			if ($val->run())
 			{
 				$leave = Model_Leave::forge(array(
-					'employee_id' => Input::post('employee_id'),
 					'date_of_leave' => Input::post('date_of_leave'),
 					'reason' => Input::post('reason'),
 					'type' => Input::post('type'),
@@ -76,7 +75,6 @@ class Controller_Leaves extends Controller_Template{
 
 		if ($val->run())
 		{
-			$leave->employee_id = Input::post('employee_id');
 			$leave->date_of_leave = Input::post('date_of_leave');
 			$leave->reason = Input::post('reason');
 			$leave->type = Input::post('type');
@@ -98,7 +96,6 @@ class Controller_Leaves extends Controller_Template{
 		{
 			if (Input::method() == 'POST')
 			{
-				$leave->employee_id = $val->validated('employee_id');
 				$leave->date_of_leave = $val->validated('date_of_leave');
 				$leave->reason = $val->validated('reason');
 				$leave->type = $val->validated('type');

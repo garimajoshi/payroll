@@ -5,10 +5,11 @@ class Model_User extends Model
 {
 	protected static $_properties = array(
 		'id',
-		'user_id',
-		'username',
+		'name',
 		'password',
-		'last_login',
+		'last_login_at' => array(
+            'data_type' => 'timestamp',
+        ),
 		'created_at',
 		'updated_at',
 	);
@@ -24,16 +25,14 @@ class Model_User extends Model
 		),
 	);
 
-	protected static $_table_name = 'users';
-	
-	protected static $_belongs_to = array('access_rights' => array(
-    		'model_to' => 'Model_Employee',
+	protected static $_belongs_to = array('access_right' => array(
         	'key_from' => 'user_id',
         	'key_to' => 'id',
-        	'cascade_save' => true,
-        	'cascade_delete' => true,
     	));
 
+	protected static $_table_name = 'users';
+	protected static $_primary_key = array('id');
+	
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);

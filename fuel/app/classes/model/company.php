@@ -40,7 +40,7 @@ class Model_Company extends Model
 		$val->add_field('email', 'Email', 'required|valid_email|max_length[255]');
 		$val->add_field('website', 'Website', 'required|max_length[255]');
 		$val->add_field('phone', 'Phone', 'required|match_pattern[^([+]?91-[0-9]{5}-[0-9]{5})$]|max_length[255]');
-		$val->add_field('phone1', 'Phone1', 'required|match_pattern[^([+]?91-[0-9]{5}-[0-9]{5})$]|max_length[255]');
+		$val->add_field('phone1', 'Phone1', 'match_pattern[^([+]?91-[0-9]{5}-[0-9]{5})$]|max_length[255]');
 
 		return $val;
 	}

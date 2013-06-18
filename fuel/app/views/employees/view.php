@@ -1,8 +1,11 @@
 <h2>Viewing <span class='muted'>#<?php echo $employee->id; ?></span></h2>
 
 <p>
-	<strong>Name:</strong>
-	<?php echo $employee->name; ?></p>
+	<strong>First Name:</strong>
+	<?php echo $employee->first_name; ?></p>
+<p>
+	<strong>Last Name:</strong>
+	<?php echo $employee->last_name; ?></p>
 <p>
 	<strong>Phone:</strong>
 	<?php echo $employee->phone; ?></p>
@@ -36,9 +39,6 @@
 <p>
 	<strong>Marital status:</strong>
 	<?php echo $employee->marital_status; ?></p>
-<p>
-	<strong>Activity status:</strong>
-	<?php echo $employee->activity_status; ?></p>
 
 <?php echo Html::anchor('employees/edit/'.$employee->id, 'Edit'); ?> |
 <?php echo Html::anchor('employees', 'Back'); ?>

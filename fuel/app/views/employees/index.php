@@ -4,7 +4,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Name</th>
+			<th>First Name</th>
+                        <th>Last Name</th>
 			<th>Phone</th>
 			<th>Address</th>
 			<th>City</th>
@@ -16,14 +17,14 @@
 			<th>Date of birth</th>
 			<th>Sex</th>
 			<th>Marital status</th>
-			<th>Activity status</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
 <?php foreach ($employees as $employee): ?>		<tr>
 
-			<td><?php echo $employee->name; ?></td>
+			<td><?php echo $employee->first_name; ?></td>
+                        <td><?php echo $employee->last_name; ?></td>
 			<td><?php echo $employee->phone; ?></td>
 			<td><?php echo $employee->address; ?></td>
 			<td><?php echo $employee->city; ?></td>
@@ -35,7 +36,6 @@
 			<td><?php echo $employee->date_of_birth; ?></td>
 			<td><?php echo $employee->sex; ?></td>
 			<td><?php echo $employee->marital_status; ?></td>
-			<td><?php echo $employee->activity_status; ?></td>
 			<td>
 				<?php echo Html::anchor('employees/view/'.$employee->id, '<i class="icon-eye-open" title="View"></i>'); ?> |
 				<?php echo Html::anchor('employees/edit/'.$employee->id, '<i class="icon-wrench" title="Edit"></i>'); ?> |

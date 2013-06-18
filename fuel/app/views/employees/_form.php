@@ -2,10 +2,18 @@
 
 	<fieldset>
 		<div class="control-group">
-			<?php echo Form::label('Name', 'name', array('class'=>'control-label')); ?>
+			<?php echo Form::label('First Name', 'first_name', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('name', Input::post('name', isset($employee) ? $employee->name : ''), array('class' => 'span4', 'placeholder'=>'Name')); ?>
+				<?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'span4', 'placeholder'=>'First Name')); ?>
+
+			</div>
+		</div>
+                <div class="control-group">
+			<?php echo Form::label('Last Name', 'last_name', array('class'=>'control-label')); ?>
+
+			<div class="controls">
+				<?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'span4', 'placeholder'=>'Last Name')); ?>
 
 			</div>
 		</div>
@@ -94,14 +102,6 @@
 
 			<div class="controls">
 				<?php echo Form::input('marital_status', Input::post('marital_status', isset($employee) ? $employee->marital_status : ''), array('class' => 'span4', 'placeholder'=>'Marital status')); ?>
-
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Activity status', 'activity_status', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('activity_status', Input::post('activity_status', isset($employee) ? $employee->activity_status : ''), array('class' => 'span4', 'placeholder'=>'Activity status')); ?>
 
 			</div>
 		</div>
