@@ -31,8 +31,10 @@ class Controller_Salaries extends Controller_Template{
 			$val = Model_Salary::validate('create');
 			
 			if ($val->run())
-			{
-				$salary = Model_Salary::forge(array(
+			{       
+                            $var_basic = Model_Constant::find('all', array('where' => array('name' => "basic")));
+                            
+                            $salary = Model_Salary::forge(array(
 					'employee_id' => Input::post('employee_id'),
 					'month' => Input::post('month'),
 					'year' => Input::post('year'),

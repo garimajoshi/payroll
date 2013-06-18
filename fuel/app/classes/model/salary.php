@@ -8,6 +8,7 @@ class Model_Salary extends Model
                 'employee_id',
 		'month',
 		'year',
+                'lock',
 		'pf_applicable',
 		'pf_date',
 		'pf_scheme',
@@ -62,18 +63,8 @@ class Model_Salary extends Model
 		$val->add_field('month', 'Month', 'required');
 		$val->add_field('year', 'Year', 'required|valid_string[numeric]');
 		$val->add_field('pf_applicable', 'Pf Applicable', 'required');
-		$val->add_field('pf_date', 'Pf Date');
-		$val->add_field('pf_scheme', 'Pf Scheme');
 		$val->add_field('pf_number', 'Pf Number', 'max_length[20]');
-		$val->add_field('gross', 'Gross', 'required|valid_string[numeric]');
-		$val->add_field('sdxo', 'Sdxo', 'valid_string[numeric]');
-		$val->add_field('bonus1', 'Bonus1', 'valid_string[numeric]');
-		$val->add_field('bonus2', 'Bonus2', 'valid_string[numeric]');
-		$val->add_field('bonus3', 'Bonus3', 'valid_string[numeric]');
-		$val->add_field('leave', 'Leave', 'valid_string[numeric]');
-		$val->add_field('misc1', 'Misc1', 'valid_string[numeric]');
-		$val->add_field('misc2', 'Misc2', 'valid_string[numeric]');
-		$val->add_field('misc3', 'Misc3', 'valid_string[numeric]');
+		$val->add_field('gross', 'Gross', 'required');
 		
 		return $val;
 	}

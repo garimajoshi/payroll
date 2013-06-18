@@ -13,6 +13,7 @@ return array(
 				4 => '005_create_salaries',
 				5 => '006_create_users',
 				6 => '007_create_access_rights',
+				7 => '008_create_constants',
 			),
 		),
 		'module' => 
