@@ -11,8 +11,8 @@ class Create_users
 			'name' => array('constraint' => 50, 'type' => 'varchar'),
 			'password' => array('constraint' => 20, 'type' => 'varchar'),
 			'last_login_at' => array('type' => 'timestamp'),
-			'created_at' => array('type' => 'timestamp', 'default' => '1999-12-31 18:30:00'),
-			'updated_at' => array('type' => 'timestamp', 'default' => 'CURRENT_TIMESTAMP'),
+			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
 
 		), array('id'));
 	}

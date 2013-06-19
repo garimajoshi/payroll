@@ -36,7 +36,7 @@ class Create_salaries
 			'income_tax' => array('constraint' => '10,2', 'type' => 'float'),
 			'net' => array('constraint' => '10,2', 'type' => 'float'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
-			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('type' => 'timestamp'),
 
 		), array('id'));
 	}

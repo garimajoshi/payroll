@@ -6,9 +6,8 @@ class Model_Access_Right extends \Orm\Model {
     protected static $_properties = array(
         'id',
         'user_id',
-        'print_invoice',
-        'add_panel',
-        'add_monthly_customer',
+        'print_salary_statement',
+        'add_employee',
         'created_at',
         'updated_at',
     );

@@ -17,7 +17,7 @@ class Create_banks
 			'ifsc_code' => array('constraint' => 255, 'type' => 'varchar'),
 			'payment_type' => array('constraint' => 255, 'type' => 'varchar'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
-			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('type' => 'timestamp'),
 
 		), array('id'));
 	}

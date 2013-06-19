@@ -18,7 +18,7 @@ class Create_companies
 			'phone' => array('constraint' => 255, 'type' => 'varchar'),
 			'phone1' => array('constraint' => 255, 'type' => 'varchar'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
-			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('type' => 'timestamp'),
 
 		), array('id'));
 	}
