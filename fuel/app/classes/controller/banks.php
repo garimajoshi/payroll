@@ -1,5 +1,5 @@
 <?php
-class Controller_Banks extends Controller_Template{
+class Controller_Banks extends Controller_Base{
 
 	public function action_index()
 	{
