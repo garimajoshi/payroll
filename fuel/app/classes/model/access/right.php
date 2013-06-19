@@ -6,9 +6,9 @@ class Model_Access_Right extends \Orm\Model {
     protected static $_properties = array(
         'id',
         'user_id',
-        'add_employee',
-        'archive_employee',
-        'make_payroll',
+        'print_invoice',
+        'add_panel',
+        'add_monthly_customer',
         'created_at',
         'updated_at',
     );
@@ -22,12 +22,12 @@ class Model_Access_Right extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-    protected static $_has_one = array(
+    protected static $_belongs_to = array(
         'user' => array(
             'key_from' => 'user_id',
             'key_to' => 'id',
-            'cascade_save' => true,
-            'cascade_delete' => false,
+            'cascade_save' => false,
+            'cascade_delete' => true,
         )
     );
 
