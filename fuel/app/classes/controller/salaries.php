@@ -32,8 +32,15 @@ class Controller_Salaries extends Controller_Base{
 			
 			if ($val->run())
 			{       
-                            $var_basic = Model_Constant::find('all', array('where' => array('name' => "basic")));
-                            
+                            $var['constant'] = Model_Constant::find('all', array('where' => array('name' => "basic")));
+                            $var['constant'] = Model_Constant::find('all', array('where' => array('name' => "hra")));
+                            $var['constant'] = Model_Constant::find('all', array('where' => array('name' => "pf")));
+                            $var['constant'] = Input::post('gross');
+							$var_sdxo = Input::post('sdxo');
+							$var_lta = Model_Constant::find('all', array('where' => array('name' => "lta")));
+							$var_medical = Model_Constant::find('all', array('where' => array('name' => "medical")));
+							$var_travel = Model_Constant::find('all', array('where' => array('name' => "travel")));
+							
                             $salary = Model_Salary::forge(array(
 					'employee_id' => Input::post('employee_id'),
 					'month' => Input::post('month'),
@@ -42,14 +49,14 @@ class Controller_Salaries extends Controller_Base{
 					'pf_date' => Input::post('pf_date'),
 					'pf_scheme' => Input::post('pf_scheme'),
 					'pf_number' => Input::post('pf_number'),
-					'gross' => Input::post('gross'),
-					'sdxo' => Input::post('sdxo'),
-					'pf_adjust' => Input::post('pf_adjust'),
+					'gross' => $var_gross,
+					'sdxo' => $var_sdxo,
+					'pf_adjust' => (Input::post('pf_applicable') == "yes") ? (($var_gross - $var_sdxo) / $var_pf): 0.0,
 					'basic' => Input::post('basic'),
 					'hra' => Input::post('hra'),
-					'lta' => Input::post('lta'),
-					'medical' => Input::post('medical'),
-					'travel' => Input::post('travel'),
+					'lta' => $var_lta,
+					'medical' => $var_medical,
+					'travel' => $var_travel,
 					'pf_value' => Input::post('pf_value'),
 					'credit_other' => Input::post('credit_other'),
 					'bonus1' => Input::post('bonus1'),
