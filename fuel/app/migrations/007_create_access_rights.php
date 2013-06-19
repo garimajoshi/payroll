@@ -8,6 +8,7 @@ class Create_access_rights
 	{
 		\DBUtil::create_table('access_rights', array(
 			'id' => array('constraint' => 11, 'type' => 'int',  'auto_increment' => true, 'unsigned' => true, 'primary key' => true),
+			'user_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
 			'print_salary_statement' => array('constraint' => '"0","1"', 'type' => 'enum'),
 			'add_employee' => array('constraint' => '"0","1"', 'type' => 'enum'),
 			'created_at' => array('type' => 'datetime'),
