@@ -21,10 +21,10 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_create() {
-
+        
         if (Input::method() == 'POST') {
             $val = Model_Salary::validate('create');
-
+            
             if ($val->run()) {
                 
                 $var_gross = Input::post('gross');
@@ -42,20 +42,32 @@ class Controller_Salaries extends Controller_Base {
                 $var_deduction3 = Input::post('deduction3');
                 $var_leave = Input::post('leave');
                 
-                $var_basic_frac = Model_Constant::find('first', array('where' => array('name' => 'basic')));
-                $var_hra_frac = Model_Constant::find('first', array('where' => array('name' => 'hra')));
-                $var_pf_adjust_frac = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
-                $var_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
-                $pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+                $c_basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
+                $var_basic_frac = $c_basic->value;
                 
-                $var_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
-                $var_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
+                $c_hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
+                $var_hra_frac = $c_hra->value;
+                
+                $c_pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
+                $var_pf_adjust_frac = $c_pf_adjust->value;
+                
+                $c_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
+                $var_lta = $c_lta->value;
+                
+                $c_pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+                $pf = $c_pf->value;
+                
+                $c_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
+                $var_medical = $c_medical->value;
+                
+                $c_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
+                $var_travel = $c_travel->value;
                 
                 $var_adj_sdxo = $var_gross - $var_sdxo;
                 $var_pf_adjust = (Input::post('pf_applicable') == "yes") ? ($var_adj_sdxo / $var_pf_adjust_frac) : $var_adj_sdxo;        
                 $var_basic = $var_basic_frac * $var_pf_adjust;
                 $var_hra = $var_hra_frac * $var_pf_adjust;
-                $var_pf_value = $pf * $var_basic;
+                $var_pf_value = (Input::post('pf_applicable') == "yes") ? ($pf * $var_basic) : 0;
                 
                 $var_credit_other = $var_pf_adjust - ($var_basic + $var_hra + $var_lta + $var_medical + $var_travel + $var_pf_value);
                 $var_credit_total = $var_basic + $var_hra +$var_lta + $var_medical + $var_travel + $var_pf_value + $var_credit_other + $var_leave + $var_bonus1 + $var_bonus2 + $var_allowance1 + $var_allowance2 + $var_allowance3;
@@ -63,7 +75,6 @@ class Controller_Salaries extends Controller_Base {
                 $var_net = $var_credit_total - $var_total_debit;
                 
                 $salary = Model_Salary::forge(array(
-                            'employee_id' => Input::post('employee_id'),
                             'month' => Input::post('month'),
                             'year' => Input::post('year'),
                             'lock' => 'false',
@@ -121,7 +132,6 @@ class Controller_Salaries extends Controller_Base {
         $val = Model_Salary::validate('edit');
 
         if ($val->run()) {
-            $salary->employee_id = Input::post('employee_id');
             $salary->month = Input::post('month');
             $salary->year = Input::post('year');
             $salary->pf_applicable = Input::post('pf_applicable');
@@ -154,7 +164,6 @@ class Controller_Salaries extends Controller_Base {
             }
         } else {
             if (Input::method() == 'POST') {
-                $salary->employee_id = $val->validated('employee_id');
                 $salary->month = $val->validated('month');
                 $salary->year = $val->validated('year');
                 $salary->pf_applicable = $val->validated('pf_applicable');
