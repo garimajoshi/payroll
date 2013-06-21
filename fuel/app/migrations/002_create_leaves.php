@@ -13,7 +13,7 @@ class Create_leaves
 			'reason' => array('constraint' => 255, 'type' => 'varchar'),
 			'type' => array('constraint' => '"half","full"', 'type' => 'enum'),
 			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
-			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('type' => 'timestamp'),
 
 		), array('id'));
 	}
