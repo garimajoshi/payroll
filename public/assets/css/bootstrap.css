@@ -1466,6 +1466,7 @@ select:focus:required:invalid:focus {
 }
 
 .control-group {
+    text-align: left;
   margin-bottom: 9px;
 }
 
@@ -1517,24 +1518,27 @@ legend + .control-group {
 }
 
 table {
-  max-width: 100%;
+  width: 700px;
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
 .table {
-  width: 100%;
-  margin-bottom: 18px;
+  width: 700px;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
 }
 
 .table th,
 .table td {
-  padding: 8px;
-  line-height: 18px;
+  padding: 2px;
+  font-size:10px;
+  line-height: 15px;
   text-align: left;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  border_bottom: 1px solid #dddddd;
 }
 
 .table th {

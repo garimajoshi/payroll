@@ -1,0 +1,266 @@
+body{
+    overflow: scroll;
+}
+#img{
+    position:fixed;
+    width:120px;
+    
+}
+
+#address{
+    position:fixed;
+    margin-left: 600px;
+    
+}
+.table thead tr th{
+    font-size:14px; 
+    font-weight:bold;
+}
+
+.salary{
+    margin-left: 40px;
+    margin-top:10px;
+}
+.salary tbody tr td{
+    padding-left: 5px;
+}
+
+#form{
+    margin-top: 70px;
+    width: 450px;
+}
+.userinput{
+    float:left;
+    text-align: left;
+    padding-top:-5px;
+    margin-top: -22px;
+    margin-left: -50px; 
+    
+}
+
+#payslip{
+    margin-left: 500px;
+    height:410px;
+    width:350px;
+    margin-top:-400px;
+    border:1px solid #ccc;
+    padding-left: 15px;
+    font-size:12px;
+    
+}
+.credits{
+    margin-top: -125px;
+}
+.debit{
+    margin-left: 160px;
+    margin-top: 70px;
+}
+#header{
+    position:fixed;
+    top:0;
+    width:200%;
+    height:40px;
+    z-index:30;
+    margin-left:-10px;
+    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
+    background-image: linear-gradient(#fff, #ccc);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+}
+#header h1{
+      color: #111;
+	font-family: helvetica,arial, sans-serif;
+        padding-left: 50px;
+	font-size:25px;
+        padding-bottom:5px;
+        line-break: auto;
+	line-height:10px;
+	font-weight:700;
+	font-style: italic;
+	font-family: Georgia, Times New Roman, Times, serif;
+	max-width:350px;
+                
+    
+    margin-left: 80px;
+    padding-top: 20px;
+    
+}
+
+#left-nav{
+    position:fixed;
+}
+#container{
+        overflow:scroll;
+        position:fixed;
+        margin-top: -950px;
+        width:1050px;
+        height:590px;
+        margin-left: 220px;
+        padding-right: 50px;
+}
+.ctc{
+    margin-left: 600px;
+    margin-top: -300px;
+}
+.table{
+    padding: 5px;
+    border:1px solid #ccc;
+    margin-bottom: 10px;
+}
+.table thead{
+    padding-left:5px;
+    padding-right:5px;
+}
+.table th{
+    padding-left:5px;
+    padding-right:5px;
+    padding-top: 5px;
+    padding-bottom:2px;
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
+    background-image:linear-gradient(#fff, #ccc); 
+    
+}
+.table td{
+    padding-bottom:2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    
+}
+.table tbody{
+    font-size:12px;
+   
+}
+#border{
+    
+    height:1000px;
+    width:200px;
+    border-right: 1px solid #ccc;
+}
+
+a:link{ color: #333; }
+
+a:visited{ color: #333; }
+
+a:hover, a:focus{ color: #333;	text-decoration:none; }
+
+
+ol, ul{	margin: 1em 0 1em 2em; }
+
+ol ol, ol ul, ul ol, ul ul{ margin-top:0; margin-bottom:0; }
+
+ol li{	list-style:decimal }
+ol li ol li{ list-style:upper-alpha; }
+ol li ol li ol li{ list-style:upper-roman; }
+
+ul li{ list-style:disc;}
+
+/* all menu links */
+#nav a,a{
+	text-decoration:none;
+	display:list-item;
+        padding-top: 10px;
+        padding-bottom: 10px;
+       text-align: left;
+       padding-left: 20px;
+	background-color:#eee;
+        border-bottom: 1px solid #ddd;
+}
+
+/* Just main menu links --[for non-javascript users this applies to submenu links as well]*/
+#nav a{
+	margin:0;
+}
+
+/* All menu links on hover or focus */
+#nav a:hover, #nav a:focus{
+	background-color:#bbb;
+	color:#FFF;
+}
+#nav li a:hover,
+#nav li a:focus{
+	background-color:#bbb;
+	color:#FFF;
+}
+
+/* Parent Sub Menu Links ---[javascript users only]*/
+
+/* All submenu OLs and ULs */
+#nav ol, #nav ul, #subMenusContainer ul, #subMenusContainer ol {	
+	/*border around submenu goes here*/
+	background:#fff;	
+	border:1px solid #ddd; 
+	left:0;
+}
+
+/* All ULs and OLs */
+#nav, #nav ul, #nav ol, #subMenusContainer ul, #subMenusContainer ol { 
+	
+	margin-left: 10px;
+	list-style: none;
+	line-height: 1em;
+}
+
+/* List items in main menu --[for non-javascript users this applies to submenus as well]  */
+#nav li { 
+	/*great place to use a background image as a divider*/
+	display:block;
+	list-style:none;
+	position:relative;
+ background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#cc));
+	background-image: linear-gradient(#fff, #ccc);
+        
+	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+	
+	text-align: right;
+	display:block;
+}
+
+
+/* main menu ul or ol elment */
+#nav{
+	display:block;
+	position: absolute;
+	list-style:none;
+	margin-top: 200px;
+	width:186px;
+	z-index:5;
+        
+	/* Background color and gradients */
+	
+
+	
+	text-align: right;
+	display:block;
+}
+
+#nav li li{	float:none; }
+
+#nav li li a{ /* Just submenu links*/	
+	position:relative;
+	float:none;
+}
+
+#nav li ul { /* second-level lists */
+	position: absolute;
+	width: 10em;
+	margin-left: -1000em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
+}
+
+/* third-and-above-level lists */
+#nav li ul ul { margin: -1em 0 0 -1000em; }
+#nav li:hover ul ul {	margin-left: -1000em; }
+
+ /* lists nested under hovered list items */
+#nav li:hover ul{	margin-left: 186px; margin-top:-2.5em;}
+#nav li li:hover ul {	margin-left: 10em; }
+
+/* extra positioning rules for limited noscript keyboard accessibility */
+#nav li a:focus + ul {  margin-left: 186px; margin-top:-2.5em; }
+#nav li li a:focus + ul { left:186px; margin-left: 1010em; margin-top:-2.5em;}
+#nav li li a:focus {left:186px;  margin-left:1000em; width:10em;  margin-top:-2.5em;}
+#nav li li li a:focus {left:186px; margin-left: 2010em; width: 10em;  margin-top:-2.5em;}
+#nav li:hover a:focus{ margin-left: 0; }
+#nav li li:hover a:focus + ul { margin-left: 10em; }
