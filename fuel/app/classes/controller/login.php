@@ -23,7 +23,6 @@ class Controller_Login extends Controller_Base {
 
     public function action_verify() {
         $this->template->title = 'My &raquo; Login';
-        print_r(Input::post());
         if (!Input::post()) {
             Response::redirect('login/login');
         }
@@ -51,7 +50,7 @@ class Controller_Login extends Controller_Base {
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            Response::redirect('/');
+            Response::redirect('/employees');
         }
     }
 

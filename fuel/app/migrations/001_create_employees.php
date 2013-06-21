@@ -7,7 +7,7 @@ class Create_employees
 	public function up()
 	{
 		\DBUtil::create_table('employees', array(
-			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
+			'id' => array('constraint' => 10, 'type' => 'varchar'),
 			'first_name' => array('constraint' => 255, 'type' => 'varchar'),
 			'last_name' => array('constraint' => 255, 'type' => 'varchar'),
                         'branch' => array('constraint' => 255, 'type' => 'varchar', 'default' => 'Karnataka'),
