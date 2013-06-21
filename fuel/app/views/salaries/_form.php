@@ -27,7 +27,7 @@
 			<?php echo Form::label('Pf applicable', 'pf_applicable', array('class'=>'control-label')); ?>
                         
 			<div class="controls">
-			<?php echo Form::checkbox('pf applicable', 'pf_applicable', false); ?>
+			<?php echo Form::checkbox('pf applicable', '1', false); ?>
                         </div>
 			</div>
 		</div>

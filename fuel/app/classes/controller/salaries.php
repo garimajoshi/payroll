@@ -64,7 +64,7 @@ class Controller_Salaries extends Controller_Base {
                 $var_travel = $c_travel->value;
                 
                 $var_adj_sdxo = $var_gross - $var_sdxo;
-                $var_pf_adjust = (Input::post('pf_applicable') == "yes") ? ($var_adj_sdxo / $var_pf_adjust_frac) : $var_adj_sdxo;        
+                $var_pf_adjust = (Input::post('pf_applicable') == "1") ? ($var_adj_sdxo / $var_pf_adjust_frac) : $var_adj_sdxo;        
                 $var_basic = $var_basic_frac * $var_pf_adjust;
                 $var_hra = $var_hra_frac * $var_pf_adjust;
                 $var_pf_value = (Input::post('pf_applicable') == "yes") ? ($pf * $var_basic) : 0;
