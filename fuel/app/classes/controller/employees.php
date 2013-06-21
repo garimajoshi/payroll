@@ -33,6 +33,7 @@ class Controller_Employees extends Controller_Base{
 			if ($val->run())
 			{
 				$employee = Model_Employee::forge(array(
+                                        'branch' => Input::post('branch'),
 					'first_name' => Input::post('first_name'),
                                         'last_name' => Input::post('last_name'),
 					'phone' => Input::post('phone'),
@@ -86,7 +87,8 @@ class Controller_Employees extends Controller_Base{
 
 		if ($val->run())
 		{
-			$employee->first_name = Input::post('first_name');
+			$employee->branch = Input::post('branch');
+                        $employee->first_name = Input::post('first_name');
                         $employee->last_name = Input::post('last_name');
 			$employee->phone = Input::post('phone');
 			$employee->address = Input::post('address');
@@ -117,8 +119,9 @@ class Controller_Employees extends Controller_Base{
 		{
 			if (Input::method() == 'POST')
 			{
-				$employee->first_name = Input::post('first_name');
-                                $employee->last_name = Input::post('last_name');
+				$employee->branch = $val->validated('branch');
+                                $employee->first_name = $val->validated('first_name');
+                                $employee->last_name = $val->validated('last_name');
 				$employee->phone = $val->validated('phone');
 				$employee->address = $val->validated('address');
 				$employee->city = $val->validated('city');

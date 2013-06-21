@@ -16,7 +16,7 @@
 			<?php echo Form::label('Branch', 'branch', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->id : ''), array('class' => 'span4', 'placeholder'=>'Branch')); ?>
+				<?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'span4', 'placeholder'=>'Branch')); ?>
                         </div>
 			</div>
 		</div>
@@ -52,9 +52,9 @@
 			<?php echo Form::label('Sex', 'sex', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::select('country', 'none', array(
-    'male' => 'Male',
-    'female' => 'Female',
+				<?php echo Form::select('sex', 'none', array(
+    'Male' => 'Male',
+    'Female' => 'Female',
 )); ?>
 
 			</div></div>
@@ -64,11 +64,11 @@
 			<?php echo Form::label('Marital status', 'marital_status', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-			<?php echo Form::select('country', 'none', array(
-    'single' => 'single',
-    'married' => 'married',
-        'divorced' => 'divorced',
-        'widowed' => 'widowed',
+			<?php echo Form::select('marital_status', 'none', array(
+    'Single' => 'Single',
+    'Married' => 'Married',
+        'Divorced' => 'Divorced',
+        'Widowed' => 'Widowed',
 )); ?>
 
 			</div></div>
