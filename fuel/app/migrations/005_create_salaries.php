@@ -12,7 +12,7 @@ class Create_salaries
 			'month' => array('constraint' => '"jan","feb","mar","apr","jun","jul","aug","sep","oct","nov","dec"', 'type' => 'enum'),
 			'year' => array('constraint' => 11, 'type' => 'int'),
                         'lock' => array('constraint' => '"true","false"', 'type' => 'enum'),
-			'pf_applicable' => array('constraint' => '"yes","no"', 'type' => 'enum'),
+			'pf_applicable' => array('constraint' => '"1","0"', 'type' => 'enum'),
 			'gross' => array('constraint' => '10,2', 'type' => 'float', 'null' => false),
 			'sdxo' => array('constraint' => '10,2', 'type' => 'float', 'default' => 0),
 			'pf_adjust' => array('constraint' => '10,2', 'type' => 'float', 'default' => 0),
