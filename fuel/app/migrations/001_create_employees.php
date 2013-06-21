@@ -10,6 +10,7 @@ class Create_employees
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
 			'first_name' => array('constraint' => 255, 'type' => 'varchar'),
 			'last_name' => array('constraint' => 255, 'type' => 'varchar'),
+                        'branch' => array('constraint' => 255, 'type' => 'varchar'),
 			'phone' => array('constraint' => 255, 'type' => 'varchar'),
 			'address' => array('constraint' => 255, 'type' => 'varchar'),
 			'city' => array('constraint' => 255, 'type' => 'varchar'),

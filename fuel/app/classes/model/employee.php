@@ -8,6 +8,7 @@ class Model_Employee extends Model {
         'id',
         'first_name',
         'last_name',
+        'branch',
         'phone',
         'address',
         'city',
