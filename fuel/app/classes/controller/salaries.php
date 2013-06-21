@@ -125,9 +125,6 @@ class Controller_Salaries extends Controller_Base {
             $salary->month = Input::post('month');
             $salary->year = Input::post('year');
             $salary->pf_applicable = Input::post('pf_applicable');
-            $salary->pf_date = Input::post('pf_date');
-            $salary->pf_scheme = Input::post('pf_scheme');
-            $salary->pf_number = Input::post('pf_number');
             $salary->gross = Input::post('gross');
             $salary->sdxo = Input::post('sdxo');
             $salary->pf_adjust = Input::post('pf_adjust');
