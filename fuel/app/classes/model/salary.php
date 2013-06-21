@@ -62,11 +62,9 @@ class Model_Salary extends Model
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('month', 'Month', 'required');
-		$val->add_field('year', 'Year', 'required|valid_string[numeric]');
-		$val->add_field('pf_applicable', 'Pf Applicable', 'required');
-		$val->add_field('pf_number', 'Pf Number', 'max_length[20]');
-		$val->add_field('gross', 'Gross', 'required');
+		//$val->add_field('month', 'Month', 'required');
+		//$val->add_field('year', 'Year', 'required|valid_string[numeric]');
+		//$val->add_field('gross', 'Gross', 'required');
 		
 		return $val;
 	}
