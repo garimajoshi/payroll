@@ -29,39 +29,45 @@ class Controller_Salaries extends Controller_Base {
                 
                 $var_gross = Input::post('gross');
                 $var_sdxo = Input::post('sdxo');
-                $var_credit_other = Input::post('credit_other');
+                
                 $var_bonus1 = Input::post('bonus1');
                 $var_bonus2 = Input::post('bonus2');
-                $var_bonus3 = Input::post('bonus3');
-                $var_leave = Input::post('leave');
-                $var_misc1 = Input::post('misc1');
-                $var_misc2 = Input::post('misc2');
-                $var_misc3 = Input::post('misc3');
+                $var_allowance1 = Input::post('allowance1');
+                $var_allowance2 = Input::post('allowance2');
+                $var_allowance3 = Input::post('allowance3');
                 $var_income_tax = Input::post('income_tax');
-                $var_net = ;
+                $var_professional_tax = Input::post('professional_tax');
+                $var_deduction1 = Input::post('deduction1');
+                $var_deduction2 = Input::post('deduction2');
+                $var_deduction3 = Input::post('deduction3');
+                $var_leave = Input::post('leave');
                 
                 $var_basic_frac = Model_Constant::find('first', array('where' => array('name' => 'basic')));
                 $var_hra_frac = Model_Constant::find('first', array('where' => array('name' => 'hra')));
-                $var_pf = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
+                $var_pf_adjust_frac = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
                 $var_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
-                $pf_value = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+                $pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+                
                 $var_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
                 $var_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
                 
-                $var_adj_sdxo = $var_gross + $var_sdxo;
-                $var_pf_adjust = (Input::post('pf_applicable') == "yes") ? ($var_adj_sdxo / $var_pf) : $var_adj_sdxo;        
+                $var_adj_sdxo = $var_gross - $var_sdxo;
+                $var_pf_adjust = (Input::post('pf_applicable') == "yes") ? ($var_adj_sdxo / $var_pf_adjust_frac) : $var_adj_sdxo;        
                 $var_basic = $var_basic_frac * $var_pf_adjust;
                 $var_hra = $var_hra_frac * $var_pf_adjust;
-                $var_pf_value = $pf_value * $var_basic;
+                $var_pf_value = $pf * $var_basic;
+                
+                $var_credit_other = $var_pf_adjust - ($var_basic + $var_hra + $var_lta + $var_medical + $var_travel + $var_pf_value);
+                $var_credit_total = $var_basic + $var_hra +$var_lta + $var_medical + $var_travel + $var_pf_value + $var_credit_other + $var_leave + $var_bonus1 + $var_bonus2 + $var_allowance1 + $var_allowance2 + $var_allowance3;
+                $var_total_debit = $var_professional_tax + $var_income_tax + $var_pf_value + $var_deduction1 + $var_deduction2 + $var_deduction3;
+                $var_net = $var_credit_total - $var_total_debit;
                 
                 $salary = Model_Salary::forge(array(
                             'employee_id' => Input::post('employee_id'),
                             'month' => Input::post('month'),
                             'year' => Input::post('year'),
+                            'lock' => 'false',
                             'pf_applicable' => Input::post('pf_applicable'),
-                            'pf_date' => Input::post('pf_date'),
-                            'pf_scheme' => Input::post('pf_scheme'),
-                            'pf_number' => Input::post('pf_number'),
                             'gross' => $var_gross,
                             'sdxo' => $var_sdxo,
                             'pf_adjust' => $var_pf_adjust,
@@ -74,12 +80,17 @@ class Controller_Salaries extends Controller_Base {
                             'credit_other' => $var_credit_other,
                             'bonus1' => $var_bonus1,
                             'bonus2' => $var_bonus2,
-                            'bonus3' => $var_bonus3,
+                            'allowance1' => $var_allowance1,
                             'leave' => $var_leave,
-                            'misc1' => $var_misc1,
-                            'misc2' => $var_misc2,
-                            'misc3' => $var_misc3,
+                            'allowance2' => $var_allowance2,
+                            'allowance3' => $var_allowance3,
+                            'credit_total' => $var_credit_total,
                             'income_tax' => $var_income_tax,
+                            'professional_tax' => $var_professional_tax,
+                            'deduction1' => $var_deduction1,
+                            'deduction2' => $var_deduction2,
+                            'deduction3' => $var_deduction3,
+                            'total_debit' => $var_total_debit,
                             'net' => $var_net,
                 ));
 

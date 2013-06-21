@@ -6,7 +6,14 @@ body{
     width:120px;
     
 }
+.odd{
+    float:left;
+}
 
+.even{
+    float:right;
+    margin-top:-50px;
+}
 #address{
     position:fixed;
     margin-left: 600px;

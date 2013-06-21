@@ -29,7 +29,7 @@ document.write(x);
 <br />
 <br />
 <strong>Name: </strong>
-
+i
     <?php echo render('salaries/_form'); ?>
 
 <div id="payslip"> 

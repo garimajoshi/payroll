@@ -1150,7 +1150,7 @@ input[type="checkbox"][readonly] {
   border-color: #b94a48;
 }
 
-.control-group.error input:focus,
+.error input:focus,
 .control-group.error select:focus,
 .control-group.error textarea:focus {
   border-color: #953b39;
