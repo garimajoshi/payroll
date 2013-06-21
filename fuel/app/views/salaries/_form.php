@@ -129,6 +129,11 @@
 			</div>
             </div><hr />
 </div>
+		<div class="control-group">
+			<label class='control-label'>&nbsp;</label>
+			<div class='controls'>
+				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+		</div>
 		
 	
 <?php echo Form::close(); ?>

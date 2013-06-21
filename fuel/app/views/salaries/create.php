@@ -67,3 +67,5 @@ i
           <button class="btn btn-inverse" style="margin-left: 300px; margin-top:-40px;">Preview</button>
           <button class="btn btn-success" style="margin-left:560px;margin-top: -10px;">View Salary Statement</button>
           <button class="btn btn-primary" style="margin-left: 740px; margin-top: -27px">Generate Payslip </button>
+          
+          <p><?php echo Html::anchor('banks', 'Back'); ?></p>
