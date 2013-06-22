@@ -24,7 +24,7 @@
 			<td><?php echo $employee->last_name; ?></td>
 			<td><?php echo $employee->phone; ?></td>
 			<td><?php echo $employee->email; ?></td>
-			<td><a href="employees/view/">View</a></td>
+			<td><a href="employees/view/" style="list-style: none;">View</a></td>
 
 			</tr>
 <?php endforeach; ?>	</tbody>
