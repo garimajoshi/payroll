@@ -7,7 +7,7 @@
 			<?php echo Form::label('Employee ID', 'employee_id', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('employee_id', Input::post('employee_id', isset($employee) ? $employee->id : ''), array('class' => 'span4', 'placeholder'=>'Employee ID')); ?>
+				<?php echo Form::input('employee_id', Input::post('employee_id', isset($employee) ? $employee->id : ''), array('class' => 'span4', 'placeholder'=>'Employee ID','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -16,7 +16,7 @@
 			<?php echo Form::label('Branch', 'branch', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'span4', 'placeholder'=>'Branch')); ?>
+				<?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'span4', 'placeholder'=>'Branch','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 			<?php echo Form::label('First Name', 'first_name', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'span4', 'placeholder'=>'First Name')); ?>
+				<?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'span4', 'placeholder'=>'First Name','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 			<?php echo Form::label('Last Name', 'last_name', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'span4', 'placeholder'=>'Last Name')); ?>
+				<?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'span4', 'placeholder'=>'Last Name','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 			<?php echo Form::label('Date of birth', 'date_of_birth', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('date_of_birth', Input::post('date_of_birth', isset($employee) ? $employee->date_of_birth : ''), array('class' => 'span4', 'placeholder'=>'Date of birth')); ?>
+				<?php echo Form::input('date_of_birth', Input::post('date_of_birth', isset($employee) ? $employee->date_of_birth : ''), array('class' => 'span4', 'placeholder'=>'Date of birth','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@
 				<?php echo Form::select('sex', 'none', array(
     'Male' => 'Male',
     'Female' => 'Female',
-)); ?>
+),array('style="margin-left:-20px;"')); ?>
 
 			</div></div>
 		</div>
@@ -69,7 +69,7 @@
     'Married' => 'Married',
         'Divorced' => 'Divorced',
         'Widowed' => 'Widowed',
-)); ?>
+),array('style="margin-left:-20px;"')); ?>
 
 			</div></div>
 		</div>
@@ -78,7 +78,7 @@
 			<?php echo Form::label('Phone', 'phone', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'span4', 'placeholder'=>'Phone')); ?>
+				<?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'span4', 'placeholder'=>'Phone','required')); ?>
 
 			</div></div>
 		</div>
@@ -87,7 +87,7 @@
 			<?php echo Form::label('Address', 'address', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('address', Input::post('address', isset($employee) ? $employee->address : ''), array('class' => 'span4', 'placeholder'=>'Address')); ?>
+				<?php echo Form::input('address', Input::post('address', isset($employee) ? $employee->address : ''), array('class' => 'span4', 'placeholder'=>'Address','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -96,7 +96,7 @@
 			<?php echo Form::label('City', 'city', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('city', Input::post('city', isset($employee) ? $employee->city : ''), array('class' => 'span4', 'placeholder'=>'City')); ?>
+				<?php echo Form::input('city', Input::post('city', isset($employee) ? $employee->city : ''), array('class' => 'span4', 'placeholder'=>'City','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -105,7 +105,7 @@
 			<?php echo Form::label('State', 'state', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('state', Input::post('state', isset($employee) ? $employee->state : ''), array('class' => 'span4', 'placeholder'=>'State')); ?>
+				<?php echo Form::input('state', Input::post('state', isset($employee) ? $employee->state : ''), array('class' => 'span4', 'placeholder'=>'State','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -114,7 +114,7 @@
 			<?php echo Form::label('Pincode', 'pincode', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('pincode', Input::post('pincode', isset($employee) ? $employee->pincode : ''), array('class' => 'span4', 'placeholder'=>'Pincode')); ?>
+				<?php echo Form::input('pincode', Input::post('pincode', isset($employee) ? $employee->pincode : ''), array('class' => 'span4', 'placeholder'=>'Pincode','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 			<?php echo Form::label('Email', 'email', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('email', Input::post('email', isset($employee) ? $employee->email : ''), array('class' => 'span4', 'placeholder'=>'Email')); ?>
+				<?php echo Form::input('email', Input::post('email', isset($employee) ? $employee->email : ''), array('class' => 'span4', 'placeholder'=>'Email','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -132,7 +132,7 @@
 			<?php echo Form::label('Joining date', 'joining_date', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('joining_date', Input::post('joining_date', isset($employee) ? $employee->joining_date : ''), array('class' => 'span4', 'placeholder'=>'Joining date')); ?>
+				<?php echo Form::input('joining_date', Input::post('joining_date', isset($employee) ? $employee->joining_date : ''), array('class' => 'span4', 'placeholder'=>'Joining date','required')); ?>
                         </div>
 			</div>
 		</div>
@@ -149,7 +149,7 @@
 		<div class="control-group">
 			<label class='control-label'>&nbsp;</label>
 			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
+				<?php echo Form::submit('submit', 'Add Bank Details', array('class' => 'btn btn-success', 'onlick'=>'location.href="/banks/create"')); ?></div>
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>

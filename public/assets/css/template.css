@@ -1,67 +1,64 @@
 body{
     overflow: scroll;
 }
-#img{
-    position:fixed;
-    width:120px;
-    
-}
-.odd{
-    float:left;
-}
+a:link{ color: #333; }
 
-.even{
-    float:right;
-    margin-top:-50px;
-}
+a:visited{ color: #333; }
+
+a:hover, a:focus{ color: #333;	text-decoration:none; }
+
 #address{
     position:fixed;
     margin-left: 600px;
     
 }
-.table thead tr th{
-    font-size:14px; 
-    font-weight:bold;
-}
-
-.salary{
-    margin-left: 40px;
-    margin-top:10px;
-}
-.salary tbody tr td{
-    padding-left: 5px;
-}
-
-#form{
-    margin-top: 70px;
-    width: 450px;
-}
-.userinput{
-    float:left;
-    text-align: left;
-    padding-top:-5px;
-    margin-top: -22px;
-    margin-left: -50px; 
+#border{
     
+    height:1000px;
+    width:200px;
+    border-right: 1px solid #ccc;
 }
-
-#payslip{
-    margin-left: 500px;
-    height:410px;
-    width:350px;
-    margin-top:-400px;
-    border:1px solid #ccc;
-    padding-left: 15px;
+#container{
+        overflow:scroll;
+        position:fixed;
+        margin-top: -950px;
+        width:1050px;
+        height:590px;
+        margin-left: 220px;
+        padding-right: 50px;
+}
+.controls input{
+    padding-left:10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     font-size:12px;
-    
 }
 .credits{
     margin-top: -125px;
 }
+
+.ctc{
+    margin-left: 600px;
+    margin-top: -300px;
+}
+
 .debit{
     margin-left: 160px;
     margin-top: 70px;
 }
+
+
+.even{
+    float:right;
+    margin-top:-50px;
+}
+
+#form{
+    margin-top: 60px;
+    padding-left: 10px;
+    width: 450px;
+}
+
 #header{
     position:fixed;
     top:0;
@@ -92,79 +89,21 @@ body{
     
 }
 
+#img{
+    position:fixed;
+    width:120px;
+    
+}
 #left-nav{
     position:fixed;
 }
-#container{
-        overflow:scroll;
-        position:fixed;
-        margin-top: -950px;
-        width:1050px;
-        height:590px;
-        margin-left: 220px;
-        padding-right: 50px;
-}
-.ctc{
-    margin-left: 600px;
-    margin-top: -300px;
-}
-.table{
-    padding: 5px;
-    border:1px solid #ccc;
-    margin-bottom: 10px;
-}
-.table thead{
-    padding-left:5px;
-    padding-right:5px;
-}
-.table th{
-    padding-left:5px;
-    padding-right:5px;
-    padding-top: 5px;
-    padding-bottom:2px;
-    border-right: 1px solid #ccc;
-    border-bottom: 3px solid #ccc;
-    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
-    background-image:linear-gradient(#fff, #ccc); 
-    
-}
-.table td{
-    padding-bottom:2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    
-}
-.table tbody{
-    font-size:12px;
-   
-}
-#border{
-    
-    height:1000px;
-    width:200px;
-    border-right: 1px solid #ccc;
+
+.login_info{
+    color:black;
+    margin-top:5px;
+    margin-right:-0px
 }
 
-a:link{ color: #333; }
-
-a:visited{ color: #333; }
-
-a:hover, a:focus{ color: #333;	text-decoration:none; }
-
-
-ol, ul{	margin: 1em 0 1em 2em; }
-
-ol ol, ol ul, ul ol, ul ul{ margin-top:0; margin-bottom:0; }
-
-ol li{	list-style:decimal }
-ol li ol li{ list-style:upper-alpha; }
-ol li ol li ol li{ list-style:upper-roman; }
-
-ul li{ list-style:disc;}
-
-/* all menu links */
 #nav a,a{
 	text-decoration:none;
 	display:list-item;
@@ -271,3 +210,93 @@ ul li{ list-style:disc;}
 #nav li li li a:focus {left:186px; margin-left: 2010em; width: 10em;  margin-top:-2.5em;}
 #nav li:hover a:focus{ margin-left: 0; }
 #nav li li:hover a:focus + ul { margin-left: 10em; }
+
+.odd{
+    float:left;
+}
+
+#previewslip{
+    margin-left: 550px;
+    height:410px;
+    width:350px;
+    margin-top:-580px;
+    border:1px solid #ccc;
+    padding-left: 15px;
+    font-size:12px;
+    
+}
+
+.salary{
+    margin-left: 40px;
+    margin-top:10px;
+}
+.salary tbody tr td{
+    padding-left: 5px;
+}
+
+.search{
+    float:right;
+    margin-top: -36px;
+}
+
+.table thead tr th{
+    font-size:14px; 
+    font-weight:bold;
+}
+
+
+.userinput{
+    float:left;
+    text-align: left;
+    padding-top:-5px;
+    margin-top: -10px;
+    margin-left: -50px;
+    
+}
+
+
+
+
+
+
+.table{
+    padding: 5px;
+    border:1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.table th{
+    padding:10px 10px 10px 10px;
+    border-right: 1px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
+    background-image:linear-gradient(#fff, #ccc); 
+    
+}
+.table td{
+    padding-top:5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    
+}
+.table tbody{
+    font-size:12px;
+   
+}
+
+
+
+
+ol, ul{	margin: 1em 0 1em 2em; }
+
+ol ol, ol ul, ul ol, ul ul{ margin-top:0; margin-bottom:0; }
+
+ol li{	list-style:decimal }
+ol li ol li{ list-style:upper-alpha; }
+ol li ol li ol li{ list-style:upper-roman; }
+
+ul li{ list-style:disc;}
+
+/* all menu links */

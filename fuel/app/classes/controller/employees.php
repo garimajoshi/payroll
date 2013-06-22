@@ -54,7 +54,7 @@ class Controller_Employees extends Controller_Base{
 				{
 					Session::set_flash('success', 'Added employee #'.$employee->id.'.');
 
-					Response::redirect('employees');
+					Response::redirect('/banks/create');
 				}
 
 				else

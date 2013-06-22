@@ -12,9 +12,95 @@
 		<![endif]-->
 	</head>
         <body style="overflow: auto;">
+            
+<?php
+    function createYears($start_year, $end_year, $id='year_select', $selected=null)
+    {
+
+
+        $selected = is_null($selected) ? date('Y') : $selected;
+
+
+        $r = range($start_year, $end_year);
+
+
+        $select = '<select name="'.$id.'" id="'.$id.'">';
+        foreach( $r as $year )
+        {
+            $select .= "<option value=\"$year\"";
+            $select .= ($year==$selected) ? ' selected="selected"' : '';
+            $select .= ">$year</option>\n";
+        }
+        $select .= '</select>';
+        return $select;
+    }
+
+    function createMonths($id='month_select', $selected=null)
+    {
+
+        $months = array(
+                1=>'January',
+                2=>'February',
+                3=>'March',
+                4=>'April',
+                5=>'May',
+                6=>'June',
+                7=>'July',
+                8=>'August',
+                9=>'September',
+                10=>'October',
+                11=>'November',
+                12=>'December');
+
+
+        $selected = is_null($selected) ? date('m') : $selected;
+
+        $select = '<select name="'.$id.'" id="'.$id.'">'."\n";
+        foreach($months as $key=>$mon)
+        {
+            $select .= "<option value=\"$key\"";
+            $select .= ($key==$selected) ? ' selected="selected"' : '';
+            $select .= ">$mon</option>\n";
+        }
+        $select .= '</select>';
+        return $select;
+    }
+
+    function createDays($id='day_select', $selected=null)
+    {
+        /*** range of days ***/
+        $r = range(1, 31);
+
+        /*** current day ***/
+        $selected = is_null($selected) ? date('d') : $selected;
+
+        $select = "<select name=\"$id\" id=\"$id\">\n";
+        foreach ($r as $day)
+        {
+            $select .= "<option value=\"$day\"";
+            $select .= ($day==$selected) ? ' selected="selected"' : '';
+            $select .= ">$day</option>\n";
+        }
+        $select .= '</select>';
+        return $select;
+    }
+
+
+?>
             <div id="header">
                 <h1>NeoGen Labs Payroll System</h1>
-                <button class="btn btn-inverse" style="margin-left: 1300px; margin-top: -30px;">logout</button>
+                <div class="login_info pull-right">
+                <?php
+                if ($user = Session::get('user')) {
+
+                    echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+                    ?>
+                    <?php
+                } else {
+                    Response::redirect('login/login');
+                }
+                ?> 
+            </div>   
                 
             </div>
                         

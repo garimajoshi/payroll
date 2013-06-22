@@ -3,12 +3,13 @@
 	
 		
 <div id="form">
+    <fieldset>
 		<div class="control-group">
                     <div class="userinput">
 			<?php echo Form::label('Gross CTC', 'gross', array('class'=>'control-label')); ?>
 
 			<div class="controls">
-				<?php echo Form::input('gross', Input::post('gross', isset($salary) ? $salary->gross : ''), array('class' => 'span4', 'placeholder'=>'Gross')); ?>
+				<?php echo Form::input('gross', Input::post('gross', isset($salary) ? $salary->gross : ''), array('class' => 'span4', 'placeholder'=>'Gross', 'style="padding-left:10px;"')); ?>
                         </div>
 			</div>
 		</div>
@@ -23,7 +24,7 @@
 			</div>
 		</div>
             	 <div class="control-group">
-                <div class="user input" style="margin-left:-30px; margin-top: -15px; margin-bottom: 10px;">
+                <div class="user input"style="margin-left:-50px;">
 			<?php echo Form::label('Pf applicable', 'pf_applicable', array('class'=>'control-label')); ?>
                         
 			<div class="controls">
@@ -129,17 +130,17 @@
 			</div>
             </div><hr />
             
-            <div class="control-group">
-			<label class='control-label'>&nbsp;</label>
-			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
-		</div>
-</div>
+            
 		<div class="control-group">
 			<label class='control-label'>&nbsp;</label>
 			<div class='controls'>
 				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
 		</div>
-		
-	
+    </fieldset>
+</div>
+    <strong>Gross_CTC:</strong><br />
+          <strong>Adjusted_CTC:</strong><br />
+        <?php echo Html::anchor('salaries/create','Preview',array('class'=>'btn btn-success')); ?>
+        <?php echo Html::anchor('salaries/index','View Salary Statement', array('class'=>'btn btn-success', 'style'=>'margin-left: 500px; margin-top:-40px'));?>  
+          <button class="btn btn-primary" style="margin-left: 740px; margin-top: -50px">Generate Payslip </button>
 <?php echo Form::close(); ?>
