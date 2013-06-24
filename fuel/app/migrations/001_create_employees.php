@@ -8,6 +8,7 @@ class Create_employees
 	{
 		\DBUtil::create_table('employees', array(
 			'id' => array('constraint' => 10, 'type' => 'varchar'),
+                        'title' => array('constraint' => '"dr","mr","miss","mrs"', 'type' => 'enum'),
 			'first_name' => array('constraint' => 255, 'type' => 'varchar'),
 			'last_name' => array('constraint' => 255, 'type' => 'varchar'),
                         'branch' => array('constraint' => 255, 'type' => 'varchar', 'default' => 'Karnataka'),

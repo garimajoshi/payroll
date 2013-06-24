@@ -10,8 +10,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('employees');
-        $data['employees'] = Model_Employee::find('all',array('where'=>array('id'=>$id),
-            'related' => array('bank')) );
+
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -56,6 +55,7 @@ class Controller_Employees extends Controller_Base {
         );
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/search', $data);
+        $this->template->content = View::forge('employees/index', $data);
     }
 
     public function action_create() {
@@ -63,7 +63,6 @@ class Controller_Employees extends Controller_Base {
             $val = Model_Employee::validate('create');
 
             if ($val->run()) {
-
                 $var_dob_day = Input::post('dob_day');
                 $var_dob_month = Input::post('dob_month');
                 $var_dob_year = Input::post('dob_year');
@@ -76,7 +75,7 @@ class Controller_Employees extends Controller_Base {
                 $var_ld_month = Input::post('ld_month');
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
-
+                
                 $employee = Model_Employee::forge(array(
                             'id' => Input::post('id'),
                             'branch' => Input::post('branch'),
@@ -148,9 +147,15 @@ class Controller_Employees extends Controller_Base {
             $employee->state = Input::post('state');
             $employee->pincode = Input::post('pincode');
             $employee->email = Input::post('email');
+
             $employee->joining_date = $var_jd;
             $employee->leaving_date = $var_ld;
             $employee->date_of_birth = $var_dob;
+
+            $employee->joining_date = Input::post('joining_date');
+            $employee->leaving_date = Input::post('leaving_date');
+            $employee->date_of_birth = Input::post('date_of_birth');
+
             $employee->sex = Input::post('sex');
             $employee->marital_status = Input::post('marital_status');
             $employee->activity_status = "active";
@@ -164,6 +169,7 @@ class Controller_Employees extends Controller_Base {
             }
         } else {
             if (Input::method() == 'POST') {
+
 
                 $var_dob_day = Input::post('dob_day');
                 $var_dob_month = Input::post('dob_month');
@@ -192,6 +198,11 @@ class Controller_Employees extends Controller_Base {
                 $employee->joining_date = $var_jd;
                 $employee->leaving_date = $var_ld;
                 $employee->date_of_birth = $var_dob;
+
+                $employee->joining_date = $val->validated('joining_date');
+                $employee->leaving_date = $val->validated('leaving_date');
+                $employee->date_of_birth = $val->validated('date_of_birth');
+
                 $employee->sex = $val->validated('sex');
                 $employee->marital_status = $val->validated('marital_status');
                 $employee->activity_status = "active";
