@@ -1,4 +1,4 @@
-<h2>New <span class='muted'>Leafe</span></h2>
+<h2>New <span class='muted'>Leave</span></h2>
 <br>
 
 <?php echo render('leaves/_form'); ?>

@@ -25,7 +25,7 @@ class Model_Access_Right extends \Orm\Model {
         'user' => array(
             'key_from' => 'user_id',
             'key_to' => 'id',
-            'cascade_save' => false,
+            'cascade_save' => true,
             'cascade_delete' => true,
         )
     );
