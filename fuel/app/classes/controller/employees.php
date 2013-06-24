@@ -24,6 +24,13 @@ class Controller_Employees extends Controller_Base{
 
 	}
 
+	public function action_view_archive()
+	{
+		$data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
+		$this->template->title = "Employees";
+		$this->template->content = View::forge('employees/index', $data);
+	}
+	
 	public function action_create()
 	{
 		if (Input::method() == 'POST')

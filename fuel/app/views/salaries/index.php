@@ -9,7 +9,7 @@
             <th>Name</th>
             <th>Gross</th>
             <th>SDXO</th>
-            <th>Adjust SDXO</th>
+            <th style="width:70px;">Adjust SDXO</th>
             <th>PFV</th>
             <th>Adjust_CTC</th>
             <th>Basic</th>
@@ -25,24 +25,22 @@
             <th>Allowance2</th>
             <th>Special Allowances</th>
             <th>Total Credit</th>
-            <th></th>
             <th>Professional Tax</th>
             <th>PF</th>
             <th>Income tax</th>
             <th>Deduction1</th>
             <th>Deduction2</th>
             <th>Special Deduction</th>
-            <th></th>
             <th>NET</th>
-            <th>View</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
+            <th></th>
             
         </tr>
     </thead>
     <tbody>
         <?php foreach ($salaries as $salary): ?>
-        <tr>
+        <tr  style="font-size:12px; padding-top:10px;">
             <td>id</td>
             <td>Name</td>
             <td>Gross</td>
@@ -63,17 +61,17 @@
             <td>Allowance2</td>
             <td>Special Allowances</td>
             <td>Total Credit</td>
-            <td></td>
+            
             <td>Professional Tax</td>
             <td>PF</td>
             <td>Income tax</td>
             <td>Deduction1</td>
             <td>Deduction2</td>
             <td>Special Deduction</td>
-            <td></td>
+            
             <td>NET</td>
             <td>
-				<?php echo Html::anchor('salaries/view/'.$salary->id,'View'); ?> </td>
+				<?php echo Html::anchor('salaries/view/'.$salary->id,'<i class="icon-eye-open" title="View"></i>'); ?> </td>
 			<td>	<?php echo Html::anchor('salaries/edit/'.$salary->id,'Edit'); ?> </td>
 			<td>	<?php echo Html::anchor('salaries/delete/'.$salary->id,'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
 

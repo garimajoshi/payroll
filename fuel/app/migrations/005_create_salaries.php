@@ -8,11 +8,11 @@ class Create_salaries
 	{
 		\DBUtil::create_table('salaries', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
-			'employee_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
+			'employee_id' => array('constraint' => 10, 'type' => 'varchar'),
 			'month' => array('constraint' => '"jan","feb","mar","apr","jun","jul","aug","sep","oct","nov","dec"', 'type' => 'enum'),
 			'year' => array('constraint' => 11, 'type' => 'int'),
                         'lock' => array('constraint' => '"true","false"', 'type' => 'enum'),
-			'pf_applicable' => array('constraint' => '"yes","no"', 'type' => 'enum'),
+			'pf_applicable' => array('constraint' => '"1","0"', 'type' => 'enum'),
 			'gross' => array('constraint' => '10,2', 'type' => 'float', 'null' => false),
 			'sdxo' => array('constraint' => '10,2', 'type' => 'float', 'default' => 0),
 			'pf_adjust' => array('constraint' => '10,2', 'type' => 'float', 'default' => 0),

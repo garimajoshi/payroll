@@ -1,155 +1,114 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class"=>"formee",'style'=>"margin-top:50px;")); ?>
 
-	<fieldset>
+	
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('Employee ID <em class="formee-req">*</em>', 'employee_id');?>
+                    <?php echo Form::input('employee_id',Input::post('employee_id',isset($employee) ? $employee->id : ''), array('class'=>'formee-large','required', 'placeholder' =>'Employee ID')); ?>
+                </div>
+                <div class="grid-4-12">
+                    <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch');?>
+                    <?php echo Form::input('branch',Input::post('branch',isset($employee) ? $employee->branch : ''), array('class'=>'formee-large','required', 'placeholder' =>'Branch')); ?>
+                </div>
+            </div>
+             <div class="grid-12-12">
+                <div class="grid-1-12">
+                    <?php echo Form::label('Title <em class="formee-req">*</em>', 'title');?>
+                    <?php echo Form::select('title',Input::post('title',isset($employee) ? $employee->title : ''), array(
+                                'dr'=>'Dr',
+                                'mr'=>'Mr',
+                                'ms'=>'Ms',
+                                'mrs'=>'Mrs'));?>
+                    
+                </div>
+                <div class="grid-3-12">
+                    <?php echo Form::label('First Name <em class="formee-req">*</em>', 'first_name');?>
+                    <?php echo Form::input('first_name',Input::post('first_name',isset($employee) ? $employee->first_name : ''), array('class'=>'formee-large','required', 'placeholder' =>'First Name')); ?>
+                </div>
+                 <div class="grid-4-12">
+                    <?php echo Form::label('Last Name <em class="formee-req">*</em>', 'last_name');?>
+                    <?php echo Form::input('last_name',Input::post('last_name',isset($employee) ? $employee->last_name : ''), array('class'=>'formee-large','required', 'placeholder' =>'Last Name')); ?>
+                </div>
+            </div>
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('Date of Birth <em class="formee-req">*</em>', 'date_of_birth');?>
+                    <div class="grid-3-12"><?php echo createDays('dob_day', date('d')); ?></div>
+                    <div class="grid-3-12"><?php echo createMonths('dob_month', date('m')); ?></div>
+                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'dob_year', date('Y')); ?></div>
+                    
+                    
+                </div>
+                <div class="grid-2-12">
+                    <?php echo Form::label('Sex <em class="formee-req">*</em>', 'sex');?>
+                    <?php echo Form::select('sex',Input::post('sex',isset($employee) ? $employee->sex : ''), array(
+                                'male'=>'Male',
+                                'female'=>'Female',
+                            ));?>
+                    
+                </div>
+                <div class="grid-2-12">
+                    <?php echo Form::label('Marital Status', 'marital_status');?>
+                    <?php echo Form::select('marital_status',Input::post('marital_status',isset($employee) ? $employee->marital_status : ''), array(
+                                'single'=>'Single',
+                                'married'=>'Married',
+                                'divorced'=>'Divorced',
+                                'widowed'=>'Widowed',
+                            )); ?>
+                </div>
+            </div>
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('Address <em class="formee-req">*</em>', 'address');?>
+                    <?php echo Form::input('address',Input::post('address',isset($employee) ? $employee->address : ''), array('class'=>'formee-large','required', 'placeholder' =>'Address')); ?>
+                </div>
+                <div class="grid-4-12">
+                    <?php echo Form::label('City <em class="formee-req">*</em>', 'city');?>
+                    <?php echo Form::input('city',Input::post('city',isset($employee) ? $employee->city : ''), array('class'=>'formee-large','required', 'placeholder' =>'City')); ?>
+                </div>
+            </div>
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('State <em class="formee-req">*</em>', 'state');?>
+                    <select name=state>
+                    <script language="javascript">
+                        var states = new Array("Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal");
+                        for(var hi=0; hi<states.length; hi++) 
+                            document.write("<option value=\""+states[hi]+"\">"+states[hi]+"</option>");
+                    </script>
+                    </select>
+                </div>
+                <div class="grid-4-12">
+                    <?php echo Form::label('Pincode <em class="formee-req">*</em>', 'pincode');?>
+                    <?php echo Form::input('pincode',Input::post('pincode',isset($employee) ? $employee->pincode : ''), array('class'=>'formee-large','required', 'placeholder' =>'Pincode')); ?>
+                </div>
+            </div>
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('Phone No <em class="formee-req">*</em>', 'phone_no');?>
+                    <?php echo Form::input('phone no',Input::post('phone_no',isset($employee) ? $employee->phone_no : ''), array('class'=>'formee-large','required', 'placeholder' =>'Phone No')); ?>
+                </div>
+                <div class="grid-4-12">
+                    <?php echo Form::label('Email <em class="formee-req">*</em>', 'email');?>
+                    <?php echo Form::input('email',Input::post('email',isset($employee) ? $employee->email : ''), array('class'=>'formee-large','required', 'placeholder' =>'Email')); ?>
+                </div>
+            </div>
+            <div class="grid-12-12">
+                <div class="grid-4-12">
+                    <?php echo Form::label('Joining date <em class="formee-req">*</em>', 'joining_date');?>
+                    <div class="grid-3-12"><?php echo createDays('jd_day', date('d')); ?></div>
+                    <div class="grid-3-12"><?php echo createMonths('jd_month', date('m')); ?></div>
+                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'jd_year', date('Y')); ?></div>
+                </div>
+                <div class="grid-4-12">
+                    <?php echo Form::label('Leaving date', 'leaving_date');?>
+                    <div class="grid-3-12"><?php echo createDays('ld_day', date('d')); ?></div>
+                    <div class="grid-3-12"><?php echo createMonths('ld_month', date('m')); ?></div>
+                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'ld_year', date('Y')); ?></div>
+                </div>
+                <div class="grid-3-12 ">
+            <?php echo Form::submit('submit', 'Add Bank Details', array('class' => 'formee-button', 'style'=>'margin-top:20px;'));?>
+             </div>
+            </div>
             
-                <div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Employee ID', 'employee_id', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('employee_id', Input::post('employee_id', isset($employee) ? $employee->id : ''), array('class' => 'span4', 'placeholder'=>'Employee ID','required')); ?>
-                        </div>
-			</div>
-		</div>
-                <div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Branch', 'branch', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'span4', 'placeholder'=>'Branch','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('First Name', 'first_name', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'span4', 'placeholder'=>'First Name','required')); ?>
-                        </div>
-			</div>
-		</div>
-                <div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Last Name', 'last_name', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'span4', 'placeholder'=>'Last Name','required')); ?>
-                        </div>
-			</div>
-		</div>
-                <div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Date of birth', 'date_of_birth', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('date_of_birth', Input::post('date_of_birth', isset($employee) ? $employee->date_of_birth : ''), array('class' => 'span4', 'placeholder'=>'Date of birth','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Sex', 'sex', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::select('sex', 'none', array(
-    'Male' => 'Male',
-    'Female' => 'Female',
-),array('style="margin-left:-20px;"')); ?>
-
-			</div></div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Marital status', 'marital_status', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-			<?php echo Form::select('marital_status', 'none', array(
-    'Single' => 'Single',
-    'Married' => 'Married',
-        'Divorced' => 'Divorced',
-        'Widowed' => 'Widowed',
-),array('style="margin-left:-20px;"')); ?>
-
-			</div></div>
-		</div>
-		<div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Phone', 'phone', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'span4', 'placeholder'=>'Phone','required')); ?>
-
-			</div></div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Address', 'address', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('address', Input::post('address', isset($employee) ? $employee->address : ''), array('class' => 'span4', 'placeholder'=>'Address','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('City', 'city', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('city', Input::post('city', isset($employee) ? $employee->city : ''), array('class' => 'span4', 'placeholder'=>'City','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('State', 'state', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('state', Input::post('state', isset($employee) ? $employee->state : ''), array('class' => 'span4', 'placeholder'=>'State','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Pincode', 'pincode', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('pincode', Input::post('pincode', isset($employee) ? $employee->pincode : ''), array('class' => 'span4', 'placeholder'=>'Pincode','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Email', 'email', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('email', Input::post('email', isset($employee) ? $employee->email : ''), array('class' => 'span4', 'placeholder'=>'Email','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="even">
-			<?php echo Form::label('Joining date', 'joining_date', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('joining_date', Input::post('joining_date', isset($employee) ? $employee->joining_date : ''), array('class' => 'span4', 'placeholder'=>'Joining date','required')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="odd">
-			<?php echo Form::label('Leaving date', 'leaving_date', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('leaving_date', Input::post('leaving_date', isset($employee) ? $employee->leaving_date : ''), array('class' => 'span4', 'placeholder'=>'Leaving date')); ?>
-                        </div>
-			</div>
-		</div>
-		
-		<div class="control-group">
-			<label class='control-label'>&nbsp;</label>
-			<div class='controls'>
-				<?php echo Form::submit('submit', 'Add Bank Details', array('class' => 'btn btn-success', 'onlick'=>'location.href="/banks/create"')); ?></div>
-		</div>
-	</fieldset>
 <?php echo Form::close(); ?>
