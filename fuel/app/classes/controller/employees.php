@@ -137,7 +137,6 @@ class Controller_Employees extends Controller_Base {
             $var_ld_year = Input::post('ld_year');
             $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
 
-            $employee->id = Input::post('id');
             $employee->branch = Input::post('branch');
             $employee->title = Input::post('title');
             $employee->first_name = Input::post('first_name');
@@ -178,7 +177,6 @@ class Controller_Employees extends Controller_Base {
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
 
-                $employee->id = $val->validated('id');
                 $employee->branch = $val->validated('branch');
                 $employee->title = $val->validated('title');
                 $employee->first_name = $val->validated('first_name');
