@@ -6,6 +6,7 @@ class Model_Employee extends Model {
 
     protected static $_properties = array(
         'id',
+        'title',
         'first_name',
         'last_name',
         'branch',

@@ -3,15 +3,28 @@
 	<head>
 		<meta charset="utf-8">
                 <title>NeoGen Labs Payroll System</title>
-             
+                <?php echo Asset::css('reset.css'); ?>
+                <?php echo Asset::css('formee-structure.css'); ?>
+                <?php echo Asset::css('formee-style.css'); ?>
                 <?php echo Asset::css('bootstrap.css'); ?>
 		<?php echo Asset::css('template.css'); ?>
-	                
+	        <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
+                <?php echo Asset::js('css_browser_selector.js');?>
+                <?php echo Asset::js('formee.js'); ?>    
+                
                <!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	</head>
         <body style="overflow: auto;">
+<script language="JavaScript">
+function toggle(source) {
+  checkboxes = document.getElementsByName('foo');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
             
 <?php
     function createYears($start_year, $end_year, $id='year_select', $selected=null)
@@ -158,5 +171,6 @@
                 <div id="container">
           <?php echo $content;?>
                 </div>
+               
 	</body>
 </html>

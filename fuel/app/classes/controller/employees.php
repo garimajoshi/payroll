@@ -32,8 +32,22 @@ class Controller_Employees extends Controller_Base{
 			
 			if ($val->run())
 			{
+                            $var_dob_day = Input::post('dob_day');
+                            $var_dob_month = Input::post('dob_month');
+                            $var_dob_year = Input::post('dob_year');
+                            $var_dob = $var_dob_year.'-'.$var_dob_month.'-'.$var_dob_day;
+                            $var_jd_day = Input::post('jd_day');
+                            $var_jd_month = Input::post('jd_month');
+                            $var_jd_year = Input::post('jd_year');
+                            $var_jd = $var_jd_year.'-'.$var_jd_month.'-'.$var_jd_day;
+                            $var_ld_day = Input::post('ld_day');
+                            $var_ld_month = Input::post('ld_month');
+                            $var_ld_year = Input::post('ld_year');
+                            $var_ld = $var_ld_year.'-'.$var_ld_month.'-'.$var_ld_day;
 				$employee = Model_Employee::forge(array(
+                                        'id' =>Input::post('id'),
                                         'branch' => Input::post('branch'),
+                                        'title' => Input::post('title'),
 					'first_name' => Input::post('first_name'),
                                         'last_name' => Input::post('last_name'),
 					'phone' => Input::post('phone'),
@@ -42,9 +56,9 @@ class Controller_Employees extends Controller_Base{
 					'state' => Input::post('state'),
 					'pincode' => Input::post('pincode'),
 					'email' => Input::post('email'),
-					'joining_date' => Input::post('joining_date'),
-					'leaving_date' => Input::post('leaving_date'),
-					'date_of_birth' => Input::post('date_of_birth'),
+					'joining_date' => $var_jd,
+					'leaving_date' => $var_ld,
+					'date_of_birth' => $var_dob,
 					'sex' => Input::post('sex'),
 					'marital_status' => Input::post('marital_status'),
                                         'activity_status' => "active",
@@ -96,9 +110,9 @@ class Controller_Employees extends Controller_Base{
 			$employee->state = Input::post('state');
 			$employee->pincode = Input::post('pincode');
 			$employee->email = Input::post('email');
-			$employee->joining_date = Input::post('joining_date');
-			$employee->leaving_date = Input::post('leaving_date');
-			$employee->date_of_birth = Input::post('date_of_birth');
+			//$employee->joining_date = Input::post('joining_date');
+			//$employee->leaving_date = Input::post('leaving_date');
+			//$employee->date_of_birth = Input::post('date_of_birth');
 			$employee->sex = Input::post('sex');
 			$employee->marital_status = Input::post('marital_status');
 			

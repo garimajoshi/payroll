@@ -600,7 +600,7 @@ em {
 }
 
 .muted {
-  color: #999999;
+  color: #e7e7e7;
 }
 
 abbr[title] {
@@ -1492,14 +1492,16 @@ legend + .control-group {
 }
 
 table {
-  width: 700px;
+  width:100%;  
   background-color: transparent;
   border-collapse: collapse;
+  margin-left:40px;
+  
   border-spacing: 0;
 }
 
 .table {
-  width: 700px;
+  width: 93%;
   margin-bottom: 10px;
   border: 1px solid #dddddd;
 }
@@ -1511,12 +1513,12 @@ table {
   line-height: 15px;
   text-align: left;
   vertical-align: top;
-  border-right: 1px solid #dddddd;
-  border_bottom: 1px solid #dddddd;
+
 }
 
 .table th {
   font-weight: bold;
+  background-color: #999;
 }
 
 .table thead th {

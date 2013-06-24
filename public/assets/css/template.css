@@ -1,5 +1,5 @@
 body{
-    overflow: scroll;
+    
 }
 a:link{ color: #333; }
 
@@ -19,13 +19,13 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     border-right: 1px solid #ccc;
 }
 #container{
-        overflow:scroll;
+        overflow-x: auto;
         position:fixed;
         margin-top: -950px;
-        width:1050px;
+        width:85%;
         height:590px;
-        margin-left: 220px;
-        padding-right: 50px;
+        margin-left: 200px;
+        
 }
 .controls input{
     padding-left:10px;
@@ -58,7 +58,9 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-left: 10px;
     width: 450px;
 }
-
+.grid-12-12{
+    margin-top:-35px;
+}
 #header{
     position:fixed;
     top:0;
@@ -88,6 +90,20 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-top: 20px;
     
 }
+.headline{
+    position:absolute;
+    background-color: #68687c;
+    width:100%;
+    height:40px;
+    
+}
+
+.headline h3{
+    padding-left:45px;
+    padding-top:5px;
+    font-size:20px;
+    color:#ffffff;
+}
 
 #img{
     position:fixed;
@@ -111,8 +127,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
         padding-bottom: 10px;
        text-align: left;
        padding-left: 20px;
-	background-color:#eee;
-        border-bottom: 1px solid #ddd;
+	list-style: none;
 }
 
 /* Just main menu links --[for non-javascript users this applies to submenu links as well]*/
@@ -225,7 +240,10 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-size:12px;
     
 }
-
+.table thead tr th{
+    font-size:16px; 
+    font-weight:bold;
+}
 .salary{
     margin-left: 40px;
     margin-top:10px;
@@ -239,10 +257,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     margin-top: -36px;
 }
 
-.table thead tr th{
-    font-size:14px; 
-    font-weight:bold;
-}
+
 
 
 .userinput{
@@ -260,30 +275,44 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 
 .table{
+   
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+	-moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+	box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
     padding: 5px;
     border:1px solid #ccc;
     margin-bottom: 10px;
 }
 
-.table th{
+.table thead tr th{
+    background-color:#616975;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(114, 122, 134)),to(rgb(80, 88, 100)));
+	background-image: -webkit-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+	background-image: -moz-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+	background-image: -o-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+	background-image: -ms-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+	background-image: linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#727a86', EndColorStr='#505864');
+        border-bottom: 1px solid #33373d;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #878e98;
+	-moz-box-shadow: inset 0px 1px 0px 0px #878e98;
+	box-shadow: inset 0px 1px 0px 0px #878e98;
+    color:#eee;
     padding:10px 10px 10px 10px;
-    border-right: 1px solid #ccc;
-    border-bottom: 3px solid #ccc;
-    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
-    background-image:linear-gradient(#fff, #ccc); 
+    border-right: 1px solid #999;
+    
     
 }
 .table td{
-    padding-top:5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    
-}
-.table tbody{
+    color:#666;
+    font-weight: 600px;
     font-size:12px;
-   
+    padding-top:5px;
+    padding-left: 10px;
+    padding-right: 5px;
+    
+    
+    
 }
 
 
