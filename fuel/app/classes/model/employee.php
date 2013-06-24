@@ -36,13 +36,13 @@ class Model_Employee extends Model {
         ),
     );
     protected static $_table_name = 'employees';
-    protected static $_has_one = array('bank' => array(
+    protected static $_has_one = array('bank' /*=> array(
             'model_to' => 'Model_Bank',
             'key_from' => 'id',
             'key_to' => 'employee_id',
             'cascade_save' => true,
             'cascade_delete' => false,
-        ),
+        ),*/
     );
     protected static $_has_many = array('salaries' => array(
             'model_to' => 'Model_Salary',

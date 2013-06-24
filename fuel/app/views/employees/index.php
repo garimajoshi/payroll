@@ -1,14 +1,14 @@
 
-<div class="headline"><h3>Employee <span class='muted'>Directory</span></h3><br />
-<?php echo Form::open(array('class'=>'form-search','style'=>'margin-top:-42px; float:right; margin-right:40px;'));
+
+<div class="headline"><h3 style="z-index:0;">Employee <span class='muted'>Directory</span><?php echo Form::open(array('class'=>'form-search','style'=> 'float:right; margin-right:10px;'));
       echo Form::input('search','',array('class' =>'search-query'));
       echo '&nbsp';
       echo Form::button('search','<i class="icon-search"></i>',array('class'=>'btn'));
 
-echo Form::close();?>
+echo Form::close();?></h3><br />
 </div>
 
-	<?php echo Html::anchor('employees/create','<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style'=>"color:#fff; float:right; margin-top:60px; margin-right:40px; margin-bottom:5px;")); ?>
+	<?php echo Html::anchor('employees/create','<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style'=>"color:#fff; float:right; margin-top:60px;margin-right:-210px; margin-bottom:5px;")); ?>
 
 
 <?php if ($employees): ?>

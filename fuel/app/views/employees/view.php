@@ -1,3 +1,4 @@
+
 <div class="view">
     
 <h2><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title.'. '.$employee->first_name. ' '.$employee->last_name; ?> [<?php echo $employee->id; ?>]</h2>
@@ -55,36 +56,38 @@
 <br />  
 <div class="grid-12-12">
     <div class="grid-4-12">
-        <strong>Account No.:</strong>
-	<?php echo $employee->date_of_birth; ?>
+       <strong>Account No.:</strong>
+       <?php foreach ($employees as $employee):?>
+       <?php echo $employee->bank->account_no; ?>
+       <?php endforeach ?>
     </div>
     <div class="grid-4-12">
 	<strong>Account Type:</strong>
-	<?php echo $employee->sex; ?>
+	<?php echo $employee->bank->account_type; ?>
     </div>
 </div>
 <div class="grid-12-12">
     <div class="grid-4-12">
         <strong>Branch:</strong>
-	<?php echo $employee->date_of_birth; ?>
+	<?php echo $employee->bank->branch; ?>
     </div>
     <div class="grid-4-12">
 	<strong>City:</strong>
-	<?php echo $employee->sex; ?>
+	<?php echo $employee->bank->city; ?>
     </div>
     <div class="grid-4-12">
 	<strong >State:</strong>
-	<?php echo $employee->marital_status; ?>
+	<?php echo $employee->bank->state; ?>
     </div>
 </div>
 <div class="grid-12-12">
     <div class="grid-4-12">
         <strong>IFSC Code:</strong>
-	<?php echo $employee->date_of_birth; ?>
+	<?php echo $employee->bank->ifsc_code; ?>
     </div>
     <div class="grid-4-12">
 	<strong>Payment Type:</strong>
-	<?php echo $employee->sex; ?>
+	<?php echo $employee->bank->payment_type; ?>
     </div>
 </div>
  
