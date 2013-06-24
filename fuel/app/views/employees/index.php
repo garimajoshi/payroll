@@ -6,7 +6,6 @@
       echo Form::button('search','<i class="icon-search"></i>',array('class'=>'btn'));
 
 echo Form::close();?>
-    F
 	<?php echo Html::anchor('employees/create','<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style'=>"color:#fff; float:right; margin-top:60px; margin-right:40px; margin-bottom:5px;")); ?>
 
 
