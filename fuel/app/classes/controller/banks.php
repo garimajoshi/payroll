@@ -80,7 +80,7 @@ class Controller_Banks extends Controller_Base{
 
 		if ($val->run())
 		{
-			$bank->employee_id = Input::post('employee_id');
+			$bank->employee_id = Input::post('id');
 			$bank->account_no = Input::post('account_no');
 			$bank->account_type = Input::post('account_type');
 			$bank->branch = Input::post('branch');
@@ -106,7 +106,7 @@ class Controller_Banks extends Controller_Base{
 		{
 			if (Input::method() == 'POST')
 			{
-				$bank->employee_id = $val->validated('employee_id');
+				$bank->employee_id = $val->validated('id');
 				$bank->account_no = $val->validated('account_no');
 				$bank->account_type = $val->validated('account_type');
 				$bank->branch = $val->validated('branch');
