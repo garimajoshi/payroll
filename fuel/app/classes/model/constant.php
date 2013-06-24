@@ -23,4 +23,12 @@ class Model_Constant extends \Orm\Model
 	);
 	protected static $_table_name = 'constants';
 
+        public static function validate($factory)
+	{
+		$val = Validation::forge($factory);
+
+		//$val->add_field('value', 'Value', 'valid_string[numeric,dots]');
+		
+		return $val;
+	}
 }

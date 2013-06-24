@@ -41,12 +41,12 @@ class Model_Bank extends Model
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);
-		$val->add_field('account_no', 'Account No', 'required|max_length[255]');
-		$val->add_field('account_type', 'Account Type', 'required');
-		$val->add_field('branch', 'Branch', 'required|max_length[255]');
-		$val->add_field('city', 'City', 'required|max_length[255]');
-		$val->add_field('state', 'State', 'required|max_length[255]');
-		$val->add_field('ifsc_code', 'Ifsc Code', 'required|max_length[255]');
+		//$val->add_field('account_no', 'Account No', 'required|max_length[255]|valid_string[numeric]');
+		//$val->add_field('account_type', 'Account Type', 'required|valid_string[alpha]');
+		//$val->add_field('branch', 'Branch', 'required|max_length[255]|valid_string[alpha,dots,numeric,dashes]');
+		//$val->add_field('city', 'City', 'required|max_length[255]|valid_string[alpha,dots]');
+		//$val->add_field('state', 'State', 'required|max_length[255]|valid_string[alpha]');
+		//$val->add_field('ifsc_code', 'Ifsc Code', 'required|max_length[255]|valid_string[alpha,numeric]');
 		$val->add_field('payment_type', 'Payment Type', 'required|max_length[255]');
 
 		return $val;

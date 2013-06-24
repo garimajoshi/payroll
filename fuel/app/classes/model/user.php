@@ -32,5 +32,14 @@ class Model_User extends \Orm\Model {
     );
     protected static $_table_name = 'users';
     protected static $_primary_key = array('id');
+    
+    public static function validate($factory)
+	{
+		$val = Validation::forge($factory);
+		//$val->add_field('name', 'Name', 'required|valid_string[alpha,numeric]');
+		//$val->add_field('password', 'Password', 'required|valid_string[alpha,numeric]');
+		
+		return $val;
+	}
 
 }

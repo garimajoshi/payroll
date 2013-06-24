@@ -8,6 +8,9 @@ class Model_Access_Right extends \Orm\Model {
         'user_id',
         'print_salary_statement',
         'add_employee',
+        'delete_employee',
+        'change_salary_constants',
+        'add_leave',
         'created_at',
         'updated_at',
     );
