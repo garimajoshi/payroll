@@ -26,15 +26,16 @@ class Controller_Companies extends Controller_Base {
 
             if ($val->run()) {
                 $company = Model_Company::forge(array(
-                            'company_name' => Input::post('company_name'),
+                          
                             'address' => Input::post('address'),
                             'city' => Input::post('city'),
                             'state' => Input::post('state'),
+                            'country' => Input::post('country'),
                             'pincode' => Input::post('pincode'),
                             'email' => Input::post('email'),
                             'website' => Input::post('website'),
                             'phone' => Input::post('phone'),
-                            'phone1' => Input::post('phone1'),
+                            'fax' => Input::post('fax'),
                 ));
 
                 if ($company and $company->save()) {
@@ -64,15 +65,16 @@ class Controller_Companies extends Controller_Base {
         $val = Model_Company::validate('edit');
 
         if ($val->run()) {
-            $company->company_name = Input::post('company_name');
+            
             $company->address = Input::post('address');
             $company->city = Input::post('city');
             $company->state = Input::post('state');
+            $company->country = Input::post('country');
             $company->pincode = Input::post('pincode');
             $company->email = Input::post('email');
             $company->website = Input::post('website');
             $company->phone = Input::post('phone');
-            $company->phone1 = Input::post('phone1');
+            $company->fax = Input::post('fax');
 
             if ($company->save()) {
                 Session::set_flash('success', 'Updated company #' . $id);
@@ -83,15 +85,16 @@ class Controller_Companies extends Controller_Base {
             }
         } else {
             if (Input::method() == 'POST') {
-                $company->company_name = $val->validated('company_name');
+            
                 $company->address = $val->validated('address');
                 $company->city = $val->validated('city');
                 $company->state = $val->validated('state');
+                $company->country = $val->validated('country');
                 $company->pincode = $val->validated('pincode');
                 $company->email = $val->validated('email');
                 $company->website = $val->validated('website');
                 $company->phone = $val->validated('phone');
-                $company->phone1 = $val->validated('phone1');
+                $company->fax = $val->validated('fax');
 
                 Session::set_flash('error', $val->error());
             }

@@ -119,15 +119,14 @@
                         <?php echo createYears(1920, 2500, 'ld_year', date('Y')); ?>
                     </div>
                     <div class="grid-3-12">
-                        <?php echo createMonths('ld_month', date('M')); ?>
+                        <?php echo createMonths('ld_month', ''); ?>
                     </div>
                     <div class="grid-3-12">
-                        <?php echo createDays('ld_day', date('d')); ?>
+                        <?php echo createDays('ld_day', ''); ?>
                 </div>
                   </div>
                   <div class="grid-3-12 ">
-                        <?php  echo Form::submit('submit', 'Save',array("style"=>"margin-top:25px;")); 
-//echo Form::submit('submit', 'Add Bank Details', array('class' => 'formee-button', 'style'=>'margin-top:20px;'));?>
+                        <?php  echo Form::submit('submit', 'Save',array("style"=>"margin-top:25px;")); ?>
             </div>
             </div>
             

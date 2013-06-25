@@ -1,10 +1,6 @@
 <?php echo Form::open(array("class"=>"formee",'style'=>"margin-top:50px;")); ?>
 
-<div class="grid-12-12">
-    <div class="grid-3-12">
-       <?php echo Html::anchor('employees/create', 'Back', array('class' => 'formee-button', 'style'=>'color:#fff')); ?>
-                    </div>
-</div>
+
 		<div class="grid-12-12">
                     <div class="grid-3-12">
 			<?php echo Form::label('Account no', 'account_no'); ?>

@@ -11,7 +11,8 @@
         <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
         <?php echo Asset::js('css_browser_selector.js'); ?>
         <?php echo Asset::js('formee.js'); ?>    
-
+        <?php echo Asset::js('countries.js'); ?>
+        <script type= "text/javascript" src = "countries.js"></script>
         <!--[if IE]>
                  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
          <![endif]-->
@@ -50,6 +51,7 @@
         function createMonths($id = 'month_select', $selected = null) {
 
             $months = array(
+                0=>'',
                 1 => 'January',
                 2 => 'February',
                 3 => 'March',
@@ -78,7 +80,7 @@
 
         function createDays($id = 'day_select', $selected = null) {
             /*             * * range of days ** */
-            $r = range(1, 31);
+            $r = range(0, 31);
 
             /*             * * current day ** */
             $selected = is_null($selected) ? date('d') : $selected;
@@ -95,18 +97,18 @@
         ?>
         <div id="header">
             <h1>NeoGen Labs Payroll System</h1>
-            <div class="login_info pull-right">
+            
         <?php
         if ($user = Session::get('user')) {
 
-            echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+            echo Html::anchor('login/logout', '<i class="icon-off icon-white"></i>LOGOUT |<i class="icon-user icon-white"></i> ' . $user->name, array('id' => 'logout', 'class' => 'btn btn-inverse', 'style' => 'color:#fff;margin-top:-28px; margin-left:1220px;' ));
             ?>
     <?php
 } else {
     Response::redirect('login/login');
 }
 ?> 
-            </div>   
+               
 
         </div>
 
@@ -135,11 +137,11 @@
 
                 <li><a href="#">Employee</a>
                     <ul>
-                        <li><a href="#">Employee Directory</a></li>
-                        <li><a href="#">Add Employee</a></li>		
-                        <li><a href="#">Salary Details</a></li>
+                        <li><a href="http://localhost/payroll/public/employees/">Employee Directory</a></li>
+                        <li><a href="http://localhost/payroll/public/employees/create">Add Employee</a></li>		
+                        <li><a href="http://localhost/payroll/public/salaries/">Salary Details</a></li>
                         <li><a href="#">Leave</a></li>
-                        <li><a href="#">Archive</a></li>
+                        <li><a href="http://localhost/payroll/public/employees/viewarchive">Archive</a></li>
 
                     </ul>
                 </li>

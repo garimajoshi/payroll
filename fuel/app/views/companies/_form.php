@@ -1,82 +1,74 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class" => "formee", 'style' => "margin-top:50px;")); ?>
 
-	<fieldset>
-		<div class="control-group">
-			<?php echo Form::label('Company name', 'company_name', array('class'=>'control-label')); ?>
+<div class="grid-12-12">
+    <div class="grid-3-12">
+        <?php echo Html::anchor('companies', 'Back', array('class' => 'formee-button', 'style' => 'color:#fff')); ?>
+    </div>
+</div>
+<div class="grid-12-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Company Address <em class="formee-req">*</em>'); ?>
+        <?php echo Form::input('address', Input::post('address', isset($company) ? $company->address : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Address')); ?>
+    </div>
+    <div class="grid-4-12">
+        <?php echo Form::label('City <em class="formee-req">*</em>', 'city'); ?>
+        <?php echo Form::input('city', Input::post('city', isset($company) ? $company->city : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'City')); ?>
+    </div>
+</div>
 
-			<div class="controls">
-				<?php echo Form::input('company_name', Input::post('company_name', isset($company) ? $company->company_name : ''), array('class' => 'span4', 'placeholder'=>'Company name')); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Address', 'address', array('class'=>'control-label')); ?>
 
-			<div class="controls">
-				<?php echo Form::input('address', Input::post('address', isset($company) ? $company->address : ''), array('class' => 'span4', 'placeholder'=>'Address')); ?>
+<div class="grid-12-12">
+    <div class="grid-3-12">
+        <?php echo Form::label('Country <em class="formee-req">*</em>', 'country'); ?>
+        <select onchange="print_state('state', this.selectedIndex);" id="country" name ="country"></select>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('City', 'city', array('class'=>'control-label')); ?>
+    </div>
 
-			<div class="controls">
-				<?php echo Form::input('city', Input::post('city', isset($company) ? $company->city : ''), array('class' => 'span4', 'placeholder'=>'City')); ?>
+    <div class="grid-3-12">
+        <?php echo Form::label('State <em class="formee-req">*</em>', 'state'); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('State', 'state', array('class'=>'control-label')); ?>
+        <select name ="state" id ="state"></select>
+        <script language="javascript">print_country("country");</script>	
+    </div>
 
-			<div class="controls">
-				<?php echo Form::input('state', Input::post('state', isset($company) ? $company->state : ''), array('class' => 'span4', 'placeholder'=>'State')); ?>
+    <div class="grid-2-12">
+        <?php echo Form::label('Pincode <em class="formee-req">*</em>', 'pincode'); ?>
+        <?php echo Form::input('pincode', Input::post('pincode', isset($company) ? $company->pincode : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Pincode')); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Pincode', 'pincode', array('class'=>'control-label')); ?>
+    </div>
+</div>
 
-			<div class="controls">
-				<?php echo Form::input('pincode', Input::post('pincode', isset($company) ? $company->pincode : ''), array('class' => 'span4', 'placeholder'=>'Pincode')); ?>
+<div class="grid-12-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Email <em class="formee-req">*</em>', 'email'); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Email', 'email', array('class'=>'control-label')); ?>
+        <?php echo Form::input('email', Input::post('email', isset($company) ? $company->email : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Email')); ?>
 
-			<div class="controls">
-				<?php echo Form::input('email', Input::post('email', isset($company) ? $company->email : ''), array('class' => 'span4', 'placeholder'=>'Email')); ?>
+    </div>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Website', 'website', array('class'=>'control-label')); ?>
+    <div class="grid-4-12">
+        <?php echo Form::label('Website <em class="formee-req">*</em>', 'website'); ?>
+        <?php echo Form::input('website', Input::post('website', isset($company) ? $company->website : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Website')); ?>
 
-			<div class="controls">
-				<?php echo Form::input('website', Input::post('website', isset($company) ? $company->website : ''), array('class' => 'span4', 'placeholder'=>'Website')); ?>
+    </div>
+</div>
+<div class="grid-12-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Phone <em class="formee-req">*</em>', 'phone'); ?>
+        <?php echo Form::input('phone', Input::post('phone', isset($company) ? $company->phone : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Phone')); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Phone', 'phone', array('class'=>'control-label')); ?>
+    </div>
 
-			<div class="controls">
-				<?php echo Form::input('phone', Input::post('phone', isset($company) ? $company->phone : ''), array('class' => 'span4', 'placeholder'=>'Phone')); ?>
+    <div class="grid-4-12">
+        <?php echo Form::label('FAX <em class="formee-req">*</em>', 'fax'); ?>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Phone1', 'phone1', array('class'=>'control-label')); ?>
+        <?php echo Form::input('fax', Input::post('fax', isset($company) ? $company->fax : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'fax')); ?>
 
-			<div class="controls">
-				<?php echo Form::input('phone1', Input::post('phone1', isset($company) ? $company->phone1 : ''), array('class' => 'span4', 'placeholder'=>'Phone1')); ?>
+    </div>
+</div>
+<div class='grid-4-12'>
+    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+</div>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<label class='control-label'>&nbsp;</label>
-			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
-		</div>
-	</fieldset>
 <?php echo Form::close(); ?>
