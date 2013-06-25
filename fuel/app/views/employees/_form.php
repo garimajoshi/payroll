@@ -15,10 +15,10 @@
                 <div class="grid-1-12">
                     <?php echo Form::label('Title <em class="formee-req">*</em>', 'title');?>
                     <?php echo Form::select('title',Input::post('title',isset($employee) ? $employee->title : ''), array(
-                                'dr'=>'Dr',
-                                'mr'=>'Mr',
-                                'ms'=>'Ms',
-                                'mrs'=>'Mrs'));?>
+                                'dr'=>'Dr.',
+                                'mr'=>'Mr.',
+                                'miss'=>'Miss',
+                                'mrs'=>'Mrs.'));?>
                     
                 </div>
                 <div class="grid-3-12">
