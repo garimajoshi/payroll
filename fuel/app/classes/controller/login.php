@@ -34,12 +34,11 @@ class Controller_Login extends Controller_Base {
                         array('password', md5($password)),
                     ),
         ));
-        
+
         if (!$user) {
             Session::set_flash('error', 'Invalid username or password');
-                return Response::forge(View::forge('login/login'));
-        }
-        else {
+            return Response::forge(View::forge('login/login'));
+        } else {
             $data['user'] = $user;
             $time = date('Y-m-d H:i:s');
             $user->last_login_at = $time;
@@ -60,8 +59,7 @@ class Controller_Login extends Controller_Base {
             parent::logout_user();
             Session::set_flash('success', 'You have successfully logged out!');
             $this->template->content = View::forge('login/logout');
-        }
-        else {
+        } else {
             Response::redirect('login/login');
         }
     }

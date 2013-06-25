@@ -10,8 +10,8 @@ class Controller_Employees extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('employees');
-        $data['employees'] = Model_Employee::find('all',array('where'=>array('id'=>$id),
-            'related' => array('bank')) );
+        $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
+                    'related' => array('bank')));
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -100,7 +100,7 @@ class Controller_Employees extends Controller_Base {
                 if ($employee and $employee->save()) {
                     Session::set_flash('success', 'Added employee #' . $employee->id . '.');
 
-                    Response::redirect('/banks/create');
+                    Response::redirect('/banks/create/' . $employee->id);
                 } else {
                     Session::set_flash('error', 'Could not save employee.');
                 }
