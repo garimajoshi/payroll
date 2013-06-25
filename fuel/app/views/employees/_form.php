@@ -1,6 +1,10 @@
 <?php echo Form::open(array("class"=>"formee",'style'=>"margin-top:50px;")); ?>
 
-	
+	<div class="grid-12-12">
+    <div class="grid-3-12">
+       <?php echo Html::anchor('employees', 'Back', array('class' => 'formee-button', 'style'=>'color:#fff')); ?>
+                    </div>
+</div>
             <div class="grid-12-12">
                 <div class="grid-4-12">
                     <?php echo Form::label('Employee ID <em class="formee-req">*</em>', 'id');?>
