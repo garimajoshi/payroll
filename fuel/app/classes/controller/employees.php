@@ -13,7 +13,7 @@ class Controller_Employees extends Controller_Base {
         
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
-        print_r('employee');
+        
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -23,10 +23,10 @@ class Controller_Employees extends Controller_Base {
         $this->template->content = View::forge('employees/view', $data);
     }
 
-    public function action_view_archive() {
+    public function action_viewarchive() {
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
         $this->template->title = "Employees";
-        $this->template->content = View::forge('employees/view/archive', $data);
+        $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
     public function action_search() {
@@ -211,17 +211,19 @@ class Controller_Employees extends Controller_Base {
 
         if ($employee = Model_Employee::find($id)) {
             $employee->activity_status = "inactive";
-
+            
             if ($employee->save()) {
                 Session::set_flash('success', 'Archived employee #' . $id);
+              
             } else {
                 Session::set_flash('error', 'Could not archive employee #' . $id);
             }
         } else {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
+         
 
-        Response::redirect('employees');
+        
     }
 
     public function action_restore($id = null) {
