@@ -2,29 +2,22 @@
 
 <div class="headline">
     <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
-        <?php
-        echo Form::open(array('action' => 'employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => 'float:right; margin-right:10px;'));
-        echo Form::input('q', '', array('class' => 'search-query'));
-        echo '&nbsp';
-        echo Form::button('search', '<i class="icon-search"></i>', array('class' => 'btn'));
-
-        echo Form::close();
-        ?>
-        <form method="get" action="employees/search">
+        
+        <form method="get" action="employees/search" class="form-search" style='float:right; margin-right: 10px;'>
             <div>
-                <input type="text" name="q" value="" class="form-search" />
-                <input type="submit" value="Search" class="Button" />
+                <input type="text" name="q" value="" class="search-query" />
+                <input type="submit" value="Search" class="btn" />
             </div>
         </form>
     </h3>
     <br />
 </div>
 
-<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:-210px; margin-bottom:5px;")); ?>
+<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:-220px; margin-bottom:5px;")); ?>
 
 
 <?php if ($employees): ?>
-    <table class="table table-striped" style="margin-top:30px;">
+    <table class="table table-striped" style="margin-top:95px;">
         <thead>
             <tr>
                 <th><?php echo Form::checkbox('all'); ?></th>

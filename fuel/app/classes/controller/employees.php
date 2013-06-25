@@ -10,8 +10,10 @@ class Controller_Employees extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('employees');
+        
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
+        print_r('employee');
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
