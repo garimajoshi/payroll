@@ -10,6 +10,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('employees');
+
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
         if (!$data['employee'] = Model_Employee::find($id)) {
@@ -29,16 +30,17 @@ class Controller_Employees extends Controller_Base {
 
     public function action_search() {
 
-        $query = Input::get('q');
+        $query = Input::get('search');
 
-        if (isset($query)) {
-            Session::set('query', $query);
+        if (!isset($query)) {
+            $query = Session::get('search');
         } else {
-            $query = Session::get('query');
+            Session::set('search', $query);
         }
 
         $data['employees'] = Model_Employee::find('all', array(
                     'where' => array(
+                        array('activity_status' => 'active'),
                         array(
                             array('id', 'like', '%' . $query . '%'),
                             'or' => array(
@@ -54,6 +56,40 @@ class Controller_Employees extends Controller_Base {
                     ),
                         )
         );
+
+        $this->template->title = "Employees";
+        $this->template->content = View::forge('employees/search', $data);
+    }
+
+    public function action_search_archive() {
+
+        $query = Input::get('search');
+
+        if (!isset($query)) {
+            $query = Session::get('search');
+        } else {
+            Session::set('search', $query);
+        }
+
+        $data['employees'] = Model_Employee::find('all', array(
+                    'where' => array(
+                        array('activity_status' => 'inactive'),
+                        array(
+                            array('id', 'like', '%' . $query . '%'),
+                            'or' => array(
+                                array('first_name', 'like', '%' . $query . '%'),
+                                'or' => array(
+                                    array('last_name', 'like', '%' . $query . '%'),
+                                )
+                            )
+                        )
+                    ),
+                    'order_by' => array(
+                        ('id'),
+                    ),
+                        )
+        );
+
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/search', $data);
     }
