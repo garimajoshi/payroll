@@ -12,7 +12,7 @@
                     </div>
                      <div class="grid-2-12">
 			<?php echo Form::label('Account type', 'account_type'); ?>
-            		<?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'savings'=>'Savings')); ?>
+            		<?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'saving'=>'Savings')); ?>
                     </div>
 	            <div class="grid-3-12">
                         	<?php echo Form::label('Branch', 'branch'); ?>

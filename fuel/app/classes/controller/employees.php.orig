@@ -13,7 +13,10 @@ class Controller_Employees extends Controller_Base {
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
+<<<<<<< HEAD
         
+=======
+>>>>>>> 91405bc6f1916d1e0cb3f97f08f77c4c11aeb7bf
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -246,17 +249,19 @@ class Controller_Employees extends Controller_Base {
 
         if ($employee = Model_Employee::find($id)) {
             $employee->activity_status = "inactive";
-
+            
             if ($employee->save()) {
                 Session::set_flash('success', 'Archived employee #' . $id);
+              
             } else {
                 Session::set_flash('error', 'Could not archive employee #' . $id);
             }
         } else {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
+         
 
-        Response::redirect('employees');
+        
     }
 
     public function action_restore($id = null) {

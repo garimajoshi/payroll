@@ -2,7 +2,8 @@
 
 <div class="headline">
     <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
-        <form class="form-search" method="get" action="/development/public/employees/search" style="float: right; margin-right: 10px;">
+
+        <form class="form-search" method="get" style="float: right; margin-right: 10px;">
             <div>
                 <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
                 <button type="submit" class="btn ">
@@ -13,9 +14,6 @@
     </h3>
     <br />
 </div>
-
-<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:-210px; margin-bottom:5px;")); ?>
-
 
 <?php if ($employees): ?>
     <table class="table table-striped" style="margin-top:30px;">
