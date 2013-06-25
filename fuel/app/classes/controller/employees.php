@@ -10,8 +10,8 @@ class Controller_Employees extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('employees');
-        $data['employees'] = Model_Employee::find('all',array('where'=>array('id'=>$id),
-            'related' => array('bank')) );
+        $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
+                    'related' => array('bank')));
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -100,7 +100,7 @@ class Controller_Employees extends Controller_Base {
                 if ($employee and $employee->save()) {
                     Session::set_flash('success', 'Added employee #' . $employee->id . '.');
 
-                    Response::redirect('/banks/create');
+                    Response::redirect('/banks/create/' . $employee->id);
                 } else {
                     Session::set_flash('error', 'Could not save employee.');
                 }
@@ -137,7 +137,6 @@ class Controller_Employees extends Controller_Base {
             $var_ld_year = Input::post('ld_year');
             $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
 
-            $employee->id = Input::post('id');
             $employee->branch = Input::post('branch');
             $employee->title = Input::post('title');
             $employee->first_name = Input::post('first_name');
@@ -178,7 +177,6 @@ class Controller_Employees extends Controller_Base {
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
 
-                $employee->id = $val->validated('id');
                 $employee->branch = $val->validated('branch');
                 $employee->title = $val->validated('title');
                 $employee->first_name = $val->validated('first_name');

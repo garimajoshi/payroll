@@ -1,0 +1,10 @@
+fuel/app/logs/*/*/*
+fuel/app/cache/*/*
+<<<<<<< HEAD
+fuel/app/config/development/db.php
+fuel/app/config/routes.php
+/nbproject/private/
+=======
+docs/*/*/*
+fuel/app/config/*/*
+>>>>>>> a304c21891bec70c9914e01371aa1118bbc15354
