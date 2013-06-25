@@ -3,8 +3,8 @@
 	
             <div class="grid-12-12">
                 <div class="grid-4-12">
-                    <?php echo Form::label('Employee ID <em class="formee-req">*</em>', 'employee_id');?>
-                    <?php echo Form::input('employee_id',Input::post('employee_id',isset($employee) ? $employee->id : ''), array('class'=>'formee-large','required', 'placeholder' =>'Employee ID')); ?>
+                    <?php echo Form::label('Employee ID <em class="formee-req">*</em>', 'id');?>
+                    <?php echo Form::input('id',Input::post('id',isset($employee) ? $employee->id : ''), array('class'=>'formee-large','required', 'placeholder' =>'Employee ID')); ?>
                 </div>
                 <div class="grid-4-12">
                     <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch');?>
@@ -33,12 +33,15 @@
             <div class="grid-12-12">
                 <div class="grid-4-12">
                     <?php echo Form::label('Date of Birth <em class="formee-req">*</em>', 'date_of_birth');?>
-                    <div class="grid-3-12"><?php echo createDays('dob_day', date('d')); ?></div>
-                    <div class="grid-3-12"><?php echo createMonths('dob_month', date('m')); ?></div>
-                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'dob_year', date('Y')); ?></div>
-                    
-                    
-                </div>
+                    <div class="grid-3-12">
+                        <?php echo createYears(1920, 2500, 'dob_year', date('Y')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createMonths('dob_month', date('M')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createDays('dob_day', date('d')); ?>
+                </div></div>
                 <div class="grid-2-12">
                     <?php echo Form::label('Sex <em class="formee-req">*</em>', 'sex');?>
                     <?php echo Form::select('sex',Input::post('sex',isset($employee) ? $employee->sex : ''), array(
@@ -70,12 +73,12 @@
             <div class="grid-12-12">
                 <div class="grid-4-12">
                     <?php echo Form::label('State <em class="formee-req">*</em>', 'state');?>
-                    <select name=state>
-                    <script language="javascript">
-                        var states = new Array("Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal");
-                        for(var hi=0; hi<states.length; hi++) 
+                      <select name=state>
+                        <script language="javascript">
+                            var states = new Array("Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal");
+                            for(var hi=0; hi<states.length; hi++) 
                             document.write("<option value=\""+states[hi]+"\">"+states[hi]+"</option>");
-                    </script>
+                        </script>
                     </select>
                 </div>
                 <div class="grid-4-12">
@@ -96,19 +99,32 @@
             <div class="grid-12-12">
                 <div class="grid-4-12">
                     <?php echo Form::label('Joining date <em class="formee-req">*</em>', 'joining_date');?>
-                    <div class="grid-3-12"><?php echo createDays('jd_day', date('d')); ?></div>
-                    <div class="grid-3-12"><?php echo createMonths('jd_month', date('m')); ?></div>
-                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'jd_year', date('Y')); ?></div>
+                       <div class="grid-3-12">
+                        <?php echo createYears(1920, 2500, 'jd_year', date('Y')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createMonths('jd_month', date('M')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createDays('jd_day', date('d')); ?>
                 </div>
-                <div class="grid-4-12">
+                </div>
+                 <div class="grid-4-12">
                     <?php echo Form::label('Leaving date', 'leaving_date');?>
-                    <div class="grid-3-12"><?php echo createDays('ld_day', date('d')); ?></div>
-                    <div class="grid-3-12"><?php echo createMonths('ld_month', date('m')); ?></div>
-                    <div class="grid-3-12"><?php echo createYears(1920, 3000, 'ld_year', date('Y')); ?></div>
+                    <div class="grid-3-12">
+                        <?php echo createYears(1920, 2500, 'ld_year', date('Y')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createMonths('ld_month', date('M')); ?>
+                    </div>
+                    <div class="grid-3-12">
+                        <?php echo createDays('ld_day', date('d')); ?>
                 </div>
-                <div class="grid-3-12 ">
-            <?php echo Form::submit('submit', 'Add Bank Details', array('class' => 'formee-button', 'style'=>'margin-top:20px;'));?>
-             </div>
+                  </div>
+                  <div class="grid-3-12 ">
+                        <?php  echo Form::submit('submit', 'Save',array("style"=>"margin-top:25px;")); 
+//echo Form::submit('submit', 'Add Bank Details', array('class' => 'formee-button', 'style'=>'margin-top:20px;'));?>
+            </div>
             </div>
             
 <?php echo Form::close(); ?>
