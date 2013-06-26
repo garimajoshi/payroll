@@ -13,6 +13,7 @@ class Controller_Employees extends Controller_Base {
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
+        
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
@@ -22,10 +23,10 @@ class Controller_Employees extends Controller_Base {
         $this->template->content = View::forge('employees/view', $data);
     }
 
-    public function action_view_archive() {
+    public function action_viewarchive() {
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
         $this->template->title = "Employees";
-        $this->template->content = View::forge('employees/view/archive', $data);
+        $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
     public function action_search() {

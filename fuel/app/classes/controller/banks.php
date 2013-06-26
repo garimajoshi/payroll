@@ -39,7 +39,7 @@ class Controller_Banks extends Controller_Base {
                 if ($bank and $bank->save()) {
                     Session::set_flash('success', 'Added bank #' . $bank->id . '.');
 
-                    Response::redirect('banks');
+                    Response::redirect('employees');
                 } else {
                     Session::set_flash('error', 'Could not save bank.');
                 }

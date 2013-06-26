@@ -6,15 +6,15 @@ class Model_Company extends Model {
 
     protected static $_properties = array(
         'id',
-        'company_name',
         'address',
         'city',
         'state',
+        'country',
         'pincode',
         'email',
         'website',
         'phone',
-        'phone1',
+        'fax',
         'created_at',
         'updated_at',
     );

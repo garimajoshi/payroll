@@ -1,10 +1,6 @@
 <?php echo Form::open(array("class"=>"formee",'style'=>"margin-top:50px;")); ?>
 
-<div class="grid-12-12">
-    <div class="grid-3-12">
-       <?php echo Html::anchor('employees/create', 'Back', array('class' => 'formee-button', 'style'=>'color:#fff')); ?>
-                    </div>
-</div>
+
 		<div class="grid-12-12">
                     <div class="grid-3-12">
 			<?php echo Form::label('Account no', 'account_no'); ?>
@@ -12,7 +8,7 @@
                     </div>
                      <div class="grid-2-12">
 			<?php echo Form::label('Account type', 'account_type'); ?>
-            		<?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'savings'=>'Savings')); ?>
+            		<?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'saving'=>'Savings')); ?>
                     </div>
 	            <div class="grid-3-12">
                         	<?php echo Form::label('Branch', 'branch'); ?>

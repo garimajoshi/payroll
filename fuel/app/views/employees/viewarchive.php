@@ -1,8 +1,9 @@
 
 
 <div class="headline">
-    <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
-        <form class="form-search" method="get" action="/development/public/employees/search" style="float: right; margin-right: 10px;">
+    <h3 style="z-index:0;">ARCHIVED <span class='muted'>EMPLOYEE</span>
+
+        <form class="form-search" method="get" style="float: right; margin-right: 10px;">
             <div>
                 <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
                 <button type="submit" class="btn ">
@@ -13,7 +14,6 @@
     </h3>
     <br />
 </div>
-
 
 <?php if ($employees): ?>
     <table class="table table-striped" style="margin-top:30px;">
@@ -37,9 +37,9 @@
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
-                    <td><?php echo Html::anchor('salaries/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/edit/' . $employee->id, '<i class="icon-pencil title="Edit"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/archive/' . $employee->id, '<i class="icon-folder-close" title="Archive"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
+                    <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>'); ?></td>
+                    <td><?php echo Html::anchor('employees/restore/' . $employee->id, '<i class="icon-folder-open title="Restore"></i>'); ?></td>
+                    <td><?php echo Html::anchor('employees/delete/' . $employee->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

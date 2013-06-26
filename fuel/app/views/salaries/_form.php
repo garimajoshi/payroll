@@ -2,145 +2,39 @@
 
 	
 		
-<div id="form">
-    <fieldset>
-		<div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Gross CTC', 'gross', array('class'=>'control-label')); ?>
 
-			<div class="controls">
-				<?php echo Form::input('gross', Input::post('gross', isset($salary) ? $salary->gross : ''), array('class' => 'span4', 'placeholder'=>'Gross', 'style="padding-left:10px;"')); ?>
-                        </div>
-			</div>
-		</div>
-                
-		<div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Sdxo', 'sdxo', array('class'=>'control-label')); ?>
+    <h2>Salary Entry For the Month of 
+<?php echo createMonths('start_month', date('m')); ?> <?php echo createYears(2000, 2020, 'start_year', date('Y')); ?>
+</h2>
 
-			<div class="controls">
-				<?php echo Form::input('sdxo', Input::post('sdxo', isset($salary) ? $salary->sdxo : ''), array('class' => 'span4', 'placeholder'=>'Sdxo')); ?>
-                        </div>
-			</div>
-		</div>
-            	 <div class="control-group">
-                <div class="user input"style="margin-left:-50px;">
-			<?php echo Form::label('Pf applicable', 'pf_applicable', array('class'=>'control-label')); ?>
-                        
-			<div class="controls">
-			<?php echo Form::checkbox('pf applicable', '1', false); ?>
-                        </div>
-			</div>
-		</div>
-        
-		
             
-            	<div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Bonus1', 'bonus1', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('bonus1', Input::post('bonus1', isset($salary) ? $salary->bonus1 : ''), array('class' => 'span4', 'placeholder'=>'Bonus1')); ?>
-                        </div>
-			</div>
-		</div>
-                
-                <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Bonus2', 'bonus2', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('bonus2', Input::post('bonus2', isset($salary) ? $salary->bonus2 : ''), array('class' => 'span4', 'placeholder'=>'Bonus2')); ?>
-                        </div>
-			</div>
-		</div>
-                
-                <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Allowance1', 'allowance1', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('allowance1', Input::post('allowance1', isset($salary) ? $salary->allowance1 : ''), array('class' => 'span4', 'placeholder'=>'Allowance1')); ?>
-                        </div>
-			</div>
-		</div>
-            <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Allowance2', 'allowance2', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('allowance2', Input::post('allowance2', isset($salary) ? $salary->allowance2 : ''), array('class' => 'span4', 'placeholder'=>'Allowance2')); ?>
-                        </div>
-			</div>
-		</div>
-		
-            <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Allowance3', 'Allowance3', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('allowance3', Input::post('allowance3', isset($salary) ? $salary->allowance3 : ''), array('class' => 'span4', 'placeholder'=>'allowance3')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Deduction1', 'deduction1', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('deduction1', Input::post('deduction1', isset($salary) ? $salary->deduction1 : ''), array('class' => 'span4', 'placeholder'=>'Deduction1')); ?>
-                        </div>
-			</div>
-		</div>
-		<div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Deduction2', 'deduction2', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('deduction2', Input::post('deduction2', isset($salary) ? $salary->deduction2 : ''), array('class' => 'span4', 'placeholder'=>'Deduction2')); ?>
-                        </div>
-			</div>
-		</div>
-                <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Deduction3', 'deduction3', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('deduction3', Input::post('deduction3', isset($salary) ? $salary->deduction3 : ''), array('class' => 'span4', 'placeholder'=>'Deduction3')); ?>
-                        </div>
-			</div>
-		</div>
-                <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Professional tax', 'professional_tax', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('professional_tax', Input::post('professional_tax', isset($salary) ? $salary->_tax : ''), array('class' => 'span4', 'placeholder'=>'Professional tax')); ?>
-                        </div>
-			</div>
-		</div>
-
-                <div class="control-group">
-                    <div class="userinput">
-			<?php echo Form::label('Income tax', 'income_tax', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('income_tax', Input::post('income_tax', isset($salary) ? $salary->income_tax : ''), array('class' => 'span4', 'placeholder'=>'Income tax')); ?>
-                        </div>
-			</div>
-            </div><hr />
-            
-            
-		<div class="control-group">
-			<label class='control-label'>&nbsp;</label>
-			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
-		</div>
-    </fieldset>
-</div>
-    <strong>Gross_CTC:</strong><br />
-          <strong>Adjusted_CTC:</strong><br />
-        <?php echo Html::anchor('salaries/create','Preview',array('class'=>'btn btn-success')); ?>
-        <?php echo Html::anchor('salaries/index','View Salary Statement', array('class'=>'btn btn-success', 'style'=>'margin-left: 500px; margin-top:-40px'));?>  
-          <button class="btn btn-primary" style="margin-left: 740px; margin-top: -50px">Generate Payslip </button>
-<?php echo Form::close(); ?>
+            Lock: <input type="text" name="lock" value="lock"><br>
+            PF: <input type="text" name="pf_applicable" value="pf_applicable"><br>
+           
+            Gross: <input type="text" name="gross" value="gross"><br>
+            SDXO: <input type="text" name="sdxo" value="sdxo"><br>
+            pf_adjust: <input type="text" name="pf_adjust" value="pf_adjus"><br>
+            basic: <input type="text" name="basic" value="basic"><br>
+            hra: <input type="text" name="hra" value="hra"><br>
+            lta: <input type="text" name="lta" value="lta"><br>
+            medical: <input type="text" name="medical" value="medical"><br>
+            travel: <input type="text" name="travel" value="travel"><br>
+            pf_value: <input type="text" name="pf_value" value="pf_value"><br>
+            credit_other: <input type="text" name="credit_other" value="credit_other"><br>
+            bonus1: <input type="text" name="bonus1" value="bonus1"><br>
+            bonus2: <input type="text" name="bonus2" value="bonus2"><br>
+            allowance1: <input type="text" name="allowance1" value="allowance1"><br>
+	leave: <input type="text" name="leave" value="leave"><br>
+            allowance2: <input type="text" name="allowance2" value="allowance2"><br>
+            allowance3: <input type="text" name="allowance3" value="allowance3"><br>
+            credit_total: <input type="text" name="credit_total" value="credit_total"><br>
+            income_tax: <input type="text" name="income_tax" value="income_tax"><br>
+            professional_Tax: <input type="text" name="professional_tax" value="professional_tax"><br>
+            deduction1: <input type="text" name="deduction1" value="deduction1"><br>
+            deduction2: <input type="text" name="deduction2" value="deduction2"><br>
+            deduction3: <input type="text" name="deduction3" value="deduction3"><br>
+            total_debit: <input type="text" name="total_debit" value="total_debit"><br>
+            net: <input type="text" name="net" value="net"><br>
+            <input type="submit" name="submit" value="submit">
+            <?php echo Form::close(); ?>
+      
