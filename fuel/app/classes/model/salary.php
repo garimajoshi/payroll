@@ -7,6 +7,7 @@ class Model_Salary extends Model {
     protected static $_properties = array(
         'id',
         'employee_id',
+        'user_id',
         'month',
         'year',
         'lock',
@@ -49,13 +50,14 @@ class Model_Salary extends Model {
         ),
     );
     protected static $_table_name = 'salaries';
-    protected static $_belongs_to = array('employee' => array(
-            'model_to' => 'Model_Employee',
-            'key_from' => 'employee_id',
-            'key_to' => 'id',
-            'cascade_save' => true,
-            'cascade_delete' => false,
-    ));
+    /* protected static $_belongs_to = array('employee' => array(
+      'model_to' => 'Model_Employee',
+      'key_from' => 'employee_id',
+      'key_to' => 'id',
+      'cascade_save' => true,
+      'cascade_delete' => false,
+      )); */
+    protected static $_belongs_to = array('employee', 'user');
 
     public static function validate($factory) {
         $val = Validation::forge($factory);
