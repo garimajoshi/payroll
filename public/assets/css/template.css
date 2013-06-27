@@ -34,7 +34,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-size:12px;
 }
 .credits{
-    margin-top: -125px;
+    margin-top: -145px;
 }
 
 .ctc{
@@ -44,7 +44,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 .debit{
     margin-left: 160px;
-    margin-top: 70px;
+    margin-top: 30px;
 }
 
 
@@ -241,13 +241,17 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 #previewslip{
     margin-left: 550px;
-    height:410px;
+    height:470px;
     width:350px;
-    margin-top:-580px;
+    margin-top:-930px;
     border:1px solid #ccc;
     padding-left: 15px;
     font-size:12px;
     
+}
+#previewslip em{
+    font-size: 14px;
+    font-stretch: ultra-condensed;
 }
 .table thead tr th{
     font-size:16px; 

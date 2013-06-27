@@ -13,9 +13,9 @@
 	<tbody>
 <?php foreach ($users as $user): ?>		<tr>
 
-			<td><?php echo $user->username; ?></td>
+			<td><?php echo $user->name; ?></td>
 			<td><?php echo $user->password; ?></td>
-			<td><?php echo $user->last_login; ?></td>
+			<td><?php echo $user->last_login_at; ?></td>
 			<td>
 				<?php echo Html::anchor('users/view/'.$user->id, '<i class="icon-eye-open" title="View"></i>'); ?> |
 				<?php echo Html::anchor('users/edit/'.$user->id, '<i class="icon-wrench" title="Edit"></i>'); ?> |

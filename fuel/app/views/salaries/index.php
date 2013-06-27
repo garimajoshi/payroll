@@ -14,14 +14,6 @@
     <br />
 </div>
 
-<?php echo Form::open(array("class" => "formee", "method" => "get")); ?>
-             <div class="grid-3-12">
-                        <?php echo createYears(1920, 2500, 'year', date('Y')); ?>
-                    </div>
-                    <div class="grid-3-12">
-                        <?php echo createMonths('month', date('M')); ?>
-                    </div>
-<?php echo Form::close(); ?>
 <?php if ($employees): ?>
     <table class="table table-striped" style="margin-top:30px;">
         <thead>
@@ -33,7 +25,7 @@
                 <th>Email</th>
                 <th></th>
                 <th></th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -44,10 +36,9 @@
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
-                    <td><?php echo Html::anchor('salaries/create/' . $employee->id.'?month='.
-                            Input::get('month'), '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
-                    <td><?php echo Html::anchor('salaries/view/' . $employee->id, '<i class="icon-pencil title="Edit"></i>'); ?></td>
-                    <td><?php echo Html::anchor('salaries/archive/' . $employee->id, '<i class="icon-folder-close" title="Archive"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
+                    <td><?php echo Html::anchor('salaries/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
+                    <td><?php echo Html::anchor('salaries/view/' . $employee->id, '<i class="icon-eye-open title="view"></i>'); ?></td>
+                    
                 </tr>
             <?php endforeach; ?>
         </tbody>
