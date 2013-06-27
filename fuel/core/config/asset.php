@@ -50,6 +50,7 @@ return array(
 	'img_dir' => 'img/',
 	'js_dir' => 'js/',
 	'css_dir' => 'css/',
+        'pdf_dir' => 'pdf/',
 
 	/**
 	 * You can also specify one or more per asset-type folders. You don't have
@@ -66,6 +67,7 @@ return array(
 		'css' => array(),
 		'js'  => array(),
 		'img' => array(),
+                'pdf' => array(),
 	),
 
 	/**
