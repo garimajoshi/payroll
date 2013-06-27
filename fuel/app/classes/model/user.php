@@ -30,6 +30,14 @@ class Model_User extends \Orm\Model {
             'cascade_save' => false,
         )
     );
+    protected static $_has_many = array('salaries',
+        array(
+            'key_from' => 'id',
+            'key_to' => 'user_id',
+            'model_to' => 'Model_Salary',
+            'cascade_save' => false,
+        )
+    );
     protected static $_table_name = 'users';
     protected static $_primary_key = array('id');
 

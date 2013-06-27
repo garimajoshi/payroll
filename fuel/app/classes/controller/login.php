@@ -7,14 +7,14 @@ class Controller_Login extends Controller_Base {
             Response::redirect('login/logout');
         }
         $data["subnav"] = array('index' => 'active');
-        $this->template->title = 'My &raquo; Index';
+        $this->template->title = 'Payroll &raquo; Index';
         $rights = Model_Access_Right::find('all', array('related' => array('user')));
         $data['rights'] = $rights;
         $this->template->content = View::forge('login/index', $data);
     }
 
     public function action_login() {
-        $this->template->title = 'My &raquo; Login';
+        $this->template->title = 'Payroll &raquo; Login';
         if (Session::get('user') == NULL)
             return Response::forge(View::forge('login/login'));
         else
@@ -22,7 +22,7 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_verify() {
-        $this->template->title = 'My &raquo; Login';
+        $this->template->title = 'Payroll &raquo; Login';
         if (!Input::post()) {
             Response::redirect('login/login');
         }
@@ -40,21 +40,21 @@ class Controller_Login extends Controller_Base {
             return Response::forge(View::forge('login/login'));
         } else {
             $data['user'] = $user;
-            $time = date('Y-m-d H:i:s');
-            $user->last_login_at = $time;
-            $user->save();
+            //$time = date('Y-m-d H:i:s');
+            //$user->last_login_at = $time;
+            //$user->save();
             View::set_global('current_user', $user);
             Session::set_flash('Success', 'Login Successful');
 
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            Response::redirect('/employees');
+            Response::redirect('employees/');
         }
     }
 
     public function action_logout() {
-        $this->template->title = 'My &raquo; Login';
+        $this->template->title = 'Payroll &raquo; Login';
         if (Session::get('user') !== NULL) {
             parent::logout_user();
             Session::set_flash('success', 'You have successfully logged out!');
