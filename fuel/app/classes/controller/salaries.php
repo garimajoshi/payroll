@@ -11,9 +11,6 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('salaries');
-        
-        
-
         if (!$data['salary'] = Model_Salary::find($id)) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
@@ -152,8 +149,6 @@ class Controller_Salaries extends Controller_Base {
                 Session::set_flash('error', $val->error());
             }
         }
-
-
 
         $this->template->title = "salaries";
         $this->template->content = View::forge('salaries/create', $data);
@@ -369,4 +364,20 @@ $this->template->content = View::forge('salaries/statement', $data);
         Response::redirect('salaries');
     }
 
+    public function action_print($id = null) {
+
+        is_null($id) and Response::redirect('salaries');
+        $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+        //$pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
+        //$this->template->title = "Payslip";
+        //$this->template->content = View::forge('salaries/pdf', $data);
+
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
+            Session::set_flash('error', 'Could not find salary #' . $id);
+            Response::redirect('salaries');
+        }
+        return Response::forge(View::forge('salaries/payslip', $data));
+    }
+
 }
+
