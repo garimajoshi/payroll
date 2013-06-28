@@ -40,7 +40,38 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_create($id = null) {
         is_null($id) and Response::redirect('salaries');
+
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
+
+        $c_basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
+        $var_basic_frac = $c_basic->value;
+
+        $c_hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
+        $var_hra_frac = $c_hra->value;
+
+        $c_pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
+        $var_pf_adjust_frac = $c_pf_adjust->value;
+
+        $c_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
+        $var_lta_frac = $c_lta->value;
+
+        $c_pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+        $pf = $c_pf->value;
+
+        $c_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
+        $var_medical = $c_medical->value;
+
+        $c_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
+        $var_travel = $c_travel->value;
+
+        $data['basic'] = $var_basic_frac;
+        $data['hra'] = $var_hra_frac;
+        $data['pf_adjust'] = $var_pf_adjust_frac;
+        $data['lta'] = $var_lta_frac;
+        $data['pf'] = $pf;
+        $data['medical'] = $var_medical;
+        $data['travel'] = $var_travel;
+
         if (Input::method() == 'POST') {
             $val = Model_Salary::validate('create');
             if ($val->run()) {
@@ -60,31 +91,12 @@ class Controller_Salaries extends Controller_Base {
                 $var_deduction1 = Input::post('deduction1');
                 $var_deduction2 = Input::post('deduction2');
                 $var_deduction3 = Input::post('deduction3');
-                $c_basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
-                $var_basic_frac = $c_basic->value;
-
-                $c_hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
-                $var_hra_frac = $c_hra->value;
-
-                $c_pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
-                $var_pf_adjust_frac = $c_pf_adjust->value;
-
-                $c_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
-                $var_lta = $c_lta->value;
-
-                $c_pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
-                $pf = $c_pf->value;
-
-                $c_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
-                $var_medical = $c_medical->value;
-
-                $c_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
-                $var_travel = $c_travel->value;
 
                 $var_adj_sdxo = $var_gross - $var_sdxo;
                 $var_pf_adjust = (Input::post('pf_applicable') == "1") ? ($var_adj_sdxo / $var_pf_adjust_frac) : $var_adj_sdxo;
                 $var_basic = $var_basic_frac * $var_pf_adjust;
                 $var_hra = $var_hra_frac * $var_pf_adjust;
+                $var_lta = $var_lta_frac * $var_pf_adjust;
                 $var_pf_value = (Input::post('pf_applicable') == "1") ? ($pf * $var_basic) : 0;
 
                 $var_credit_other = $var_pf_adjust - ($var_basic + $var_hra + $var_lta + $var_medical + $var_travel + $var_pf_value);
@@ -327,6 +339,17 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/edit');
     }
 
+    public function action_statement(){
+        $var_month = Input::post('month');
+        $var_year = Input::post('year');
+        
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month),array('year' =>$var_year)),
+                    'related' => array('employee')));
+        $data['month'] = $var_month;
+        $data['year'] = $var_year;
+        $this->template->title = 'statement';        
+$this->template->content = View::forge('salaries/statement', $data);
+    }
     public function action_delete($id = null) {
         is_null($id) and Response::redirect('salaries');
 
