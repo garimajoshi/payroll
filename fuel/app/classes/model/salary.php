@@ -5,7 +5,6 @@ use Orm\Model;
 class Model_Salary extends Model {
 
     protected static $_properties = array(
-        'id',
         'employee_id',
         'month',
         'year',
@@ -56,6 +55,8 @@ class Model_Salary extends Model {
             'cascade_save' => true,
             'cascade_delete' => false,
     ));
+    
+    protected static $_primary_key = array('employee_id','month','year');
 
     //protected static $_belongs_to = array('employee', 'user');
 

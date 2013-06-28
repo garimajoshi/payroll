@@ -139,7 +139,7 @@ class Controller_Salaries extends Controller_Base {
                             'net' => $var_net,
                 ));
                 if ($salary and $salary->save()) {
-                    Session::set_flash('success', 'Added salary #' . $salary->id . '.');
+                    Session::set_flash('success', 'Added salary for #' . $salary->employee_id . '.');
 
                     Response::redirect('salaries');
                 } else {
@@ -339,17 +339,18 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/edit');
     }
 
-    public function action_statement(){
+    public function action_statement() {
         $var_month = Input::post('month');
         $var_year = Input::post('year');
-        
-        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month),array('year' =>$var_year)),
+
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
         $data['month'] = $var_month;
         $data['year'] = $var_year;
-        $this->template->title = 'statement';        
-$this->template->content = View::forge('salaries/statement', $data);
+        $this->template->title = 'Salary Statement';
+        $this->template->content = View::forge('salaries/statement', $data);
     }
+
     public function action_delete($id = null) {
         is_null($id) and Response::redirect('salaries');
 
@@ -364,15 +365,12 @@ $this->template->content = View::forge('salaries/statement', $data);
         Response::redirect('salaries');
     }
 
-    public function action_print($id = null) {
+    public function action_print($id = null, $month = null, $year = null) {
 
-        is_null($id) and Response::redirect('salaries');
+        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
-        //$pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
-        //$this->template->title = "Payslip";
-        //$this->template->content = View::forge('salaries/pdf', $data);
 
-        if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('month' => $month), array('year' => $year))))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
