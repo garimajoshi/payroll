@@ -238,7 +238,19 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 .odd{
     float:left;
 }
-
+.payroll-table{
+    margin-top:20px;
+    margin-left:200px;
+    width:650px;
+    height:320px;
+    border:1px solid #ccc;
+}
+.payroll-table td{
+    border:1px solid #ccc;
+    padding-left: 70px;
+    width:200px;
+    height:100px;
+}
 #previewslip{
     margin-left: 550px;
     height:470px;
