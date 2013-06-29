@@ -14,7 +14,6 @@ $pdf->AddPage();
 
 $html = '
     
-<<<<<<< HEAD
 <div id="img">
 <img src="assets/img/pay-logo.jpg"height="80" width="140" />
 </div>
@@ -48,7 +47,6 @@ $html = '
                     <td>Base Salary</td>
                     <td>' . $salary->basic . '</td>
                         <td>' . $salary->basic . '</td>
-=======
 <style >
 
  .address{}
@@ -80,27 +78,8 @@ $html = '
 <br />
 <table border="1" style="text-align:left;">
 
-<thead>
-<tr>
-<th>No.</th>
-<th>Salary Component</th>
-<th>Month</th>
-<th>FYTD</th>
-</tr>
-</thead>
-
 <tbody>
-<tr  style="background-color: white;">
-<td>1</td>
-                    <td>Base Salary</td>
-                    <td>'.$salary->basic.'</td>
-                    <td>'.$salary->basic.'</td>
->>>>>>> c66794e5b0439967f1806303d8e0e8fd9b99e267
 
-
-</tr>
-
-<<<<<<< HEAD
 <tr>
 <td>1</td>
                     <td>HRA</td>
@@ -211,7 +190,6 @@ $html = '
                     <td>' . $salary->net . '</td>
                     <td>' . $salary->net . '</td>
                 </tr>
-=======
 <tr  style="background-color: white;">
 <td>2</td>
                     <td>HRA</td>
@@ -244,17 +222,11 @@ $html = '
 
 
 </tr>
->>>>>>> c66794e5b0439967f1806303d8e0e8fd9b99e267
 </tbody>
 </table>
 
 
 </div>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c66794e5b0439967f1806303d8e0e8fd9b99e267
 ';
 
 // output the HTML content

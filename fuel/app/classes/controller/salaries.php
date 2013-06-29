@@ -365,12 +365,12 @@ class Controller_Salaries extends Controller_Base {
         Response::redirect('salaries');
     }
 
-    public function action_print($id = null, $month = null, $year = null) {
+    public function action_print($id = null) {
 
-        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+        is_null($id) and Response::redirect('salaries');
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
 
-        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('month' => $month), array('year' => $year))))) {
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
