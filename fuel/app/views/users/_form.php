@@ -1,34 +1,55 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class" => "formee")); ?>
 
-	<fieldset>
-		<div class="control-group">
-			<?php echo Form::label('Username', 'username', array('class'=>'control-label')); ?>
+<div class="grid-8-12">
+    <?php echo Html::anchor('users', 'BACK', array('class' => 'formee-button', 'style' => 'color:#fff;')); ?>
+</div>
 
-			<div class="controls">
-				<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'span4', 'placeholder'=>'Username')); ?>
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Username <em class="formee-req">*</em>', 'username'); ?>
+    </div>    
+    <div class="grid-4-12">
+        <?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Username')); ?>
+    </div>        
+</div>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Password', 'password', array('class'=>'control-label')); ?>
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Password <em class="formee-req">*</em>', 'password'); ?>
+    </div>    
+    <div class="grid-4-12">
+        <?php echo Form::password('password', Input::post('password', isset($user) ? $user->password : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Password')); ?>
+    </div>    
+</div>
 
-			<div class="controls">
-				<?php echo Form::input('password', Input::post('password', isset($user) ? $user->password : ''), array('class' => 'span4', 'placeholder'=>'Password')); ?>
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Access Level  <em class="formee-req">*</em>', 'access_level'); ?>
+    </div>
+    <div class="grid-4-12">    
+        <ul class="formee-list">
+            <li>
+                <input name="access_level" value="0" type="radio">
+                <label>User</label>
+            </li>
+            <li>
+                <input name="access_level" value="1" type="radio">
+                <label>Moderator1</label>
+            </li>
+            <li>
+                <input name="access_level" value="2" type="radio">
+                <label>Moderator2</label>
+            </li>
+            <li>
+                <input name="access_level" value="3" type="radio">
+                <label>Admin</label>
+            </li>
+        </ul>
+    </div>  
+</div>
 
-			</div>
-		</div>
-		<div class="control-group">
-			<?php echo Form::label('Last login', 'last_login', array('class'=>'control-label')); ?>
+<div class="grid-8-12">
+    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+</div>
 
-			<div class="controls">
-				<?php echo Form::input('last_login', Input::post('last_login', isset($user) ? $user->last_login : ''), array('class' => 'span4', 'placeholder'=>'Last login')); ?>
-
-			</div>
-		</div>
-		<div class="control-group">
-			<label class='control-label'>&nbsp;</label>
-			<div class='controls'>
-				<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>			</div>
-		</div>
-	</fieldset>
 <?php echo Form::close(); ?>

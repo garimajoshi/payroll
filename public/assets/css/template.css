@@ -1,5 +1,5 @@
 body{
-    
+
 }
 a:link{ color: #333; }
 
@@ -10,22 +10,49 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 #address{
     position:fixed;
     margin-left: 600px;
-    
+
 }
 #border{
-    
+
     height:1000px;
     width:200px;
     border-right: 1px solid #ccc;
 }
+.company{
+    border: 1px solid #ccc;
+    width:1000px;
+    margin-left: 95px;
+    margin-top: 30px;
+}
+.company thead{
+    background-color: #e7e7e7;
+
+}
+.company thead tr th{
+    border-right:1px solid #ccc;
+    height:30px;
+    font-weight: bold;
+    padding-left:20px;
+
+}
+.company tbody tr td{
+    border-right:1px solid #ccc;
+    border-bottom:2px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:20px;
+    font-size:14px;
+    font-weight: 200;
+
+}
 #container{
-        overflow-x: auto;
-        position:fixed;
-        margin-top: -950px;
-        width:85%;
-        height:590px;
-        margin-left: 200px;
-        
+    overflow-x: auto;
+    position:fixed;
+    margin-top: -950px;
+    width:85%;
+    height:590px;
+    margin-left: 200px;
+
 }
 .controls input{
     padding-left:10px;
@@ -73,22 +100,22 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
 }
 #header h1{
-      color: #111;
-	font-family: helvetica,arial, sans-serif;
-        padding-left: 50px;
-	font-size:25px;
-        padding-bottom:5px;
-        line-break: auto;
-	line-height:10px;
-	font-weight:700;
-	font-style: italic;
-	font-family: Georgia, Times New Roman, Times, serif;
-	max-width:350px;
-                
-    
+    color: #111;
+    font-family: helvetica,arial, sans-serif;
+    padding-left: 50px;
+    font-size:25px;
+    padding-bottom:5px;
+    line-break: auto;
+    line-height:10px;
+    font-weight:700;
+    font-style: italic;
+    font-family: Georgia, Times New Roman, Times, serif;
+    max-width:350px;
+
+
     margin-left: 80px;
     padding-top: 20px;
-    
+
 }
 .headline{
 
@@ -96,7 +123,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     background-color: #68687c;
     width:100%;
     height:40px;
-    
+
 }
 
 .headline h3{
@@ -109,7 +136,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 #img{
     position:fixed;
     width:120px;
-    
+
 }
 #left-nav{
     position:fixed;
@@ -130,100 +157,100 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-family: Times New Roman;
 }
 #nav a,a{
-	text-decoration:none;
-	display:list-item;
-        padding-top: 10px;
-        padding-bottom: 10px;
-       text-align: left;
-       padding-left: 20px;
-	list-style: none;
+    text-decoration:none;
+    display:list-item;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    padding-left: 20px;
+    list-style: none;
 }
 
 /* Just main menu links --[for non-javascript users this applies to submenu links as well]*/
 #nav a{
-	margin:0;
+    margin:0;
 }
 
 /* All menu links on hover or focus */
 #nav a:hover, #nav a:focus{
-	background-color:#bbb;
-	color:#FFF;
+    background-color:#bbb;
+    color:#FFF;
 }
 #nav li a:hover,
 #nav li a:focus{
-	background-color:#bbb;
-	color:#FFF;
+    background-color:#bbb;
+    color:#FFF;
 }
 
 /* Parent Sub Menu Links ---[javascript users only]*/
 
 /* All submenu OLs and ULs */
 #nav ol, #nav ul, #subMenusContainer ul, #subMenusContainer ol {	
-	/*border around submenu goes here*/
-	background:#fff;	
-	border:1px solid #ddd; 
-	left:0;
+    /*border around submenu goes here*/
+    background:#fff;	
+    border:1px solid #ddd; 
+    left:0;
 }
 
 /* All ULs and OLs */
 #nav, #nav ul, #nav ol, #subMenusContainer ul, #subMenusContainer ol { 
-	
-	margin-left: 10px;
-	list-style: none;
-	line-height: 1em;
+
+    margin-left: 10px;
+    list-style: none;
+    line-height: 1em;
 }
 
 /* List items in main menu --[for non-javascript users this applies to submenus as well]  */
 #nav li { 
-	/*great place to use a background image as a divider*/
-	display:block;
-	list-style:none;
-	position:relative;
- background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#cc));
-	background-image: linear-gradient(#fff, #ccc);
-        
-	box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
-	
-	text-align: right;
-	display:block;
+    /*great place to use a background image as a divider*/
+    display:block;
+    list-style:none;
+    position:relative;
+    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#cc));
+    background-image: linear-gradient(#fff, #ccc);
+
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
+
+    text-align: right;
+    display:block;
 }
 
 
 /* main menu ul or ol elment */
 #nav{
-	display:block;
-	position: absolute;
-	list-style:none;
-	margin-top: 200px;
-	width:186px;
-	z-index:5;
-        
-	/* Background color and gradients */
-	
+    display:block;
+    position: absolute;
+    list-style:none;
+    margin-top: 200px;
+    width:186px;
+    z-index:5;
 
-	
-	text-align: right;
-	display:block;
+    /* Background color and gradients */
+
+
+
+    text-align: right;
+    display:block;
 }
 
 #nav li li{	float:none; }
 
 #nav li li a{ /* Just submenu links*/	
-	position:relative;
-	float:none;
+    position:relative;
+    float:none;
 }
 
 #nav li ul { /* second-level lists */
-	position: absolute;
-	width: 10em;
-	margin-left: -1000em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
+    position: absolute;
+    width: 10em;
+    margin-left: -1000em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
 }
 
 /* third-and-above-level lists */
 #nav li ul ul { margin: -1em 0 0 -1000em; }
 #nav li:hover ul ul {	margin-left: -1000em; }
 
- /* lists nested under hovered list items */
+/* lists nested under hovered list items */
 #nav li:hover ul{	margin-left: 186px; margin-top:-2.5em;}
 #nav li li:hover ul {	margin-left: 10em; }
 
@@ -259,7 +286,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     border:1px solid #ccc;
     padding-left: 15px;
     font-size:12px;
-    
+
 }
 #previewslip em{
     font-size: 14px;
@@ -291,7 +318,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-top:-5px;
     margin-top: -10px;
     margin-left: -50px;
-    
+
 }
 
 
@@ -300,10 +327,10 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 
 .table{
-   
+
     -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
-	-moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
-	box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,.73), 0px 0px 18px 0px rgba(0,0,0,.13);
     padding: 5px;
     border:1px solid #ccc;
     margin-bottom: 10px;
@@ -312,21 +339,21 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 .table thead tr th{
     background-color:#616975;
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(114, 122, 134)),to(rgb(80, 88, 100)));
-	background-image: -webkit-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
-	background-image: -moz-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
-	background-image: -o-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
-	background-image: -ms-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
-	background-image: linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#727a86', EndColorStr='#505864');
-        border-bottom: 1px solid #33373d;
-	-webkit-box-shadow: inset 0px 1px 0px 0px #878e98;
-	-moz-box-shadow: inset 0px 1px 0px 0px #878e98;
-	box-shadow: inset 0px 1px 0px 0px #878e98;
+    background-image: -webkit-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -moz-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -o-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: -ms-linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    background-image: linear-gradient(top, rgb(114, 122, 134), rgb(80, 88, 100));
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#727a86', EndColorStr='#505864');
+    border-bottom: 1px solid #33373d;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #878e98;
+    -moz-box-shadow: inset 0px 1px 0px 0px #878e98;
+    box-shadow: inset 0px 1px 0px 0px #878e98;
     color:#eee;
     padding:10px 10px 10px 10px;
     border-right: 1px solid #999;
-    
-    
+
+
 }
 .table td{
     color:#666;
@@ -335,9 +362,9 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-top:5px;
     padding-left: 10px;
     padding-right: 5px;
-    
-    
-    
+
+
+
 }
 
 
