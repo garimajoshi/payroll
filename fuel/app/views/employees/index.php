@@ -2,14 +2,14 @@
 
 <div class="headline">
     <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
-        <form class="form-search" method="get" action="/payroll/public/employees/search" style="float: right; margin-right: 10px;">
-            <div>
-                <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
-                <button type="submit" class="btn ">
-                    <i class="icon-search"></i>
-                </button>
-            </div>
-        </form>
+        <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 10px;")); ?>
+        <div>
+            <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
+            <button type="submit" class="btn ">
+                <i class="icon-search"></i>
+            </button>
+        </div>
+        <?php echo Form::close(); ?>
     </h3>
     <br />
 </div>

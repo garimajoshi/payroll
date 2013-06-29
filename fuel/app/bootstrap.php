@@ -11,6 +11,8 @@ require COREPATH.'bootstrap.php';
 Autoloader::add_classes(array(
 	// Add classes you want to override here
 	// Example: 'View' => APPPATH.'classes/view.php',
+        'PHPExcel'      => __DIR__.'/vendor/PHPExcel.php',
+        'PHPExcel_IOFactory'    => __DIR__.'/vendor/PHPExcel/IOFactory.php',
 ));
 
 // Register the autoloader

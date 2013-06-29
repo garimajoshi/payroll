@@ -369,7 +369,7 @@ class Controller_Salaries extends Controller_Base {
 
         is_null($id) and Response::redirect('salaries');
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
-
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
         if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');

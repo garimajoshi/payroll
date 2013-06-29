@@ -6,7 +6,9 @@ class Model_Company extends Model {
 
     protected static $_properties = array(
         'id',
-        'address',
+        'address1',
+        'address2',
+        'address3',
         'city',
         'state',
         'country',
