@@ -8,12 +8,12 @@
         <?php echo Asset::css('formee-style.css'); ?>
         <?php echo Asset::css('bootstrap.css'); ?>
         <?php echo Asset::css('template.css'); ?>
-        <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
+        <?php echo Asset::css('menu.css'); ?>
+            <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
         <?php echo Asset::js('css_browser_selector.js'); ?>
         <?php echo Asset::js('formee.js'); ?>    
         <?php echo Asset::js('countries.js'); ?>
-        <script type= "text/javascript" src = "countries.js"></script>
-        <!--[if IE]>
+ <!--[if IE]>
                  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
          <![endif]-->
     </head>
@@ -43,7 +43,7 @@
         function createMonths($id = 'month_select', $selected = null) {
 
             $months = array(
-                0=>'',
+                0 => '',
                 1 => 'January',
                 2 => 'February',
                 3 => 'March',
@@ -87,77 +87,87 @@
             return $select;
         }
         ?>
+        <script language="JavaScript">
+function toggle(source) {
+  checkboxes = document.getElementsByName('check');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
+
+
         <div id="header">
             <h1>NeoGen Labs Payroll System</h1>
-            
-        <?php
-        if ($user = Session::get('user')) {
-
-            echo Html::anchor('login/logout', '<i class="icon-off icon-white"></i>LOGOUT |<i class="icon-user icon-white"></i> ' . $user->name, array('id' => 'logout', 'class' => 'btn btn-inverse', 'style' => 'color:#fff;margin-top:-28px; margin-left:1220px;' ));
-            ?>
-    <?php
-} else {
-    Response::redirect('login/login');
-}
-?> 
-               
-
-        </div>
-
-        <div id="left-nav" >
-
-
-            <ul id="nav">
-
-                <li><a href="#">Control Panel</a>
-
-                    <ul>
-                        <li><a href="#">Admin Settings</a>
+            <div class="page-full-width cf">
+                
+                <ul id="header-nav">
+                    <li class="v-sep">
+                        <?php
+                        if ($user = Session::get('user')) {
+                            ?><a href="#" class="round-button dark" style="color:#fff;"><i class="icon-user icon-white"></i> Logged in as <strong><?php echo $user->name; ?></strong></a>
                             <ul>
-                                <li><a href="#">Add User</a></li>
-                                <li><a href="#">Access Rights</a></li>
-                                <li><a href="#">Remove User</a></li>
-
+                                <li><?php echo Html::anchor('users', 'User List',array('class'=>'header-nav-child', 'style'=>'list-style-type:none;'));?></li>
+                                <li><?php echo Html::anchor('users/access', 'Access Rights',array('class'=>'header-nav-child'));?></li>
+                                <li><?php echo Html::anchor('companies', 'Company Information',array('class'=>'header-nav-child'));?></li>
+                                <li><?php echo Html::anchor('users/password', 'Change Password',array('class'=>'header-nav-child'));?></li>
                             </ul>
-                        </li>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Professional Tax Settings</a></li>
-                        <li><a href="#">Holiday Calendar</a></li>
+                    </li>
+                <li><?php  echo Html::anchor('login/logout', '<i class="icon-off icon-white"></i>LOGOUT', array('class'=>'round-button dark', 'style'=>'color:#fff; width:80px;'));?> </li>
 
-                    </ul>
-                </li>
+                </ul>
+                            <?php
+                        } else {
+                            Response::redirect('login/login');
+                        }
+                        ?> 
+                       
 
-                <li><a href="#">Employee</a>
-                    <ul>
-                        <li><a href="http://localhost/payroll/public/employees/">Employee Directory</a></li>
-                        <li><a href="http://localhost/payroll/public/employees/create">Add Employee</a></li>		
-                        <li><a href="http://localhost/payroll/public/salaries/">Salary Details</a></li>
-                        <li><a href="#">Leave</a></li>
-                        <li><a href="http://localhost/payroll/public/employees/viewarchive">Archive</a></li>
-
-                    </ul>
-                </li>
-
-                <li><a href="#">Payroll</a>
-                    <ul>
-
-                        <li><a href="#">Payroll Central</a></li>
-                        <li><a href="#">Generate Payslip</a></li>
-                        <li><a href="#">Salary Structure</a></li>
-                        <li><a href="#">Add Bonus</a></li>
-
-                    </ul>
-                </li>
-                <li><a href="#">Reports</a>
-            </ul>
-
-            <!-- END Menu -->
-
-            <div id="border"></div>
-
-            <div id="container">
-<?php echo $content; ?>
             </div>
-
+        </div>
+        <div class="left-sidebar">
+            <div style="margin-top:100px;">
+                <ul class="menu">
+                    <li class="item1"><a href="#">Employee</a>
+                        <ul>
+                            <li class ="subitem1"><?php echo Html::anchor('employees','Employee Directory',array('class'=>'subitem1')); ?></li>
+                            <li class ="subitem2"><?php echo Html::anchor('employees/create','Add Employee'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('leaves','Leave'); ?></li>
+                             <li class="subitem2"><?php echo Html::anchor('employees/archive','Archive'); ?></li>
+                        </ul>
+                    </li>
+                    <li class="item2"><a href="#">Payroll</a>
+                        <ul>
+                            <li class ="subitem1"><?php echo Html::anchor('salaries/','Payroll Central'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('salaries/structure','Salary Structure'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+ 
+            <div id="border"></div>
+            <div id="container">
+                <?php echo $content; ?>
+            </div>
+            <script type="text/javascript">
+$(function() {
+    var menu_ul = $('.menu > li > ul'),
+        menu_a  = $('.menu > li > a');
+    menu_ul.hide();
+    menu_a.click(function(e) {
+        e.preventDefault();
+        if(!$(this).hasClass('active')) {
+            menu_a.removeClass('active');
+            menu_ul.filter(':visible').slideUp('normal');
+            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+        } else {
+            $(this).removeClass('active');
+            $(this).next().stop(true,true).slideUp('normal');
+        }
+    });
+});
+</script>
     </body>
 </html>

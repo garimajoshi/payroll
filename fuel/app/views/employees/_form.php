@@ -1,6 +1,5 @@
-<?php echo Form::open(array("class" => "formee", 'style' => "margin-top:50px;")); ?>
-
-
+   
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:50px;")); ?>
 <div class="grid-12-12">
     <div class="grid-4-12">
         <?php echo Form::label('Employee ID <em class="formee-req">*</em>', 'id'); ?>

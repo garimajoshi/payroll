@@ -15,10 +15,11 @@
 </div>
 
 <?php if ($employees): ?>
+
     <table class="table table-striped" style="margin-top:30px;">
         <thead>
             <tr>
-                <th><?php echo Form::checkbox('all'); ?></th>
+                <th><input type="checkbox" value="" onclick="toggle(this);" /></th>
                 <th>Employee Id</th>
                 <th>Name</th>
                 <th>Phone No</th>
@@ -29,9 +30,10 @@
             </tr>
         </thead>
         <tbody>
+            <?php echo Form::open(); ?>
             <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><?php echo Form::checkbox('$employee->id'); ?></td>
+                    <td><input type="checkbox" name="check" value="<?php echo $employee->id; ?>"></td>
                     <td><?php echo $employee->id; ?></td>
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
@@ -43,6 +45,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?php echo Form::submit('submit', 'Generate Payslip', array('class' => 'btn btn-inverse', 'style' => 'margin-left:40px;')); ?>
+    <?php echo Form::close(); ?>
 
 <?php else: ?>
     <p>No Employees.</p>

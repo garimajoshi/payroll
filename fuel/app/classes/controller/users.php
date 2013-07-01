@@ -98,6 +98,10 @@ class Controller_Users extends Controller_Base {
         //  $this->template->content = View::forge('users/edit');
     }
 
+    public function action_password() {
+        $this->template->content = View::forge('users/password');
+    }
+
     public function action_delete($id = null) {
         is_null($id) and Response::redirect('users');
 
