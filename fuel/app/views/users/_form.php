@@ -29,19 +29,19 @@
     <div class="grid-4-12">    
         <ul class="formee-list">
             <li>
-                <input name="access_level" value="0" type="radio">
+                <input name="access_level" value="user" type="radio">
                 <label>User</label>
             </li>
             <li>
-                <input name="access_level" value="1" type="radio">
+                <input name="access_level" value="mod1" type="radio">
                 <label>Moderator1</label>
             </li>
             <li>
-                <input name="access_level" value="2" type="radio">
+                <input name="access_level" value="mod2" type="radio">
                 <label>Moderator2</label>
             </li>
             <li>
-                <input name="access_level" value="3" type="radio">
+                <input name="access_level" value="admin" type="radio">
                 <label>Admin</label>
             </li>
         </ul>
