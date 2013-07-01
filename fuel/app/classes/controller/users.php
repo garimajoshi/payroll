@@ -30,13 +30,6 @@ class Controller_Users extends Controller_Base {
                             'password' => md5(Input::post('password')),
                             'access_level' => Input::post('access_level')
                 ));
-                /* $user->access_right = new Model_Access_Right();
-                  $user->access_right->print_salary_statement = Input::post('print_salary_statement');
-                  $user->access_right->add_employee = Input::post('add_employee');
-                  $user->access_right->delete_employee = Input::post('delete_employee');
-                  $user->access_right->change_salary_constants = Input::post('change_salary_constants');
-                  $user->access_right->add_leave = Input::post('add_leave');
-                 */
                 if ($user and $user->save()) {
                     Session::set_flash('success', 'Added user #' . $user->id . '.');
 
@@ -99,6 +92,35 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_password() {
+
+        $u = Session::get('user');
+        is_null($u) and Response::redirect('users');
+
+        if (!$user = Model_User::find($u->id)) {
+            Session::set_flash('error', 'User does not exist #' . $u->id);
+            Response::redirect('users');
+        }
+
+        //print_r($user->password);
+        if (Input::method() == 'POST') {
+
+            if ($user->password != md5(Input::post('old_password'))) {
+                Session::set_flash('error', 'Old password does not match');
+                Response::redirect('users/password');
+            }
+            else
+                $user->password = md5(Input::post('new_password'));
+
+            if ($user->save()) {
+                Session::set_flash('success', 'Password updated successfully');
+
+                Response::redirect('users');
+            } else {
+                Session::set_flash('error', 'Could not update password');
+            }
+        }
+
+        $this->template->title = "Change Password";
         $this->template->content = View::forge('users/password');
     }
 

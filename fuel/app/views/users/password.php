@@ -23,7 +23,7 @@
         <?php echo Form::label('Old Password <em class="formee-req">*</em>', 'old_password'); ?>
     </div>    
     <div class="grid-4-12">
-        <?php echo Form::input('old_assword', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Old Password')); ?>
+        <?php echo Form::input('old_password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Old Password')); ?>
     </div>        
 </div>
 <div class="grid-8-12">
@@ -31,7 +31,7 @@
         <?php echo Form::label('New Password <em class="formee-req">*</em>', 'new_password'); ?>
     </div>    
     <div class="grid-4-12">
-        <?php echo Form::input('new_Password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'New Password')); ?>
+        <?php echo Form::input('new_password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'New Password')); ?>
     </div>        
 </div>
 

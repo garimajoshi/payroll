@@ -3,6 +3,14 @@
 class Controller_Employees extends Controller_Base {
 
     public function action_index() {
+        /*      $user = Session::get('user');
+          $access = Model_Access_Right::find('first', array('where' => array('page' => "add_employee")));
+          $ac = $user->access_level;
+          if ($access->$ac == 0) {
+          Session::set_flash('error', 'Sorry! You do not have access to this page');
+          Response::redirect('welcome');
+          }
+         */
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "active")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/index', $data);
@@ -96,6 +104,9 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_create() {
+
+        parent::has_access("create_employee");
+
         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
 
