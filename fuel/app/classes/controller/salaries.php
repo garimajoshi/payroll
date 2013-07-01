@@ -20,7 +20,24 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_payroll() {
-        $this->template->content = View::forge('salaries/payroll');
+        $var_month = Input::post('month');
+        $var_year = Input::post('year');
+
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
+                    'related' => array('employee')));
+        $data['month'] = $var_month;
+        $data['year'] = $var_year;
+
+        $data['basic'] = Model_Constant::find('first', array('name' => 'basic'));
+        $data['hra'] = Model_Constant::find('first', array('name' => 'hra'));
+        $data['pf_adjust'] = Model_Constant::find('first', array('name' => 'pf_adjust'));
+        $data['lta'] = Model_Constant::find('first', array('name' => 'lta'));
+        $data['medical'] = Model_Constant::find('first', array('name' => 'medical'));
+        $data['travel'] = Model_Constant::find('first', array('name' => 'travel'));
+        $data['pf'] = Model_Constant::find('first', array('name' => 'pf'));
+
+        $this->template->title = 'Salary Statement';
+        $this->template->content = View::forge('salaries/payroll', $data);
     }
 
     public function action_view($id = null) {
@@ -404,8 +421,9 @@ class Controller_Salaries extends Controller_Base {
 
         is_null($id) and Response::redirect('salaries');
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
 
-        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('month' => $month), array('year' => $year))))) {
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
@@ -413,4 +431,3 @@ class Controller_Salaries extends Controller_Base {
     }
 
 }
-

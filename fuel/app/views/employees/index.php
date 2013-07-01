@@ -1,5 +1,4 @@
 
-
 <div class="headline">
     <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
         <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 10px;")); ?>

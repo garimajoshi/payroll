@@ -5,12 +5,10 @@ class Model_Access_Right extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
-        'user_id',
-        'print_salary_statement',
-        'add_employee',
-        'delete_employee',
-        'change_salary_constants',
-        'add_leave',
+        'admin',
+        'mod1',
+        'mod2',
+        'user',
         'created_at',
         'updated_at',
     );

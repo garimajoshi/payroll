@@ -14,28 +14,29 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>		<tr>
+            <?php foreach ($users as $user): ?>		
+                <tr>
 
                     <td><?php echo $user->name; ?></td>
                     <td><?php echo $user->last_login_at; ?></td>
                     <td><?php
-                        if ($user->access_level == 0):
+                        if ($user->access_level == "user"):
                             echo 'User';
-                        elseif ($user->access_level == 1):
+                        elseif ($user->access_level == "mod1"):
                             echo 'Moderator1';
-                        elseif ($user->access_level == 2):
+                        elseif ($user->access_level == "mod2"):
                             echo 'Moderator2';
                         else:
-                            echo 'Admin';
+                            echo 'Administrator';
                         endif;
-                        ?></td>
+                        ?>
+                    </td>
 
                     <td><?php echo Html::anchor('users/edit/' . $user->id, '<i class="icon-wrench" title="Edit"></i>'); ?></td>
-                    <td><?php echo Html::anchor('users/delete/' . $user->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?>
-
-                    </td>
+                    <td><?php echo Html::anchor('users/delete/' . $user->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
                 </tr>
-    <?php endforeach; ?>	</tbody>
+            <?php endforeach; ?>	
+        </tbody>
     </table>
 
 <?php else: ?>

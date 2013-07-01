@@ -2,3 +2,4 @@ fuel/app/logs/*/*/*
 fuel/app/cache/*/*
 docs/*/*/*
 fuel/app/config/*/*
+/nbproject/private/

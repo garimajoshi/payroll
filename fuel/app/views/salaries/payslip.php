@@ -35,6 +35,8 @@ if ($company->state === "Karnataka") {
     $form = '';
 }
 
+$address = explode(',', $company->address);
+
 $html = '
 <table>
     <tr>
@@ -43,10 +45,10 @@ $html = '
             <img src="assets/img/pay-logo.jpg" height="60"/>
         </td>
         
-        <td style="width:320px;font-size:9">' . $company->address1 . '•' . $company->address2 . '<br />
-            ' . $company->address3 . '•' . $company->city . ' ' . $company->pincode . '<br />
-            ' . $company->state . '•' . $company->country . '<br />
-            T: ' . $company->phone . '• E: ' . $company->email . '<br />
+        <td style="width:320px;font-size:9">' . $address[0] . ' • ' . $address[1] . '<br />
+            ' . $address[2] . ' • ' . $company->city . ' ' . $company->pincode . '<br />
+            ' . $company->state . ' • ' . $company->country . '<br />
+            T: ' . $company->phone . ' • E: ' . $company->email . '<br />
 
         </td>
     </tr>
@@ -182,7 +184,6 @@ $html = '
             </tr>
 <div></div>            
 <hr />
-            
             <tr style="font-weight: bold;">
                 <td>30</td>
                 <td>NET PAYABLE</td>
@@ -197,7 +198,7 @@ $html = '
         <br/>
         <tr>
             <td style="width:40px;">1</td>
-            <td style="width:220px;">Sodexho</td>
+            <td style="width:220px;">Sodexo</td>
             <td style="text-align:right; width:70px;">' . $salary->sdxo . '</td>
         </tr>
         <tr>

@@ -27,6 +27,16 @@ class Controller_Base extends Controller_Template {
         Session::destroy();
     }
 
+    protected function has_access($page) {
+        $user = Session::get('user');
+        $access = Model_Access_Right::find('first', array('where' => array('page' => $page)));
+        $ac = $user->access_level;
+        if ($access->$ac == 0) {
+            Session::set_flash('error', 'Sorry! You do not have access to this page');
+            Response::redirect('welcome');
+        }
+    }
+
 }
 
 ?>

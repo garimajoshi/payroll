@@ -18,6 +18,7 @@
 <?php echo Form::close(); ?>
 
 <?php if ($salaries): ?>
+<?php echo Html::anchor('salaries/lock/month='.$month.'&year='.$year,'preview'); ?>
     <table class="table table-striped" style="margin-top:95px;">
         <thead>
             <tr>
@@ -51,6 +52,7 @@
                 <th>Total Debit</th>
                 <th></th>
                 <th>NET</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -93,6 +95,7 @@
                     <td><?php echo $salary->total_debit; ?></td>
                     <td></td>
                     <td><?php echo $salary->net; ?></td>
+                    <td><?php echo Html::anchor('salaries/lock/'.$salary->employee_id.'/'.$month.'/'.$year, '<i class=icon-pencil></i>'); ?>
 
                 </tr>
     <?php endforeach; ?>
