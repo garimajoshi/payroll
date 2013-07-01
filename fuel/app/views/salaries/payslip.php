@@ -198,7 +198,7 @@ $html = '
         <br/>
         <tr>
             <td style="width:40px;">1</td>
-            <td style="width:220px;">Sodexho</td>
+            <td style="width:220px;">Sodexo</td>
             <td style="text-align:right; width:70px;">' . $salary->sdxo . '</td>
         </tr>
         <tr>

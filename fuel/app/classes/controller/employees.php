@@ -13,7 +13,7 @@ class Controller_Employees extends Controller_Base {
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
                     'related' => array('bank')));
-        
+
         if (!$data['employee'] = Model_Employee::find($id)) {
             Session::set_flash('error', 'Could not find employee #' . $id);
             Response::redirect('employees');
