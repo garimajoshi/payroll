@@ -1,6 +1,6 @@
 
 <div class="view">
-<?php echo Html::anchor('banks/edit/'.$employee->bank->employee_id,'Edit',array('class'=>'btn'));?>
+
     <h2><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h2>
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
@@ -52,7 +52,7 @@
         </div>
     </div>    
     <br /><br />
-    <div class="main-headline">BANK DETAILS</div>
+    <div class="main-headline">BANK DETAILS <?php echo Html::anchor('banks/edit/'.$employee->bank->employee_id,'Edit',array('class'=>'btn', 'style'=>'float:right; margin-right:30px; margin-top:-7px;'));?></div>
     <br />  
      
     <div class="grid-12-12">

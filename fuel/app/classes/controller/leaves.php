@@ -3,8 +3,8 @@
 class Controller_Leaves extends Controller_Base {
 
     public function action_index() {
-        $data['leaves'] = Model_Leave::find('all');
-        $this->template->title = "Leaves";
+        $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "active")));
+        $this->template->title = "Employees";
         $this->template->content = View::forge('leaves/index', $data);
     }
 
@@ -20,7 +20,9 @@ class Controller_Leaves extends Controller_Base {
         $this->template->content = View::forge('leaves/view', $data);
     }
 
-    public function action_create() {
+    public function action_create($id=null) {
+            $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
+         
         if (Input::method() == 'POST') {
             $val = Model_Leave::validate('create');
 
@@ -44,7 +46,7 @@ class Controller_Leaves extends Controller_Base {
         }
 
         $this->template->title = "Leaves";
-        $this->template->content = View::forge('leaves/create');
+        $this->template->content = View::forge('leaves/create',$data);
     }
 
     public function action_edit($id = null) {

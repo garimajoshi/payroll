@@ -1,3 +1,11 @@
+<div class='headline'><h3>Change <span class='muted'>Password</span></h3></div>
+<br />
+<?php if (Session::get_flash('error')): ?>
+                <div class="alert alert-error">
+                    <strong>Error</strong>
+                    
+                </div>
+            <?php endif; ?>
 <?php echo Form::open(array('class' => 'formee well', 'id' => 'loginForm', 'name' => 'loginForm')); ?>	
 
 <div class="grid-8-12">
@@ -22,7 +30,9 @@
     </div>    
     <div class="grid-4-12">
         <?php echo Form::password('old_password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Old Password')); ?>
-    </div>        
+    </div>  
+                
+
 </div>
 <div class='grid-8-12'>
     <div class='grid-4-12'>

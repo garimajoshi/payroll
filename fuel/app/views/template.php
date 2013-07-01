@@ -34,9 +34,7 @@ function validatePassword(){
     		confirmpassword :" <span style='color:#f00;'><em>Enter Confirm Password same as Password</em></span>"
 	    }
 	});
-	if(validator.form()){
-		alert('Sucess');
-	}
+	
 }
 
  </script>

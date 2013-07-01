@@ -2,14 +2,6 @@
 
 	<fieldset>
 		<div class="control-group">
-			<?php echo Form::label('Employee id', 'employee_id', array('class'=>'control-label')); ?>
-
-			<div class="controls">
-				<?php echo Form::input('employee_id', Input::post('employee_id', isset($leave) ? $leave->employee_id : ''), array('class' => 'span4', 'placeholder'=>'Employee id')); ?>
-
-			</div>
-		</div>
-		<div class="control-group">
 			<?php echo Form::label('Date of leave', 'date_of_leave', array('class'=>'control-label')); ?>
 
 			<div class="controls">

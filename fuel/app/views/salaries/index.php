@@ -2,7 +2,7 @@
 
 <div class="headline">
     <h3 style="z-index:0;">Payroll <span class='muted'>Central</span>
-        <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 10px;")); ?>
+        <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 30px;")); ?>
         <div>
             <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
             <button type="submit" class="btn ">

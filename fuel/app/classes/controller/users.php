@@ -7,7 +7,12 @@ class Controller_Users extends Controller_Base {
         $this->template->title = "Users";
         $this->template->content = View::forge('users/index', $data);
     }
-
+    public function action_access(){
+        $data['accesses'] = Model_Access_Right::find('all');
+        
+        $this->template->title = "access rights";
+        $this->template->content = View::forge('users/access',$data);
+    }
     public function action_view($id = null) {
         is_null($id) and Response::redirect('users');
 
@@ -109,7 +114,7 @@ class Controller_Users extends Controller_Base {
                 Response::redirect('users/password');
             }
             else
-                $user->password = md5(Input::post('new_password'));
+                $user->password = md5(Input::post('password'));
 
             if ($user->save()) {
                 Session::set_flash('success', 'Password updated successfully');

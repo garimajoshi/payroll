@@ -105,7 +105,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_create() {
 
-        parent::has_access("create_employee");
+        //parent::has_access("create_employee");
 
         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
