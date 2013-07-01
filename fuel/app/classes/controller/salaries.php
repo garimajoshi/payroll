@@ -13,6 +13,12 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/structure');
     }
 
+    public function action_lock($id,$month,$year) {
+        
+        print_r($years);
+        View::forge('salaries/statement');
+    }
+
     public function action_payroll() {
         $this->template->content = View::forge('salaries/payroll');
     }

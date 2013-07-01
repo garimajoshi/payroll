@@ -9,7 +9,8 @@
         <?php echo Asset::css('bootstrap.css'); ?>
         <?php echo Asset::css('template.css'); ?>
         <?php echo Asset::css('menu.css'); ?>
-            <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
+        <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
+        <?php echo Asset::js('jquery.validate.js'); ?>
         <?php echo Asset::js('css_browser_selector.js'); ?>
         <?php echo Asset::js('formee.js'); ?>    
         <?php echo Asset::js('countries.js'); ?>
@@ -18,6 +19,27 @@
          <![endif]-->
     </head>
     <body style="overflow: auto;">
+        <script>
+
+function validatePassword(){	
+	var validator = $("#loginForm").validate({
+		rules: {        	        		
+			password :"required",
+			confirmpassword:{
+				equalTo: "#password"
+		    }		
+    	},  	                          
+	    messages: {
+    		password :" Enter Password",
+    		confirmpassword :" <span style='color:#f00;'><em>Enter Confirm Password same as Password</em></span>"
+	    }
+	});
+	if(validator.form()){
+		alert('Sucess');
+	}
+}
+
+ </script>
 
         <?php
 

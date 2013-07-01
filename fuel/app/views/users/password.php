@@ -1,14 +1,12 @@
-<div class="headline"><h3>Change <span class="muted">Password</span></h3></div>
-<br />
-<?php echo Form::open(array('class' => 'formee')); ?>
+<?php echo Form::open(array('class' => 'formee well', 'id' => 'loginForm', 'name' => 'loginForm')); ?>	
 
 <div class="grid-8-12">
     <div class="grid-4-12">
         <?php echo Form::label('Username :', 'username'); ?>
     </div> 
-    <div class="grid-4-12">
+    <div class="grid-4-12" style='margin-top:8px;'>
         <?php if ($user = Session::get('user')) { ?>
-            <span class ="username"> <?php echo $user->name; ?></span>
+            <span class='username'> <?php echo $user->name; ?></span>
             <?php
         } else {
             Response::redirect('login/login');
@@ -23,27 +21,28 @@
         <?php echo Form::label('Old Password <em class="formee-req">*</em>', 'old_password'); ?>
     </div>    
     <div class="grid-4-12">
-        <?php echo Form::input('old_assword', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Old Password')); ?>
+        <?php echo Form::password('old_password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Old Password')); ?>
     </div>        
 </div>
-<div class="grid-8-12">
-    <div class="grid-4-12">
-        <?php echo Form::label('New Password <em class="formee-req">*</em>', 'new_password'); ?>
-    </div>    
-    <div class="grid-4-12">
-        <?php echo Form::input('new_Password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'New Password')); ?>
-    </div>        
+<div class='grid-8-12'>
+    <div class='grid-4-12'>
+        <?php echo Form::label('New Password<em class="formee-req">*</em>', 'password'); ?>
+    </div>
+    <div class='grid-4-12'>
+        <input type="password" name="password" id="password" required/>
+    </div></div>
+<div class='grid-8-12'>
+    <div class='grid-4-12'>
+        <?php echo Form::label('Confirm Password<em class="formee-req">*</em>', 'confirmpassword'); ?>
+    </div>			
+    <div class='grid-4-12'>
+        <input type="password" name="confirmpassword" id="confirmpassword" required/>
+    </div>		
+</div>
+<div class='grid-8-12'>
+    <div class='grid-4-12'>
+        <?php echo Form::submit('submit', 'submit', array('class' => 'btn', 'onClick' => 'validatePassword();')); ?>
+    </div>
 </div>
 
-<div class="grid-8-12">
-    <div class="grid-4-12">
-        <?php echo Form::label('Retype Password <em class="formee-req">*</em>', 'check_password'); ?>
-    </div>    
-    <div class="grid-4-12">
-        <?php echo Form::input('check_password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Retype Password')); ?>
-    </div>        
-</div>
-<div class="grid-8-12">
-    <?php echo Form::submit('submit', 'save', array('class' => 'formee-button')); ?>
-</div>
 <?php echo Form::close(); ?>

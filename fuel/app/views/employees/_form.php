@@ -1,4 +1,7 @@
-   
+   <script>
+$("form").validate();
+</script>
+
 <?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:50px;")); ?>
 <div class="grid-12-12">
     <div class="grid-4-12">
@@ -7,11 +10,11 @@
     </div>
     <div class="grid-4-12">
         <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch'); ?>
-        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Branch')); ?>
+        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required')); ?>
     </div>
 </div>
 <div class="grid-12-12">
-    <div class="grid-1-12">
+    <div class="grid-2-12">
         <?php echo Form::label('Title <em class="formee-req">*</em>', 'title'); ?>
         <?php
         echo Form::select('title', Input::post('title', isset($employee) ? $employee->title : ''), array(
@@ -26,7 +29,7 @@
         <?php echo Form::label('First Name <em class="formee-req">*</em>', 'first_name'); ?>
         <?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'First Name')); ?>
     </div>
-    <div class="grid-4-12">
+    <div class="grid-3-12">
         <?php echo Form::label('Last Name <em class="formee-req">*</em>', 'last_name'); ?>
         <?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Last Name')); ?>
     </div>

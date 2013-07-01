@@ -1,7 +1,7 @@
 
 
 <div class="headline">
-    <h3 style="z-index:0;">Employee <span class='muted'>Directory</span>
+    <h3 style="z-index:0;">Payroll <span class='muted'>Central</span>
         <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 10px;")); ?>
         <div>
             <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
