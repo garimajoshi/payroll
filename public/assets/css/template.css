@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
 body{
 
 }
@@ -15,8 +17,12 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 #border{
 
     height:1000px;
-    width:200px;
+    width:220px;
     border-right: 1px solid #ccc;
+}
+.cf{
+    margin-left: 980px;
+    zoom: 1;
 }
 .company{
     border: 1px solid #ccc;
@@ -46,12 +52,10 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 }
 #container{
-    overflow-x: auto;
-    position:fixed;
-    margin-top: -950px;
+    overflow: auto;
+    margin-top: -920px;
     width:85%;
-    height:590px;
-    margin-left: 200px;
+    margin-left: 220px;
 
 }
 .controls input{
@@ -68,7 +72,18 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     margin-left: 600px;
     margin-top: -300px;
 }
+.dark {
+    background-color: #3f4551;
+    color: #fff;
+    width:150px;
+    padding: 10px 5px 10px 5px;
 
+    border-radius: 0.3125em;
+    -moz-border-radius: 0.3125em;
+    -webkit-border-radius: 0.3125em;
+
+
+}
 .debit{
     margin-left: 160px;
     margin-top: 30px;
@@ -85,6 +100,9 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-left: 10px;
     width: 450px;
 }
+.fr{
+    float:right;
+}
 .grid-12-12{
     margin-top:-35px;
 }
@@ -95,21 +113,25 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     height:40px;
     z-index:30;
     margin-left:-10px;
-    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#ccc));
-    background-image: linear-gradient(#fff, #ccc);
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+    background-color: #2a2e36;
+    padding: 0.625em 0;
 }
+.left-sidebar{
+    position:fixed; 
+    width:180px;
+    left:15px; 
+    top:120px;
+    height:100%;}
 #header h1{
-    color: #111;
-    font-family: helvetica,arial, sans-serif;
+    color: #d7d7e7;
+    font-family: "Droid Sans", sans-serif;
     padding-left: 50px;
     font-size:25px;
     padding-bottom:5px;
     line-break: auto;
     line-height:10px;
-    font-weight:700;
-    font-style: italic;
-    font-family: Georgia, Times New Roman, Times, serif;
+    font-weight: 500;
+
     max-width:350px;
 
 
@@ -117,10 +139,20 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     padding-top: 20px;
 
 }
+#header-nav{
+    margin-top:10px;
+    list-style-type: none;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
 .headline{
 
     z-index:0;
-    background-color: #68687c;
+    background-color: #5d6677;
     width:100%;
     height:40px;
 
@@ -138,9 +170,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     width:120px;
 
 }
-#left-nav{
-    position:fixed;
-}
+
 
 .login_info{
     color:black;
@@ -156,114 +186,13 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-size:18px; 
     font-family: Times New Roman;
 }
-#nav a,a{
-    text-decoration:none;
-    display:list-item;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: left;
-    padding-left: 20px;
-    list-style: none;
-}
-
-/* Just main menu links --[for non-javascript users this applies to submenu links as well]*/
-#nav a{
-    margin:0;
-}
-
-/* All menu links on hover or focus */
-#nav a:hover, #nav a:focus{
-    background-color:#bbb;
-    color:#FFF;
-}
-#nav li a:hover,
-#nav li a:focus{
-    background-color:#bbb;
-    color:#FFF;
-}
-
-/* Parent Sub Menu Links ---[javascript users only]*/
-
-/* All submenu OLs and ULs */
-#nav ol, #nav ul, #subMenusContainer ul, #subMenusContainer ol {	
-    /*border around submenu goes here*/
-    background:#fff;	
-    border:1px solid #ddd; 
-    left:0;
-}
-
-/* All ULs and OLs */
-#nav, #nav ul, #nav ol, #subMenusContainer ul, #subMenusContainer ol { 
-
-    margin-left: 10px;
-    list-style: none;
-    line-height: 1em;
-}
-
-/* List items in main menu --[for non-javascript users this applies to submenus as well]  */
-#nav li { 
-    /*great place to use a background image as a divider*/
-    display:block;
-    list-style:none;
-    position:relative;
-    background: -webkit-gradient(linear, center top, center bottom, from(#fff), to(#cc));
-    background-image: linear-gradient(#fff, #ccc);
-
-    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
-
-    text-align: right;
-    display:block;
-}
-
-
-/* main menu ul or ol elment */
-#nav{
-    display:block;
-    position: absolute;
-    list-style:none;
-    margin-top: 200px;
-    width:186px;
-    z-index:5;
-
-    /* Background color and gradients */
-
-
-
-    text-align: right;
-    display:block;
-}
-
-#nav li li{	float:none; }
-
-#nav li li a{ /* Just submenu links*/	
-    position:relative;
-    float:none;
-}
-
-#nav li ul { /* second-level lists */
-    position: absolute;
-    width: 10em;
-    margin-left: -1000em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
-}
-
-/* third-and-above-level lists */
-#nav li ul ul { margin: -1em 0 0 -1000em; }
-#nav li:hover ul ul {	margin-left: -1000em; }
-
-/* lists nested under hovered list items */
-#nav li:hover ul{	margin-left: 186px; margin-top:-2.5em;}
-#nav li li:hover ul {	margin-left: 10em; }
-
-/* extra positioning rules for limited noscript keyboard accessibility */
-#nav li a:focus + ul {  margin-left: 186px; margin-top:-2.5em; }
-#nav li li a:focus + ul { left:186px; margin-left: 1010em; margin-top:-2.5em;}
-#nav li li a:focus {left:186px;  margin-left:1000em; width:10em;  margin-top:-2.5em;}
-#nav li li li a:focus {left:186px; margin-left: 2010em; width: 10em;  margin-top:-2.5em;}
-#nav li:hover a:focus{ margin-left: 0; }
-#nav li li:hover a:focus + ul { margin-left: 10em; }
 
 .odd{
     float:left;
+}
+.page-full-width{
+    margin-top:-35px;
+    padding:0 1.875em;
 }
 .payroll-table{
     margin-top:20px;
@@ -292,6 +221,19 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-size: 14px;
     font-stretch: ultra-condensed;
 }
+.button {
+    padding: 0.833em;
+    display: inline-block;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    font-size: 0.75em;
+
+}
+.round {
+    border-radius: 0.3125em;
+    -moz-border-radius: 0.3125em;
+    -webkit-border-radius: 0.3125em;
+}
 .table thead tr th{
     font-size:16px; 
     font-weight:bold;
@@ -311,7 +253,10 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 
 
-
+.username{
+    font-size: 16px;
+    font-weight: 700;
+}
 .userinput{
     float:left;
     text-align: left;
@@ -369,7 +314,6 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 
 
-
 ol, ul{	margin: 1em 0 1em 2em; }
 
 ol ol, ol ul, ul ol, ul ul{ margin-top:0; margin-bottom:0; }
@@ -378,8 +322,69 @@ ol li{	list-style:decimal }
 ol li ol li{ list-style:upper-alpha; }
 ol li ol li ol li{ list-style:upper-roman; }
 
-ul li{ list-style:disc;}
+ul li{ list-style:none;} 
 .view{
     margin-left:50px;
 }
 
+.v-sep{
+    float:right;
+    border-right: 1px solid #3f4551;
+    margin-right: 0.625em;
+    padding-right: 0.625em;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ul#header-nav{
+    margin-left:60px;
+}
+ul#header-nav li ul {
+    list-style-type: none;
+    display:block;
+    text-align: -webkit-match-parent;
+    position: absolute;
+    z-index: 999;
+    margin-top: -2px;
+
+    font-size: 0.75em;
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+ul#header-nav > li {
+    list-style-type: none;
+    float: left;
+
+    margin-right: 0.312em; /* 5/16 */
+    position: relative;
+}
+ul#header-nav li:first-child { margin-left: 0; }
+ul#header-nav li:hover ul { left: 0; /* On hover, we make the submenu visible again */ }	
+/* Persistent hover state, exactly the same style as the inner anchor on hover (.dark:hover) */
+ul#header-nav li:hover a {
+    list-style-type: none;
+    background-color: #5d6677;
+    color: white;
+}
+ul#header-nav li ul {
+    list-style-type: none;
+    margin-left: 0px;
+    width:125px;
+    position: absolute;
+    z-index: 999;
+    margin-top: -2px;
+    left: -9999px;
+}
+.header-nav-child {
+    color: white;
+    font-size: 12px;
+    padding: 0.833em 0 0.833em 3em;
+    border-top: 1px solid #6a7282;
+    background: #5d6677  no-repeat center;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+}

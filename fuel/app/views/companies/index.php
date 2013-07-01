@@ -1,6 +1,9 @@
 <div class="headline"><h3>Listing <span class="muted">Locations</span></div>
 <br />
-<table class="company">
+
+<?php echo Html::anchor('companies/create', '<i class="icon-plus icon-white"></i> Add New Location', array('class' => 'btn btn-inverse', 'style' => 'color:#fff; float:right; margin-right:55px; margin-top:40px;')); ?>
+
+<table class="company" style="margin-top:72px;">
     <thead>
         <tr>
             <th>Location</th>
@@ -22,14 +25,19 @@
                                 ?><br />
                             <?php endforeach; ?>
                             <?php echo $company->city; ?><br />
-        <?php echo $company->state . '-' . $company->pincode; ?><br />
-        <?php echo $company->country; ?><br /><br />
+                            <?php echo $company->state . '-' . $company->pincode; ?><br />
+                            <?php echo $company->country; ?><br /><br />
                             <b>Contact:</b><br />
                             T: <?php echo $company->phone; ?><br />
                             F: <?php echo $company->fax; ?><br />
                             E: <?php echo $company->email; ?><br />
-    <?php endforeach;
-endif; ?><br />
+                            <div style="margin-left: 300px;">
+                                <?php echo Html::anchor('companies/edit/' . $company->id, 'Edit', array('class' => 'btn')); ?>
+                                <?php echo Html::anchor('companies/delete/' . $company->id, 'Delete', array('class' => 'btn', 'onclick' => "return confirm('Are you sure?')")); ?>
+                            </div>
+                        <?php endforeach;
+                    endif;
+                    ?><br />
                 </div>
             </td>
         </tr></tbody>

@@ -26,7 +26,12 @@
         var medical = <?php echo $medical; ?>;
         var travel = <?php echo $travel; ?>;
         var pf = <?php echo $pf; ?>;
-
+        if (isNaN(leave)) {
+            var vleave = 0;
+        }
+        else {
+            vleave = leave;
+        }
         var pf_adjust = 0;
         if (document.getElementById('pf_applicable').checked == 1) {
             pf_adjust = adjust / pf_adjust_frac;
@@ -43,7 +48,7 @@
             pf_value = 0.00;
         }
         var special_allowance = pf_adjust - (basic + hra + lta + medical + travel + pf_value);
-        var total_credit = basic + hra + lta + medical + travel + pf_value + special_allowance + leave + bonus1 + bonus2 + allowance1 + allowance2 + allowance3;
+        var total_credit = basic + hra + lta + medical + travel + pf_value + special_allowance + vleave + bonus1 + bonus2 + allowance1 + allowance2 + allowance3;
 
         var total_debit = professional_tax + income_tax + pf_value + deduction1 + deduction2 + deduction3;
 
@@ -55,13 +60,13 @@
         document.getElementById('special_allowance').innerHTML = special_allowance.toFixed(2);
         document.getElementById('pf_value_debit').innerHTML = pf_value.toFixed(2);
         document.getElementById('pf_value_credit').innerHTML = pf_value.toFixed(2);
-        document.getElementById('viewleave').innerHTML = leave;
+        document.getElementById('viewleave').innerHTML = vleave;
         document.getElementById('viewbonus1').innerHTML = bonus1;
         document.getElementById('viewbonus2').innerHTML = bonus2;
         document.getElementById('viewallowance1').innerHTML = allowance1;
         document.getElementById('viewallowance2').innerHTML = allowance2;
         document.getElementById('total_credit').innerHTML = total_credit.toFixed(2);
-         document.getElementById('total_debit').innerHTML = total_debit.toFixed(2);
+        document.getElementById('total_debit').innerHTML = total_debit.toFixed(2);
         document.getElementById('viewprofessional_tax').innerHTML = professional_tax;
         document.getElementById('viewincome_tax').innerHTML = income_tax;
         document.getElementById('medical').innerHTML = medical;

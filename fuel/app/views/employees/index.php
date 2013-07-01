@@ -17,10 +17,11 @@
 
 
 <?php if ($employees): ?>
-<table class="table table-striped" style="margin-top:90px;">
+
+    <table class="table table-striped" style="margin-top:90px;">
         <thead>
             <tr>
-                <th><?php echo Form::checkbox('all'); ?></th>
+                <th><input type="checkbox" value="" onclick="toggle(this);" /></th>
                 <th>Employee Id</th>
                 <th>Name</th>
                 <th>Phone No</th>
@@ -33,7 +34,7 @@
         <tbody>
             <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><?php echo Form::checkbox('$employee->id'); ?></td>
+                    <td><input type="checkbox" name="check" value="<?php echo $employee->id; ?>"></td>
                     <td><?php echo $employee->id; ?></td>
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
@@ -45,7 +46,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-
 <?php else: ?>
     <p>No Employees.</p>
 
