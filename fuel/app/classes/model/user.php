@@ -9,6 +9,7 @@ class Model_User extends \Orm\Model {
         'last_login_at' => array(
             'data_type' => 'timestamp',
         ),
+        'access_level',
         'created_at',
         'updated_at',
     );

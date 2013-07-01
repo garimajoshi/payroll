@@ -13,11 +13,11 @@
     <br />
 </div>
 
-<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:-210px; margin-bottom:5px;")); ?>
+<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:-195px; margin-bottom:5px;")); ?>
 
 
 <?php if ($employees): ?>
-    <table class="table table-striped" style="margin-top:30px;">
+<table class="table table-striped" style="margin-top:90px;">
         <thead>
             <tr>
                 <th><?php echo Form::checkbox('all'); ?></th>
