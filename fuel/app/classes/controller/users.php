@@ -15,7 +15,7 @@ class Controller_Users extends Controller_Base {
             $pf_adjust = Model_Constant::find('first', array('where' => array('page' => $page)));
             $pf_adjust->value = Input::post('moderator1');
         }
-        $this->template->title = "access rights";
+        $this->template->title = "Access Rights";
         $this->template->content = View::forge('users/access', $data);
     }
 
@@ -58,48 +58,26 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_edit($id = null) {
-        /* is_null($id) and Response::redirect('users');
+        is_null($id) and Response::redirect('users');
 
-          if (!$user = Model_User::find($id)) {
-          Session::set_flash('error', 'Could not find user #' . $id);
-          Response::redirect('users');
-          }
+			if (!$user = Model_User::find($id)) {
+				Session::set_flash('error', 'Could not find user #' . $id);
+				Response::redirect('users');
+			}
 
-          $val = Model_User::validate('edit');
-          if ($val->run()) {
-          $user->name = Input::post('username');
-          $user->password = md5(Input::post('password'));
-          $user->access_level = Input::post('access_level');
+			if (Input::method() == 'POST') {
+				$user->access_level = Input::post('access_level');
 
-
-          if ($user->save()) {
-          Session::set_flash('success', 'Updated user #' . $id);
-
-          Response::redirect('users');
-          } else {
-          Session::set_flash('error', 'Could not update user #' . $id);
-          }
-          } else {
-          if (Input::method() == 'POST') {
-
-
-          $user->name = $val->validated('username');
-          $user->password = $val->validated('password');
-          $user->access_level = $val->validated('access_level');
-
-          Session::set_flash('error', $val->error());
-          }
-
-          $this->template->set_global('user', $user, false);
-          }
-
-         */
-
-
-
-
-        $this->template->title = "Users";
-        //  $this->template->content = View::forge('users/edit');
+				if ($user->save()) {
+					$this->template->set_global('user', $user, false);
+					Session::set_flash('success', 'Updated user #' . $id);
+					Response::redirect('users');
+				} else {
+					Session::set_flash('error', 'Could not update user #' . $id);
+				}
+			}
+        $this->template->title = "Edit User";
+        $this->template->content = View::forge('users/edit');
     }
 
     public function action_password() {
