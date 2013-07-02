@@ -428,17 +428,71 @@ class Controller_Salaries extends Controller_Base {
         Response::redirect('salaries');
     }
 
-    public function action_print($id = null) {
+    public function action_print($id = null, $month = null, $year = null) {
 
-        is_null($id) and Response::redirect('salaries');
+		(is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
 
-        if (!$data['salary'] = Model_Salary::find('first', array('where' => array('employee_id' => $id)))) {
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
+		
+		//4 - $month
+		//$month - 3
+		$data['fytd'] = getFYTD($id, $month, $year);
+		print_r($data['fytd'];
         return Response::forge(View::forge('salaries/payslip', $data));
     }
+	
+	private function getFYTD($id, $month, $year)
+	{
+		$total['basic'] = 0;
+		$total['hra'] = 0;
+		$total['lta'] = 0;
+		$total['travel'] = 0;
+		$total['medical'] = 0;
+		$total['credit_other'] = 0;
+		$total['bonus'] = 0;
+		$total['leave'] = 0;
+		$total['credit_total'] = 0;
+		$total['allowance'] = 0;
+		$total['professional_tax'] = 0;
+		$total['income_tax'] = 0;
+		$total['deduction1'] = 0;
+		$total['deduction2'] = 0;
+		$total['deduction3'] = 0;
+		$total['total_debit'] = 0;
+		$total['net'] = 0;
+		
+		$m = 4;
+		$y = $year;
+		while($m <= $month) {
+		$salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $m), array('year' => $y))))
 
+		$data['basic'] += $salary->basic;
+		$data['hra'] += $salary->hra;
+		$data['lta'] += $salary->lta;
+		$data['medical'] += $salary->medical;
+		$data['travel'] += $salary->travel;
+		$data['credit_other'] += $salary->credit_other;
+		$data['bonus'] = $data['bonus'] + $salary->bonus1 + $salary->bonus2;
+		$data['leave'] += $salary->leave;
+		$data['credit_total'] += $salary->credit_total;
+		$data['allowance'] = $data['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+		$total['professional_tax'] += $salary->professional_tax;
+		$total['income_tax'] += $salary->income_tax;
+		$total['deduction1'] += $salary->deduction1;
+		$total['deduction2'] += $salary->deduction2;
+		$total['deduction3'] += $salary->deduction3;
+		$total['total_debit'] += $salary->total_debit;
+		$total['net'] += $salary->net;
+		$m++;
+		if($m == 12)
+			$y--;
+		}
+		return $total;
+	}
 }

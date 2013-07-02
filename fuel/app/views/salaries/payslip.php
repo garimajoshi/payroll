@@ -110,7 +110,7 @@ $html = '
             <tr>
                 <td>6</td>
                 <td>Bonus</td>
-                <td style="text-align:right">' . $salary->bonus1 . '</td>
+                <td style="text-align:right">' . ($salary->bonus1 + $salary->bonus2) . '</td>
                 <td style="text-align:right">' . $salary->bonus1 . '</td>
 
 
@@ -126,7 +126,7 @@ $html = '
             <tr>
                 <td>8</td>
                 <td>Other Allowance</td>
-                <td style="text-align:right">0.00</td>
+                <td style="text-align:right">' . ($salary->allowance1 + $salary->allowance2 + $salary->allowance3) . '</td>
                 <td style="text-align:right">0.00</td>
             </tr>
             <tr style="border-bottom: 2px solid #000;">
@@ -148,8 +148,8 @@ $html = '
              <tr>
                 <td>11</td>
                 <td>Less:Professional Tax</td>
-                <td style="text-align:right"><?php echo $salary->professional_tax; ?></td>
-                <td style="text-align:right"><?php echo $salary->professional_tax; ?></td>
+                <td style="text-align:right">' . $salary->professional_tax . '</td>
+                <td style="text-align:right">' . $salary->professional_tax . '</td>
             </tr>
             <tr>
                 <td>12</td>
@@ -160,19 +160,19 @@ $html = '
             <tr>
                 <td>13</td>
                 <td>Other Deductions</td>
-                <td style="text-align:right">0.00</td>
+                <td style="text-align:right">' . $salary->deduction1 . '</td>
                 <td style="text-align:right">0.00</td>
             </tr>
             <tr>
                 <td>14</td>
                 <td>Other Deductions</td>
-                <td style="text-align:right">0.00</td>
+                <td style="text-align:right">' . $salary->deduction2 . '</td>
                 <td style="text-align:right">0.00</td>
             </tr>
             <tr style="border-bottom: 2px solid #000;">
                 <td>15</td>
                 <td>Other Deductions</td>
-                <td style="text-align:right">0.00</td>
+                <td style="text-align:right">' . $salary->deduction3 . '</td>
                 <td style="text-align:right">0.00</td>
             </tr>
             <hr />
