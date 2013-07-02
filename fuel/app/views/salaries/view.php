@@ -7,7 +7,7 @@
         <div class="grid-2-12" style="margin-top:18px;color:#f00;">
             <?php echo createMonths('month', $month); ?>
         </div>
-                <div class="grid-2-12" style="margin-top:18px;">
+        <div class="grid-2-12" style="margin-top:18px;">
             <?php echo createYears(2000, 2050, 'year', $year); ?>
         </div>
         <div class="grid-2-12" style="margin-top:18px;">
@@ -18,4 +18,6 @@
 </div>
 <?php echo Form::close(); ?>
 
-
+<?php if ($salaries): ?>
+    <?php echo $salaries->gross?>
+<?php endif; ?>

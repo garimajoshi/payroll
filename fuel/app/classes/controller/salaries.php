@@ -37,7 +37,7 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/structure');
     }
 
-    public function action_lock($month, $year) {
+    public function action_lock($month = null, $year = null) {
 
         (is_null($month) or is_null($year)) and Response::redirect('salaries');
         $locks = Model_Salary::find('all', array('where' => array(array('month' => $month), array('year' => $year))));
@@ -72,34 +72,21 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/payroll', $data);
     }
 
-    public function action_view($id, $month, $year) {
-        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+    public function action_view($id) {
+        is_null($id) and Response::redirect('salaries');
 
-        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year)),
-                    'related' => array('employee')));
-        $data['month'] = $month;
-        $data['year'] = $year;
-
-        $this->template->title = 'View Payslip';
-        $this->template->content = View::forge('salaries/view', $data);
-        
         $var_month = Input::post('month');
         $var_year = Input::post('year');
 
-        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
+        $data['salaries'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
-        $data['month'] = $var_month;
-        $data['year'] = $var_year;
-        $this->template->title = 'Salary Statement';
-        $this->template->content = View::forge('salaries/statement', $data);
-
-        $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
-        if (!$data['salary'] = Model_Salary::find($id)) {
+        if (!$data['salaries']) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
-
-        $this->template->title = "Salary";
+        $data['month'] = $var_month;
+        $data['year'] = $var_year;
+        $this->template->title = 'Salary Statement';
         $this->template->content = View::forge('salaries/view', $data);
     }
 
@@ -237,10 +224,10 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/create', $data);
     }
 
-    public function action_edit($id = null, $month, $year) {
-        is_null($id) and Response::redirect('salaries');
+    public function action_edit($id = null, $month = null, $year = null) {
+        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
 
-        if ($salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
+        if (!$salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
