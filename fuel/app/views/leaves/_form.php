@@ -29,7 +29,7 @@
 			<?php echo Form::label('No of hours <em class="formee-req">*</em>', 'type', array('style'=>'font-weight:700;')); ?>
                     </div>
 			<div class="grid-4-12">
-				<?php echo Form::select('time', Input::post('type', isset($leave) ? $leave->type : ''), array('1' => '1', '2'=>'2','3'=>'3', '4'=>'4', '5'=>'5','6'=>'6','7'=>'7','8'=>'8')); ?>
+				<?php echo Form::select('time',' ', array('4'=>'4','8'=>'8')); ?>
 
 			</div>
 		</div>
