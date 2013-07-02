@@ -110,7 +110,7 @@ class Controller_Employees extends Controller_Base {
         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
 
-			if($emp = Model_Employee::find(Input::post('id')) {
+			if($emp = Model_Employee::find(Input::post('id'))) {
 				Session::set_flash('error', 'Employee already exist #' . Input::post('id') . '.');
 				Response::redirect('employees/create' . $employee->id);
 			}
