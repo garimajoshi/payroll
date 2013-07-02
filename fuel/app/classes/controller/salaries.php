@@ -74,10 +74,12 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_view($id) {
       
-        $var_month = Input::post('month');
+           $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+$var_month = Input::post('month');
         $var_year = Input::post('year');
-
-        $data['salaries'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
+        
+        $data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
         
         $data['month'] = $var_month;
