@@ -22,7 +22,7 @@
 <div class="grid-12-12">
     <div class="grid-4-12">
         <div class="grid-3-12"><label><b> LTA :</b></label> </div>
-        <div class="grid-4-12"><input type="text" name="value_adjust" class="span1"  value="0.00" style="height: 20px;margin-left:-10px; margin-top: 2px;"></div>
+        <div class="grid-4-12"><input type="text" name="value_lta" class="span1"  value="0.00" style="height: 20px;margin-left:-10px; margin-top: 2px;"></div>
         <div class="grid-5-12"><label> of Sodexo Adjust</label></div>
 
     </div>

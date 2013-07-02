@@ -101,7 +101,6 @@ class Controller_Users extends Controller_Base {
             Response::redirect('users');
         }
 
-        //print_r($user->password);
         if (Input::method() == 'POST') {
 
             if ($user->password != md5(Input::post('old_password'))) {
@@ -109,7 +108,7 @@ class Controller_Users extends Controller_Base {
                 Response::redirect('users/password');
             }
             else
-                $user->password = md5(Input::post('new_password'));
+                $user->password = md5(Input::post('check_password'));
 
             if ($user->save()) {
                 Session::set_flash('success', 'Password updated successfully');
@@ -138,24 +137,4 @@ class Controller_Users extends Controller_Base {
         Response::redirect('users');
     }
 
-    public function action_forgot_password() {
-        $email_data = array();
-        $email = Email::forge();
-        $email->from('info@neogenlabs.com', Config::get('site_name'));
-        $email->to(Input::post('email'), Input::post('username'));
-        $email->subject('Forgot Password');
-
-        $email_data['name'] = "Kedves " . Input::post('first_name') . " " . Input::post('last_name') . "<br><br>";
-        $email_data['title'] = "Setup your new password" . "<br>";
-        $email_data['link'] = '<a href="' . Config::get('site_url') . "user/activate/" . $user['hash'] . '">Fiókod mherősítéséhez kérlek kattints ide</a>';
-
-        $email->html_body(\View::forge('users/activation', array('email_data' => $email_data)));
-        $email->send();
-
-        $response->body(json_encode(array(
-            'status' => 'ok',
-        )));
-    }
-
 }
-

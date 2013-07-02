@@ -10,6 +10,30 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_structure() {
+
+        if (Input::method() == 'POST') {
+            $pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
+            $pf_adjust->value = Input::post('pf_adjust_value');
+
+            $pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+            $pf->value = Input::post('value_pf');
+
+            $basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
+            $basic->value = Input::post('value_basic');
+
+            $lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
+            $lta->value = Input::post('value_lta');
+
+            $medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
+            $medical->value = Input::post('value_medical');
+
+            $travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
+            $travel->value = Input::post('value_travel');
+
+            $hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
+            $hra->value = Input::post('value_hra');
+        }
+        $this->template->title = "Salary Structure";
         $this->template->content = View::forge('salaries/structure');
     }
 
@@ -200,10 +224,10 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/create', $data);
     }
 
-    public function action_edit($id = null) {
+    public function action_edit($id = null, $month, $year) {
         is_null($id) and Response::redirect('salaries');
 
-        if (!$salary = Model_Salary::find($id)) {
+        if ($salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
             Response::redirect('salaries');
         }
@@ -259,9 +283,6 @@ class Controller_Salaries extends Controller_Base {
             $var_total_debit = $var_professional_tax + $var_income_tax + $var_pf_value + $var_deduction1 + $var_deduction2 + $var_deduction3;
             $var_net = $var_credit_total - $var_total_debit;
 
-            $salary->month = Input::post('month');
-            $salary->year = Input::post('year');
-            $salary->lock = 'false';
             $salary->pf_applicable = Input::post('pf_applicable');
             $salary->gross = $var_gross;
             $salary->sdxo = $var_sdxo;
@@ -345,10 +366,6 @@ class Controller_Salaries extends Controller_Base {
                 $var_total_debit = $var_professional_tax + $var_income_tax + $var_pf_value + $var_deduction1 + $var_deduction2 + $var_deduction3;
                 $var_net = $var_credit_total - $var_total_debit;
 
-
-                $salary->month = $val->validated('month');
-                $salary->year = $val->validated('year');
-                $salary->lock = 'false';
                 $salary->pf_applicable = $val->validated('pf_applicable');
                 $salary->gross = $var_gross;
                 $salary->sdxo = $var_sdxo;
