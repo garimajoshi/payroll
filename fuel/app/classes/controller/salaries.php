@@ -37,10 +37,18 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/structure');
     }
 
-    public function action_lock($id,$month,$year) {
-        
-        print_r($years);
-        View::forge('salaries/statement');
+    public function action_lock($month, $year) {
+
+        (is_null($month) or is_null($year)) and Response::redirect('salaries');
+        $locks = Model_Salary::find('all', array('where' => array(array('month' => $month), array('year' => $year))));
+
+        foreach ($locks as $lock):
+            $lock->lock = 1;
+            $lock->save();
+        endforeach;
+
+        $this->template->title = "Salary Structure";
+        $this->template->content = View::forge('salaries/statement');
     }
 
     public function action_payroll() {
@@ -64,18 +72,17 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/payroll', $data);
     }
 
-    public function action_view($id = null) {
-        is_null($id) and Response::redirect('salaries');
-        $var_month = Input::post('month');
-        $var_year = Input::post('year');
+    public function action_view($id, $month, $year) {
+        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
 
-        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year)),
                     'related' => array('employee')));
-        $data['month'] = $var_month;
-        $data['year'] = $var_year;
-        $this->template->title = 'View Payslip';
+        $data['month'] = $month;
+        $data['year'] = $year;
 
+        $this->template->title = 'View Payslip';
         $this->template->content = View::forge('salaries/view', $data);
+        
         $var_month = Input::post('month');
         $var_year = Input::post('year');
 

@@ -7,8 +7,8 @@
     <thead>
         <tr>
             <th>Page</th>
-            <th>Moderator1</th>
-            <th>Moderator2</th>
+            <th>Moderator#1</th>
+            <th>Moderator#2</th>
             <th>User</th>
         </tr>
     </thead>

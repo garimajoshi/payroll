@@ -7,12 +7,18 @@ class Controller_Users extends Controller_Base {
         $this->template->title = "Users";
         $this->template->content = View::forge('users/index', $data);
     }
-    public function action_access(){
+
+    public function action_access() {
         $data['accesses'] = Model_Access_Right::find('all');
-        
+
+        if (Input::method() == 'POST') {
+            $pf_adjust = Model_Constant::find('first', array('where' => array('page' => $page)));
+            $pf_adjust->value = Input::post('moderator1');
+        }
         $this->template->title = "access rights";
-        $this->template->content = View::forge('users/access',$data);
+        $this->template->content = View::forge('users/access', $data);
     }
+
     public function action_view($id = null) {
         is_null($id) and Response::redirect('users');
 
