@@ -8,7 +8,7 @@ class Model_Leave extends Model {
         'id',
         'employee_id',
         'date_of_leave',
-        'reason',
+        'time',
         'type',
         'created_at',
         'updated_at',

@@ -46,7 +46,7 @@ class Controller_Login extends Controller_Base {
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            Response::redirect('employees/');
+            Response::redirect('welcome/');
         }
     }
 

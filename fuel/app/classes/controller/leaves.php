@@ -10,8 +10,8 @@ class Controller_Leaves extends Controller_Base {
 
     public function action_view($id = null) {
         is_null($id) and Response::redirect('leaves');
-
-        if (!$data['leave'] = Model_Leave::find($id)) {
+        $data['leaves'] = Model_Leave::find('all',array('where' => array('employee_id' => $id)));
+        if (!$data['leaves'] = Model_Leave::find($id)) {
             Session::set_flash('error', 'Could not find leave #' . $id);
             Response::redirect('leaves');
         }
@@ -21,22 +21,29 @@ class Controller_Leaves extends Controller_Base {
     }
 
     public function action_create($id=null) {
+        is_null($id) and Response::redirect('leaves');
             $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
          
         if (Input::method() == 'POST') {
             $val = Model_Leave::validate('create');
 
             if ($val->run()) {
-                $leave = Model_Leave::forge(array(
-                            'date_of_leave' => Input::post('date_of_leave'),
-                            'reason' => Input::post('reason'),
+                   $var_dol_day = Input::post('dol_day');
+                $var_dol_month = Input::post('dol_month');
+                $var_dol_year = Input::post('dol_year');
+                $var_dol = $var_dol_year . '-' . $var_dol_month . '-' . $var_dol_day;
+                $var_input = Input::post('submit');
+                echo $var_input;
+             $leave = Model_Leave::forge(array(
+                            'employee_id' =>$id,
+                            'date_of_leave' => $var_dol,
+                            'time' => Input::post('time'),
                             'type' => Input::post('type'),
                 ));
 
                 if ($leave and $leave->save()) {
                     Session::set_flash('success', 'Added leave #' . $leave->id . '.');
-
-                    Response::redirect('leaves');
+                   
                 } else {
                     Session::set_flash('error', 'Could not save leave.');
                 }
@@ -44,9 +51,12 @@ class Controller_Leaves extends Controller_Base {
                 Session::set_flash('error', $val->error());
             }
         }
-
+         if(Input::post('submit')== 'Save'){
+                    Response::redirect('leaves');
+                    }
+        
         $this->template->title = "Leaves";
-        $this->template->content = View::forge('leaves/create',$data);
+        $this->template->content = View::forge('leaves/create',$data); 
     }
 
     public function action_edit($id = null) {
