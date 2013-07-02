@@ -17,7 +17,8 @@
     </div>
 </div>
 <?php echo Form::close(); ?>
-
-<?php if ($salaries): ?>
-    <?php echo $salaries->gross?>
-<?php endif; ?>
+<table>
+    <tr>
+        <td style="height:60px;"><?php echo Asset::img('pay-logo.jpg',''); ?></td>
+    </tr>
+</table>
