@@ -113,7 +113,11 @@ class Controller_Users extends Controller_Base {
                 Response::redirect('users/password');
             }
             else
+<<<<<<< HEAD
+                $user->password = md5(Input::post('check_password'));
+=======
                 $user->password = md5(Input::post('password'));
+>>>>>>> 8adbe630544696d4592e739b604d9e4c7e9e242c
 
             if ($user->save()) {
                 Session::set_flash('success', 'Password updated successfully');

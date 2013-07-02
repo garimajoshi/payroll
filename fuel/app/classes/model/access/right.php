@@ -5,6 +5,7 @@ class Model_Access_Right extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
+        'page',
         'admin',
         'mod1',
         'mod2',

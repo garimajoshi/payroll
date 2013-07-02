@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class" => "formee")); ?>
+<?php echo Form::open(array("class" => "formee well")); ?>
 
 <div class="grid-8-12">
     <?php echo Html::anchor('users', 'BACK', array('class' => 'formee-button', 'style' => 'color:#fff;')); ?>

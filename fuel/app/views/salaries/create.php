@@ -2,78 +2,117 @@
 <script>
     function doMath() {
 
-        var gross = parseInt(document.getElementById('gross').value);
+        if (isNaN(parseInt(document.getElementById('gross').value)))
+            var gross = 0;
+        else
+            var gross = parseInt(document.getElementById('gross').value);
+    
+    if (isNaN(parseInt(document.getElementById('sdxo').value)))
+        var sdxo = 0;
+    else
         var sdxo = parseInt(document.getElementById('sdxo').value);
+    if (isNaN(parseInt(document.getElementById('leave').value)))
+        var leave = 0;
+    else
         var leave = parseInt(document.getElementById('leave').value);
+    if(isNaN(parseInt(document.getElementById('bonus1').value)))
+        var bonus1 = 0;
+    else
         var bonus1 = parseInt(document.getElementById('bonus1').value);
+    if(isNaN(parseInt(document.getElementById('bonus2').value)))
+        var bonus2 = 0;
+    else
         var bonus2 = parseInt(document.getElementById('bonus2').value);
+    if(isNaN(parseInt(document.getElementById('allowance1').value)))
+        var allowance1 = 0;
+    else
         var allowance1 = parseInt(document.getElementById('allowance1').value);
+    
+    if(isNaN(parseInt(document.getElementById('allowance2').value)))
+        var allowance2 = 0;
+    else
         var allowance2 = parseInt(document.getElementById('allowance2').value);
+    
+        if(isNaN(parseInt(document.getElementById('allowance3').value)))
+        var allowance3 = 0;
+    else
         var allowance3 = parseInt(document.getElementById('allowance3').value);
+    
+        if(isNaN(parseInt(document.getElementById('professional_tax').value)))
+        var professional_tax = 0;
+    else
         var professional_tax = parseInt(document.getElementById('professional_tax').value);
+    
+        if(isNaN(parseInt(document.getElementById('income_tax').value)))
+        var income_tax = 0;
+    else
         var income_tax = parseInt(document.getElementById('income_tax').value);
-
+   
+        if(isNaN(parseInt(document.getElementById('deduction1').value)))
+        var deduction1 = 0;
+    else
         var deduction1 = parseInt(document.getElementById('deduction1').value);
 
+    if(isNaN(parseInt(document.getElementById('deduction2').value)))
+        var deduction2 = 0;
+    else
         var deduction2 = parseInt(document.getElementById('deduction2').value);
+    if(isNaN(parseInt(document.getElementById('deduction3').value)))
+        var deduction3 = 0;
+    else
         var deduction3 = parseInt(document.getElementById('deduction3').value);
 
-        var adjust = gross - sdxo;
-        var basic_frac = <?php echo $basic; ?>;
-        var hra_frac = <?php echo $hra; ?>;
-        var lta_frac = <?php echo $lta; ?>;
-        var pf_adjust_frac = <?php echo $pf_adjust; ?>;
-        var medical = <?php echo $medical; ?>;
-        var travel = <?php echo $travel; ?>;
-        var pf = <?php echo $pf; ?>;
-        if (isNaN(leave)) {
-            var vleave = 0;
-        }
-        else {
-            vleave = leave;
-        }
-        var pf_adjust = 0;
-        if (document.getElementById('pf_applicable').checked == 1) {
-            pf_adjust = adjust / pf_adjust_frac;
-        } else {
-            pf_adjust = adjust;
-        }
-        var basic = basic_frac * pf_adjust;
-        var hra = hra_frac * pf_adjust;
+    var adjust = gross - sdxo;
+    var basic_frac = <?php echo $basic; ?>;
+    var hra_frac = <?php echo $hra; ?>;
+    var lta_frac = <?php echo $lta; ?>;
+    var pf_adjust_frac = <?php echo $pf_adjust; ?>;
+    var medical = <?php echo $medical; ?>;
+    var travel = <?php echo $travel; ?>;
+    var pf = <?php echo $pf; ?>;
+    
+    var pf_adjust = 0;
+    if (document.getElementById('pf_applicable').checked == 1) {
+        pf_adjust = adjust / pf_adjust_frac;
+    } else {
+        pf_adjust = adjust;
+    }
+    var basic = basic_frac * pf_adjust;
+    var hra = hra_frac * pf_adjust;
 
-        var lta = lta_frac * pf_adjust;
-        if (document.getElementById('pf_applicable').checked == 1) {
-            pf_value = pf * basic;
-        } else {
-            pf_value = 0.00;
-        }
-        var special_allowance = pf_adjust - (basic + hra + lta + medical + travel + pf_value);
-        var total_credit = basic + hra + lta + medical + travel + pf_value + special_allowance + vleave + bonus1 + bonus2 + allowance1 + allowance2 + allowance3;
+    var lta = lta_frac * pf_adjust;
+    if (document.getElementById('pf_applicable').checked == 1) {
+        pf_value = pf * basic;
+    } else {
+        pf_value = 0.00;
+    }
+    var special_allowance = pf_adjust - (basic + hra + lta + medical + travel + pf_value);
+    var total_credit = basic + hra + lta + medical + travel + pf_value + special_allowance + leave + bonus1 + bonus2 + allowance1 + allowance2 + allowance3;
 
-        var total_debit = professional_tax + income_tax + pf_value + deduction1 + deduction2 + deduction3;
+    var total_debit = professional_tax + income_tax + pf_value + deduction1 + deduction2 + deduction3;
 
-        var net = total_credit - total_debit;
+    var net = total_credit - total_debit;
 
-        document.getElementById('basic').innerHTML = basic.toFixed(2);
-        document.getElementById('hra').innerHTML = hra.toFixed(2);
-        document.getElementById('lta').innerHTML = lta.toFixed(2);
-        document.getElementById('special_allowance').innerHTML = special_allowance.toFixed(2);
-        document.getElementById('pf_value_debit').innerHTML = pf_value.toFixed(2);
-        document.getElementById('pf_value_credit').innerHTML = pf_value.toFixed(2);
-        document.getElementById('viewleave').innerHTML = vleave;
-        document.getElementById('viewbonus1').innerHTML = bonus1;
-        document.getElementById('viewbonus2').innerHTML = bonus2;
-        document.getElementById('viewallowance1').innerHTML = allowance1;
-        document.getElementById('viewallowance2').innerHTML = allowance2;
-        document.getElementById('total_credit').innerHTML = total_credit.toFixed(2);
-        document.getElementById('total_debit').innerHTML = total_debit.toFixed(2);
-        document.getElementById('viewprofessional_tax').innerHTML = professional_tax;
-        document.getElementById('viewincome_tax').innerHTML = income_tax;
-        document.getElementById('medical').innerHTML = medical;
-        document.getElementById('travel').innerHTML = travel;
-        document.getElementById('grossctc').innerHTML = gross;
-        document.getElementById('adjustedctc').innerHTML = pf_adjust.toFixed(2);
-        document.getElementById('net').innerHTML = net.toFixed(2);
+    document.getElementById('basic').innerHTML = basic.toFixed(2);
+    document.getElementById('hra').innerHTML = hra.toFixed(2);
+    document.getElementById('lta').innerHTML = lta.toFixed(2);
+    document.getElementById('special_allowance').innerHTML = special_allowance.toFixed(2);
+    document.getElementById('pf_value_debit').innerHTML = pf_value.toFixed(2);
+    document.getElementById('pf_value_credit').innerHTML = pf_value.toFixed(2);
+    document.getElementById('viewleave').innerHTML = leave;
+    document.getElementById('viewbonus1').innerHTML = bonus1;
+    document.getElementById('viewbonus2').innerHTML = bonus2;
+    document.getElementById('viewallowance1').innerHTML = allowance1;
+    document.getElementById('viewallowance2').innerHTML = allowance2;
+    document.getElementById('total_credit').innerHTML = total_credit.toFixed(2);
+    document.getElementById('total_debit').innerHTML = total_debit.toFixed(2);
+    document.getElementById('viewprofessional_tax').innerHTML = professional_tax;
+    document.getElementById('viewincome_tax').innerHTML = income_tax;
+    document.getElementById('medical').innerHTML = medical;
+    document.getElementById('travel').innerHTML = travel;
+    document.getElementById('grossctc').innerHTML = gross;
+    document.getElementById('adjustedctc').innerHTML = pf_adjust.toFixed(2);
+    document.getElementById('net').innerHTML = net.toFixed(2);
 
 
     }

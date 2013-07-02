@@ -27,7 +27,7 @@
 			<td><?php echo $bank->ifsc_code; ?></td>
 			<td><?php echo $bank->payment_type; ?></td>
 			<td><?php echo Html::anchor('banks/view/'.$bank->id, '<i class="icon-eye-open" title="View"></i>'); ?></td>
-			<td><?php echo Html::anchor('banks/edit/'.$bank->id, '<i class="icon-wrench" title="Edit"></i>'); ?></td>
+			<td><?php echo Html::anchor('banks/edit/'.$bank->employee_id, '<i class="icon-wrench" title="Edit"></i>'); ?></td>
 			<td><?php echo Html::anchor('banks/delete/'.$bank->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
 
 		</tr>

@@ -52,41 +52,82 @@
         </div>
     </div>    
     <br /><br />
-    <div class="main-headline">BANK DETAILS</div>
+    <div class="main-headline">BANK DETAILS <?php echo Html::anchor('banks/edit/'.$employee->bank->employee_id,'Edit',array('class'=>'btn', 'style'=>'float:right; margin-right:30px; margin-top:-7px;'));?></div>
     <br />  
+     
     <div class="grid-12-12">
         <div class="grid-4-12">
             <strong>Account No.:</strong>
-            <?php echo $employee->bank->account_no; ?>
+            <?php if(isset($employee->bank->account_no)):
+                echo $employee->bank->account_no;
+            else:
+                echo '';
+            endif;
+            ?>
         </div>
         <div class="grid-4-12">
             <strong>Account Type:</strong>
-            <?php echo $employee->bank->account_type; ?>
+            <?php if(isset($employee->bank->account_type)):
+                echo $employee->bank->account_type;
+            else:
+                echo '';
+            endif;
+            ?>
+
         </div>
     </div>
     <div class="grid-12-12">
         <div class="grid-4-12">
             <strong>Branch:</strong>
-            <?php echo $employee->bank->branch; ?>
+                        <?php if(isset($employee->bank->branch)):
+                echo $employee->bank->branch;
+            else:
+                echo '';
+            endif;
+            ?>
+
         </div>
         <div class="grid-4-12">
             <strong>City:</strong>
-            <?php echo $employee->bank->city; ?>
+                        <?php if(isset($employee->bank->city)):
+                echo $employee->bank->city;
+            else:
+                echo '';
+            endif;
+            ?>
+
         </div>
         <div class="grid-4-12">
             <strong >State:</strong>
-            <?php echo $employee->bank->state; ?>
+                        <?php if(isset($employee->bank->state)):
+                echo $employee->bank->state;
+            else:
+                echo '';
+            endif;
+            ?>
+
         </div>
     </div>
     <div class="grid-12-12">
         <div class="grid-4-12">
             <strong>IFSC Code:</strong>
-            <?php echo $employee->bank->ifsc_code; ?>
+                    <?php if(isset($employee->bank->ifsc_code)):
+                echo $employee->bank->ifsc_code;
+            else:
+                echo '';
+            endif;
+            ?>
+    
         </div>
         <div class="grid-4-12">
             <strong>Payment Type:</strong>
-            <?php echo $employee->bank->payment_type; ?>
-        </div>
+                       <?php if(isset($employee->bank->payment_type)):
+                echo $employee->bank->payment_type;
+            else:
+                echo '';
+            endif;
+            ?>
+      </div>
     </div>
-
+ 
 </div>

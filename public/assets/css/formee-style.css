@@ -51,7 +51,7 @@ Style
 }
 .formee .formee-txt, .formee input[type="text"], .formee input[type="password"], .formee input[type="file"], .formee textarea, .formee select {
 	border-color:#c6c6c6 #dadada #eaeaea;
-	background: #fafafa;
+	background: #ffffff;
 	color:#999;
 	font-size:1.4em;
 	font-family:inherit;
@@ -62,7 +62,7 @@ Style
 }
 .formee select {
 	border-color:#c6c6c6 #dadada #eaeaea;
-	background: #fafafa;
+	background: #ffffff;
 	color:#999;
 }
 .formee .formee-txt:hover, .formee input[type="text"]:hover, .formee input[type="password"]:hover, .formee input[type="file"]:hover, .formee textarea:hover, .formee select:hover {
