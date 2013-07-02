@@ -73,17 +73,15 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_view($id) {
-        is_null($id) and Response::redirect('salaries');
-
-        $var_month = Input::post('month');
+      
+           $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+$var_month = Input::post('month');
         $var_year = Input::post('year');
-
-        $data['salaries'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
+        
+        $data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
-        if (!$data['salaries']) {
-            Session::set_flash('error', 'Could not find salary #' . $id);
-            Response::redirect('salaries');
-        }
+        
         $data['month'] = $var_month;
         $data['year'] = $var_year;
         $this->template->title = 'Salary Statement';
@@ -226,6 +224,37 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_edit($id = null, $month = null, $year = null) {
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+
+        $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
+        
+        $c_basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
+        $var_basic_frac = $c_basic->value;
+
+        $c_hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
+        $var_hra_frac = $c_hra->value;
+
+        $c_pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
+        $var_pf_adjust_frac = $c_pf_adjust->value;
+
+        $c_lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
+        $var_lta_frac = $c_lta->value;
+
+        $c_pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
+        $pf = $c_pf->value;
+
+        $c_medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
+        $var_medical = $c_medical->value;
+
+        $c_travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
+        $var_travel = $c_travel->value;
+
+        $data['basic'] = $var_basic_frac;
+        $data['hra'] = $var_hra_frac;
+        $data['pf_adjust'] = $var_pf_adjust_frac;
+        $data['lta'] = $var_lta_frac;
+        $data['pf'] = $pf;
+        $data['medical'] = $var_medical;
+        $data['travel'] = $var_travel;
 
         if (!$salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
             Session::set_flash('error', 'Could not find salary #' . $id);
@@ -399,7 +428,7 @@ class Controller_Salaries extends Controller_Base {
         }
 
         $this->template->title = "Salaries";
-        $this->template->content = View::forge('salaries/edit');
+        $this->template->content = View::forge('salaries/edit',$data);
     }
 
     public function action_statement() {

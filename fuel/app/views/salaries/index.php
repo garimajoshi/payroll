@@ -41,8 +41,7 @@
                     <td><?php echo $employee->email; ?></td>
                     <td><?php echo Html::anchor('salaries/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
                     <td><?php echo Html::anchor('salaries/view/' . $employee->id, '<i class="icon-eye-open title="view"></i>'); ?></td>
-                    <td><?php echo Html::anchor('salaries/edit/' . $employee->id, '<i class="icon-eye-open title="edit"></i>'); ?></td>
-
+                
                 </tr>
             <?php endforeach; ?>
         </tbody>

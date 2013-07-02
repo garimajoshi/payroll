@@ -11,9 +11,9 @@ a:visited{ color: #333; }
 a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 #address{
-    position:fixed;
+  
     margin-left: 600px;
-
+    margin-top:-50px;
 }
 #border{
 
@@ -53,7 +53,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 }
 #container{
-    overflow: auto;
+    overflow: visible;
     margin-top: -920px;
     width:85%;
     margin-left: 220px;
@@ -167,7 +167,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 }
 
 #img{
-    position:fixed;
+   
     width:120px;
 
 }

@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class" => "formee well")); ?>
+<?php echo Form::open(array("class" => "formee")); ?>
 <div class=headline>	
     <div class="grid-12-12">
         <div class="grid-4-12" style="margin-top:-15px; margin-left:-35px;">

@@ -7,10 +7,24 @@
         <th colspan="8" style="text-align:center">Vacation Leaves</th>
     </thead>
     <tbody>
+        <tr>
     <td colspan="4" style="text-align:center">Half day</td>
     <td colspan="4" style="text-align:center">Full day</td>
     <td colspan="4" style="text-align:center">Half day</td>
     <td colspan="4" style="text-align:center">Full day</td>
-    
+        </tr>
+            <?php if ($sickhalfleaves or $sickfullleaves): foreach($sickhalfleaves as $sickhalfleave): ?>
+            <?php  ?>
+
+        <tr>
+            <td> <?php echo $sickhalfleave->date_of_leave;?></td>
+            <td> <?php echo $sickfullleave->date_of_leave;?></td>
+            <td> <?php echo $vacationhalfleave->date_of_leave;?></td>
+            <td> <?php echo $vacationfullleave->date_of_leave;?></td>
+</tr>        
+
+    <?php endforeach; endif;?>
+  endif;
+        
     </tbody>
 </table>
