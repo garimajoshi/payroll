@@ -74,28 +74,28 @@ $html = '
                 <td>1</td>
                 <td>Base Salary</td>
                 <td style="text-align:right">' . $salary->basic . '</td>
-                <td style="text-align:right">' . $salary->basic . '</td>
+                <td style="text-align:right">' . $fytd['basic'] . '</td>
             </tr>
 
             <tr>
                 <td>2</td>
                 <td>HRA</td>
                 <td style="text-align:right">' . $salary->hra . '</td>
-                <td style="text-align:right">' . $salary->hra . '</td>
+                <td style="text-align:right">' . $fytd['hra'] . '</td>
             </tr>
 
             <tr>
                 <td>3</td>
                 <td>Conveyance/Transport</td>
                 <td style="text-align:right">' . $salary->travel . '</td>
-                <td style="text-align:right">' . $salary->travel . '</td>
+                <td style="text-align:right">' . $fytd['travel'] . '</td>
             </tr>
 
             <tr>
                 <td>4</td>
                 <td>Medical</td>
                 <td style="text-align:right">' . $salary->medical . '</td>
-                <td style="text-align:right">' . $salary->medical . '</td>
+                <td style="text-align:right">' . $fytd['medical'] . '</td>
 
 
             </tr>
@@ -103,7 +103,7 @@ $html = '
                 <td>5</td>
                 <td>Special Allowance</td>
                 <td style="text-align:right">' . $salary->credit_other . '</td>
-                <td style="text-align:right">' . $salary->credit_other . '</td>
+                <td style="text-align:right">' . $fytd['credit_other'] . '</td>
 
 
             </tr>
@@ -111,7 +111,7 @@ $html = '
                 <td>6</td>
                 <td>Bonus</td>
                 <td style="text-align:right">' . ($salary->bonus1 + $salary->bonus2) . '</td>
-                <td style="text-align:right">' . $salary->bonus1 . '</td>
+                <td style="text-align:right">' . $fytd['bonus'] . '</td>
 
 
             </tr>
@@ -119,7 +119,7 @@ $html = '
                 <td>7</td>
                 <td>Leave Encashment</td>
                 <td style="text-align:right">' . $salary->leave . '</td>
-                <td style="text-align:right">' . $salary->leave . '</td>
+                <td style="text-align:right">' . $fytd['leave'] . '</td>
 
 
             </tr>
@@ -127,7 +127,7 @@ $html = '
                 <td>8</td>
                 <td>Other Allowance</td>
                 <td style="text-align:right">' . ($salary->allowance1 + $salary->allowance2 + $salary->allowance3) . '</td>
-                <td style="text-align:right">0.00</td>
+                <td style="text-align:right">' . $fytd['allowance'] . '</td>
             </tr>
             <tr style="border-bottom: 2px solid #000;">
                 <td>9</td>
@@ -180,7 +180,7 @@ $html = '
                 <td>20</td>
                 <td>TOTAL DEDUCTIONS</td>
                 <td style="text-align:right">' . $salary->total_debit . '</td>
-                <td style="text-align:right">' . $salary->total_debit . '</td>
+                <td style="text-align:right">' . $fytd['total_debit'] . '</td>
             </tr>
 <div></div>            
 <hr />
@@ -188,7 +188,7 @@ $html = '
                 <td>30</td>
                 <td>NET PAYABLE</td>
                 <td style="text-align:right">' . $salary->net . '</td>
-                <td style="text-align:right">' . $salary->net . '</td>
+                <td style="text-align:right">' . $fytd['net'] . '</td>
             </tr>
         </tbody>
     </table>

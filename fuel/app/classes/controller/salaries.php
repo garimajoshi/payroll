@@ -73,15 +73,15 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_view($id) {
-      
-           $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+
+        $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
-$var_month = Input::post('month');
+        $var_month = Input::post('month');
         $var_year = Input::post('year');
-        
+
         $data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
-        
+
         $data['month'] = $var_month;
         $data['year'] = $var_year;
         $this->template->title = 'Salary Statement';
@@ -226,7 +226,7 @@ $var_month = Input::post('month');
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
-        
+
         $c_basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
         $var_basic_frac = $c_basic->value;
 
@@ -428,7 +428,7 @@ $var_month = Input::post('month');
         }
 
         $this->template->title = "Salaries";
-        $this->template->content = View::forge('salaries/edit',$data);
+        $this->template->content = View::forge('salaries/edit', $data);
     }
 
     public function action_statement() {
@@ -457,26 +457,7 @@ $var_month = Input::post('month');
         Response::redirect('salaries');
     }
 
-    public function action_print($id = null, $month = null, $year = null) {
-
-        (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
-
-        $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
-        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
-
-        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
-            Session::set_flash('error', 'Could not find salary #' . $id);
-            Response::redirect('salaries');
-        }
-
-        //4 - $month
-        //$month - 3
-        //$data['fytd'] = getFYTD($id, $month, $year);
-        //print_r($data['fytd']);
-        return Response::forge(View::forge('salaries/payslip', $data));
-    }
-
-    private function getFYTD($id, $month, $year) {
+    public function findFYTD($id, $month, $year) {
 
         $total['basic'] = 0;
         $total['hra'] = 0;
@@ -496,33 +477,96 @@ $var_month = Input::post('month');
         $total['total_debit'] = 0;
         $total['net'] = 0;
 
-        $m = 4;
-        $y = $year;
-        while ($m <= $month) {
-            $salary = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $m), array('year' => $y))));
+        if ($month >= 4) {
 
-            $total['basic'] += $salary->basic;
-            $total['hra'] += $salary->hra;
-            $total['lta'] += $salary->lta;
-            $total['medical'] += $salary->medical;
-            $total['travel'] += $salary->travel;
-            $total['credit_other'] += $salary->credit_other;
-            $total['bonus'] = $data['bonus'] + $salary->bonus1 + $salary->bonus2;
-            $total['leave'] += $salary->leave;
-            $total['credit_total'] += $salary->credit_total;
-            $total['allowance'] = $data['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
-            $total['professional_tax'] += $salary->professional_tax;
-            $total['income_tax'] += $salary->income_tax;
-            $total['deduction1'] += $salary->deduction1;
-            $total['deduction2'] += $salary->deduction2;
-            $total['deduction3'] += $salary->deduction3;
-            $total['total_debit'] += $salary->total_debit;
-            $total['net'] += $salary->net;
-            $m++;
-            if ($m == 12)
-                $y--;
+            $salaries = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '>', 3), array('month', '<=', $month), array('year' => $year)
+            )));
+            foreach ($salaries as $salary) {
+                $total['basic'] += $salary->basic;
+                $total['hra'] += $salary->hra;
+                $total['lta'] += $salary->lta;
+                $total['medical'] += $salary->medical;
+                $total['travel'] += $salary->travel;
+                $total['credit_other'] += $salary->credit_other;
+                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['leave'] += $salary->leave;
+                $total['credit_total'] += $salary->credit_total;
+                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['professional_tax'] += $salary->professional_tax;
+                $total['income_tax'] += $salary->income_tax;
+                $total['deduction1'] += $salary->deduction1;
+                $total['deduction2'] += $salary->deduction2;
+                $total['deduction3'] += $salary->deduction3;
+                $total['total_debit'] += $salary->total_debit;
+                $total['net'] += $salary->net;
+            }
+        } else if ($month < 4) {
+            $salaries = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '<=', $month), array('year' => $year))));
+
+            foreach ($salaries as $salary) {
+                $total['basic'] += $salary->basic;
+                $total['hra'] += $salary->hra;
+                $total['lta'] += $salary->lta;
+                $total['medical'] += $salary->medical;
+                $total['travel'] += $salary->travel;
+                $total['credit_other'] += $salary->credit_other;
+                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['leave'] += $salary->leave;
+                $total['credit_total'] += $salary->credit_total;
+                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['professional_tax'] += $salary->professional_tax;
+                $total['income_tax'] += $salary->income_tax;
+                $total['deduction1'] += $salary->deduction1;
+                $total['deduction2'] += $salary->deduction2;
+                $total['deduction3'] += $salary->deduction3;
+                $total['total_debit'] += $salary->total_debit;
+                $total['net'] += $salary->net;
+            }
+
+            $last_year = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '>', 3), array('year' => ($year - 1)))));
+
+            foreach ($last_year as $salary) {
+                $total['basic'] += $salary->basic;
+                $total['hra'] += $salary->hra;
+                $total['lta'] += $salary->lta;
+                $total['medical'] += $salary->medical;
+                $total['travel'] += $salary->travel;
+                $total['credit_other'] += $salary->credit_other;
+                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['leave'] += $salary->leave;
+                $total['credit_total'] += $salary->credit_total;
+                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['professional_tax'] += $salary->professional_tax;
+                $total['income_tax'] += $salary->income_tax;
+                $total['deduction1'] += $salary->deduction1;
+                $total['deduction2'] += $salary->deduction2;
+                $total['deduction3'] += $salary->deduction3;
+                $total['total_debit'] += $salary->total_debit;
+                $total['net'] += $salary->net;
+            }
         }
         return $total;
+    }
+
+    public function action_print($id = null, $month = null, $year = null) {
+
+        //(is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+
+        $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+
+        if (!$data['salary'] = Model_Salary::find('first', array('where' => array(array('employee_id' => $id), array('month' => $month), array('year' => $year))))) {
+            Session::set_flash('error', 'Could not find salary #' . $id);
+            Response::redirect('salaries');
+        }
+
+        //4 - $month
+        //$month - 3
+        $data['fytd'] = $this->findFYTD($id, $month, $year);
+        //if ($d)
+        //  print_r($d);
+        //print_r($data['fytd']);
+        return Response::forge(View::forge('salaries/payslip', $data));
     }
 
 }
