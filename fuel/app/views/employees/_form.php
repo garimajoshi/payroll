@@ -1,8 +1,9 @@
 
-<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:50px;")); ?>
-<div class="grid-12-12">
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:30px;")); ?>
+<br/>
+<div class="grid-12-12" style="margin-top:2px;">
     <div class="grid-3-12">
-        <?php echo Html::anchor('employees/', 'Back', array('class' => 'formee-button', 'style' => 'color:#fff;')); ?>
+        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => 'color:#fff;')); ?>
     </div>
 </div>
 
@@ -13,7 +14,7 @@
     </div>
     <div class="grid-4-12">
         <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch'); ?>
-        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required')); ?>
+        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Branch')); ?>
     </div>
 </div>
 <div class="grid-12-12">
@@ -132,9 +133,9 @@
             <?php echo createDays('ld_day', date('d')); ?>
         </div>
     </div>
-    <div class="grid-3-12 ">
-        <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:25px;")); ?>
-    </div>
+    <div class="grid-4-12 ">
+        <input  class="btn btn-large btn-success" type='submit'  value="Next >>" style="margin-left: 40px;margin-top: 32px;width:100px">
+    </div>   
 </div>
 
 <?php echo Form::close(); ?>

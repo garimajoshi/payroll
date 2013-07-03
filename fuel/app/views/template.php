@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>NeoGen Labs Payroll System</title>
+        <?php echo Asset::css('bootstrap.css'); ?>
         <?php echo Asset::css('reset.css'); ?>
         <?php echo Asset::css('formee-structure.css'); ?>
         <?php echo Asset::css('formee-style.css'); ?>
-        <?php echo Asset::css('bootstrap.css'); ?>
+
         <?php echo Asset::css('template.css'); ?>
         <?php echo Asset::css('menu.css'); ?>
         <?php echo Asset::js('jquery-1.6.4.min.js'); ?>

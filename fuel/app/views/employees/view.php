@@ -1,6 +1,6 @@
 
-<div class="view" style='font-size: 16px; line-height: 25px;'>
-    <h2><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h2>
+<div class="view" style='font-size: 14px; line-height: 25px;'>
+    <h1 style="font-size: 20px;"><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h1>
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
     <br />
@@ -45,7 +45,7 @@
         </div>    
     </div>
     <div class="grid-12-12">
-        <div class="grid-6-12">
+        <div class="grid-8-12">
             <strong>Address:</strong>
             <?php echo $employee->address . ', ' . $employee->city . ', ' . $employee->state . '-' . $employee->pincode; ?>
         </div>
@@ -53,7 +53,7 @@
     <br /><br />
 
     <?php if (isset($employee->bank->employee_id)): ?>
-        <div class="main-headline">BANK DETAILS </div>
+        <div class="main-headline" style="margin-top:13px;">BANK DETAILS </div>
         <br />  
 
         <div class="grid-12-12">
@@ -105,10 +105,10 @@
 
             </div>
         </div>
-        <?php echo Html::anchor('banks/edit/' . $employee->id, 'Edit Bank', array('class' => 'btn', 'style' => 'float:right; margin-right:30px; margin-top:-7px;')); ?>
-    <?php
+        <?php echo Html::anchor('banks/edit/' . $employee->bank->employee_id, 'Edit Bank', array('class' => 'btn btn-danger', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;')); ?>
+        <?php
     else:
-        echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn', 'style' => 'float:right; margin-right:30px; margin-top:-7px;'));
+        echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn btn-warning', 'style' => 'float:right; margin-right:30px; margin-top:-7px;'));
     endif;
     ?>
 </div>

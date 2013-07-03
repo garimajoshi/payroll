@@ -2,7 +2,7 @@
 
 <div class="headline">
     <h3 style="z-index:0;">Payroll <span class='muted'>Central</span>
-        <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search', 'style' => "float: right; margin-right: 30px;")); ?>
+        <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search emp-search', 'style' => "float: right; margin-right: 30px;")); ?>
         <div>
             <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
             <button type="submit" class="btn ">
@@ -41,7 +41,7 @@
                     <td><?php echo $employee->email; ?></td>
                     <td><?php echo Html::anchor('salaries/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
                     <td><?php echo Html::anchor('salaries/view/' . $employee->id, '<i class="icon-eye-open title="view"></i>'); ?></td>
-                
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

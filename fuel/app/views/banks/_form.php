@@ -1,7 +1,7 @@
 <?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:50px;")); ?>
-<div class="grid-12-12">
+<div class="grid-12-12" style="margin-top: 2px;">
     <div class="grid-3-12">
-        <?php echo Html::anchor('employees/', 'Back', array('class' => 'formee-button', 'style' => 'color:#fff;')); ?>
+        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => 'color:#fff;')); ?>
     </div>
 </div>
 <div class="grid-12-12">
@@ -45,7 +45,7 @@
         <?php echo Form::select('payment_type', Input::post('payment_type', isset($bank) ? $bank->payment_type : ''), array('cash' => 'Cash', 'account_transfer' => 'Account Transfer', 'cheque' => 'Cheque', 'dd' => 'Demand Draft')); ?>
     </div>
     <div class="grid-3-12">
-        <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:25px;")); ?>
+        <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-large btn-success', "style" => "margin-top:25px;")); ?>
     </div>
 </div>
 
