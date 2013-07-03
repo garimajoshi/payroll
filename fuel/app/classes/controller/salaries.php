@@ -44,6 +44,8 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_structure() {
 
+        //parent::has_access("salary_structure");
+
         if (Input::method() == 'POST') {
             $pf_adjust = Model_Constant::find('first', array('where' => array('name' => 'pf_adjust')));
             $pf_adjust->value = Input::post('pf_adjust_value');
@@ -79,6 +81,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_lock($month = null, $year = null) {
 
+        //parent::has_access("lock_salary");
         (is_null($month) or is_null($year)) and Response::redirect('salaries');
         $locks = Model_Salary::find('all', array('where' => array(array('month' => $month), array('year' => $year))));
 
@@ -92,6 +95,7 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_payroll($month = null, $year = null) {
+        //parent::has_access("create_payroll");
         $var_month = $month;
         $var_year = $year;
 
@@ -114,6 +118,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_view($id) {
 
+        //parent::has_access("view_salary");
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
         $var_month = Input::post('month');
@@ -126,27 +131,13 @@ class Controller_Salaries extends Controller_Base {
         $data['year'] = $var_year;
         $data['fytd'] = $this->findFYTD($id, $var_month, $var_year);
 
-        
+
         $this->template->title = 'Salary Statement';
         $this->template->content = View::forge('salaries/view', $data);
     }
 
-    public function action_archive($id = null) {
-        is_null($id) and Response::redirect('salaries');
-
-        if ($employees = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
-            foreach ($employees as $employee):
-                $employee->lock = "true";
-                $employee->save();
-            endforeach;
-        } else {
-            Session::set_flash('error', 'Could not find salary statement #' . $id);
-        }
-
-        Response::redirect('salaries');
-    }
-
     public function action_create($id = null) {
+        //parent::has_access("create_salary");
         is_null($id) and Response::redirect('salaries');
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
@@ -263,6 +254,7 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_edit($id = null, $month = null, $year = null) {
+        //parent::has_access("edit_salary");
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
@@ -472,6 +464,7 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_statement() {
+        //parent::has_access("salary_statement");
         $var_month = Input::post('month');
         $var_year = Input::post('year');
 
@@ -481,20 +474,6 @@ class Controller_Salaries extends Controller_Base {
         $data['year'] = $var_year;
         $this->template->title = 'Salary Statement';
         $this->template->content = View::forge('salaries/statement', $data);
-    }
-
-    public function action_delete($id = null) {
-        is_null($id) and Response::redirect('salaries');
-
-        if ($salary = Model_Salary::find($id)) {
-            $salary->delete();
-
-            Session::set_flash('success', 'Deleted salary #' . $id);
-        } else {
-            Session::set_flash('error', 'Could not delete salary #' . $id);
-        }
-
-        Response::redirect('salaries');
     }
 
     private function findFYTD($id, $month, $year) {
@@ -508,7 +487,7 @@ class Controller_Salaries extends Controller_Base {
         $total['bonus1'] = 0;
         $total['bonus2'] = 0;
         $total['leave'] = 0;
-        $total['pf_value'] =0;
+        $total['pf_value'] = 0;
         $total['credit_total'] = 0;
         $total['allowance1'] = 0;
         $total['allowance2'] = 0;
@@ -552,7 +531,7 @@ class Controller_Salaries extends Controller_Base {
             $salaries = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '<=', $month), array('year' => $year))));
 
             foreach ($salaries as $salary) {
-               $total['basic'] += $salary->basic;
+                $total['basic'] += $salary->basic;
                 $total['hra'] += $salary->hra;
                 $total['lta'] += $salary->lta;
                 $total['medical'] += $salary->medical;
@@ -606,6 +585,8 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_print($id = null, $month = null, $year = null) {
 
+        //parent::has_access("print_salary_statement");
+
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
 
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
@@ -622,6 +603,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_process_payroll($month = null, $year = null) {
 
+        //parent::has_access("create_salary");
         (is_null($month) or is_null($year)) and Response::redirect('salaries');
 
         if ($month == 1) {
