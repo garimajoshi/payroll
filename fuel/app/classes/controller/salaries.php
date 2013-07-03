@@ -58,9 +58,9 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/statement');
     }
 
-    public function action_payroll() {
-        $var_month = Input::post('month');
-        $var_year = Input::post('year');
+    public function action_payroll($month = null, $year = null) {
+        $var_month = $month;
+        $var_year = $year;
 
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));

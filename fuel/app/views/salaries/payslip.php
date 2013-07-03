@@ -65,7 +65,7 @@ $html = '
             <tr>
                 <td style="width:35px;"><b>No.</b></td>
                 <td style="width:220px;"><b>Salary Component</b></td>
-                <td style="text-align:right; width:80px;"><b>' . $month[$salary->month] . ' - ' . $salary->year . '</b></td>
+                <td style="text-align:right; width:80px;"><b>' . $month[$salary->month] . ' ' . $salary->year . '</b></td>
                 <td style="text-align:right;  width:100px;"><b>FYTD</b></td>
             </tr>
      <hr style="margin-top:-10px;"/>   
