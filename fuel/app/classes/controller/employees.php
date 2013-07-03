@@ -37,6 +37,12 @@ class Controller_Employees extends Controller_Base {
         $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
+    public function action_viewDelete() {
+        $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "delete")));
+        $this->template->title = "Employees";
+        $this->template->content = View::forge('employees/viewarchive', $data);
+    }
+
     public function action_search() {
 
         $query = Input::get('search');
@@ -112,7 +118,7 @@ class Controller_Employees extends Controller_Base {
 
             if ($emp = Model_Employee::find(Input::post('id'))) {
                 Session::set_flash('error', 'Employee already exist #' . Input::post('id') . '.');
-                Response::redirect('employees/create' . $employee->id);
+                Response::redirect('employees');
             }
 
             if ($val->run()) {
@@ -129,6 +135,9 @@ class Controller_Employees extends Controller_Base {
                 $var_ld_month = Input::post('ld_month');
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
+
+                if ($var_ld_month == 0)
+                    $var_ld = null;
 
                 $employee = Model_Employee::forge(array(
                             'id' => Input::post('id'),
@@ -271,6 +280,15 @@ class Controller_Employees extends Controller_Base {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
 
+        if ($salaries = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
+            foreach ($salaries as $salary):
+                $salary->lock = "true";
+                $salary->save();
+            endforeach;
+        } else {
+            Session::set_flash('error', 'Could not archive employee #' . $id);
+        }
+
         Response::redirect('employees');
     }
 
@@ -289,6 +307,15 @@ class Controller_Employees extends Controller_Base {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
 
+        if ($salaries = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
+            foreach ($salaries as $salary):
+                $salary->lock = "false";
+                $salary->save();
+            endforeach;
+        } else {
+            Session::set_flash('error', 'Could not archive employee #' . $id);
+        }
+
         Response::redirect('employees');
     }
 
@@ -296,14 +323,27 @@ class Controller_Employees extends Controller_Base {
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
-            $employee->delete();
+            $employee->activity_status = "delete";
 
-            Session::set_flash('success', 'Deleted employee #' . $id);
+            if ($employee->save()) {
+                Session::set_flash('success', 'Deleted employee #' . $id);
+            } else {
+                Session::set_flash('error', 'Could not delete employee #' . $id);
+            }
+        } else {
+            Session::set_flash('error', 'Could not find employee #' . $id);
+        }
+
+        if ($salaries = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
+            foreach ($salaries as $salary):
+                $salary->lock = "delete";
+                $salary->save();
+            endforeach;
         } else {
             Session::set_flash('error', 'Could not delete employee #' . $id);
         }
-
         Response::redirect('employees');
     }
 
 }
+

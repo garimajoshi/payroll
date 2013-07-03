@@ -497,11 +497,16 @@ class Controller_Salaries extends Controller_Base {
         Response::redirect('salaries');
     }
 
+<<<<<<< HEAD
+    public function findFYTD($id, $month, $year) {
+=======
     private function findFYTD($id, $month, $year) {
+>>>>>>> ee665bc5818955a1c522b12d0e1cd36f03d3b6f6
 
         $total['basic'] = 0.00;
         $total['hra'] = 0.00;
         $total['lta'] = 0.00;
+<<<<<<< HEAD
         $total['travel'] = 0;
         $total['medical'] = 0;
         $total['credit_other'] = 0;
@@ -520,6 +525,22 @@ class Controller_Salaries extends Controller_Base {
         $total['deduction3'] = 0;
         $total['total_debit'] = 0;
         $total['net'] = 0;
+=======
+        $total['travel'] = 0.00;
+        $total['medical'] = 0.00;
+        $total['credit_other'] = 0.00;
+        $total['bonus'] = 0.00;
+        $total['leave'] = 0.00;
+        $total['credit_total'] = 0.00;
+        $total['allowance'] = 0.00;
+        $total['professional_tax'] = 0.00;
+        $total['income_tax'] = 0.00;
+        $total['deduction1'] = 0.00;
+        $total['deduction2'] = 0.00;
+        $total['deduction3'] = 0.00;
+        $total['total_debit'] = 0.00;
+        $total['net'] = 0.00;
+>>>>>>> ee665bc5818955a1c522b12d0e1cd36f03d3b6f6
 
         if ($month >= 4) {
 

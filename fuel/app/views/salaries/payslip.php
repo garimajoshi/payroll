@@ -65,7 +65,7 @@ $html = '
             <tr>
                 <td style="width:35px;"><b>No.</b></td>
                 <td style="width:220px;"><b>Salary Component</b></td>
-                <td style="text-align:right; width:80px;"><b>' . $month[$salary->month] . ' - ' . $salary->year . '</b></td>
+                <td style="text-align:right; width:80px;"><b>' . $month[$salary->month] . ' ' . $salary->year . '</b></td>
                 <td style="text-align:right;  width:100px;"><b>FYTD</b></td>
             </tr>
      <hr style="margin-top:-10px;"/>   
@@ -147,13 +147,13 @@ $html = '
             <div></div>
              <tr>
                 <td>11</td>
-                <td>Less:Professional Tax</td>
+                <td>Less: Professional Tax</td>
                 <td style="text-align:right">' . $salary->professional_tax . '</td>
                 <td style="text-align:right">' . $salary->professional_tax . '</td>
             </tr>
             <tr>
                 <td>12</td>
-                <td>Less:TDS Witholding</td>
+                <td>Less: TDS Witholding</td>
                 <td style="text-align:right">0.00</td>
                 <td style="text-align:right">0.00</td>
             </tr>
@@ -220,4 +220,5 @@ $html = '
 $pdf->writeHTML($html, true, false, true, false, '');
 
 //Close and output PDF document
-$pdf->Output('salary.pdf', 'I');
+$file_name = $employee->first_name . ' ' . $employee->last_name . ' ' . $month[$salary->month] . '-' . $salary->year;
+$pdf->Output($file_name, 'I');

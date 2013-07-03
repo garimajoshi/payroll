@@ -8,6 +8,39 @@ class Controller_Leaves extends Controller_Base {
         $this->template->content = View::forge('leaves/index', $data);
     }
 
+    public function action_search() {
+
+        $query = Input::get('search');
+
+        if (!isset($query)) {
+            $query = Session::get('search');
+        } else {
+            Session::set('search', $query);
+        }
+
+        $data['employees'] = Model_Employee::find('all', array(
+                    'where' => array(
+                        array('activity_status' => 'active'),
+                        array(
+                            array('id', 'like', '%' . $query . '%'),
+                            'or' => array(
+                                array('first_name', 'like', '%' . $query . '%'),
+                                'or' => array(
+                                    array('last_name', 'like', '%' . $query . '%'),
+                                )
+                            )
+                        )
+                    ),
+                    'order_by' => array(
+                        ('id'),
+                    ),
+                        )
+        );
+
+        $this->template->title = "Leaves";
+        $this->template->content = View::forge('leaves/search', $data);
+    }
+
     public function action_view($employee_id = null) {
         is_null($employee_id) and Response::redirect('leaves');
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $employee_id)));
