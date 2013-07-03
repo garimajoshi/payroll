@@ -9,6 +9,39 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/index', $data);
     }
 
+    public function action_search() {
+
+        $query = Input::get('search');
+
+        if (!isset($query)) {
+            $query = Session::get('search');
+        } else {
+            Session::set('search', $query);
+        }
+
+        $data['employees'] = Model_Employee::find('all', array(
+                    'where' => array(
+                        array('activity_status' => 'active'),
+                        array(
+                            array('id', 'like', '%' . $query . '%'),
+                            'or' => array(
+                                array('first_name', 'like', '%' . $query . '%'),
+                                'or' => array(
+                                    array('last_name', 'like', '%' . $query . '%'),
+                                )
+                            )
+                        )
+                    ),
+                    'order_by' => array(
+                        ('id'),
+                    ),
+                        )
+        );
+
+        $this->template->title = "Salaries";
+        $this->template->content = View::forge('salaries/search', $data);
+    }
+
     public function action_structure() {
 
         if (Input::method() == 'POST') {
@@ -98,14 +131,11 @@ class Controller_Salaries extends Controller_Base {
     public function action_archive($id = null) {
         is_null($id) and Response::redirect('salaries');
 
-        if ($employee = Model_Employee::find($id)) {
-            $employee->lock = "true";
-
-            if ($employee->save()) {
-                Session::set_flash('success', 'Archived salary statement');
-            } else {
-                Session::set_flash('error', 'Could not archive');
-            }
+        if ($employees = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
+            foreach ($employees as $employee):
+                $employee->lock = "true";
+                $employee->save();
+            endforeach;
         } else {
             Session::set_flash('error', 'Could not find salary statement #' . $id);
         }
