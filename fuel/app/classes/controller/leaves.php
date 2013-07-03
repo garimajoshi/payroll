@@ -10,15 +10,14 @@ class Controller_Leaves extends Controller_Base {
 
     public function action_view($employee_id = null) {
         is_null($employee_id) and Response::redirect('leaves');
-        $data['employee'] = Model_Employee::find('first', array('where'=>array('id' => $employee_id)));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $employee_id)));
         $data['sickhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '4'))));
         $data['sickfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '8'))));
         $data['vacationhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '4'))));
         $data['vacationfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '8'))));
-        
+        $data['leaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id))));
         if (!$data['leaves'] = Model_Leave::find('all', array('where' => array('employee_id' => $employee_id)))) {
             Session::set_flash('error', 'Could not find leave #' . $employee_id);
-            Response::redirect('leaves');
         }
         $this->template->title = "Leave";
         $this->template->content = View::forge('leaves/view', $data);
@@ -73,21 +72,25 @@ class Controller_Leaves extends Controller_Base {
         $val = Model_Leave::validate('edit');
 
         if ($val->run()) {
-            $leave->date_of_leave = Input::post('date_of_leave');
-            $leave->reason = Input::post('reason');
+            $var_dol_day = Input::post('dol_day');
+            $var_dol_month = Input::post('dol_month');
+            $var_dol_year = Input::post('dol_year');
+            $var_dol = $var_dol_year . '-' . $var_dol_month . '-' . $var_dol_day;
+            $leave->date_of_leave = $var_dol;
+            $leave->time = Input::post('time');
             $leave->type = Input::post('type');
 
             if ($leave->save()) {
                 Session::set_flash('success', 'Updated leave #' . $id);
 
-                Response::redirect('leaves');
+                Response::redirect('leaves/view/' . $leave->employee_id);
             } else {
                 Session::set_flash('error', 'Could not update leave #' . $id);
             }
         } else {
             if (Input::method() == 'POST') {
                 $leave->date_of_leave = $val->validated('date_of_leave');
-                $leave->reason = $val->validated('reason');
+                $leave->time = $val->validated('time');
                 $leave->type = $val->validated('type');
 
                 Session::set_flash('error', $val->error());
@@ -111,7 +114,7 @@ class Controller_Leaves extends Controller_Base {
             Session::set_flash('error', 'Could not delete leave #' . $id);
         }
 
-        Response::redirect('leaves');
+        Response::redirect('leaves/view/' . $leave->employee_id);
     }
 
 }
