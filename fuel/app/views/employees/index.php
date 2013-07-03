@@ -10,6 +10,7 @@
         </div>
         <?php echo Form::close(); ?>
     </h3>
+    
     <br />
 </div>
 
@@ -21,7 +22,7 @@
     <table class="table table-striped" style="margin-top:90px;">
         <thead>
             <tr>
-                <th><input type="checkbox" value="" onclick="toggle(this);" /></th>
+
                 <th>Employee Id</th>
                 <th>Name</th>
                 <th>Phone No</th>
@@ -34,7 +35,7 @@
         <tbody>
             <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><input type="checkbox" name="check" value="<?php echo $employee->id; ?>"></td>
+
                     <td><?php echo $employee->id; ?></td>
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
@@ -47,6 +48,7 @@
         </tbody>
     </table>
 <?php else: ?>
-    <p>No Employees.</p>
+    <br />
+    <div class='noexist'><h1>No Employees</h1></div>
 
 <?php endif; ?>

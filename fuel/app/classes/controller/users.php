@@ -59,7 +59,7 @@ class Controller_Users extends Controller_Base {
 
     public function action_edit($id = null) {
         is_null($id) and Response::redirect('users');
-
+        $data['user'] = Model_User::find('first',array('where'=>array('id'=>$id)));
 			if (!$user = Model_User::find($id)) {
 				Session::set_flash('error', 'Could not find user #' . $id);
 				Response::redirect('users');
@@ -77,7 +77,7 @@ class Controller_Users extends Controller_Base {
 				}
 			}
         $this->template->title = "Edit User";
-        $this->template->content = View::forge('users/edit');
+        $this->template->content = View::forge('users/edit',$data);
     }
 
     public function action_password() {

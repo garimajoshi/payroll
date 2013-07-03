@@ -55,7 +55,7 @@ class Controller_Banks extends Controller_Base {
     public function action_edit($employee_id = null) {
         is_null($employee_id) and Response::redirect('banks');
 
-        if (!$bank = Model_Bank::find($employee_id)) {
+        if (!$data['banks'] = Model_Leave::find('all', array('where' => array('employee_id' => $employee_id)))) {
             Session::set_flash('error', 'Could not find bank #' . $id);
             Response::redirect('banks');
         }
@@ -63,7 +63,7 @@ class Controller_Banks extends Controller_Base {
         $val = Model_Bank::validate('edit');
 
         if ($val->run()) {
-            $bank->employee_id = Input::post('employee_id');
+            $bank->employee_id = $employee_id;
             $bank->account_no = Input::post('account_no');
             $bank->account_type = Input::post('account_type');
             $bank->branch = Input::post('branch');

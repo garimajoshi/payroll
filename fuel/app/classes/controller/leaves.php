@@ -12,7 +12,6 @@ class Controller_Leaves extends Controller_Base {
         is_null($employee_id) and Response::redirect('leaves');
         $data['employee'] = Model_Employee::find('first', array('where'=>array('id' => $employee_id)));
         $data['sickhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '4'))));
-       
         $data['sickfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '8'))));
         $data['vacationhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '4'))));
         $data['vacationfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '8'))));

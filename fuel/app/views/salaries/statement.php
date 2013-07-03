@@ -18,8 +18,7 @@
 <?php echo Form::close(); ?>
 
 <?php if ($salaries): ?>
-    <?php echo Html::anchor('salaries/lock/month=' . $month . '&year=' . $year, 'preview'); ?>
-    <table class="table table-striped" style="margin-top:95px;">
+    <table class="table table-striped" style="margin-top:95px; width:3600px; margin-right: 50px;">
         <thead>
             <tr>
                 <th><?php echo Form::checkbox('all'); ?></th>

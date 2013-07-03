@@ -14,30 +14,30 @@
         <?php echo Asset::js('css_browser_selector.js'); ?>
         <?php echo Asset::js('formee.js'); ?>    
         <?php echo Asset::js('countries.js'); ?>
- <!--[if IE]>
-                 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-         <![endif]-->
+        <!--[if IE]>
+                        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+                <![endif]-->
     </head>
     <body style="overflow: auto;">
         <script>
 
-function validatePassword(){	
-	var validator = $("#loginForm").validate({
-		rules: {        	        		
-			password :"required",
-			confirmpassword:{
-				equalTo: "#password"
-		    }		
-    	},  	                          
-	    messages: {
-    		password :" Enter Password",
-    		confirmpassword :" <span style='color:#f00;'><em>Enter Confirm Password same as Password</em></span>"
-	    }
-	});
-	
-}
+            function validatePassword() {
+                var validator = $("#loginForm").validate({
+                    rules: {
+                        password: "required",
+                        confirmpassword: {
+                            equalTo: "#password"
+                        }
+                    },
+                    messages: {
+                        password: " Enter Password",
+                        confirmpassword: " <span style='color:#f00;'><em>Enter Confirm Password same as Password</em></span>"
+                    }
+                });
 
- </script>
+            }
+
+        </script>
 
         <?php
 
@@ -108,86 +108,104 @@ function validatePassword(){
         }
         ?>
         <script language="JavaScript">
-function toggle(source) {
-  checkboxes = document.getElementsByName('check');
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.checked;
-  }
-}
-</script>
+            function toggle(source) {
+                checkboxes = document.getElementsByName('check');
+                for (var i = 0, n = checkboxes.length; i < n; i++) {
+                    checkboxes[i].checked = source.checked;
+                }
+            }
+        </script>
 
 
         <div id="header">
             <h1>NeoGen Labs Payroll System</h1>
             <div class="page-full-width cf">
-                
+
                 <ul id="header-nav">
                     <li class="v-sep">
                         <?php
                         if ($user = Session::get('user')) {
                             ?><a href="#" class="round-button dark" style="color:#fff;"><i class="icon-user icon-white"></i> Logged in as <strong><?php echo $user->name; ?></strong></a>
                             <ul>
-                                <li><?php echo Html::anchor('users', 'User List',array('class'=>'header-nav-child', 'style'=>'list-style-type:none;'));?></li>
-                                <li><?php echo Html::anchor('users/access', 'Access Rights',array('class'=>'header-nav-child'));?></li>
-                                <li><?php echo Html::anchor('companies', 'Company Information',array('class'=>'header-nav-child'));?></li>
-                                <li><?php echo Html::anchor('users/password', 'Change Password',array('class'=>'header-nav-child'));?></li>
+                                <li><?php echo Html::anchor('users', 'User List', array('class' => 'header-nav-child', 'style' => 'list-style-type:none;')); ?></li>
+                                <li><?php echo Html::anchor('users/access', 'Access Rights', array('class' => 'header-nav-child')); ?></li>
+                                <li><?php echo Html::anchor('companies', 'Company Information', array('class' => 'header-nav-child')); ?></li>
+                                <li><?php echo Html::anchor('users/password', 'Change Password', array('class' => 'header-nav-child')); ?></li>
                             </ul>
-                    </li>
-                <li><?php  echo Html::anchor('login/logout', '<i class="icon-off icon-white"></i>LOGOUT', array('class'=>'round-button dark', 'style'=>'color:#fff; width:80px;'));?> </li>
+                        </li>
+                        <li><?php echo Html::anchor('login/logout', '<i class="icon-off icon-white"></i>LOGOUT', array('class' => 'round-button dark', 'style' => 'color:#fff; width:80px;')); ?> </li>
 
-                </ul>
-                            <?php
-                        } else {
-                            Response::redirect('login/login');
-                        }
-                        ?> 
-                       
+                    </ul>
+                    <?php
+                } else {
+                    Response::redirect('login/login');
+                }
+                ?> 
+
 
             </div>
         </div>
-        <div class="left-sidebar">
-            <div style="margin-top:100px;">
-                <ul class="menu">
-                    <li class="item1"><a href="#">Employee</a>
-                        <ul>
-                            <li class ="subitem1"><?php echo Html::anchor('employees','Employee Directory',array('class'=>'subitem1')); ?></li>
-                            <li class ="subitem2"><?php echo Html::anchor('employees/create','Add Employee'); ?></li>
-                            <li class="subitem2"><?php echo Html::anchor('leaves','Leave'); ?></li>
-                             <li class="subitem2"><?php echo Html::anchor('employees/archive','Archive'); ?></li>
-                        </ul>
-                    </li>
-                    <li class="item2"><a href="#">Payroll</a>
-                        <ul>
-                            <li class ="subitem1"><?php echo Html::anchor('salaries/','Payroll Central'); ?></li>
-                            <li class="subitem2"><?php echo Html::anchor('salaries/structure','Salary Structure'); ?></li>
-                            <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
-                        </ul>
-                    </li>
-                </ul>
+        <?php if (Session::get_flash('success')): ?>
+            <div class="alert alert-success">
+                <strong>Success</strong>
+                <p>
+                    <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+                </p>
             </div>
+        <?php endif; ?>
+        <?php if (Session::get_flash('error')): ?>
+            <div class="alert alert-error">
+                <strong>Error</strong>
+                <p>
+                    <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+                </p>
+            </div>
+        <?php endif; ?>
+
+        <div style="position:fixed; z-index: 20; background-color: #fff;">
+            <div class="left-sidebar">
+                <div style="margin-top:100px;">
+                    <ul class="menu">
+                        <li class="item1"><a href="#">Employee</a>
+                            <ul>
+                                <li class ="subitem1"><?php echo Html::anchor('employees', 'Employee Directory', array('class' => 'subitem1')); ?></li>
+                                <li class ="subitem2"><?php echo Html::anchor('employees/create', 'Add Employee'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('leaves', 'Leave'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('employees/viewarchive', 'Archive'); ?></li>
+                            </ul>
+                        </li>
+                        <li class="item2"><a href="#">Payroll</a>
+                            <ul>
+                                <li class ="subitem1"><?php echo Html::anchor('salaries/', 'Payroll Central'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('salaries/structure', 'Salary Structure'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="border"></div></div>
+        <div id="container">
+            <?php echo $content; ?>
         </div>
- 
-            <div id="border"></div>
-            <div id="container">
-                <?php echo $content; ?>
-            </div>
-            <script type="text/javascript">
-$(function() {
-    var menu_ul = $('.menu > li > ul'),
-        menu_a  = $('.menu > li > a');
-    menu_ul.hide();
-    menu_a.click(function(e) {
-        e.preventDefault();
-        if(!$(this).hasClass('active')) {
-            menu_a.removeClass('active');
-            menu_ul.filter(':visible').slideUp('normal');
-            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-        } else {
-            $(this).removeClass('active');
-            $(this).next().stop(true,true).slideUp('normal');
-        }
-    });
-});
-</script>
+        <script type="text/javascript">
+            $(function() {
+                var menu_ul = $('.menu > li > ul'),
+                        menu_a = $('.menu > li > a');
+                menu_ul.hide();
+                menu_a.click(function(e) {
+                    e.preventDefault();
+                    if (!$(this).hasClass('active')) {
+                        menu_a.removeClass('active');
+                        menu_ul.filter(':visible').slideUp('normal');
+                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                    } else {
+                        $(this).removeClass('active');
+                        $(this).next().stop(true, true).slideUp('normal');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

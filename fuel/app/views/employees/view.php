@@ -1,6 +1,5 @@
 
-<div class="view">
-
+<div class="view" style='font-size: 16px; line-height: 25px;'>
     <h2><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h2>
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
@@ -52,82 +51,64 @@
         </div>
     </div>    
     <br /><br />
-    <div class="main-headline">BANK DETAILS <?php echo Html::anchor('banks/edit/'.$employee->bank->employee_id,'Edit',array('class'=>'btn', 'style'=>'float:right; margin-right:30px; margin-top:-7px;'));?></div>
-    <br />  
-     
-    <div class="grid-12-12">
-        <div class="grid-4-12">
-            <strong>Account No.:</strong>
-            <?php if(isset($employee->bank->account_no)):
-                echo $employee->bank->account_no;
-            else:
-                echo '';
-            endif;
-            ?>
-        </div>
-        <div class="grid-4-12">
-            <strong>Account Type:</strong>
-            <?php if(isset($employee->bank->account_type)):
-                echo $employee->bank->account_type;
-            else:
-                echo '';
-            endif;
-            ?>
 
-        </div>
-    </div>
-    <div class="grid-12-12">
-        <div class="grid-4-12">
-            <strong>Branch:</strong>
-                        <?php if(isset($employee->bank->branch)):
-                echo $employee->bank->branch;
-            else:
-                echo '';
-            endif;
-            ?>
+    <?php if (isset($employee->bank->employee_id)): ?>
+        <div class="main-headline">BANK DETAILS </div>
+        <br />  
 
+        <div class="grid-12-12">
+            <div class="grid-4-12">
+                <strong>Account No.:</strong>
+                <?php echo $employee->bank->account_no; ?>
+            </div>
+            <div class="grid-4-12">
+                <strong>Account Type:</strong>
+                <?php echo $employee->bank->account_type; ?>
+            </div>
         </div>
-        <div class="grid-4-12">
-            <strong>City:</strong>
-                        <?php if(isset($employee->bank->city)):
-                echo $employee->bank->city;
-            else:
-                echo '';
-            endif;
-            ?>
+        <div class="grid-12-12">
+            <div class="grid-4-12">
+                <strong>Branch:</strong>
+                <?php echo $employee->bank->branch; ?>
+            </div>
+            <div class="grid-4-12">
+                <strong>City:</strong>
+                <?php echo $employee->bank->city; ?>
+            </div>
+            <div class="grid-4-12">
+                <strong >State:</strong>
+                <?php echo $employee->bank->state; ?>
 
+            </div>
         </div>
-        <div class="grid-4-12">
-            <strong >State:</strong>
-                        <?php if(isset($employee->bank->state)):
-                echo $employee->bank->state;
-            else:
-                echo '';
-            endif;
-            ?>
+        <div class="grid-12-12">
+            <div class="grid-4-12">
+                <strong>IFSC Code:</strong>
 
+                <?php echo $employee->bank->ifsc_code; ?>
+
+            </div>
+            <div class="grid-4-12">
+                <strong>Payment Type:</strong>
+
+                <?php
+                if ($employee->bank->payment_type == 'cash') {
+                    echo 'Cash';
+                } elseif ($employee->bank->payment_type == 'dd') {
+                    echo 'Demand Draft';
+                } elseif ($employee->bank->payment_type == 'cheque') {
+                    echo 'Cheque';
+                } else {
+                    echo 'Account Transfer';
+                }
+                ?>
+
+            </div>
         </div>
-    </div>
-    <div class="grid-12-12">
-        <div class="grid-4-12">
-            <strong>IFSC Code:</strong>
-                    <?php if(isset($employee->bank->ifsc_code)):
-                echo $employee->bank->ifsc_code;
-            else:
-                echo '';
-            endif;
-            ?>
-    
-        </div>
-        <div class="grid-4-12">
-            <strong>Payment Type:</strong>
-                       <?php if(isset($employee->bank->payment_type)):
-                echo $employee->bank->payment_type;
-            else:
-                echo '';
-            endif;
-            ?>
-      </div>
-    </div>
- 
+        <?php echo Html::anchor('banks/edit/' . $employee->id, 'Edit Bank', array('class' => 'btn', 'style' => 'float:right; margin-right:30px; margin-top:-7px;')); ?>
+    <?php
+    else:
+        echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn', 'style' => 'float:right; margin-right:30px; margin-top:-7px;'));
+    endif;
+    ?>
 </div>

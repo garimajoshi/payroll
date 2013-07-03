@@ -110,11 +110,11 @@ class Controller_Employees extends Controller_Base {
         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
 
-			if($emp = Model_Employee::find(Input::post('id'))) {
-				Session::set_flash('error', 'Employee already exist #' . Input::post('id') . '.');
-				Response::redirect('employees/create' . $employee->id);
-			}
-			
+            if ($emp = Model_Employee::find(Input::post('id'))) {
+                Session::set_flash('error', 'Employee already exist #' . Input::post('id') . '.');
+                Response::redirect('employees/create' . $employee->id);
+            }
+
             if ($val->run()) {
 
                 $var_dob_day = Input::post('dob_day');
@@ -152,7 +152,7 @@ class Controller_Employees extends Controller_Base {
 
                 if ($employee and $employee->save()) {
                     Session::set_flash('success', 'Added employee #' . $employee->id . '.');
-					Response::redirect('/banks/create/' . $employee->id);
+                    Response::redirect('/banks/create/' . $employee->id);
                 } else {
                     Session::set_flash('error', 'Could not save employee.');
                 }

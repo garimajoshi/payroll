@@ -21,7 +21,6 @@ if ($company->state === "Karnataka") {
     $form = '';
 }
 ?>
-<?php echo Html::anchor('salaries/print/'.$employee->id,'Print Payslip',array('class'=>'btn btn-success', 'style'=>'margin-left: 900px; margin-top: -450px;')); ?>
 
 <?php echo Form::open(array("class" => "formee")); ?>
 <div class=headline>	
@@ -59,7 +58,10 @@ if ($company->state === "Karnataka") {
 <br />  <strong style="margin-left: 20px;">Name:</strong><?php echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name; ?>
 
 <?php if ($salary): ?>
+<?php echo Html::anchor('salaries/print/'.$employee->id.'/'.$salary->month.'/'.$salary->year,'Print Payslip',array('class'=>'btn btn-success', 'style'=>'float:right; margin-right:50px; color:#fff;')); ?>
+
 <table class="salary">
+
     <thead>
         <tr style="border-bottom: 2px solid #000; text-align: left;">
             <th><b>No.</b></th>
@@ -191,5 +193,4 @@ if ($company->state === "Karnataka") {
         </tr>
     </tbody>
 </table>
-<button class="btn btn-success" style="margin-left: 900px; margin-top: -450px">Print Payslip </button>
 <?php endif;?>

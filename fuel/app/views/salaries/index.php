@@ -46,7 +46,6 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <?php echo Form::submit('submit', 'Generate Payslip', array('class' => 'btn btn-inverse', 'style' => 'margin-left:40px;')); ?>
     <?php echo Form::close(); ?>
 
 <?php else: ?>
