@@ -11,7 +11,7 @@
             <?php echo createYears(2000, 2050, 'year', $year); ?>
         </div>
         <div class="grid-2-12" style="margin-top:18px;">
-            <?php echo Form::submit('submit', 'view'); ?>
+            <?php echo Form::submit('submit', 'view',array('class'=>'btn btn-primary')); ?>
         </div>
     </div>
 </div>

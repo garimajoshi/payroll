@@ -1,4 +1,5 @@
 <?php
+$count = 1;
 $monthname = array(
     '1' => 'Jan',
     '2' => 'Feb',
@@ -15,13 +16,13 @@ $monthname = array(
 );
 $address = explode(',', $company->address);
 
-if ($company->state === "Karnataka") {
+if ($employee->branch == "karnataka" or $employee->branch == "Karnataka") {
     $form = 'Form VI, Rule 29 (2)';
 } else {
-    $form = '';
+    $form = 'rrr';
 }
 ?>
-
+<?php echo $employee->branch; ?>
 <?php echo Form::open(array("class" => "formee")); ?>
 <div class=headline>	
     <div class="grid-12-12">
@@ -35,7 +36,7 @@ if ($company->state === "Karnataka") {
             <?php echo createYears(2000, 2050, 'year', $year); ?>
         </div>
         <div class="grid-2-12" style="margin-top:18px;">
-            <?php echo Form::submit('submit', 'view'); ?>
+            <?php echo Form::submit('submit', 'view', array('class' => 'btn btn-primary')); ?>
         </div>
 
     </div>
@@ -47,150 +48,260 @@ if ($company->state === "Karnataka") {
 </div>
 
 <div id="address">
-<?php echo $address[0] . ' • ' . $address[1] . '<br />
+    <?php echo $address[0] . ' • ' . $address[1] . '<br />
             ' . $address[2] . ' • ' . $company->city . ' ' . $company->pincode . '<br />
             ' . $company->state . ' • ' . $company->country . '<br />
             T: ' . $company->phone . ' • E: ' . $company->email . '<br />'; ?>
 
 </div>
 <h2 style="text-align:center; margin-top: 100px; margin-left: -100px; font-weight: 900;">SALARY STATEMENT </h2>
-<h3 style="margin-left:430px; font-weight:300;"><?php echo $form; ?></h3><br />
-<br />  <strong style="margin-left: 20px;">Name:</strong><?php echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name; ?>
+<h3 style="margin-left:460px; font-weight:300;"><?php echo $form; ?></h3><br />
+<br />  <strong style="margin-left: 20px;">Name: </strong><?php echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name; ?>
 
 <?php if ($salary): ?>
-<?php echo Html::anchor('salaries/print/'.$employee->id.'/'.$salary->month.'/'.$salary->year,'Print Payslip',array('class'=>'btn btn-success', 'style'=>'float:right; margin-right:50px; color:#fff;')); ?>
+    <?php echo Html::anchor('salaries/print/' . $employee->id . '/' . $salary->month . '/' . $salary->year, 'Print Payslip', array('class' => 'btn btn-success', 'style' => 'float:right; margin-right:50px; color:#fff;')); ?>
 
-<table class="salary">
+    <table class="salary">
 
-    <thead>
-        <tr style="border-bottom: 2px solid #000; text-align: left;">
-            <th><b>No.</b></th>
-            <th><b>Salary Component</b></th>
-            <th><b><?php echo $monthname[$salary->month] . ' - ' . $salary->year; ?></b></th>
-            <th><b>FYTD</b></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr style="padding-left: 20px;">
-            <td>1</td>
-            <td>Base Salary</td>
-            <td><?php echo $salary->basic;   ?></td>
-            <td><?php //echo $salary->basic;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>HRA</td>
-            <td><?php echo $salary->hra;   ?></td>
-            <td><?php //echo $salary->hra;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Conveyance/Transport</td>
-            <td><?php echo $salary->travel;   ?></td>
-            <td><?php //echo $salary->travel;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Medical</td>
-            <td><?php echo $salary->medical;   ?></td>
-            <td><?php //echo $salary->medical;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Special Allowance</td>
-            <td><?php echo $salary->credit_other;   ?></td>
-            <td>6750.00</td>
-            <td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Bonus</td>
-            <td><?php echo $salary->bonus1 + $salary->bonus2;?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Leave Encashment</td>
-            <td><?php echo $salary->leave;   ?></td>
-            <td><?php //echo $salary->leave;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Other Allowance</td>
-            <td><?php echo $salary->allowance1; ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr style="border-bottom: 2px solid #000;">
-            <td>9</td>
-            <td>Other</td>
-            <td><?php echo $salary->allowance2 + $salary->allowance3; ?></td>
-            <td>0.00</td>
-            
-        </tr>
-        
-        <tr style="font-weight:bold; padding-top: 100px;">
-            <td>10</td>
-            <td>TOTAL INCOME</td>
-            <td><?php echo $salary->credit_total;?></td>
-            <td></td>
-            <td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Less:Professional Tax</td>
-            <td><?php echo $salary->professional_tax;   ?></td>
-            <td><?php //echo $salary->professional_tax;   ?></td>
-            <td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>Less:TDS Witholding</td>
-            <td><?php echo $salary->income_tax; ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>Other Deductions</td>
-            <td><?php echo $salary->deduction1; ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>Other Deductions</td>
-            <td><?php echo $salary->deduction2; ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr style="border-bottom: 2px solid #000;">
-            <td>15</td>
-            <td>Other Deductions</td>
-            <td><?php echo $salary->deduction3; ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-        <tr style="border-bottom: 2px solid #000; font-weight: bold;">
-            <td>20</td>
-            <td>TOTAL DEDUCTIONS</td>
-            <td><?php echo $salary->total_debit; ?></td>
-            <td>19800.00</td>
-            <td>
-        </tr>
-        <tr style="font-weight: bold;">
-            <td>30</td>
-            <td>NET PAYABLE</td>
-            <td><?php echo $salary->net;   ?></td>
-            <td>0.00</td>
-            <td>
-        </tr>
-    </tbody>
-</table>
-<?php endif;?>
+        <thead>
+            <tr style="border-bottom: 2px solid #000; text-align: left;">
+                <th  style="width:35px;"><b>No.</b></th>
+                <th style="width:220px;"><b>Salary Component</b></th>
+                <th style="text-align:right; width:80px;"><b><?php echo $monthname[$salary->month] . ' - ' . $salary->year; ?></b></th>
+                <th style="text-align:right;  width:100px;"><b>FYTD</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($fytd['basic'] != 0) { ?>
+                <tr style="padding-left: 20px;">
+                    <td><?php echo $count;
+        $count++;
+                ?></td>
+                    <td>Base Salary</td>
+                    <td style="text-align:right"><?php echo $salary->basic; ?></td>
+                    <td style="text-align:right"><?php //echo $fytd['basic'];     ?></td>
+                    <td>
+                </tr>
+            <?php } ?>
+    <?php if ($fytd['hra'] != 0) { ?>
+
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>HRA</td>
+                    <td style="text-align:right"><?php echo $salary->hra; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['hra']; ?></td>
+                    <td>
+                </tr>
+    <?php } ?>
+                    <?php if ($fytd['lta'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+                        $count++;
+                        ?></td>
+                    <td>LTA</td>
+                    <td style="text-align:right"><?php echo $salary->lta; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['lta']; ?></td>
+                    <td>
+                </tr>
+    <?php } ?>
+                    <?php if ($fytd['travel'] != 0) { ?>
+
+                <tr>
+                    <td><?php echo $count;
+                        $count++;
+                        ?></td>
+                    <td>Conveyance/Transport</td>
+                    <td style="text-align:right"><?php echo $salary->travel; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['travel']; ?></td>
+                    <td>
+                </tr>
+                    <?php } ?>
+                    <?php if ($fytd['medical'] != 0) { ?>
+
+                <tr>
+                    <td><?php echo $count;
+                $count++;
+                ?></td>
+                    <td>Medical</td>
+                    <td style="text-align:right"><?php echo $salary->medical; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['hra']; ?></td>
+                    <td>
+                </tr>
+                    <?php } ?>
+    <?php if ($fytd['pf_value'] != 0) { ?>
+
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Provident Fund</td>
+                    <td style="text-align:right"><?php echo $salary->pf_value; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['pf_value']; ?></td>
+                    <td>
+                </tr>
+    <?php } ?>
+    <?php if ($fytd['credit_other'] != 0) { ?>
+
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Special Allowance</td>
+                    <td style="text-align:right"><?php echo $salary->credit_other; ?></td>
+                    <td style="text-align:right"><?php echo $fytd['credit_other']; ?></td>
+                    <td>
+                </tr>
+    <?php } ?>
+    <?php if ($fytd['bonus1'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Bonus1</td>
+                    <td><?php echo $salary->bonus1; ?></td>
+                    <td><?php echo $fytd['bonus1']; ?></td>
+
+                </tr>
+    <?php } ?>
+            <?php if ($fytd['bonus2'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+                $count++;
+                ?></td>
+                    <td>Bonus2</td>
+                    <td><?php echo $salary->bonus2; ?></td>
+                    <td><?php echo $fytd['bonus2']; ?></td>
+
+                </tr>
+            <?php } ?>
+            <?php if ($fytd['leave'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Leave Encashment</td>
+                    <td><?php echo $salary->leave; ?></td>
+                    <td><?php echo $fytd['leave']; ?></td>
+                    <td>
+                </tr>
+            <?php } ?>
+            <?php if ($fytd['allowance1'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+                ?></td>
+                    <td>Allowance1</td>
+                    <td><?php echo $salary->allowance1; ?></td>
+                    <td><?php echo $fytd['allowance1']; ?></td>
+                    <td>
+                </tr>
+            <?php } ?>
+    <?php if ($fytd['allowance2'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Allowance2</td>
+                    <td><?php echo $salary->allowance2; ?></td>
+                    <td><?php echo $fytd['allowance2']; ?></td>
+
+                </tr>
+                    <?php } ?>
+                    <?php if ($fytd['allowance3'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+                $count++;
+                ?></td>
+                    <td>Allowance3</td>
+                    <td><?php echo $salary->allowance3; ?></td>
+                    <td><?php echo $fytd['allowance3']; ?></td>
+                </tr>
+                    <?php } ?>
+
+            <tr style="font-weight:bold; padding-top: 100px;border-top: 2px solid #000;">
+                <td><?php echo $count;
+                    $count++;
+                    ?></td>
+                <td>TOTAL INCOME</td>
+                <td><?php echo $salary->credit_total; ?></td>
+                <td><?php echo $fytd['credit_total']; ?></td>
+
+            </tr>
+
+    <?php if ($fytd['professional_tax'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Less:Professional Tax</td>
+                    <td><?php echo $salary->professional_tax; ?></td>
+                    <td><?php echo $fytd['professional_tax']; ?></td>
+
+                </tr>
+    <?php } ?>
+    <?php if ($fytd['income_tax'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Less:TDS Witholding</td>
+                    <td><?php echo $salary->income_tax; ?></td>
+                    <td><?php echo $fytd['income_tax']; ?></td>
+
+                </tr>
+    <?php } ?>
+    <?php if ($fytd['deduction1'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+        $count++;
+        ?></td>
+                    <td>Deduction1</td>
+                    <td><?php echo $salary->deduction1; ?></td>
+                    <td><?php echo $fytd['deduction1']; ?></td>
+
+                </tr>
+    <?php } ?>
+            <?php if ($fytd['deduction2'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+                $count++;
+                ?></td>
+                    <td>Deduction2</td>
+                    <td><?php echo $salary->deduction2; ?></td>
+                    <td><?php echo $fytd['deduction2']; ?></td>
+
+                </tr>
+    <?php } ?>
+                    <?php if ($fytd['deduction3'] != 0) { ?>
+                <tr>
+                    <td><?php echo $count;
+                        $count++;
+                        ?></td>
+                    <td>Deduction3</td>
+                    <td><?php echo $salary->deduction3; ?></td>
+                    <td><?php echo $fytd['deduction3']; ?></td>
+                </tr>
+    <?php } ?>
+            <tr style="font-weight: bold; border-top: 2px solid #000;">
+                <td><?php echo $count;
+    $count++;
+    ?></td>
+                <td>TOTAL DEDUCTIONS</td>
+                <td><?php echo $salary->total_debit; ?></td>
+                <td><?php echo $fytd['total_debit']; ?></td>
+
+            </tr>
+            <tr style="font-weight: bold; border-top: 2px solid #000;">
+                <td><?php echo $count;
+    $count++;
+    ?></td>
+                <td>NET PAYABLE</td>
+                <td><?php echo $salary->net; ?></td>
+                <td><?php echo $fytd['net']; ?></td>
+
+            </tr>
+        </tbody>
+    </table>
+<?php endif; ?>

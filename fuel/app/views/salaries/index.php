@@ -5,7 +5,7 @@
         <?php echo Form::open(array('action' => '/employees/search', 'method' => 'get', 'class' => 'form-search emp-search', 'style' => "float: right; margin-right: 30px;")); ?>
         <div>
             <input type="text" name="search" value="<?php echo Session::get('search'); ?>" class="search-query" />
-            <button type="submit" class="btn ">
+            <button type="submit" class="btn">
                 <i class="icon-search"></i>
             </button>
         </div>

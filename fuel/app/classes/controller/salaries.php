@@ -84,6 +84,9 @@ class Controller_Salaries extends Controller_Base {
 
         $data['month'] = $var_month;
         $data['year'] = $var_year;
+        $data['fytd'] = $this->findFYTD($id, $var_month, $var_year);
+
+        
         $this->template->title = 'Salary Statement';
         $this->template->content = View::forge('salaries/view', $data);
     }
@@ -459,16 +462,20 @@ class Controller_Salaries extends Controller_Base {
 
     public function findFYTD($id, $month, $year) {
 
-        $total['basic'] = 0;
-        $total['hra'] = 0;
-        $total['lta'] = 0;
+        $total['basic'] = 0.00;
+        $total['hra'] = 0.00;
+        $total['lta'] = 0.00;
         $total['travel'] = 0;
         $total['medical'] = 0;
         $total['credit_other'] = 0;
-        $total['bonus'] = 0;
+        $total['bonus1'] = 0;
+        $total['bonus2'] = 0;
         $total['leave'] = 0;
+        $total['pf_value'] =0;
         $total['credit_total'] = 0;
-        $total['allowance'] = 0;
+        $total['allowance1'] = 0;
+        $total['allowance2'] = 0;
+        $total['allowance3'] = 0;
         $total['professional_tax'] = 0;
         $total['income_tax'] = 0;
         $total['deduction1'] = 0;
@@ -488,10 +495,14 @@ class Controller_Salaries extends Controller_Base {
                 $total['medical'] += $salary->medical;
                 $total['travel'] += $salary->travel;
                 $total['credit_other'] += $salary->credit_other;
-                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['bonus1'] = $total['bonus1'] + $salary->bonus1;
+                $total['bonus2'] = $total['bonus2'] + $salary->bonus2;
                 $total['leave'] += $salary->leave;
+                $total['pf_value'] +=$salary->pf_value;
                 $total['credit_total'] += $salary->credit_total;
-                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['allowance1'] = $total['allowance1'] + $salary->allowance1;
+                $total['allowance2'] = $total['allowance2'] + $salary->allowance2;
+                $total['allowance3'] = $total['allowance3'] + $salary->allowance3;
                 $total['professional_tax'] += $salary->professional_tax;
                 $total['income_tax'] += $salary->income_tax;
                 $total['deduction1'] += $salary->deduction1;
@@ -504,16 +515,20 @@ class Controller_Salaries extends Controller_Base {
             $salaries = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '<=', $month), array('year' => $year))));
 
             foreach ($salaries as $salary) {
-                $total['basic'] += $salary->basic;
+               $total['basic'] += $salary->basic;
                 $total['hra'] += $salary->hra;
                 $total['lta'] += $salary->lta;
                 $total['medical'] += $salary->medical;
                 $total['travel'] += $salary->travel;
                 $total['credit_other'] += $salary->credit_other;
-                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['bonus1'] = $total['bonus1'] + $salary->bonus1;
+                $total['bonus2'] = $total['bonus2'] + $salary->bonus2;
                 $total['leave'] += $salary->leave;
+                $total['pf_value'] +=$salary->pf_value;
                 $total['credit_total'] += $salary->credit_total;
-                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['allowance1'] = $total['allowance1'] + $salary->allowance1;
+                $total['allowance2'] = $total['allowance2'] + $salary->allowance2;
+                $total['allowance3'] = $total['allowance3'] + $salary->allowance3;
                 $total['professional_tax'] += $salary->professional_tax;
                 $total['income_tax'] += $salary->income_tax;
                 $total['deduction1'] += $salary->deduction1;
@@ -532,10 +547,14 @@ class Controller_Salaries extends Controller_Base {
                 $total['medical'] += $salary->medical;
                 $total['travel'] += $salary->travel;
                 $total['credit_other'] += $salary->credit_other;
-                $total['bonus'] = $total['bonus'] + $salary->bonus1 + $salary->bonus2;
+                $total['bonus1'] = $total['bonus1'] + $salary->bonus1;
+                $total['bonus2'] = $total['bonus2'] + $salary->bonus2;
                 $total['leave'] += $salary->leave;
+                $total['pf_value'] +=$salary->pf_value;
                 $total['credit_total'] += $salary->credit_total;
-                $total['allowance'] = $total['allowance'] + $salary->allowance1 + $salary->allowance2 + $salary->allowance3;
+                $total['allowance1'] = $total['allowance1'] + $salary->allowance1;
+                $total['allowance2'] = $total['allowance2'] + $salary->allowance2;
+                $total['allowance3'] = $total['allowance3'] + $salary->allowance3;
                 $total['professional_tax'] += $salary->professional_tax;
                 $total['income_tax'] += $salary->income_tax;
                 $total['deduction1'] += $salary->deduction1;
