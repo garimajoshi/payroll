@@ -3,12 +3,14 @@
 class Controller_Companies extends Controller_Base {
 
     public function action_index() {
+
         $data['companies'] = Model_Company::find('all');
         $this->template->title = "Companies";
         $this->template->content = View::forge('companies/index', $data);
     }
 
     public function action_view($id = null) {
+        //parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if (!$data['company'] = Model_Company::find($id)) {
@@ -21,12 +23,12 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_create() {
+        //parent::has_access("add_company");
         if (Input::method() == 'POST') {
             $val = Model_Company::validate('create');
 
             if ($val->run()) {
                 $company = Model_Company::forge(array(
-                          
                             'address' => Input::post('address'),
                             'city' => Input::post('city'),
                             'state' => Input::post('state'),
@@ -55,6 +57,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_edit($id = null) {
+        //parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if (!$company = Model_Company::find($id)) {
@@ -65,7 +68,7 @@ class Controller_Companies extends Controller_Base {
         $val = Model_Company::validate('edit');
 
         if ($val->run()) {
-            
+
             $company->address = Input::post('address');
             $company->city = Input::post('city');
             $company->state = Input::post('state');
@@ -85,7 +88,7 @@ class Controller_Companies extends Controller_Base {
             }
         } else {
             if (Input::method() == 'POST') {
-            
+
                 $company->address = $val->validated('address');
                 $company->city = $val->validated('city');
                 $company->state = $val->validated('state');
@@ -107,6 +110,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_delete($id = null) {
+        //parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if ($company = Model_Company::find($id)) {

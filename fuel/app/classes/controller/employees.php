@@ -32,12 +32,14 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_viewarchive() {
+        //parent::has_access("view_archive");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
     public function action_viewDelete() {
+        //parent::has_access("view_delete");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "delete")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewarchive', $data);
@@ -78,6 +80,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_search_archive() {
 
+        //parent::has_access("view_archive");
         $query = Input::get('search');
 
         if (!isset($query)) {
@@ -175,6 +178,8 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_edit($id = null) {
+
+        //parent::has_access("edit_employee");
         is_null($id) and Response::redirect('employees');
 
         if (!$employee = Model_Employee::find($id)) {
@@ -266,6 +271,7 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_archive($id = null) {
+        //parent::has_access("archive_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -293,6 +299,7 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_restore($id = null) {
+        //parent::has_access("archive_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -320,6 +327,7 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_delete($id = null) {
+        //parent::has_access("delete_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {

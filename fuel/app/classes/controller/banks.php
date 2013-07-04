@@ -3,12 +3,14 @@
 class Controller_Banks extends Controller_Base {
 
     public function action_index() {
+        //parent::has_access("create_employee");
         $data['banks'] = Model_Bank::find('all');
         $this->template->title = "Banks";
         $this->template->content = View::forge('banks/index', $data);
     }
 
     public function action_view($id = null) {
+        //parent::has_access("create_employee");
         is_null($id) and Response::redirect('banks');
 
         if (!$data['bank'] = Model_Bank::find($id)) {
@@ -21,6 +23,7 @@ class Controller_Banks extends Controller_Base {
     }
 
     public function action_create($id = null) {
+        //parent::has_access("create_employee");
         if (Input::method() == 'POST') {
             $val = Model_Bank::validate('create');
 
@@ -53,14 +56,14 @@ class Controller_Banks extends Controller_Base {
     }
 
     public function action_edit($id = null) {
+        //parent::has_access("create_employee");
         is_null($id) and Response::redirect('employees/view' . $id);
-        print_r($id);
-        $data['bank'] = Model_Bank::find('first', array('where' => array('employee_id' => $id)));
-        print_r($data);
+
         if (!$bank = Model_Bank::find('first', array('where' => array('employee_id' => $id)))) {
             Session::set_flash('error', 'Could not find user #' . $id);
             Response::redirect('employees/view/' . $id);
         }
+
         if (Input::method() == 'POST') {
             $bank->account_no = Input::post('account_no');
             $bank->account_type = Input::post('account_type');
@@ -70,86 +73,16 @@ class Controller_Banks extends Controller_Base {
             $bank->ifsc_code = Input::post('ifsc_code');
             $bank->payment_type = Input::post('payment_type');
             if ($bank->save()) {
-                Session::set_flash('success', 'Updated bank #' . $id);
+                Session::set_flash('success', 'Updated bank details #' . $id);
 
                 Response::redirect('employees/view/' . $id);
             } else {
                 Session::set_flash('error', 'Could not update bank #' . $id);
             }
-        } else {
-            if (Input::method() == 'POST') {
-                $bank->account_no = $val->validated('account_no');
-                $bank->account_type = $val->validated('account_type');
-                $bank->branch = $val->validated('branch');
-                $bank->city = $val->validated('city');
-                $bank->state = $val->validated('state');
-                $bank->ifsc_code = $val->validated('ifsc_code');
-                $bank->payment_type = $val->validated('payment_type');
-
-                Session::set_flash('error', $val->error());
-            } $this->template->set_global('bank', $bank, false);
         }
 
         $this->template->title = "Banks";
         $this->template->content = View::forge('banks/edit');
-
-
-        /* if (!$data['banks'] = Model_Bank::find($id)) {
-          Session::set_flash('error', 'Could not find bank #' . $id);
-          Response::redirect('banks');
-          }
-
-          $val = Model_Bank::validate('edit');
-
-          if ($val->run()) {
-
-          $bank->account_no = Input::post('account_no');
-          $bank->account_type = Input::post('account_type');
-          $bank->branch = Input::post('branch');
-          $bank->city = Input::post('city');
-          $bank->state = Input::post('state');
-          $bank->ifsc_code = Input::post('ifsc_code');
-          $bank->payment_type = Input::post('payment_type');
-
-          if ($bank->save()) {
-          Session::set_flash('success', 'Updated bank #' . $id);
-
-          Response::redirect('banks');
-          } else {
-          Session::set_flash('error', 'Could not update bank #' . $id);
-          }
-          } else {
-          if (Input::method() == 'POST') {
-          $bank->account_no = $val->validated('account_no');
-          $bank->account_type = $val->validated('account_type');
-          $bank->branch = $val->validated('branch');
-          $bank->city = $val->validated('city');
-          $bank->state = $val->validated('state');
-          $bank->ifsc_code = $val->validated('ifsc_code');
-          $bank->payment_type = $val->validated('payment_type');
-
-          Session::set_flash('error', $val->error());
-          }
-
-          $this->template->set_global('bank', $bank, false);
-          }
-
-          $this->template->title = "Banks";
-          $this->template->content = View::forge('banks/edit'); */
-    }
-
-    public function action_delete($id = null) {
-        is_null($id) and Response::redirect('banks');
-
-        if ($bank = Model_Bank::find($id)) {
-            $bank->delete();
-
-            Session::set_flash('success', 'Deleted bank #' . $id);
-        } else {
-            Session::set_flash('error', 'Could not delete bank #' . $id);
-        }
-
-        Response::redirect('banks');
     }
 
 }
