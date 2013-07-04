@@ -89,6 +89,7 @@ class Controller_Users extends Controller_Base {
         }
 
         if (Input::method() == 'POST') {
+            $user->password = md5(Input::post('password'));
             $user->access_level = Input::post('access_level');
 
             if ($user->save()) {

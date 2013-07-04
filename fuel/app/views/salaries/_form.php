@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class" => "formee")); ?>
+<?php echo Form::open(array("class" => "formee well")); ?>
 <div class=headline>	
     <div class="grid-12-12">
         <div class="grid-4-12" style="margin-top:-15px; margin-left:-35px;">
@@ -41,8 +41,8 @@
         <?php echo Form::input('deduction2', Input::post('deduction2', isset($employee) ? $employee->deduction2 : '0'), array('id' => 'deduction2', 'class' => 'formee-large','required', 'placeholder' => 'Deduction2')); ?>
         <?php echo Form::label('Deduction3', 'deduction3'); ?>
         <?php echo Form::input('deduction3', Input::post('deduction3', isset($employee) ? $employee->deduction3 : '0'), array('id' => 'deduction3', 'class' => 'formee-large','required', 'placeholder' => 'Deduction3')); ?>
-        <input type="button" value="Preview" onclick="doMath();" style="margin-top: 10px;"/>
-    <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:10px;")); ?>
+        <input type="button" value="Preview" onclick="doMath();" style="margin-top: 10px;" class="btn btn-success"/>
+    <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:10px;",'class'=>"btn btn-primary")); ?>
 
 </div>
 <?php echo Form::close(); ?>

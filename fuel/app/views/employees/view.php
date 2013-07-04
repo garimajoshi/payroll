@@ -1,6 +1,8 @@
 
 <div class="view" style='font-size: 14px; line-height: 25px;'>
-    <h1 style="font-size: 20px;"><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h1>
+
+    <h1 style="font-size: 20px;"><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h1> 
+        
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
     <br />
@@ -105,8 +107,14 @@
 
             </div>
         </div>
-        <?php echo Html::anchor('banks/edit/' . $employee->bank->employee_id, 'Edit Bank', array('class' => 'btn btn-danger', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;')); ?>
-        <?php
+        <?php if($employee->activity_status=='active'){
+        echo Html::anchor('banks/edit/' . $employee->bank->employee_id, 'Edit Bank', array('class' => 'btn btn-danger', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
+        } else if($employee->activity_status=='inactive'){
+            echo Html::anchor('salaries/viewArchive/'.$employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;')); 
+        }else{
+              echo Html::anchor('salaries/viewDelete/'.$employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
+        }?>
+            <?php
     else:
         echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn btn-warning', 'style' => 'float:right; margin-right:30px; margin-top:-7px;'));
     endif;

@@ -86,27 +86,27 @@ class Controller_Salaries extends Controller_Base {
 
             $pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
             $pf->value = Input::post('value_pf');
-            $pf_adjust->save();
+            $pf->save();
 
             $basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
             $basic->value = Input::post('value_basic');
-            $pf_adjust->save();
+            $basic->save();
 
             $lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
             $lta->value = Input::post('value_lta');
-            $pf_adjust->save();
+            $lta->save();
 
             $medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
             $medical->value = Input::post('value_medical');
-            $pf_adjust->save();
+            $medical->save();
 
             $travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
             $travel->value = Input::post('value_travel');
-            $pf_adjust->save();
+            $travel->save();
 
             $hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
             $hra->value = Input::post('value_hra');
-            $pf_adjust->save();
+            $hra->save();
         }
         $this->template->title = "Salary Structure";
         $this->template->content = View::forge('salaries/structure');
@@ -496,6 +496,18 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/edit', $data);
     }
 
+    public function action_viewDelete($id = null) {
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'delete'))));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+        
+        $this->template->content = View::forge('salaries/viewDelete', $data);
+    }
+    public function action_viewArchive($id = null) {
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'archive'))));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+        
+        $this->template->content = View::forge('salaries/viewArchive', $data);
+    }
     public function action_statement() {
         //parent::has_access("salary_statement");
         $var_month = Input::post('month');
@@ -650,7 +662,7 @@ class Controller_Salaries extends Controller_Base {
         $salaries = Model_Salary::find('all', array('where' => array(array('month' => $m), array('year' => $y))));
         $data['month'] = $month;
         $data['year'] = $year;
-        print_r($data);
+     
         foreach ($salaries as $salary):
             $emp = new Model_Salary();
             $emp->employee_id = $salary->employee_id;

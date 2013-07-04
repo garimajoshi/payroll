@@ -1,5 +1,7 @@
 <div class="headline"><h3>Leave <span class="muted">Details</span></h3></div>
 <br />
+  <?php echo Html::anchor('leaves','<< Back',array('class'=>'btn btn-large btn-success', 'style'=>'color:#fff; margin-left:40px;')); ?>
+<br/><br />
 <strong style="margin-left:35px; margin-top:10px;">Name:</strong> <?php echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name; ?>
 <?php
 $shl = 0;

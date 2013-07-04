@@ -1,5 +1,9 @@
 <?php echo Form::open(array("class" => "formee well")); ?>
-
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Html::anchor('leaves','<< Back',array('class'=>'btn btn-large btn-danger', 'style'=>'color:#fff;')); ?>
+    </div>
+</div>
 <div class="grid-8-12">
     <div class="grid-4-12">
         <?php echo Form::label('Type of Leave <em class="formee-req">*</em>', 'type', array('style' => 'font-weight:700;')); ?>

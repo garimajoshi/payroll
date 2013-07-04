@@ -2,7 +2,7 @@
 
 <div class="grid-12-12">
     <div class="grid-3-12">
-        <?php echo Html::anchor('companies', 'Back', array('class' => 'formee-button', 'style' => 'color:#fff')); ?>
+        <?php echo Html::anchor('companies', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => ' margin-top:25px; color:#fff')); ?>
     </div>
 </div>
 <div class="grid-12-12">
@@ -68,7 +68,7 @@
     </div>
 </div>
 <div class='grid-4-12'>
-    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-success','style'=>'margin-left:20px;')); ?>
 </div>
 
 <?php echo Form::close(); ?>

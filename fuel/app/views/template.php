@@ -173,6 +173,7 @@
                                 <li class ="subitem2"><?php echo Html::anchor('employees/create', 'Add Employee'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('leaves', 'Leave'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('employees/viewarchive', 'Archive'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('employees/viewDelete','Deleted Employees'); ?></li>
                             </ul>
                         </li>
                         <li class="item2"><a href="#">Payroll</a>
@@ -180,7 +181,7 @@
                                 <li class ="subitem1"><?php echo Html::anchor('salaries/', 'Payroll Central'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/structure', 'Salary Structure'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
-                                <li class="subitem2"><?php echo Html::anchor('#', 'Rename Fields'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('salaries/rename', 'Rename Fields'); ?></li>
                             </ul>
                         </li>
                     </ul>
