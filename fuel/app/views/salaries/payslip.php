@@ -109,11 +109,15 @@ $html = '
             </tr>
             <tr>
                 <td>6</td>
-                <td>Bonus</td>
-                <td style="text-align:right">' . ($salary->bonus1 + $salary->bonus2) . '</td>
-                <td style="text-align:right">' . $fytd['bonus'] . '</td>
-
-
+                <td>Bonus #1</td>
+                <td style="text-align:right">' . $salary->bonus1 . '</td>
+                <td style="text-align:right">' . $fytd['bonus1'] . '</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Bonus #2</td>
+                <td style="text-align:right">' . $salary->bonus2 . '</td>
+                <td style="text-align:right">' . $fytd['bonus2'] . '</td>
             </tr>
             <tr>
                 <td>7</td>
@@ -125,9 +129,21 @@ $html = '
             </tr>
             <tr>
                 <td>8</td>
-                <td>Other Allowance</td>
-                <td style="text-align:right">' . ($salary->allowance1 + $salary->allowance2 + $salary->allowance3) . '</td>
-                <td style="text-align:right">' . $fytd['allowance'] . '</td>
+                <td>Allowance #1</td>
+                <td style="text-align:right">' . $salary->allowance1 . '</td>
+                <td style="text-align:right">' . $fytd['allowance1'] . '</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Allowance #2</td>
+                <td style="text-align:right">' . $salary->allowance2 . '</td>
+                <td style="text-align:right">' . $fytd['allowance2'] . '</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Allowance #3</td>
+                <td style="text-align:right">' . $salary->allowance3 . '</td>
+                <td style="text-align:right">' . $fytd['allowance3'] . '</td>
             </tr>
             <tr style="border-bottom: 2px solid #000;">
                 <td>9</td>
