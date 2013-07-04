@@ -288,7 +288,7 @@ class Controller_Employees extends Controller_Base {
 
         if ($salaries = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
             foreach ($salaries as $salary):
-                $salary->lock = "true";
+                $salary->lock = "archive";
                 $salary->save();
             endforeach;
         } else {
@@ -316,7 +316,7 @@ class Controller_Employees extends Controller_Base {
 
         if ($salaries = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
             foreach ($salaries as $salary):
-                $salary->lock = "false";
+                $salary->lock = "true";
                 $salary->save();
             endforeach;
         } else {

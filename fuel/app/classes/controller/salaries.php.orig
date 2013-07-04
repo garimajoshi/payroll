@@ -10,6 +10,30 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_rename() {
+<<<<<<< HEAD
+        $data['rename'] = Model_Rename::find('first');
+
+
+        if (Input::method() == 'POST') {
+            $rename->bonus1 = Input::post('bonus1');
+            $rename->bonus2 = Input::post('bonus2');
+            $rename->allowance1 = Input::post('allowance1');
+            $rename->allowance2 = Input::post('allowance2');
+            $rename->allowance3 = Input::post('allowance3');
+            $rename->deduction1 = Input::post('deduction1');
+            $rename->deduction2 = Input::post('deduction2');
+            $rename->deduction3 = Input::post('deduction3');
+            if ($rename->save()) {
+                Session::set_flash('success', 'Updated');
+
+                Response::redirect('employees');
+            } else {
+                Session::set_flash('error', 'Could not update');
+            }
+        }
+
+        $this->template->content = View::forge('salaries/rename', $data);
+=======
 
         $data['renames'] = Model_Rename::find('all');
         $this->template->title = "Rename Fields";
@@ -40,9 +64,9 @@ class Controller_Salaries extends Controller_Base {
             }
             Response::redirect('salaries/rename');
         }
+>>>>>>> 9f0bae0d982aa94e3d57d36bdba9976e1e0a880c
     }
 
-    
     public function action_search() {
 
         $query = Input::get('search');
@@ -170,7 +194,6 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/view', $data);
     }
 
-    
     public function action_create($id = null) {
         //parent::has_access("create_salary");
         is_null($id) and Response::redirect('salaries');
@@ -524,25 +547,12 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/statement', $data);
     }
 
-    public function action_delete($id = null) {
-        is_null($id) and Response::redirect('salaries');
-
-        if ($salary = Model_Salary::find($id)) {
-            $salary->delete();
-
-            Session::set_flash('success', 'Deleted salary #' . $id);
-        } else {
-            Session::set_flash('error', 'Could not delete salary #' . $id);
-        }
-
-        Response::redirect('salaries');
-    }
-
     private function findFYTD($id, $month, $year) {
 
         $total['basic'] = 0.00;
         $total['hra'] = 0.00;
         $total['lta'] = 0.00;
+<<<<<<< HEAD
         $total['travel'] = 0;
         $total['medical'] = 0;
         $total['credit_other'] = 0;
@@ -561,6 +571,26 @@ class Controller_Salaries extends Controller_Base {
         $total['deduction3'] = 0;
         $total['total_debit'] = 0;
         $total['net'] = 0;
+=======
+        $total['travel'] = 0.00;
+        $total['medical'] = 0.00;
+        $total['credit_other'] = 0.00;
+        $total['bonus1'] = 0.00;
+        $total['bonus2'] = 0.00;
+        $total['leave'] = 0.00;
+        $total['pf_value'] = 0.00;
+        $total['credit_total'] = 0.00;
+        $total['allowance1'] = 0.00;
+        $total['allowance2'] = 0.00;
+        $total['allowance3'] = 0.00;
+        $total['professional_tax'] = 0.00;
+        $total['income_tax'] = 0.00;
+        $total['deduction1'] = 0.00;
+        $total['deduction2'] = 0.00;
+        $total['deduction3'] = 0.00;
+        $total['total_debit'] = 0.00;
+        $total['net'] = 0.00;
+>>>>>>> 9f0bae0d982aa94e3d57d36bdba9976e1e0a880c
 
         if ($month >= 4) {
 
@@ -599,14 +629,14 @@ class Controller_Salaries extends Controller_Base {
                 $total['medical'] += $salary->medical;
                 $total['travel'] += $salary->travel;
                 $total['credit_other'] += $salary->credit_other;
-                $total['bonus1'] += $total['bonus1'] + $salary->bonus1;
-                $total['bonus2'] += $total['bonus2'] + $salary->bonus2;
+                $total['bonus1'] = $total['bonus1'] + $salary->bonus1;
+                $total['bonus2'] = $total['bonus2'] + $salary->bonus2;
                 $total['leave'] += $salary->leave;
                 $total['pf_value'] +=$salary->pf_value;
                 $total['credit_total'] += $salary->credit_total;
-                $total['allowance1'] += $total['allowance1'] + $salary->allowance1;
-                $total['allowance2'] += $total['allowance2'] + $salary->allowance2;
-                $total['allowance3'] += $total['allowance3'] + $salary->allowance3;
+                $total['allowance1'] = $total['allowance1'] + $salary->allowance1;
+                $total['allowance2'] = $total['allowance2'] + $salary->allowance2;
+                $total['allowance3'] = $total['allowance3'] + $salary->allowance3;
                 $total['professional_tax'] += $salary->professional_tax;
                 $total['income_tax'] += $salary->income_tax;
                 $total['deduction1'] += $salary->deduction1;
@@ -678,7 +708,7 @@ class Controller_Salaries extends Controller_Base {
         $salaries = Model_Salary::find('all', array('where' => array(array('month' => $m), array('year' => $y))));
         $data['month'] = $month;
         $data['year'] = $year;
-     
+        print_r($data);
         foreach ($salaries as $salary):
             $emp = new Model_Salary();
             $emp->employee_id = $salary->employee_id;
