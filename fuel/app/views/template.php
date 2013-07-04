@@ -147,7 +147,7 @@
             </div>
         </div>
         <?php if (Session::get_flash('success')): ?>
-            <div class="alert alert-success">
+            <div class="alert alert-success" style="z-index:500; margin-left: 500px;">
                 <strong>Success</strong>
                 <p>
                     <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
@@ -155,7 +155,7 @@
             </div>
         <?php endif; ?>
         <?php if (Session::get_flash('error')): ?>
-            <div class="alert alert-error">
+            <div class="alert alert-error" style="z-index:500; margin-left: 500px;">
                 <strong>Error</strong>
                 <p>
                     <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
