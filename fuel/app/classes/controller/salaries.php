@@ -10,10 +10,20 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_rename() {
-        $data['rename'] = Model_Rename::find('first');
 
+        $data['renames'] = Model_Rename::find('all');
+        $this->template->title = "Rename Fields";
+        $this->template->content = View::forge('salaries/rename', $data);
+    }
+
+    public function action_renameSubmit() {
 
         if (Input::method() == 'POST') {
+
+            if (!$rename = Model_Rename::find('first', array('where' => array('id' => 1)))) {
+                Session::set_flash('error', 'Could not rename.');
+                Response::redirect('salaries/rename');
+            }
             $rename->bonus1 = Input::post('bonus1');
             $rename->bonus2 = Input::post('bonus2');
             $rename->allowance1 = Input::post('allowance1');
@@ -23,17 +33,16 @@ class Controller_Salaries extends Controller_Base {
             $rename->deduction2 = Input::post('deduction2');
             $rename->deduction3 = Input::post('deduction3');
             if ($rename->save()) {
-                Session::set_flash('success', 'Updated');
-
-                Response::redirect('employees');
+                Session::set_flash('success', 'Successfully renamed.');
+                Response::redirect('salaries');
             } else {
-                Session::set_flash('error', 'Could not update');
+                Session::set_flash('error', 'Could not rename.');
             }
+            Response::redirect('salaries/rename');
         }
-
-        $this->template->content = View::forge('salaries/rename', $data);
     }
 
+    
     public function action_search() {
 
         $query = Input::get('search');
@@ -78,27 +87,27 @@ class Controller_Salaries extends Controller_Base {
 
             $pf = Model_Constant::find('first', array('where' => array('name' => 'pf')));
             $pf->value = Input::post('value_pf');
-            $pf_adjust->save();
+            $pf->save();
 
             $basic = Model_Constant::find('first', array('where' => array('name' => 'basic')));
             $basic->value = Input::post('value_basic');
-            $pf_adjust->save();
+            $basic->save();
 
             $lta = Model_Constant::find('first', array('where' => array('name' => 'lta')));
             $lta->value = Input::post('value_lta');
-            $pf_adjust->save();
+            $lta->save();
 
             $medical = Model_Constant::find('first', array('where' => array('name' => 'medical')));
             $medical->value = Input::post('value_medical');
-            $pf_adjust->save();
+            $medical->save();
 
             $travel = Model_Constant::find('first', array('where' => array('name' => 'travel')));
             $travel->value = Input::post('value_travel');
-            $pf_adjust->save();
+            $travel->save();
 
             $hra = Model_Constant::find('first', array('where' => array('name' => 'hra')));
             $hra->value = Input::post('value_hra');
-            $pf_adjust->save();
+            $hra->save();
         }
         $this->template->title = "Salary Structure";
         $this->template->content = View::forge('salaries/structure');
@@ -112,7 +121,7 @@ class Controller_Salaries extends Controller_Base {
         $data['month'] = $month;
         $data['year'] = $year;
         foreach ($locks as $lock):
-            $lock->lock = 1;
+            $lock->lock = "true";
             $lock->save();
         endforeach;
         Response::redirect('salaries');
@@ -161,21 +170,7 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/view', $data);
     }
 
-    public function action_archive($id = null) {
-        is_null($id) and Response::redirect('salaries');
-
-        if ($employees = Model_Salary::find('all', array('where' => array('employee_id' => $id)))) {
-            foreach ($employees as $employee):
-                $employee->lock = "true";
-                $employee->save();
-            endforeach;
-        } else {
-            Session::set_flash('error', 'Could not find salary statement #' . $id);
-        }
-
-        Response::redirect('salaries');
-    }
-
+    
     public function action_create($id = null) {
         //parent::has_access("create_salary");
         is_null($id) and Response::redirect('salaries');
@@ -604,14 +599,14 @@ class Controller_Salaries extends Controller_Base {
                 $total['medical'] += $salary->medical;
                 $total['travel'] += $salary->travel;
                 $total['credit_other'] += $salary->credit_other;
-                $total['bonus1'] = $total['bonus1'] + $salary->bonus1;
-                $total['bonus2'] = $total['bonus2'] + $salary->bonus2;
+                $total['bonus1'] += $total['bonus1'] + $salary->bonus1;
+                $total['bonus2'] += $total['bonus2'] + $salary->bonus2;
                 $total['leave'] += $salary->leave;
                 $total['pf_value'] +=$salary->pf_value;
                 $total['credit_total'] += $salary->credit_total;
-                $total['allowance1'] = $total['allowance1'] + $salary->allowance1;
-                $total['allowance2'] = $total['allowance2'] + $salary->allowance2;
-                $total['allowance3'] = $total['allowance3'] + $salary->allowance3;
+                $total['allowance1'] += $total['allowance1'] + $salary->allowance1;
+                $total['allowance2'] += $total['allowance2'] + $salary->allowance2;
+                $total['allowance3'] += $total['allowance3'] + $salary->allowance3;
                 $total['professional_tax'] += $salary->professional_tax;
                 $total['income_tax'] += $salary->income_tax;
                 $total['deduction1'] += $salary->deduction1;
@@ -683,7 +678,7 @@ class Controller_Salaries extends Controller_Base {
         $salaries = Model_Salary::find('all', array('where' => array(array('month' => $m), array('year' => $y))));
         $data['month'] = $month;
         $data['year'] = $year;
-        print_r($data);
+     
         foreach ($salaries as $salary):
             $emp = new Model_Salary();
             $emp->employee_id = $salary->employee_id;
