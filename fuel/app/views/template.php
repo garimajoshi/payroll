@@ -180,6 +180,7 @@
                                 <li class ="subitem1"><?php echo Html::anchor('salaries/', 'Payroll Central'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/structure', 'Salary Structure'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
+                                <li class="subitem2"><?php echo Html::anchor('#', 'Rename Fields'); ?></li>
                             </ul>
                         </li>
                     </ul>

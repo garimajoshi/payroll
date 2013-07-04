@@ -250,8 +250,13 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     margin-left: 40px;
     margin-top:10px;
 }
+.salary thead tr th{
+    font-size: 18px;
+}
 .salary tbody tr td{
     padding-left: 5px;
+    font-size: 16px;
+    line-height: 30px;
 }
 
 .search{

@@ -16,9 +16,64 @@
     </div>
 </div>
 <?php echo Form::close(); ?>
-
 <?php if ($salaries): ?>
-    <table class="table table-striped" style="margin-top:95px; width:3600px; margin-right: 50px;">
+
+<?php if($salarylock->lock == 'false'):
+echo Html::anchor('salaries/lock/'.$month.'/'.$year,'Lock Payroll',array('class'=>'btn btn-danger','style'=>'color:#fff; margin-left:40px; margin-top:30px;'));
+else: ?>
+   <span style=" display: inline-block;
+    *display: inline;
+    padding: 4px 10px 4px;
+    margin-bottom: 0;
+    *margin-left: .3em;
+    font-size: 13px;
+    line-height: 18px;
+    *line-height: 20px;
+    color: #333333;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: middle;background-color: #f5f5f5;
+    *background-color: #e6e6e6;
+    background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid #cccccc;
+    *border: 0;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+    border-bottom-color: #b3b3b3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    *zoom: 1;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);background-color: #0074cc;
+    *background-color: #0055cc;
+    background-image: -ms-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0055cc));
+    background-image: -webkit-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -o-linear-gradient(top, #0088cc, #0055cc);
+    background-image: -moz-linear-gradient(top, #0088cc, #0055cc);
+    background-image: linear-gradient(top, #0088cc, #0055cc);
+    background-repeat: repeat-x;
+    border-color: #0055cc #0055cc #003580;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#0088cc', endColorstr='#0055cc', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    color:#fff;
+    margin-left: 40px;
+    margin-top: 30px;"> <?php echo 'Locked Payroll'; ?></span>
+<?php endif;?>
+
+<div style="width:4000px;">
+    <table class="table table-striped" style="margin-top:5px; width:3600px; margin-right: 50px;">
         <thead>
             <tr>
                 <th><?php echo Form::checkbox('all'); ?></th>
@@ -69,6 +124,7 @@
                         endif;
                         ?>
                     </td>
+                    
                     <td><?php echo $salary->pf_adjust; ?></td>
                     <td><?php echo $salary->basic; ?></td>
                     <td><?php echo $salary->hra; ?></td>
@@ -94,12 +150,17 @@
                     <td><?php echo $salary->total_debit; ?></td>
                     <td></td>
                     <td><?php echo $salary->net; ?></td>
-                    <td><?php echo Html::anchor('salaries/edit/' . $salary->employee_id . '/' . $month . '/' . $year, '<i class=icon-pencil></i>'); ?>
-
+                    <td><?php if($salary->lock== 'false'){echo Html::anchor('salaries/edit/' . $salary->employee_id . '/' . $month . '/' . $year, '<i class=icon-pencil></i>');} ?>
+                        
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+<?php else: ?>
+<?php if($month == date('m')+1): 
+    echo Html::anchor('salaries/process/'.$month.'/'.$year,'Process Payroll',array('class'=>'btn btn-success','style'=>'color:#fff; margin-top:30px; margin-left:5px;'));
+endif;?>
 
 <?php endif; ?>    
 
