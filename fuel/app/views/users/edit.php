@@ -3,7 +3,7 @@
 <?php echo Form::open(array("class" => "formee well")); ?>
 
 <div class="grid-8-12">
-    <?php echo Html::anchor('users', 'BACK', array('class' => 'formee-button', 'style' => 'color:#fff;')); ?>
+    <?php echo Html::anchor('users', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => 'color:#fff;')); ?>
 </div>
 
 <div class="grid-8-12">
@@ -13,6 +13,14 @@
     <div class="grid-4-12">
         <span class='username'><?php echo $user->name; ?></span>
     </div>        
+</div>
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Password <em class="formee-req">*</em>', 'password'); ?>
+    </div>    
+    <div class="grid-4-12">
+        <?php echo Form::password('password','', array('class' => 'formee-large', 'required', 'placeholder' => 'Password')); ?>
+    </div>    
 </div>
 
 
@@ -43,7 +51,7 @@
 </div>
 
 <div class="grid-8-12">
-    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-large btn-success')); ?>
 </div>
 
 <?php echo Form::close(); ?>

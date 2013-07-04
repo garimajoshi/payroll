@@ -42,7 +42,7 @@ class Controller_Employees extends Controller_Base {
         //parent::has_access("view_delete");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "delete")));
         $this->template->title = "Employees";
-        $this->template->content = View::forge('employees/viewarchive', $data);
+        $this->template->content = View::forge('employees/viewDelete', $data);
     }
 
     public function action_search() {
@@ -325,7 +325,7 @@ class Controller_Employees extends Controller_Base {
 
         Response::redirect('employees');
     }
-
+    
     public function action_delete($id = null) {
         //parent::has_access("delete_employee");
         is_null($id) and Response::redirect('employees');
@@ -350,7 +350,7 @@ class Controller_Employees extends Controller_Base {
         } else {
             Session::set_flash('error', 'Could not delete employee #' . $id);
         }
-        Response::redirect('employees');
+        Response::redirect('employees/viewarchive');
     }
 
 }

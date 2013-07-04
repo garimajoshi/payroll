@@ -8,29 +8,32 @@ class Controller_Salaries extends Controller_Base {
         $this->template->title = "Employees";
         $this->template->content = View::forge('salaries/index', $data);
     }
-    public function action_rename(){
+
+    public function action_rename() {
         $data['rename'] = Model_Rename::find('first');
-        
-        
+
+
         if (Input::method() == 'POST') {
-            $rename->bonus1=Input::post('bonus1');
-            $rename->bonus2=Input::post('bonus2');
-            $rename->allowance1=Input::post('allowance1');
-            $rename->allowance2=Input::post('allowance2');
-            $rename->allowance3=Input::post('allowance3');
-            $rename->deduction1=Input::post('deduction1');
-            $rename->deduction2=Input::post('deduction2');
-            $rename->deduction3=Input::post('deduction3');
-                        if ($rename->save()) {
+            $rename->bonus1 = Input::post('bonus1');
+            $rename->bonus2 = Input::post('bonus2');
+            $rename->allowance1 = Input::post('allowance1');
+            $rename->allowance2 = Input::post('allowance2');
+            $rename->allowance3 = Input::post('allowance3');
+            $rename->deduction1 = Input::post('deduction1');
+            $rename->deduction2 = Input::post('deduction2');
+            $rename->deduction3 = Input::post('deduction3');
+            if ($rename->save()) {
                 Session::set_flash('success', 'Updated');
 
                 Response::redirect('employees');
             } else {
                 Session::set_flash('error', 'Could not update');
-        }}
+            }
+        }
 
-        $this->template->content = View::forge('salaries/rename',$data);
+        $this->template->content = View::forge('salaries/rename', $data);
     }
+
     public function action_search() {
 
         $query = Input::get('search');
@@ -112,8 +115,7 @@ class Controller_Salaries extends Controller_Base {
             $lock->lock = 1;
             $lock->save();
         endforeach;
-                Response::redirect('salaries');
-        
+        Response::redirect('salaries');
     }
 
     public function action_payroll($month = null, $year = null) {
@@ -140,7 +142,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_view($id) {
         $data['rename'] = Model_Rename::find('first');
-        
+
         //parent::has_access("view_salary");
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
@@ -154,7 +156,7 @@ class Controller_Salaries extends Controller_Base {
         $data['year'] = $var_year;
         $data['fytd'] = $this->findFYTD($id, $var_month, $var_year);
 
-        
+
         $this->template->title = 'Salary Statement';
         $this->template->content = View::forge('salaries/view', $data);
     }
@@ -501,11 +503,23 @@ class Controller_Salaries extends Controller_Base {
         $this->template->content = View::forge('salaries/edit', $data);
     }
 
+    public function action_viewDelete($id = null) {
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'delete'))));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+        
+        $this->template->content = View::forge('salaries/viewDelete', $data);
+    }
+    public function action_viewArchive($id = null) {
+        $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'archive'))));
+        $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
+        
+        $this->template->content = View::forge('salaries/viewArchive', $data);
+    }
     public function action_statement() {
         //parent::has_access("salary_statement");
         $var_month = Input::post('month');
         $var_year = Input::post('year');
-        $data['salarylock'] =Model_Salary::find('first', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
+        $data['salarylock'] = Model_Salary::find('first', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('month' => $var_month), array('year' => $var_year)),
                     'related' => array('employee')));
@@ -540,7 +554,7 @@ class Controller_Salaries extends Controller_Base {
         $total['bonus1'] = 0;
         $total['bonus2'] = 0;
         $total['leave'] = 0;
-        $total['pf_value'] =0;
+        $total['pf_value'] = 0;
         $total['credit_total'] = 0;
         $total['allowance1'] = 0;
         $total['allowance2'] = 0;
@@ -584,7 +598,7 @@ class Controller_Salaries extends Controller_Base {
             $salaries = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('month', '<=', $month), array('year' => $year))));
 
             foreach ($salaries as $salary) {
-               $total['basic'] += $salary->basic;
+                $total['basic'] += $salary->basic;
                 $total['hra'] += $salary->hra;
                 $total['lta'] += $salary->lta;
                 $total['medical'] += $salary->medical;
@@ -641,7 +655,7 @@ class Controller_Salaries extends Controller_Base {
         //parent::has_access("print_salary_statement");
 
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
-        
+
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
 
@@ -669,7 +683,7 @@ class Controller_Salaries extends Controller_Base {
         $salaries = Model_Salary::find('all', array('where' => array(array('month' => $m), array('year' => $y))));
         $data['month'] = $month;
         $data['year'] = $year;
-      print_r($data);
+        print_r($data);
         foreach ($salaries as $salary):
             $emp = new Model_Salary();
             $emp->employee_id = $salary->employee_id;
@@ -703,9 +717,8 @@ class Controller_Salaries extends Controller_Base {
             $emp->net = $salary->net;
             $emp->save();
         endforeach;
-       
-         Response::redirect('salaries');
-        
+
+        Response::redirect('salaries');
     }
 
 }

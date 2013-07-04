@@ -1,7 +1,7 @@
 
 
 <div class="headline">
-    <h3 style="z-index:0;">ARCHIVED <span class='muted'>EMPLOYEE</span>
+    <h3 style="z-index:0;">DELETED <span class='muted'>EMPLOYEE</span>
 
         <form class="form-search" method="get" style="float: right; margin-right: 10px;">
             <div>
@@ -14,7 +14,7 @@
     </h3>
     <br />
 </div>
-  
+
 <?php if ($employees): ?>
     <table class="table table-striped" style="margin-top:30px;">
         <thead>
@@ -25,8 +25,7 @@
                 <th>Phone No</th>
                 <th>Email</th>
                 <th></th>
-                <th></th>
-                <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -38,8 +37,6 @@
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
                     <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/restore/' . $employee->id, '<i class="icon-folder-open title="Restore"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/delete/' . $employee->id, '<i class="icon-trash" title="Delete"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
