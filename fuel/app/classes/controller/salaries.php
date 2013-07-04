@@ -499,15 +499,17 @@ class Controller_Salaries extends Controller_Base {
     public function action_viewDelete($id = null) {
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'delete'))));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
-        
+
         $this->template->content = View::forge('salaries/viewDelete', $data);
     }
+
     public function action_viewArchive($id = null) {
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'archive'))));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
-        
+
         $this->template->content = View::forge('salaries/viewArchive', $data);
     }
+
     public function action_statement() {
         //parent::has_access("salary_statement");
         $var_month = Input::post('month');
@@ -630,10 +632,10 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_print($id = null, $month = null, $year = null) {
-
         //parent::has_access("print_salary_statement");
 
         (is_null($id) or is_null($month) or is_null($year)) and Response::redirect('salaries');
+        $data['rename'] = Model_Rename::find('first');
 
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
@@ -662,7 +664,7 @@ class Controller_Salaries extends Controller_Base {
         $salaries = Model_Salary::find('all', array('where' => array(array('month' => $m), array('year' => $y))));
         $data['month'] = $month;
         $data['year'] = $year;
-     
+
         foreach ($salaries as $salary):
             $emp = new Model_Salary();
             $emp->employee_id = $salary->employee_id;
