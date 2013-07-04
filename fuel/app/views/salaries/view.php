@@ -36,7 +36,7 @@ if ($employee->branch == "karnataka" or $employee->branch == "Karnataka") {
             <?php echo createYears(2000, 2050, 'year', $year); ?>
         </div>
         <div class="grid-2-12" style="margin-top:18px;">
-            <?php echo Form::submit('submit', 'view', array('class' => 'btn btn-primary')); ?>
+            <?php echo Form::submit('submit', 'View', array('class' => 'btn btn-primary')); ?>
         </div>
 
     </div>
@@ -56,7 +56,7 @@ if ($employee->branch == "karnataka" or $employee->branch == "Karnataka") {
 </div>
 <h1 style="text-align:center; margin-top: 100px; margin-left: -100px; font-weight: 900; font-size:20px;">SALARY STATEMENT </h1>
 <h3 style="margin-left:460px; font-weight:300;"><?php echo $form; ?></h3><br />
-<br />  <strong style="margin-left: 20px; font-size: 16px;">Name: <?php echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name; ?>
+<br />  <strong style="margin-left: 20px; font-size: 16px;">Name: <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?>
 </strong>
 <?php if ($salary): ?>
     <?php echo Html::anchor('salaries/rename/', 'Rename Fields', array('class' => 'btn btn-danger', 'style' => 'float:right; margin-right:50px; color:#fff;')); ?>

@@ -23,9 +23,9 @@
         <thead>
             <tr>
 
-                <th>Employee Id</th>
+                <th>Employee ID</th>
                 <th>Name</th>
-                <th>Phone No</th>
+                <th>Phone No.</th>
                 <th>Email</th>
                 <th></th>
                 <th></th>

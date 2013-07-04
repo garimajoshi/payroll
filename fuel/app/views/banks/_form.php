@@ -6,11 +6,11 @@
 </div>
 <div class="grid-12-12">
     <div class="grid-3-12">
-        <?php echo Form::label('Account no', 'account_no'); ?>
-        <?php echo Form::input('account_no', Input::post('account_no', isset($bank) ? $bank->account_no : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Account no')); ?>
+        <?php echo Form::label('Account No.', 'account_no'); ?>
+        <?php echo Form::input('account_no', Input::post('account_no', isset($bank) ? $bank->account_no : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Account No.')); ?>
     </div>
     <div class="grid-2-12">
-        <?php echo Form::label('Account type', 'account_type'); ?>
+        <?php echo Form::label('Account Type', 'account_type'); ?>
         <?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'saving' => 'Savings')); ?>
     </div>
     <div class="grid-3-12">
@@ -37,11 +37,11 @@
 </div>
 <div class="grid-12-12">
     <div class="grid-3-12">
-        <?php echo Form::label('Ifsc code', 'ifsc_code'); ?>
-        <?php echo Form::input('ifsc_code', Input::post('ifsc_code', isset($bank) ? $bank->ifsc_code : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Ifsc code')); ?>
+        <?php echo Form::label('IFSC code', 'ifsc_code'); ?>
+        <?php echo Form::input('ifsc_code', Input::post('ifsc_code', isset($bank) ? $bank->ifsc_code : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'IFSC code')); ?>
     </div>
     <div class="grid-2-12">
-        <?php echo Form::label('Payment type', 'payment_type'); ?>
+        <?php echo Form::label('Payment Type', 'payment_type'); ?>
         <?php echo Form::select('payment_type', Input::post('payment_type', isset($bank) ? $bank->payment_type : ''), array('cash' => 'Cash', 'account_transfer' => 'Account Transfer', 'cheque' => 'Cheque', 'dd' => 'Demand Draft')); ?>
     </div>
     <div class="grid-3-12">

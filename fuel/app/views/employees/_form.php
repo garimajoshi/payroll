@@ -100,8 +100,8 @@
 </div>
 <div class="grid-12-12">
     <div class="grid-4-12">
-        <?php echo Form::label('Phone No <em class="formee-req">*</em>', 'phone'); ?>
-        <?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Phone No')); ?>
+        <?php echo Form::label('Phone No. <em class="formee-req">*</em>', 'phone'); ?>
+        <?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Phone No.')); ?>
     </div>
     <div class="grid-4-12">
         <?php echo Form::label('Email <em class="formee-req">*</em>', 'email'); ?>

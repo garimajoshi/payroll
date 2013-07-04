@@ -3,14 +3,9 @@
 class Controller_Login extends Controller_Base {
 
     public function action_index() {
-        if (!parent::access('print_salary_statement')) {
-            Response::redirect('login/logout');
-        }
-        $data["subnav"] = array('index' => 'active');
-        $this->template->title = 'Payroll &raquo; Index';
-        $rights = Model_Access_Right::find('all', array('related' => array('user')));
-        $data['rights'] = $rights;
-        $this->template->content = View::forge('login/index', $data);
+
+        $this->template->title = 'Payroll &raquo; Login';
+        $this->template->content = View::forge('login/index');
     }
 
     public function action_login() {
@@ -22,7 +17,7 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_verify() {
-        $this->template->title = 'Payroll &raquo; Login';
+        $this->template->title = 'Payroll &raquo; Verify';
         if (!Input::post()) {
             Response::redirect('login/login');
         }
@@ -46,7 +41,7 @@ class Controller_Login extends Controller_Base {
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            Response::redirect('employees/');
+            Response::redirect('/');
         }
     }
 
