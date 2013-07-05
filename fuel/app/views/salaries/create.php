@@ -123,7 +123,7 @@
     <h3 align="center">SALARY STATEMENT</h3>
     <br />
     <Strong>Name:</strong> <?php
-    foreach ($employees as $employee): echo $employee->title . ' ' . $employee->first_name . ' ' . $employee->last_name;
+    foreach ($employees as $employee): echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name;
     endforeach;
     ?>
 
@@ -132,8 +132,8 @@
         <em>Professional Tax: </em><span id="viewprofessional_tax"></span><br />
         <em>PF: </em><span id="pf_value_debit"></span><br />
         <em>Income tax: </em><span id="viewincome_tax"></span><br />
-        <em>Deduction1: </em><span id="viewdeduction1"></span><br />
-        <em>Deduction2: </em><span id="viewdeduction2"></span><br />
+        <em>Deduction #1: </em><span id="viewdeduction1"></span><br />
+        <em>Deduction #2: </em><span id="viewdeduction2"></span><br />
         <em>Special Deduction: </em><span id="viewdeduction3"></span><br />
         <strong>TOTAL DEBIT: </strong><span id="total_debit"></span><br />
     </div>
@@ -147,10 +147,10 @@
         <em>Travel: </em><span id="travel"></span><br />
         <em>PF: </em><span id="pf_value_credit"></span><br />
         <em>Leave: </em><span id="viewleave"></span><br />
-        <em>Bonus1: </em><span id="viewbonus1"></span><br />
-        <em>Bonus2: </em><span id="viewbonus2"></span><br />
-        <em>Allowance1: </em><span id="viewallowance1"></span><br />
-        <em>Allowance2: </em><span id="viewallowance2"></span><br />
+        <em>Bonus #1: </em><span id="viewbonus1"></span><br />
+        <em>Bonus #2: </em><span id="viewbonus2"></span><br />
+        <em>Allowance #1: </em><span id="viewallowance1"></span><br />
+        <em>Allowance #2: </em><span id="viewallowance2"></span><br />
         <em>Special Allowances: </em><span id="special_allowance"></span><br />
         <strong>TOTAL CREDIT: </strong><span id="total_credit"></span><br />
     </div><hr />

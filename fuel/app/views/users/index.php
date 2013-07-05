@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Username</th>
-                <th>Last login</th>
+                <th>Last Login</th>
                 <th>Access Level</th>
                 <th></th>
                 <th></th>

@@ -60,7 +60,7 @@
 
         <div class="grid-12-12">
             <div class="grid-4-12">
-                <strong>Account No.:</strong>
+                <strong>Account No:</strong>
                 <?php echo $employee->bank->account_no; ?>
             </div>
             <div class="grid-4-12">

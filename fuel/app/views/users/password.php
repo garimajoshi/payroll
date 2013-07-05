@@ -36,14 +36,14 @@
 </div>
 <div class='grid-8-12'>
     <div class='grid-4-12'>
-        <?php echo Form::label('New Password<em class="formee-req">*</em>', 'password'); ?>
+        <?php echo Form::label('New Password <em class="formee-req">*</em>', 'password'); ?>
     </div>
     <div class='grid-4-12'>
         <input type="password" name="password" id="password" required placeholder="New Password"/>
     </div></div>
 <div class='grid-8-12'>
     <div class='grid-4-12'>
-        <?php echo Form::label('Confirm Password<em class="formee-req">*</em>', 'confirmpassword'); ?>
+        <?php echo Form::label('Confirm Password <em class="formee-req">*</em>', 'confirmpassword'); ?>
     </div>			
     <div class='grid-4-12'>
         <input type="password" name="confirmpassword" id="confirmpassword" required placeholder="Confirm Password"/>

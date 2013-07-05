@@ -19,14 +19,22 @@
         <?php echo Form::label('Password <em class="formee-req">*</em>', 'password'); ?>
     </div>    
     <div class="grid-4-12">
-        <?php echo Form::password('password','', array('class' => 'formee-large', 'required', 'placeholder' => 'Password')); ?>
+        <?php echo Form::password('password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Password')); ?>
     </div>    
 </div>
 
+<div class="grid-8-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Confirm Password <em class="formee-req">*</em>', 'password'); ?>
+    </div>    
+    <div class="grid-4-12">
+        <?php echo Form::password('password', '', array('class' => 'formee-large', 'required', 'placeholder' => 'Confirm Password')); ?>
+    </div>    
+</div>
 
 <div class="grid-8-12">
     <div class="grid-4-12">
-        <?php echo Form::label('Access Level  <em class="formee-req">*</em>', 'access_level'); ?>
+        <?php echo Form::label('Access Level <em class="formee-req">*</em>', 'access_level'); ?>
     </div>
     <div class="grid-4-12">    
         <ul class="formee-list">

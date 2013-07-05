@@ -11,7 +11,7 @@
             <?php echo createYears(2000, 2050, 'year', $year); ?>
         </div>
         <div class="grid-2-12" style="margin-top:18px;">
-            <?php echo Form::submit('submit', 'view',array('class'=>'btn btn-primary')); ?>
+            <?php echo Form::submit('submit', 'View',array('class'=>'btn btn-primary')); ?>
         </div>
     </div>
 </div>
@@ -90,19 +90,19 @@ else: ?>
                 <th>PF Value</th>
                 <th>Other Credits</th>
                 <th>Leave</th>
-                <th>Bonus1</th>
-                <th>Bonus2</th>
-                <th>Allowance1</th>
-                <th>Allowance2</th>
-                <th>Allowance3</th>
+                <th>Bonus #1</th>
+                <th>Bonus #2</th>
+                <th>Allowance #1</th>
+                <th>Allowance #2</th>
+                <th>Allowance #3</th>
                 <th>Total Credit</th>
                 <th></th>
                 <th>Professional Tax</th>
                 <th>PF Value</th>
                 <th>Income Tax</th>
-                <th>Deduction1</th>
-                <th>Deduction2</th>
-                <th>Deduction3</th>
+                <th>Deduction #1</th>
+                <th>Deduction #2</th>
+                <th>Deduction #3</th>
                 <th>Total Debit</th>
                 <th></th>
                 <th>NET</th>
