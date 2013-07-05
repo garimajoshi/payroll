@@ -10,7 +10,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_view($id = null) {
-        //parent::has_access("add_company");
+        parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if (!$data['company'] = Model_Company::find($id)) {
@@ -23,7 +23,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_create() {
-        //parent::has_access("add_company");
+        parent::has_access("add_company");
         if (Input::method() == 'POST') {
             $val = Model_Company::validate('create');
 
@@ -57,7 +57,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_edit($id = null) {
-        //parent::has_access("add_company");
+        parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if (!$company = Model_Company::find($id)) {
@@ -110,7 +110,7 @@ class Controller_Companies extends Controller_Base {
     }
 
     public function action_delete($id = null) {
-        //parent::has_access("add_company");
+        parent::has_access("add_company");
         is_null($id) and Response::redirect('companies');
 
         if ($company = Model_Company::find($id)) {

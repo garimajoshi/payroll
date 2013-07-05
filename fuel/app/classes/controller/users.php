@@ -3,14 +3,14 @@
 class Controller_Users extends Controller_Base {
 
     public function action_index() {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         $data['users'] = Model_User::find('all');
         $this->template->title = "Users";
         $this->template->content = View::forge('users/index', $data);
     }
 
     public function action_access() {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
 
         $data['accesses'] = Model_Access_Right::find('all');
         $this->template->title = "Access Rights";
@@ -18,7 +18,7 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_accessSubmit() {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         if (Input::method() == 'POST') {
 
             $page = Input::post('page');
@@ -40,7 +40,7 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_view($id = null) {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         is_null($id) and Response::redirect('users');
 
         if (!$data['user'] = Model_User::find($id)) {
@@ -53,7 +53,7 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_create() {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         if (Input::method() == 'POST') {
             $val = Model_User::validate('create');
 
@@ -80,7 +80,7 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_edit($id = null) {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         is_null($id) and Response::redirect('users');
         $data['user'] = Model_User::find('first', array('where' => array('id' => $id)));
         if (!$user = Model_User::find($id)) {
@@ -106,6 +106,7 @@ class Controller_Users extends Controller_Base {
 
     public function action_password() {
 
+		parent::has_access("add_user");
         $u = Session::get('user');
         is_null($u) and Response::redirect('users');
 
@@ -137,7 +138,7 @@ class Controller_Users extends Controller_Base {
     }
 
     public function action_delete($id = null) {
-        //parent::has_access("add_user");
+        parent::has_access("add_user");
         is_null($id) and Response::redirect('users');
 
         if ($user = Model_User::find($id)) {
