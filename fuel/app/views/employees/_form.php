@@ -1,9 +1,9 @@
 
-<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:30px;")); ?>
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 <br/>
-<div class="grid-12-12" style="margin-top:2px;">
+<div class="grid-12-12" style="margin-top:-10px;">
     <div class="grid-3-12">
-        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => 'color:#fff;')); ?>
+        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
     </div>
 </div>
 
@@ -16,29 +16,28 @@
         <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch'); ?>
         <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Branch')); ?>
     </div>
-</div>
-<div class="grid-12-12">
     <div class="grid-2-12">
         <?php echo Form::label('Title <em class="formee-req">*</em>', 'title'); ?>
         <?php
         echo Form::select('title', Input::post('title', isset($employee) ? $employee->title : ''), array(
             'Dr' => 'Dr.',
             'Mr' => 'Mr.',
-            'Ms' => 'Miss',
+            'Ms' => 'Ms.',
             'Mrs' => 'Mrs.'));
         ?>
 
     </div>
-    <div class="grid-3-12">
+</div>
+<div class="grid-12-12">
+    
+    <div class="grid-4-12">
         <?php echo Form::label('First Name <em class="formee-req">*</em>', 'first_name'); ?>
         <?php echo Form::input('first_name', Input::post('first_name', isset($employee) ? $employee->first_name : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'First Name')); ?>
     </div>
-    <div class="grid-3-12">
+    <div class="grid-3-12" >
         <?php echo Form::label('Last Name <em class="formee-req">*</em>', 'last_name'); ?>
         <?php echo Form::input('last_name', Input::post('last_name', isset($employee) ? $employee->last_name : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Last Name')); ?>
     </div>
-</div>
-<div class="grid-12-12">
     <div class="grid-4-12">
         <?php echo Form::label('Date of Birth <em class="formee-req">*</em>', 'date_of_birth'); ?>
         <div class="grid-3-12">
@@ -50,6 +49,9 @@
         <div class="grid-3-12">
             <?php echo createDays('dob_day', date('d')); ?>
         </div></div>
+</div>
+<div class="grid-12-12">
+    
     <div class="grid-2-12">
         <?php echo Form::label('Sex <em class="formee-req">*</em>', 'sex'); ?>
         <?php
@@ -71,19 +73,18 @@
         ));
         ?>
     </div>
-</div>
-<div class="grid-12-12">
-    <div class="grid-4-12">
+    <div class="grid-3-12">
         <?php echo Form::label('Address <em class="formee-req">*</em>', 'address'); ?>
         <?php echo Form::input('address', Input::post('address', isset($employee) ? $employee->address : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Address')); ?>
     </div>
-    <div class="grid-4-12">
+    <div class="grid-3-12">
         <?php echo Form::label('City <em class="formee-req">*</em>', 'city'); ?>
         <?php echo Form::input('city', Input::post('city', isset($employee) ? $employee->city : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'City')); ?>
     </div>
 </div>
+
 <div class="grid-12-12">
-    <div class="grid-4-12">
+    <div class="grid-3-12">
         <?php echo Form::label('State <em class="formee-req">*</em>', 'state'); ?>
         <select name=state>
             <script language="javascript">
@@ -93,20 +94,21 @@
             </script>
         </select>
     </div>
-    <div class="grid-4-12">
+    <div class="grid-2-12">
         <?php echo Form::label('Pincode <em class="formee-req">*</em>', 'pincode'); ?>
         <?php echo Form::input('pincode', Input::post('pincode', isset($employee) ? $employee->pincode : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Pincode')); ?>
     </div>
-</div>
-<div class="grid-12-12">
-    <div class="grid-4-12">
+    <div class="grid-3-12">
         <?php echo Form::label('Phone No <em class="formee-req">*</em>', 'phone'); ?>
-        <?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Phone No')); ?>
+        <?php echo Form::input('phone', Input::post('phone', isset($employee) ? $employee->phone : ''), array( 'required', 'placeholder' => 'Phone No','style'=>'width:160px;')); ?>
     </div>
-    <div class="grid-4-12">
+    <div class="grid-3-12" style="margin-left:-80px;">
         <?php echo Form::label('Email <em class="formee-req">*</em>', 'email'); ?>
         <?php echo Form::input('email', Input::post('email', isset($employee) ? $employee->email : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Email')); ?>
     </div>
+</div>
+<div class="grid-12-12">
+    
 </div>
 <div class="grid-12-12">
     <div class="grid-4-12">
@@ -127,14 +129,14 @@
             <?php echo createYears(1920, 2500, 'ld_year', date('Y')); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createMonths('ld_month', date('M')); ?>
+            <?php echo createMonths1('ld_month',00); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createDays('ld_day', date('d')); ?>
+            <?php echo createDays('ld_day'); ?>
         </div>
     </div>
     <div class="grid-4-12 ">
-        <input  class="btn btn-large btn-success" type='submit'  value="Next >>" style="margin-left: 40px;margin-top: 32px;width:100px">
+        <input  class="btn btn-success" type='submit'  value="Next >>" style="margin-left: 40px;margin-top: 32px;width:100px">
     </div>   
 </div>
 

@@ -29,7 +29,7 @@
     <div class="grid-4-12">    
         <ul class="formee-list">
             <li>
-                <input name="access_level" value="user" type="radio">
+                <input name="access_level" value="user" type="radio" checked>
                 <label>User</label>
             </li>
             <li>

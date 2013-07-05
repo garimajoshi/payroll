@@ -70,7 +70,7 @@
         </div>
         <div class="grid-12-12">
             <div class="grid-4-12">
-                <strong>Branch:</strong>
+                <strong>Bank:</strong>
                 <?php echo $employee->bank->branch; ?>
             </div>
             <div class="grid-4-12">
@@ -101,7 +101,7 @@
                 } elseif ($employee->bank->payment_type == 'cheque') {
                     echo 'Cheque';
                 } else {
-                    echo 'Account Transfer';
+                    echo 'NEFT';
                 }
                 ?>
 

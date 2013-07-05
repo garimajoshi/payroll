@@ -1,6 +1,6 @@
 <div class="headline"><h3>Rename <span class="muted"></span>Fields</h3></div>
 <br />
-<?php echo Form::open('salaries/renameSubmit', array("class" => "formee", 'style' => "margin-top:30px;")); ?>
+<?php echo Form::open('salaries/renameSubmit', array("class" => "formee well", 'style' => "margin-top:30px;")); ?>
 <br/>
 <?php foreach ($renames as $rename):
     ?>

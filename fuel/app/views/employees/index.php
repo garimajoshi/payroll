@@ -14,7 +14,7 @@
     <br />
 </div>
 
-<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:50px; margin-bottom:5px;")); ?>
+<?php echo Html::anchor('employees/create', '<i class="icon-plus icon-white"></i> Add New Employee', array('class' => 'btn btn-inverse', 'style' => "color:#fff; float:right; margin-top:60px;margin-right:43px; margin-bottom:5px;")); ?>
 
 
 <?php if ($employees): ?>

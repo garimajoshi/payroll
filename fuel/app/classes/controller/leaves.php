@@ -62,38 +62,40 @@ class Controller_Leaves extends Controller_Base {
         //parent::has_access("add_leave");
         is_null($id) and Response::redirect('leaves');
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
+        $day = Input::post('dol_date');
+        print_r($day);
+        /* if (Input::method() == 'POST') {
+          $val = Model_Leave::validate('create');
 
-        if (Input::method() == 'POST') {
-            $val = Model_Leave::validate('create');
+          /*if ($val->run()) {
+          $var_dol_day = Input::post('dol_day');
+          print_r($val_dol_day);
+          //$var_dol_month = Input::post('dol_month');
+          //$var_dol_year = Input::post('dol_year');
+          //$var_dol = $var_dol_year . '-' . $var_dol_month . '-' . $var_dol_day;
+          // $var_input = Input::post('submit');
+          //echo $var_input;
+          /* $leave = Model_Leave::forge(array(
+          'employee_id' => $id,
+          'date_of_leave' => $var_dol,
+          'time' => Input::post('time'),
+          'type' => Input::post('type'),
+          )); */
 
-            if ($val->run()) {
-                $var_dol_day = Input::post('dol_day');
-                $var_dol_month = Input::post('dol_month');
-                $var_dol_year = Input::post('dol_year');
-                $var_dol = $var_dol_year . '-' . $var_dol_month . '-' . $var_dol_day;
-                $var_input = Input::post('submit');
-                echo $var_input;
-                $leave = Model_Leave::forge(array(
-                            'employee_id' => $id,
-                            'date_of_leave' => $var_dol,
-                            'time' => Input::post('time'),
-                            'type' => Input::post('type'),
-                ));
+        /* if ($leave and $leave->save()) {
+          Session::set_flash('success', 'Added leave #' . $leave->id . '.');
+          } else {
+          Session::set_flash('error', 'Could not save leave.');
+          } */
+        /*  } else {
+          Session::set_flash('error', $val->error());
+          }
+          }
+          // if (Input::post('submit') == 'Save') {
+          //   Response::redirect('leaves');
+          //}
 
-                if ($leave and $leave->save()) {
-                    Session::set_flash('success', 'Added leave #' . $leave->id . '.');
-                } else {
-                    Session::set_flash('error', 'Could not save leave.');
-                }
-            } else {
-                Session::set_flash('error', $val->error());
-            }
-        }
-        if (Input::post('submit') == 'Save') {
-            Response::redirect('leaves');
-        }
-
-        $this->template->title = "Leaves";
+          $this->template->title = "Leaves"; */
         $this->template->content = View::forge('leaves/create', $data);
     }
 

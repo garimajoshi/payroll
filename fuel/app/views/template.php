@@ -64,6 +64,35 @@
         function createMonths($id = 'month_select', $selected = null) {
 
             $months = array(
+              
+                1 => 'January',
+                2 => 'February',
+                3 => 'March',
+                4 => 'April',
+                5 => 'May',
+                6 => 'June',
+                7 => 'July',
+                8 => 'August',
+                9 => 'September',
+                10 => 'October',
+                11 => 'November',
+                12 => 'December');
+
+
+            $selected = is_null($selected) ? date('m') : $selected;
+
+            $select = '<select name="' . $id . '" id="' . $id . '">' . "\n";
+            foreach ($months as $key => $mon) {
+                $select .= "<option value=\"$key\"";
+                $select .= ($key == $selected) ? ' selected="selected"' : '';
+                $select .= ">$mon</option>\n";
+            }
+            $select .= '</select>';
+            return $select;
+        }
+        function createMonths1($id = 'month_select', $selected = null) {
+
+            $months = array(
                 0 => '',
                 1 => 'January',
                 2 => 'February',
