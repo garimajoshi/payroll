@@ -3,7 +3,7 @@
 class Controller_Leaves extends Controller_Base {
 
     public function action_index() {
-//parent::has_access("view_leave");
+        parent::has_access("add_leave");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "active")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('leaves/index', $data);
@@ -43,7 +43,7 @@ class Controller_Leaves extends Controller_Base {
     }
 
     public function action_view($employee_id = null) {
-//parent::has_access("view_leave");
+        parent::has_access("add_leave");
         is_null($employee_id) and Response::redirect('leaves');
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $employee_id)));
         $data['sickhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '4'))));
@@ -59,7 +59,7 @@ class Controller_Leaves extends Controller_Base {
     }
 
     public function action_create($id = null) {
-        //parent::has_access("add_leave");
+        parent::has_access("add_leave");
         is_null($id) and Response::redirect('leaves');
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
 
@@ -91,7 +91,7 @@ class Controller_Leaves extends Controller_Base {
     }
 
     public function action_edit($id = null) {
-        //parent::has_access("add_leave");
+        parent::has_access("add_leave");
         is_null($id) and Response::redirect('leaves');
 
         if (!$leave = Model_Leave::find($id)) {
@@ -134,7 +134,7 @@ class Controller_Leaves extends Controller_Base {
     }
 
     public function action_delete($id = null) {
-//parent::has_access("add_leave");
+        parent::has_access("add_leave");
         is_null($id) and Response::redirect('leaves');
 
         if ($leave = Model_Leave::find($id)) {
