@@ -62,17 +62,17 @@ class Model_Employee extends Model {
 
     public static function validate($factory) {
         $val = Validation::forge($factory);
-        //$val->add_field('first_name', 'First Name', 'required|max_length[255]|valid_string[alpha,dots]');
-        //$val->add_field('last_name', 'Last Name', 'required|max_length[255]|valid_string[alpha,dots]');
-        //$val->add_field('phone', 'Phone', 'required|match_pattern[#^((\\+91-?)|0)?[0-9]{10}$#]');
-        //$val->add_field('address', 'Address', 'max_length[255]');
-        //$val->add_field('city', 'City', 'required|max_length[255]|valid_string[alpha]');
-        //$val->add_field('state', 'State', 'required|max_length[255]|valid_string[alpha]');
-        //$val->add_field('pincode', 'Pincode','required|valid_string[numeric,spaces]|max_length[7]');
-        //$val->add_field('email', 'Email', 'required|valid_email|max_length[255]');
-        //$val->add_field('joining_date', 'Joining Date', 'required|valid_date');
-        //$val->add_field('leaving_date', 'Leaving Date', 'required|valid_date');
-        //$val->add_field('date_of_birth', 'Date Of Birth', 'required|valid_date');
+        $val->add_field('first_name', 'First Name', 'required|max_length[255]|valid_string[alpha,dots]');
+        $val->add_field('last_name', 'Last Name', 'required|max_length[255]|valid_string[alpha,dots]');
+        $val->add_field('phone', 'Phone', 'required|match_pattern[#^((\\+91-?)|0)?[0-9]{10}$#]');
+        $val->add_field('address', 'Address', 'max_length[255]');
+        $val->add_field('city', 'City', 'required|max_length[255]|valid_string[alpha]');
+        $val->add_field('state', 'State', 'required|max_length[255]|valid_string[alpha]');
+        $val->add_field('pincode', 'Pincode','required|valid_string[numeric,spaces]|max_length[7]');
+        $val->add_field('email', 'Email', 'required|valid_email|max_length[255]');
+        $val->add_field('joining_date', 'Joining Date', 'required|valid_date');
+        $val->add_field('leaving_date', 'Leaving Date', 'required|valid_date');
+        $val->add_field('date_of_birth', 'Date Of Birth', 'required|valid_date');
 
         return $val;
     }
