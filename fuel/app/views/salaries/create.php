@@ -120,12 +120,12 @@
 
 <?php echo render('salaries/_form'); ?>
 <div id="previewslip">
-    <h3 align="center">SALARY STATEMENT</h3>
+    <h2 style="margin-left:-20px;">SALARY STATEMENT</h2>
     <br />
-    <Strong>Name:</strong> <?php
+    <h3 style="margin-top:-20px; margin-left:-20px;">Name: <?php
     foreach ($employees as $employee): echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name;
     endforeach;
-    ?>
+    ?></h3>
 
     <div class="debit">
         <span style="font-size: 16px;"><strong>Deductions</strong></span><br />
@@ -154,7 +154,9 @@
         <em>Special Allowances: </em><span id="special_allowance"></span><br />
         <strong>TOTAL CREDIT: </strong><span id="total_credit"></span><br />
     </div><hr />
+    <div style="margin-left:200px;">
     <strong style="font-size: 14px;">Gross CTC: </strong><span id="grossctc"></span><br />
     <strong style="font-size: 14px;">Adjusted CTC: </strong><span id="adjustedctc"></span><br />
     <strong style="font-size: 14px;">NET: </strong><span id="net"></span>
+    </div>
 </div>            

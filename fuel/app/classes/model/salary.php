@@ -34,6 +34,8 @@ class Model_Salary extends Model {
         'deduction3',
         'total_debit',
         'net',
+        'sick_balance',
+        'vacation_balance',
         'created_at',
         'updated_at',
     );

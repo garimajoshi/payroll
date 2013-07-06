@@ -13,7 +13,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 #address{
 
     margin-left: 600px;
-    margin-top:-50px;
+    margin-top:-80px;
 }
 #border{
 
@@ -66,7 +66,9 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
     font-size:12px;
 }
 .credits{
-    margin-top: -145px;
+    margin-top: -220px;
+    float:left;
+    margin-left:-100px;
 }
 
 .ctc{
@@ -86,8 +88,8 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 
 }
 .debit{
-    margin-left: 160px;
-    margin-top: 30px;
+    margin-left: 200px;
+    margin-top: 18px;
 }
 
 .emp-search{
@@ -213,11 +215,11 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 }
 #previewslip{
     margin-left: 550px;
-    height:470px;
-    width:350px;
-    margin-top:-800px;
+    height:350px;
+    width:400px;
+    margin-top:-400px;
     border:1px solid #ccc;
-    padding-left: 15px;
+    padding-left: 5px;
     font-size:12px;
 
 }
@@ -249,6 +251,7 @@ a:hover, a:focus{ color: #333;	text-decoration:none; }
 .salary{
     margin-left: 40px;
     margin-top:10px;
+    width:700px;
 }
 .salary thead tr th{
     font-size: 18px;
