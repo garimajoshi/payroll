@@ -19,7 +19,7 @@
     <table class="table table-striped" style="margin-top:30px;">
         <thead>
             <tr>
-                <th><?php echo Form::checkbox('all'); ?></th>
+               
                 <th>Employee Id</th>
                 <th>Name</th>
                 <th>Phone No</th>
@@ -31,12 +31,12 @@
         <tbody>
             <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><?php echo Form::checkbox('$employee->id'); ?></td>
+                    
                     <td><?php echo $employee->id; ?></td>
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
-                    <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>'); ?></td>
+                    <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>',array('id'=>'popovers','rel'=>'popover','data-content'=>'View','data-original-title'=>'View')); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

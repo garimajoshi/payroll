@@ -63,20 +63,20 @@ class Model_Salary extends Model {
 
     public static function validate($factory) {
         $val = Validation::forge($factory);
-        //$val->add_field('month', 'Month', 'required');
-        //$val->add_field('year', 'Year', 'required');
-        //$val->add_field('gross', 'Gross', 'required|valid_string[numeric,dots]');
-        //$val->add_field('sdxo', 'SDXO', 'valid_string[numeric,dots]');
-        //$val->add_field('bonus1', 'Bonus1', 'valid_string[numeric,dots]');
-        //$val->add_field('bonus2', 'Bonus2', 'valid_string[numeric,dots]');
-        //$val->add_field('allowance1', 'Allowance1', 'valid_string[numeric,dots]');
-        //$val->add_field('allowance2', 'Allowance1', 'valid_string[numeric,dots]');
-        //$val->add_field('allowance3', 'Allowance1', 'valid_string[numeric,dots]');
-        //$val->add_field('deduction1', 'Deduction1', 'valid_string[numeric,dots]');
-        //$val->add_field('deduction2', 'Deduction2', 'valid_string[numeric,dots]');
-        //$val->add_field('deduction3', 'Deduction3', 'valid_string[numeric,dots]');
-        //$val->add_field('income_tax', 'Income Tax', 'valid_string[numeric,dots]');
-        //$val->add_field('professional_tax', 'Professional Tax', 'valid_string[numeric,dots]');
+        $val->add_field('month', 'Month', 'required');
+        $val->add_field('year', 'Year', 'required');
+        $val->add_field('gross', 'Gross', 'required|valid_string[numeric,dots]');
+        $val->add_field('sdxo', 'SDXO', 'valid_string[numeric,dots]');
+        $val->add_field('bonus1', 'Bonus1', 'valid_string[numeric,dots]');
+        $val->add_field('bonus2', 'Bonus2', 'valid_string[numeric,dots]');
+        $val->add_field('allowance1', 'Allowance1', 'valid_string[numeric,dots]');
+        $val->add_field('allowance2', 'Allowance1', 'valid_string[numeric,dots]');
+        $val->add_field('allowance3', 'Allowance1', 'valid_string[numeric,dots]');
+        $val->add_field('deduction1', 'Deduction1', 'valid_string[numeric,dots]');
+        $val->add_field('deduction2', 'Deduction2', 'valid_string[numeric,dots]');
+        $val->add_field('deduction3', 'Deduction3', 'valid_string[numeric,dots]');
+        $val->add_field('income_tax', 'Income Tax', 'valid_string[numeric,dots]');
+        $val->add_field('professional_tax', 'Professional Tax', 'valid_string[numeric,dots]');
 
         return $val;
     }

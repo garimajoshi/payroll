@@ -12,6 +12,8 @@
         <?php echo Asset::css('menu.css'); ?>
         <?php echo Asset::js('jquery-1.6.4.min.js'); ?>
         <?php echo Asset::js('jquery.validate.js'); ?>
+        <?php echo Asset::js('bootstrap-tooltip.js'); ?>
+        <?php echo Asset::js('bootstrap-popover.js'); ?>
         <?php echo Asset::js('css_browser_selector.js'); ?>
         <?php echo Asset::js('formee.js'); ?>    
         <?php echo Asset::js('countries.js'); ?>
@@ -137,14 +139,6 @@
             return $select;
         }
         ?>
-        <script language="JavaScript">
-            function toggle(source) {
-                checkboxes = document.getElementsByName('check');
-                for (var i = 0, n = checkboxes.length; i < n; i++) {
-                    checkboxes[i].checked = source.checked;
-                }
-            }
-        </script>
 
 
         <div id="header">
@@ -210,7 +204,7 @@
                                 <li class ="subitem1"><?php echo Html::anchor('salaries/', 'Payroll Central'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/structure', 'Salary Structure'); ?></li>
                                 <li class="subitem2"><?php echo Html::anchor('salaries/statement', 'Salary Statement'); ?></li>
-                                <li class="subitem2"><?php echo Html::anchor('salaries/rename', 'Rename Fields'); ?></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -238,6 +232,11 @@
                     }
                 });
             });
+        </script>
+        <script>
+        $(function(){
+            $('#popovers').popover();
+        });
         </script>
     </body>
 </html>

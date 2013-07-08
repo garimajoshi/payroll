@@ -83,6 +83,7 @@
         <?php echo Form::input('deduction3', Input::post('deduction3', isset($employee) ? $employee->deduction3 : '0'), array('id' => 'deduction3', 'class' => 'formee-large', 'required', 'placeholder' => 'Deduction #3')); ?>
     </div>
 </div>
+<?php echo Html::anchor('salaries','Back',array('class'=>'btn btn-large btn-danger','style'=>'color:#fff; margin-top:10px;')); ?>    
 <input type="button" value="Preview" onclick="doMath();" style="margin-top: 10px;" class="btn btn-success"/>
 <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:10px;", 'class' => "btn btn-primary")); ?>
 

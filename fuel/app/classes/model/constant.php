@@ -25,7 +25,7 @@ class Model_Constant extends \Orm\Model {
     public static function validate($factory) {
         $val = Validation::forge($factory);
 
-        //$val->add_field('value', 'Value', 'valid_string[numeric,dots]');
+        $val->add_field('value', 'Value', 'valid_string[numeric,dots]');
 
         return $val;
     }

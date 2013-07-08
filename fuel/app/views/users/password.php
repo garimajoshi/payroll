@@ -6,7 +6,7 @@
                     
                 </div>
             <?php endif; ?>
-<?php echo Form::open(array('class' => 'formee well', 'id' => 'loginForm', 'name' => 'loginForm')); ?>	
+<?php echo Form::open(array('class' => 'formee well',  'style' => "margin-top:20px; margin-left:30px; width:1100px;",'id' => 'loginForm', 'name' => 'loginForm')); ?>	
 
 <div class="grid-8-12">
     <div class="grid-4-12">

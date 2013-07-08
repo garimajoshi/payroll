@@ -1,7 +1,7 @@
 <?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 <div class="grid-12-12" style="margin-top: 2px;">
     <div class="grid-3-12">
-        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
+        <?php echo Html::anchor('employees', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
     </div>
 </div>
 <div class="grid-12-12">

@@ -4,7 +4,7 @@
 
 </div>
 <br /><br />
-<?php echo Form::open(array("class" => "formee well")); ?>
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 <div class="grid-12-12" style="margin-top:2px;">    
     <div class="grid-4-12">
         <div class="grid-3-12"><label><b> PF Adjust:</b></label> </div>
@@ -53,5 +53,5 @@
 
 
 </div>
-<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-success')); ?>
+<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-success','style'=>'margin-left:10px; margin-bottom:10px;')); ?>
 <?php echo Form::close(); ?>

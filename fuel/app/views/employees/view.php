@@ -2,7 +2,7 @@
 <div class="view" style='font-size: 14px; line-height: 25px;'>
 
     <h1 style="font-size: 20px;"><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h1> 
-        
+         <?php echo Html::anchor('employees', '<< Back', array('class' => 'btn btn-success', 'style' => 'float:right; margin-top:-20px;margin-right:100px;color:#fff;')); ?>
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
     <br />

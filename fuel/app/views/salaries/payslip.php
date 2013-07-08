@@ -325,12 +325,12 @@ $html21 = '<hr /><table style="margin-left:2px;">
         <tr>
             <td>2</td>
             <td>Vacation Balance (Days)</td>
-            <td style="text-align:right">0.00</td>
+            <td style="text-align:right">'.$salary->vacation_balance.'</td>
         </tr>
         <tr>
             <td>3</td>
             <td>Sick Days Balance (Days)</td>
-            <td style="text-align:right">0.00</td>
+            <td style="text-align:right">'.$salary->sick_balance.'</td>
         </tr>
     </table>';
 $pdf->writeHTML($html21, true, false, true, false, '');

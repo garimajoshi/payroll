@@ -34,9 +34,9 @@ class Model_Leave extends Model {
 
     public static function validate($factory) {
         $val = Validation::forge($factory);
-        //$val->add_field('date_of_leave', 'Date Of Leave', 'required|valid_date');
-        //$val->add_field('reason', 'Reason', 'max_length[255]');
-        //$val->add_field('type', 'Type', 'required');
+        $val->add_field('date_of_leave', 'Date Of Leave', 'required|valid_date');
+        $val->add_field('reason', 'Reason', 'max_length[255]');
+        $val->add_field('type', 'Type', 'required');
 
         return $val;
     }

@@ -1,8 +1,8 @@
-<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:50px;")); ?>
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 
 <div class="grid-12-12">
     <div class="grid-3-12">
-        <?php echo Html::anchor('companies', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => ' margin-top:25px; color:#fff')); ?>
+        <?php echo Html::anchor('companies', '<< Back', array('class' => 'btn btn-danger', 'style' => ' margin-top:25px; color:#fff')); ?>
     </div>
 </div>
 <div class="grid-12-12">

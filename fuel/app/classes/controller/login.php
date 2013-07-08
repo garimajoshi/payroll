@@ -5,7 +5,7 @@ class Controller_Login extends Controller_Base {
     public function action_index() {
 
         $this->template->title = 'Payroll &raquo; Login';
-        $this->template->content = View::forge('login/index');
+        Response::redirect('employees');
     }
 
     public function action_login() {

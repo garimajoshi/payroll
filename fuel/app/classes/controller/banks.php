@@ -3,14 +3,14 @@
 class Controller_Banks extends Controller_Base {
 
     public function action_index() {
-        //parent::has_access("create_employee");
+       // parent::has_access("add_bank");
         $data['banks'] = Model_Bank::find('all');
         $this->template->title = "Banks";
         $this->template->content = View::forge('banks/index', $data);
     }
 
     public function action_view($id = null) {
-        //parent::has_access("create_employee");
+        //parent::has_access("add_bank");
         is_null($id) and Response::redirect('banks');
 
         if (!$data['bank'] = Model_Bank::find($id)) {
@@ -23,7 +23,7 @@ class Controller_Banks extends Controller_Base {
     }
 
     public function action_create($id = null) {
-        //parent::has_access("create_employee");
+        //parent::has_access("add_bank");
         if (Input::method() == 'POST') {
             $val = Model_Bank::validate('create');
 
@@ -56,7 +56,7 @@ class Controller_Banks extends Controller_Base {
     }
 
     public function action_edit($id = null) {
-        //parent::has_access("create_employee");
+        //parent::has_access("add_bank");
         is_null($id) and Response::redirect('employees/view' . $id);
 
         if (!$bank = Model_Bank::find('first', array('where' => array('employee_id' => $id)))) {
