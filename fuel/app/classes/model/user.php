@@ -37,8 +37,8 @@ class Model_User extends \Orm\Model {
 
     public static function validate($factory) {
         $val = Validation::forge($factory);
-        $val->add_field('name', 'Username(only alphabets and numbers)', 'required|valid_string[alpha,numeric]');
-        $val->add_field('password', 'Password should be of minimum 3 characters(only alphabets and numbers)', 'required|min_length[3]|max_length[20]|valid_string[alpha,numeric]');
+        //$val->add_field('name', 'Username', 'required');
+        //$val->add_field('password', 'Password', 'required');
 
         return $val;
     }

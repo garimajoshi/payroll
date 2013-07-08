@@ -40,7 +40,7 @@
     </table>
 
 <?php else: ?>
-    <p>No Users.</p>
+    <div class='noexist'><h1>No Users</h1></div>
 
 <?php endif; ?><p>
 

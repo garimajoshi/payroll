@@ -1,6 +1,6 @@
 <div class="headline"><h3>Leave <span class="muted">Details</span></h3></div>
 <br />
-  <?php echo Html::anchor('leaves','<< Back',array('class'=>'btn btn-large btn-success', 'style'=>'color:#fff; margin-left:40px;')); ?>
+<?php echo Html::anchor('leaves', '<< Back', array('class' => 'btn btn-large btn-success', 'style' => 'color:#fff; margin-left:40px;')); ?>
 <br/><br />
 <strong style="margin-left:35px; margin-top:10px;">Name:</strong> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?>
 <?php
@@ -51,12 +51,15 @@ $max = (max($values));
             </tr>
         </thead>
         <tbody>
-    <?php foreach ($leaves as $leave): ?>
+            <?php foreach ($leaves as $leave): ?>
                 <tr>
 
                     <td><?php echo $leave->date_of_leave; ?></td>
-                    <td><?php if ($leave->time == 8) echo 'Full Day';
-        else echo 'Half Day'; ?></td>
+                    <td><?php if ($leave->time == 8)
+            echo 'Full Day';
+        else
+            echo 'Half Day';
+        ?></td>
                     <td><?php echo $leave->type; ?></td>
                     <td><?php echo Html::anchor('leaves/edit/' . $leave->id, '<i class=icon-pencil></i>'); ?>
                     <td><?php echo Html::anchor('leaves/delete/' . $leave->id, '<i class=icon-trash></i>', array('onclick' => "return confirm('Are you sure?')")); ?>

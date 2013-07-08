@@ -3,7 +3,7 @@
 class Controller_Salaries extends Controller_Base {
 
     public function action_index() {
-		
+
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "active")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('salaries/index', $data);
@@ -11,7 +11,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_rename() {
 
-		parent::has_access("add_salary");
+        parent::has_access("add_salary");
         $data['renames'] = Model_Rename::find('all');
         $this->template->title = "Rename Fields";
         $this->template->content = View::forge('salaries/rename', $data);
@@ -19,7 +19,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_renameSubmit() {
 
-		parent::has_access("add_salary");
+        parent::has_access("add_salary");
         if (Input::method() == 'POST') {
 
             if (!$rename = Model_Rename::find('first', array('where' => array('id' => 1)))) {
@@ -116,7 +116,7 @@ class Controller_Salaries extends Controller_Base {
 
     public function action_lock($month = null, $year = null) {
 
-        parent::has_access("salary_structure");
+        parent::has_access("lock_payroll");
         (is_null($month) or is_null($year)) and Response::redirect('salaries');
         $locks = Model_Salary::find('all', array('where' => array(array('month' => $month), array('year' => $year))));
         $data['month'] = $month;
@@ -151,9 +151,9 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_view($id) {
-	
-		parent::has_access("add_salary");
-		
+
+        parent::has_access("add_salary");
+
         $data['rename'] = Model_Rename::find('first');
         $data['company'] = Model_Company::find('first', array('where' => array('city' => "Bangalore")));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
@@ -500,7 +500,7 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_viewDelete($id = null) {
-		parent::has_access("view_archive");
+        parent::has_access("lock_payroll");
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'delete'))));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
 
@@ -508,7 +508,7 @@ class Controller_Salaries extends Controller_Base {
     }
 
     public function action_viewArchive($id = null) {
-		parent::has_access("view_archive");
+        parent::has_access("lock_payroll");
         $data['salaries'] = Model_Salary::find('all', array('where' => array(array('employee_id' => $id), array('lock' => 'archive'))));
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $id)));
 

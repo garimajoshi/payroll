@@ -1,7 +1,7 @@
 
 
 <div class="headline">
-    <h3 style="z-index:0;">DELETED <span class='muted'>EMPLOYEE</span>
+    <h3 style="z-index:0;">Deleted <span class='muted'>Employees</span>
 
         <form class="form-search" method="get" style="float: right; margin-right: 10px;">
             <div>
@@ -25,7 +25,7 @@
                 <th>Phone No</th>
                 <th>Email</th>
                 <th></th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
     </table>
 
 <?php else: ?>
-<div class='noexist'><h1>No Employees</h1></div>
+    <div class='noexist'><h1>No Employees</h1></div>
 
 
 <?php endif; ?>
