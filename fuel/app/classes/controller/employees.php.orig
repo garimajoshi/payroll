@@ -9,7 +9,11 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_view($id = null) {
+<<<<<<< HEAD
+//		parent::has_access("add_employee");
+=======
         parent::has_access("view_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         is_null($id) and Response::redirect('employees');
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
@@ -25,14 +29,22 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_viewarchive() {
+<<<<<<< HEAD
+  //      parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
     public function action_viewDelete() {
+<<<<<<< HEAD
+    //    parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "delete")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewDelete', $data);
@@ -73,7 +85,11 @@ class Controller_Employees extends Controller_Base {
 
     public function action_search_archive() {
 
+<<<<<<< HEAD
+      //  parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         $query = Input::get('search');
 
         if (!isset($query)) {
@@ -107,7 +123,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_create() {
 
-        parent::has_access("create_employee");
+        //parent::has_access("create_employee");
 
         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
@@ -172,7 +188,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_edit($id = null) {
 
-        parent::has_access("create_employee");
+        // parent::has_access("create_employee");
         is_null($id) and Response::redirect('employees');
 
         if (!$employee = Model_Employee::find($id)) {
@@ -264,7 +280,11 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_archive($id = null) {
+<<<<<<< HEAD
+       // parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -292,7 +312,11 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_restore($id = null) {
+<<<<<<< HEAD
+       // parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -320,7 +344,11 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_delete($id = null) {
+<<<<<<< HEAD
+       // parent::has_access("view_archive");
+=======
         parent::has_access("archive_employee");
+>>>>>>> 4ca542128facb95fb9f0e023cda2c7f0638c9f24
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {

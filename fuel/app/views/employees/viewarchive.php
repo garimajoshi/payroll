@@ -1,7 +1,7 @@
 
 
 <div class="headline">
-    <h3 style="z-index:0;">ARCHIVED <span class='muted'>EMPLOYEE</span>
+    <h3 style="z-index:0;">Archived <span class='muted'>Employees</span>
 
         <form class="form-search" method="get" style="float: right; margin-right: 10px;">
             <div>

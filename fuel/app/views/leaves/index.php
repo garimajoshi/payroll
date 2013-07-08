@@ -46,6 +46,6 @@
     <?php echo Form::close(); ?>
 
 <?php else: ?>
-    <p>No Employees.</p>
+    <div class='noexist'><h1>No Employees</h1></div>
 
 <?php endif; ?>

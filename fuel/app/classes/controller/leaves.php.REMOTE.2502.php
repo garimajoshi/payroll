@@ -46,22 +46,19 @@ class Controller_Leaves extends Controller_Base {
         parent::has_access("view_leave");
         is_null($employee_id) and Response::redirect('leaves');
         $data['employee'] = Model_Employee::find('first', array('where' => array('id' => $employee_id)));
-        $data['sickleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'))));
-
-        $data['vacationleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'))));
-            
-        $data['leaves'] = Model_Leave::find('all', array('where' => array('employee_id' => $employee_id)),array('order_by' => array(
-        'date_of_leave' => 'asc'),
-            ));
-       
-        if (!$data['leaves'] ) {
+        $data['sickhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '4'))));
+        $data['sickfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'sick'), array('time' => '8'))));
+        $data['vacationhalfleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '4'))));
+        $data['vacationfullleaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id), array('type' => 'vacation'), array('time' => '8'))));
+        $data['leaves'] = Model_Leave::find('all', array('where' => array(array('employee_id' => $employee_id))));
+        if (!$data['leaves'] = Model_Leave::find('all', array('where' => array('employee_id' => $employee_id)))) {
             Session::set_flash('error', 'Could not find leave #' . $employee_id);
         }
         $this->template->title = "Leave";
         $this->template->content = View::forge('leaves/view', $data);
     }
 
-   public function action_create($id = null) {
+    public function action_create($id = null) {
         parent::has_access("add_leave");
         is_null($id) and Response::redirect('leaves');
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id)));
@@ -78,7 +75,7 @@ class Controller_Leaves extends Controller_Base {
                 $leave = Model_Leave::forge(array(
                             'employee_id' => $id,
                             'date_of_leave' => $var_dol,
-                            'time' => 8,
+                            'time' => Input::post('time'),
                             'type' => Input::post('type'),
                 ));
 
@@ -88,7 +85,6 @@ class Controller_Leaves extends Controller_Base {
                     Session::set_flash('error', 'Could not save leave.');
                 }
             endforeach;
-            Response::redirect('leaves/view/'.$id);
         }
         $this->template->title = "Leaves";
         $this->template->content = View::forge('leaves/create', $data);
@@ -153,5 +149,3 @@ class Controller_Leaves extends Controller_Base {
     }
 
 }
-
-

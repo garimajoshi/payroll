@@ -3,7 +3,6 @@
 class Controller_Companies extends Controller_Base {
 
     public function action_index() {
-
         $data['companies'] = Model_Company::find('all');
         $this->template->title = "Companies";
         $this->template->content = View::forge('companies/index', $data);
