@@ -78,7 +78,7 @@ class Controller_Leaves extends Controller_Base {
                 $leave = Model_Leave::forge(array(
                             'employee_id' => $id,
                             'date_of_leave' => $var_dol,
-                            'time' => 8,
+                            'time' => '8',
                             'type' => Input::post('type'),
                 ));
 

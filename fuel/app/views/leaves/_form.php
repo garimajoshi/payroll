@@ -23,7 +23,7 @@
         <?php echo createYears(1920, 2500, 'dol_year', date('Y')); ?>
     </div>
     <div class="grid-2-12">
-        <?php echo createMonths('dol_month', date('M')); ?>
+        <?php echo createMonths('dol_month', date('m')); ?>
     </div>
 </div>
 <div class="grid-12-12">

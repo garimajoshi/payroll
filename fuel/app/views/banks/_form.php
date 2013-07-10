@@ -11,7 +11,7 @@
     </div>
     <div class="grid-2-12">
         <?php echo Form::label('Account Type', 'account_type'); ?>
-        <?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'saving' => 'Savings')); ?>
+        <?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('saving' => 'Savings','current' => 'Current')); ?>
     </div>
     <div class="grid-3-12">
         <?php echo Form::label('Bank <em class="formee-req">*</em>', 'branch'); ?>

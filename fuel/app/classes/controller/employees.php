@@ -108,8 +108,14 @@ class Controller_Employees extends Controller_Base {
     public function action_create() {
 
         parent::has_access("create_employee");
-
-        if (Input::method() == 'POST') {
+        $var_jd_day = Input::post('jd_day');
+                $var_jd_month = Input::post('jd_month');
+                $var_jd_year = Input::post('jd_year');
+                $var_jd = $var_jd_year . '-' . $var_jd_month . '-' . $var_jd_day;
+      
+        
+         
+         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
 
             if ($emp = Model_Employee::find(Input::post('id'))) {
@@ -131,7 +137,7 @@ class Controller_Employees extends Controller_Base {
                 $var_ld_month = Input::post('ld_month');
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
-
+               
                 if ($var_ld_month == 0)
                     $var_ld = null;
 
@@ -269,12 +275,10 @@ class Controller_Employees extends Controller_Base {
 
         if ($employee = Model_Employee::find($id)) {
             $employee->activity_status = "inactive";
-
+                Session::set_flash('success', 'Archived employee #' . $id);
             if ($employee->save()) {
                 Session::set_flash('success', 'Archived employee #' . $id);
-            } else {
-                Session::set_flash('error', 'Could not archive employee #' . $id);
-            }
+            } 
         } else {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
@@ -285,7 +289,7 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not archive employee #' . $id);
+           
         }
 
         Response::redirect('employees');
@@ -313,7 +317,7 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not archive employee #' . $id);
+            
         }
 
         Response::redirect('employees');
@@ -341,7 +345,7 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not delete employee #' . $id);
+           // Session::set_flash('error', 'Could not delete employee #' . $id);
         }
         Response::redirect('employees/viewarchive');
     }

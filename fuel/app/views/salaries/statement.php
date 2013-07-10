@@ -249,8 +249,9 @@ else: ?>
     </table>
 </div>
 <?php else: ?>
+<?php if (isset($month)):?>
 <?php    echo Html::anchor('salaries/process/'.$month.'/'.$year,'Process Payroll',array('class'=>'btn btn-success','style'=>'color:#fff; margin-top:30px; margin-left:5px;'));?>
-
+<?php endif;?>
 
 <?php endif; ?>    
 

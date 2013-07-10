@@ -239,7 +239,7 @@ if ($employee->branch == "karnataka" or $employee->branch == "Karnataka" or $emp
                 <td style="text-align:right"><?php echo number_format($fytd['total_debit'],2); ?></td>
 
             </tr>
-            <tr style="font-weight: bold; border-top: 2px solid #000;">
+            <tr style="font-weight: bold; border-top: 2px solid #000; background-color: #eee;">
                 <td>80</td>
                 <td>NET PAYABLE</td>
                 <td style="text-align:right"><?php echo number_format($salary->net,2); ?></td>

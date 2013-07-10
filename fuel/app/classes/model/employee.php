@@ -70,8 +70,8 @@ class Model_Employee extends Model {
         $val->add_field('state', 'State', 'max_length[255]|valid_string[alpha]');
         $val->add_field('pincode', 'Pincode','valid_string[numeric,spaces]|max_length[7]');
         $val->add_field('email', 'Email', 'valid_email|max_length[255]');
-        $val->add_field('joining_date', 'Joining Date', 'required|valid_date');
-        $val->add_field('leaving_date', 'Leaving Date', 'valid_date');
+        $val->add_field('joining_date', 'Joining Date','valid_date');
+      $val->add_field('leaving_date', 'Leaving Date', 'valid_date');
         $val->add_field('date_of_birth', 'Date Of Birth', 'valid_date');
 
         return $val;

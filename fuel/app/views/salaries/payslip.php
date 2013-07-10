@@ -29,7 +29,7 @@ $month = array(
     '12' => 'Dec',
 );
 
-if ($company->state === "Karnataka") {
+if ($employee->branch == "karnataka" or $employee->branch == "Karnataka" or $employee->branch == "Bangalore" or $employee->branch == "bangalore") {
     $form = 'Form VI, Rule 29 (2)';
 } else {
     $form = '';
@@ -303,7 +303,7 @@ $html21 = '<hr /><table style="margin-left:2px;">
                 <td style="text-align:right">'.number_format($fytd['total_debit'], 2).'</td>
             </tr>
             <br />
-            <tr style="font-weight:bold; padding-top: 100px; border-top:1px solid #111;">
+            <tr style="font-weight:bold; padding-top: 100px; border-top:1px solid #111; background-color:#eee;">
                 <td style="width:35px;">80</td>
                 <td style="width:150px;">NET</td>
                 <td style="text-align:right">'.number_format($salary['net'],2).'</td>
@@ -326,6 +326,7 @@ $html21 = '<hr /><table style="margin-left:2px;">
             <td>2</td>
             <td>Vacation Balance (Days)</td>
             <td style="text-align:right">'.$salary->vacation_balance.'</td>
+                
         </tr>
         <tr>
             <td>3</td>

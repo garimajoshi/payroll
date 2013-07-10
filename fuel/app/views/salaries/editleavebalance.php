@@ -3,6 +3,12 @@
             <h3>Add Leave Balance for</h3></div>
 
 <?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
+<div class="grid-8-12" style="margin-top:2px;">
+    <div class="grid-4-12">
+        <?php echo Html::anchor('salaries/view/'.$balance->employee_id.'/'.$balance->month.'/'.$balance->year,'<< Back',array('class'=>'btn btn-success','style'=>'color:#fff;')); ?>
+         </div>
+    
+</div>
 <div class="grid-6-12" style="margin-top:2px;">
     <div class="grid-4-12">
         <?php echo Form::label('Sick Days Balance','sick_balance'); ?>
