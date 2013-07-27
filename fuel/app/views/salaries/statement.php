@@ -1,3 +1,57 @@
+<?php 
+$total['gross'] = 0.00;
+        $total['sdxo'] = 0.00;
+        $total['pf_adjust'] = 0.00;
+        $total['basic'] = 0.00;
+        $total['hra'] = 0.00;
+        $total['lta'] = 0.00;
+        $total['travel'] = 0.00;
+        $total['medical'] = 0.00;
+        $total['credit_other'] = 0.00;
+        $total['bonus1'] = 0.00;
+        $total['bonus2'] = 0.00;
+        $total['leave'] = 0.00;
+        $total['pf_value'] = 0.00;
+        $total['credit_total'] = 0.00;
+        $total['allowance1'] = 0.00;
+        $total['allowance2'] = 0.00;
+        $total['allowance3'] = 0.00;
+        $total['professional_tax'] = 0.00;
+        $total['income_tax'] = 0.00;
+        $total['deduction1'] = 0.00;
+        $total['deduction2'] = 0.00;
+        $total['deduction3'] = 0.00;
+        $total['total_debit'] = 0.00;
+        $total['net'] = 0.00;
+
+        foreach($salaries as $salary):
+                    $total['gross'] +=$salary->gross;
+                $total['sdxo'] += $salary->sdxo;
+                $total['pf_adjust'] +=$salary->pf_adjust;
+                $total['basic'] += $salary->basic;
+                $total['hra'] += $salary->hra;
+                $total['lta'] += $salary->lta;
+                $total['medical'] += $salary->medical;
+                $total['travel'] += $salary->travel;
+                $total['credit_other'] += $salary->credit_other;
+                $total['bonus1'] += $salary->bonus1;
+                $total['bonus2'] += $salary->bonus2;
+                $total['leave'] += $salary->leave;
+                $total['pf_value'] +=$salary->pf_value;
+                $total['credit_total'] += $salary->credit_total;
+                $total['allowance1'] += $salary->allowance1;
+                $total['allowance2'] += $salary->allowance2;
+                $total['allowance3'] += $salary->allowance3;
+                $total['professional_tax'] += $salary->professional_tax;
+                $total['income_tax'] += $salary->income_tax;
+                $total['deduction1'] += $salary->deduction1;
+                $total['deduction2'] += $salary->deduction2;
+                $total['deduction3'] += $salary->deduction3;
+                $total['total_debit'] += $salary->total_debit;
+                $total['net'] += $salary->net;
+        endforeach;
+?>
+
 <?php echo Form::open(array("class" => "formee")); ?>
 <div class=headline>	
     <div class="grid-12-12">
@@ -71,12 +125,12 @@ else: ?>
     margin-left: 40px;
     margin-top: 30px;"> <?php echo 'Locked Payroll'; ?></span>
 <?php endif;?>
-
+<?php echo Html::anchor('salaries/payroll/'.$month.'/'.$year,'Export',array('class'=>'btn btn-primary','style'=>'color:#fff;margin-top:30px; margin-left:5px;')); ?>
 <div style="width:4000px;">
     <table class="table table-striped" style="margin-top:5px; width:3600px; margin-right: 50px;">
         <thead>
             <tr>
-                <th><?php echo Form::checkbox('all'); ?></th>
+                
                 <th>Name</th>
                 <th>Gross</th>
                 <th>Sodexo</th>
@@ -112,7 +166,7 @@ else: ?>
         <tbody>
             <?php foreach ($salaries as $salary): ?>
                 <tr>
-                    <td><?php echo Form::checkbox('$employee->id'); ?></td>
+                    
                     <td> <?php echo $salary->employee->first_name . ' ' . $salary->employee->last_name; ?></td>
                     <td><?php echo $salary->gross; ?></td>
                     <td><?php echo $salary->sdxo; ?></td>
@@ -154,13 +208,50 @@ else: ?>
                         
                 </tr>
             <?php endforeach; ?>
+                <tr style="font-weight: 700; border-top:1px solid #ccc;">
+                    
+                    <td> TOTAL</td>
+                    <td><?php echo number_format($total['gross'],2); ?></td>
+                    <td><?php echo number_format($total['sdxo'],2); ?></td>
+                    <td>
+                    </td>
+                    
+                    <td><?php echo number_format($total['pf_adjust'],2); ?></td>
+                    <td><?php echo number_format($total['basic'],2); ?></td>
+                    <td><?php echo number_format($total['hra'],2); ?></td>
+                    <td><?php echo number_format($total['lta'],2); ?></td>
+                    <td><?php echo number_format($total['medical'],2); ?></td>
+                    <td><?php echo number_format($total['travel'],2); ?></td>
+                    <td><?php echo number_format($total['pf_value'],2); ?></td>
+                    <td><?php echo number_format($total['credit_other'],2); ?></td>
+                    <td><?php echo number_format($total['leave'],2); ?></td>
+                    <td><?php echo number_format($total['bonus1'],2); ?></td>
+                    <td><?php echo number_format($total['bonus2'],2); ?></td>
+                    <td><?php echo number_format($total['allowance1'],2); ?></td>
+                    <td><?php echo number_format($total['allowance2'],2); ?></td>
+                    <td><?php echo number_format($total['allowance3'],2); ?></td>
+                    <td><?php echo number_format($total['credit_total'],2); ?></td>
+                    <td></td>
+                    <td><?php echo number_format($total['professional_tax'],2); ?></td>
+                    <td><?php echo number_format($total['pf_value'],2); ?></td>
+                    <td><?php echo number_format($total['income_tax'],2); ?></td>
+                    <td><?php echo number_format($total['deduction1'],2); ?></td>
+                    <td><?php echo number_format($total['deduction2'],2); ?></td>
+                    <td><?php echo number_format($total['deduction3'],2); ?></td>
+                    <td><?php echo number_format($total['total_debit'],2); ?></td>
+                    <td></td>
+                    <td><?php echo number_format($total['net'],2); ?></td>
+                    
+                    
+ 
+                </tr>
         </tbody>
     </table>
 </div>
 <?php else: ?>
-<?php if($month == date('m')+1): 
-    echo Html::anchor('salaries/process/'.$month.'/'.$year,'Process Payroll',array('class'=>'btn btn-success','style'=>'color:#fff; margin-top:30px; margin-left:5px;'));
-endif;?>
+<?php if (isset($month)):?>
+<?php    echo Html::anchor('salaries/process/'.$month.'/'.$year,'Process Payroll',array('class'=>'btn btn-success','style'=>'color:#fff; margin-top:30px; margin-left:5px;'));?>
+<?php endif;?>
 
 <?php endif; ?>    
 

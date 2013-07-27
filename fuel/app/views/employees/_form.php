@@ -13,8 +13,8 @@
         <?php echo Form::input('id', Input::post('id', isset($employee) ? $employee->id : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Employee ID')); ?>
     </div>
     <div class="grid-4-12">
-        <?php echo Form::label('Branch <em class="formee-req">*</em>', 'branch'); ?>
-        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : ''), array('class' => 'formee-large', 'required', 'placeholder' => 'Branch')); ?>
+        <?php echo Form::label('Office Location <em class="formee-req">*</em>', 'branch'); ?>
+        <?php echo Form::input('branch', Input::post('branch', isset($employee) ? $employee->branch : 'Bangalore'), array('class' => 'formee-large', 'required', 'placeholder' => 'Branch')); ?>
     </div>
 
     <div class="grid-2-12">
@@ -42,13 +42,13 @@
     <div class="grid-4-12">
         <?php echo Form::label('Date of Birth <em class="formee-req">*</em>', 'date_of_birth'); ?>
         <div class="grid-3-12">
-            <?php echo createYears(1920, 2500, 'dob_year', date('Y')); ?>
+            <?php echo createYears(1920, 2500, 'dob_year', Input::post('dob_year',isset($employee)?$employee->dob_year : date('Y'))); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createMonths('dob_month', date('M')); ?>
+            <?php echo createMonths('dob_month', Input::post('dob_month',isset($employee)?$employee->dob_month : date('M'))); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createDays('dob_day', date('d')); ?>
+            <?php echo createDays('dob_day', Input::post('dob_date',isset($employee)?$employee->dob_date : date('d'))); ?>
         </div></div>
 </div>
 <div class="grid-12-12">
@@ -87,13 +87,45 @@
 <div class="grid-12-12">
     <div class="grid-3-12">
         <?php echo Form::label('State <em class="formee-req">*</em>', 'state'); ?>
-        <select name=state>
-            <script language="javascript">
-                var states = new Array("Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal");
-                for (var hi = 0; hi < states.length; hi++)
-                    document.write("<option value=\"" + states[hi] + "\">" + states[hi] + "</option>");
-            </script>
-        </select>
+        <?php echo Form::select('state',Input::post('state',isset($employee) ? $employee->state: ''),array(
+        "Andaman and Nicobar Islands" => "Andaman and Nicobar Islands",
+		"Andhra Pradesh" => "Andhra Pradesh",
+        "Arunachal Pradesh" => "Arunachal Pradesh",
+        "Assam" => "Assam",
+        "Bihar" => "Bihar",
+        "Chandigarh" => "Chandigarh",
+        "Chattisgarh" => "Chattisgarh",
+        "Dadra and Nagar Haveli" => "Dadra and Nagar Haveli",
+        "Daman and Diu" => "Daman and Diu",
+        "Delhi" => "Delhi",
+        "Goa" => "Goa",
+        "Gujarat" => "Gujarat",
+        "Haryana" => "Haryana",
+        "Himachal Pradesh" => "Himachal Pradesh",
+        "Jammu and Kashmir" => "Jammu and Kashmir",
+        "Jharkhand" => "Jharkhand",
+        "Karnataka" => "Karnataka",
+        "Kerala" => "Kerala",
+        "Lakshadweep" => "Lakshadweep",
+        "Madhya Pradesh" => "Madhya Pradesh",
+        "Maharashtra" => "Maharashtra",
+        "Manipur" => "Manipur",
+        "Meghalaya" => "Meghalaya",
+        "Mizoram" => "Mizoram",
+        "Nagaland" => "Nagaland",
+        "Orissa" => "Orissa",
+        "Pondicherry" =>"Pondicherry",
+        "Punjab" =>"Punjab",
+        "Rajasthan" => "Rajasthan",
+        "Sikkim" =>"Sikkim",
+        "Tamil Nadu" => "Tamil Nadu",
+        "Tripura" => "Tripura",
+        "Uttaranchal" => "Uttaranchal",
+        "Uttar Pradesh" =>"Uttar Pradesh",
+        "West Bengal" => "West Bengal",
+		)); ?>
+            
+        
     </div>
     <div class="grid-2-12">
         <?php echo Form::label('Pincode <em class="formee-req">*</em>', 'pincode'); ?>
@@ -115,13 +147,13 @@
     <div class="grid-4-12">
         <?php echo Form::label('Joining date <em class="formee-req">*</em>', 'joining_date'); ?>
         <div class="grid-3-12">
-            <?php echo createYears(1920, 2500, 'jd_year', date('Y')); ?>
+            <?php echo createYears(1920, 2500, 'jd_year',  Input::post('jd_year',isset($employee)?$employee->jd_year : date('Y'))); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createMonths('jd_month', date('M')); ?>
+            <?php echo createMonths('jd_month',  Input::post('jd_month',isset($employee)?$employee->jd_month : date('M'))); ?>
         </div>
         <div class="grid-3-12">
-            <?php echo createDays('jd_day', date('d')); ?>
+            <?php echo createDays('jd_day',  Input::post('jd_date',isset($employee)?$employee->jd_date : date('d'))); ?>
         </div>
     </div>
     <div class="grid-4-12">

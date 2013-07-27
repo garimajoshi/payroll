@@ -106,7 +106,7 @@ class Controller_Users extends Controller_Base {
 
     public function action_password() {
 
-		parent::has_access("add_user");
+        parent::has_access("add_user");
         $u = Session::get('user');
         is_null($u) and Response::redirect('users');
 

@@ -1,9 +1,9 @@
 <div class='headline'><h3>Editing <span class='muted'>User</span></h3></div>
 <br>
-<?php echo Form::open(array("class" => "formee well")); ?>
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 
 <div class="grid-8-12">
-    <?php echo Html::anchor('users', '<< Back', array('class' => 'btn btn-large btn-danger', 'style' => 'color:#fff;')); ?>
+    <?php echo Html::anchor('users', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
 </div>
 
 <div class="grid-8-12">
@@ -59,7 +59,7 @@
 </div>
 
 <div class="grid-8-12">
-    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-large btn-success')); ?>
+    <?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-success')); ?>
 </div>
 
 <?php echo Form::close(); ?>

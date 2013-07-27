@@ -185,7 +185,7 @@ class Validation
 				$rule = substr($rule, 0, $pos);
 
 				// deal with rules that have comma's in the rule parameter
-				if (in_array($rule, array('match_pattern')))
+			/*	if (in_array($rule, array('match_pattern')))
 				{
 					call_user_func_array(array($field, 'add_rule'), array_merge(array($rule), array($param[1])));
 				}
@@ -196,7 +196,7 @@ class Validation
 				else
 				{
 					call_user_func_array(array($field, 'add_rule'), array_merge(array($rule), explode(',', $param[1])));
-				}
+				}*/
 			}
 			else
 			{

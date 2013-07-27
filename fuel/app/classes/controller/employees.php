@@ -9,7 +9,7 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_view($id = null) {
-		parent::has_access("add_employee");
+        parent::has_access("view_employee");
         is_null($id) and Response::redirect('employees');
 
         $data['employees'] = Model_Employee::find('all', array('where' => array('id' => $id),
@@ -25,14 +25,14 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_viewarchive() {
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "inactive")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewarchive', $data);
     }
 
     public function action_viewDelete() {
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         $data['employees'] = Model_Employee::find('all', array('where' => array('activity_status' => "delete")));
         $this->template->title = "Employees";
         $this->template->content = View::forge('employees/viewDelete', $data);
@@ -73,7 +73,7 @@ class Controller_Employees extends Controller_Base {
 
     public function action_search_archive() {
 
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         $query = Input::get('search');
 
         if (!isset($query)) {
@@ -108,8 +108,11 @@ class Controller_Employees extends Controller_Base {
     public function action_create() {
 
         parent::has_access("create_employee");
-
-        if (Input::method() == 'POST') {
+        
+      
+        
+         
+         if (Input::method() == 'POST') {
             $val = Model_Employee::validate('create');
 
             if ($emp = Model_Employee::find(Input::post('id'))) {
@@ -119,19 +122,12 @@ class Controller_Employees extends Controller_Base {
 
             if ($val->run()) {
 
-                $var_dob_day = Input::post('dob_day');
-                $var_dob_month = Input::post('dob_month');
-                $var_dob_year = Input::post('dob_year');
-                $var_dob = $var_dob_year . '-' . $var_dob_month . '-' . $var_dob_day;
-                $var_jd_day = Input::post('jd_day');
-                $var_jd_month = Input::post('jd_month');
-                $var_jd_year = Input::post('jd_year');
-                $var_jd = $var_jd_year . '-' . $var_jd_month . '-' . $var_jd_day;
+                
                 $var_ld_day = Input::post('ld_day');
                 $var_ld_month = Input::post('ld_month');
                 $var_ld_year = Input::post('ld_year');
                 $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
-
+               
                 if ($var_ld_month == 0)
                     $var_ld = null;
 
@@ -147,9 +143,16 @@ class Controller_Employees extends Controller_Base {
                             'state' => Input::post('state'),
                             'pincode' => Input::post('pincode'),
                             'email' => Input::post('email'),
-                            'joining_date' => $var_jd,
+							'jd_date' => Input::post('jd_day'),
+							'jd_month' => Input::post('jd_month'),
+							'jd_year' => Input::post('jd_year'),
+            				
+            				'dob_date' => Input::post('dob_day'),
+							'dob_month' => Input::post('dob_month'),
+            				'dob_year' => Input::post('dob_year'),
+                                      
                             'leaving_date' => $var_ld,
-                            'date_of_birth' => $var_dob,
+                          
                             'sex' => Input::post('sex'),
                             'marital_status' => Input::post('marital_status'),
                             'activity_status' => "active",
@@ -183,19 +186,12 @@ class Controller_Employees extends Controller_Base {
         $val = Model_Employee::validate('edit');
 
         if ($val->run()) {
-            $var_dob_day = Input::post('dob_day');
-            $var_dob_month = Input::post('dob_month');
-            $var_dob_year = Input::post('dob_year');
-            $var_dob = $var_dob_year . '-' . $var_dob_month . '-' . $var_dob_day;
-            $var_jd_day = Input::post('jd_day');
-            $var_jd_month = Input::post('jd_month');
-            $var_jd_year = Input::post('jd_year');
-            $var_jd = $var_jd_year . '-' . $var_jd_month . '-' . $var_jd_day;
             $var_ld_day = Input::post('ld_day');
             $var_ld_month = Input::post('ld_month');
             $var_ld_year = Input::post('ld_year');
             $var_ld = $var_ld_year . '-' . $var_ld_month . '-' . $var_ld_day;
-
+			if ($var_ld_month == 0)
+                    $var_ld = null;
             $employee->branch = Input::post('branch');
             $employee->title = Input::post('title');
             $employee->first_name = Input::post('first_name');
@@ -206,9 +202,13 @@ class Controller_Employees extends Controller_Base {
             $employee->state = Input::post('state');
             $employee->pincode = Input::post('pincode');
             $employee->email = Input::post('email');
-            $employee->joining_date = $var_jd;
+            $employee->jd_date = Input::post('jd_day');
+			$employee->jd_month = Input::post('jd_month');
+			$employee->jd_year = Input::post('jd_year');
             $employee->leaving_date = $var_ld;
-            $employee->date_of_birth = $var_dob;
+            $employee->dob_date = Input::post('dob_day');
+			$employee->dob_month = Input::post('dob_month');
+            $employee->dob_year = Input::post('dob_year');
             $employee->sex = Input::post('sex');
             $employee->marital_status = Input::post('marital_status');
             $employee->activity_status = "active";
@@ -223,14 +223,7 @@ class Controller_Employees extends Controller_Base {
         } else {
             if (Input::method() == 'POST') {
 
-                $var_dob_day = Input::post('dob_day');
-                $var_dob_month = Input::post('dob_month');
-                $var_dob_year = Input::post('dob_year');
-                $var_dob = $var_dob_year . '-' . $var_dob_month . '-' . $var_dob_day;
-                $var_jd_day = Input::post('jd_day');
-                $var_jd_month = Input::post('jd_month');
-                $var_jd_year = Input::post('jd_year');
-                $var_jd = $var_jd_year . '-' . $var_jd_month . '-' . $var_jd_day;
+               
                 $var_ld_day = Input::post('ld_day');
                 $var_ld_month = Input::post('ld_month');
                 $var_ld_year = Input::post('ld_year');
@@ -246,9 +239,6 @@ class Controller_Employees extends Controller_Base {
                 $employee->state = $val->validated('state');
                 $employee->pincode = $val->validated('pincode');
                 $employee->email = $val->validated('email');
-                $employee->joining_date = $var_jd;
-                $employee->leaving_date = $var_ld;
-                $employee->date_of_birth = $var_dob;
                 $employee->sex = $val->validated('sex');
                 $employee->marital_status = $val->validated('marital_status');
                 $employee->activity_status = "active";
@@ -264,17 +254,15 @@ class Controller_Employees extends Controller_Base {
     }
 
     public function action_archive($id = null) {
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
             $employee->activity_status = "inactive";
-
+                Session::set_flash('success', 'Archived employee #' . $id);
             if ($employee->save()) {
                 Session::set_flash('success', 'Archived employee #' . $id);
-            } else {
-                Session::set_flash('error', 'Could not archive employee #' . $id);
-            }
+            } 
         } else {
             Session::set_flash('error', 'Could not find employee #' . $id);
         }
@@ -285,14 +273,14 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not archive employee #' . $id);
+           
         }
 
         Response::redirect('employees');
     }
 
     public function action_restore($id = null) {
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -313,14 +301,14 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not archive employee #' . $id);
+            
         }
 
         Response::redirect('employees');
     }
-    
+
     public function action_delete($id = null) {
-        parent::has_access("view_archive");
+        parent::has_access("archive_employee");
         is_null($id) and Response::redirect('employees');
 
         if ($employee = Model_Employee::find($id)) {
@@ -341,7 +329,7 @@ class Controller_Employees extends Controller_Base {
                 $salary->save();
             endforeach;
         } else {
-            Session::set_flash('error', 'Could not delete employee #' . $id);
+           // Session::set_flash('error', 'Could not delete employee #' . $id);
         }
         Response::redirect('employees/viewarchive');
     }

@@ -1,7 +1,8 @@
-<div class="headline"><h3>Rename <span class="muted"></span>Fields</h3></div>
+<div class="headline"><h3>Rename <span class="muted">Salary Fields</span></h3></div>
 <br />
 <?php echo Form::open('salaries/renameSubmit', array("class" => "formee well", 'style' => "margin-top:30px;")); ?>
 <br/>
+<div class="formee well" style="margin-top:20px; margin-left:30px; width:1100px;">
 <?php foreach ($renames as $rename):
     ?>
     <div class="grid-12-12" style="margin-top:2px;">
@@ -46,6 +47,7 @@
     <div class="grid-4-12 ">
         <input  class="btn btn-large btn-danger" type='submit'  value="Submit" style="margin-left: 20px;margin-top: 10px;width:100px">
     </div>   
-    </div>
+    
 <?php endforeach; ?>
+</div>
 <?php echo Form::close(); ?>

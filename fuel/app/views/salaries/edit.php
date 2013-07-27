@@ -153,7 +153,9 @@
         <em>Special Allowances: </em><span id="special_allowance"></span><br />
         <strong>TOTAL CREDIT: </strong><span id="total_credit"></span><br />
     </div><hr />
+<div style="margin-left:200px;">
     <strong style="font-size: 14px;">Gross CTC: </strong><span id="grossctc"></span><br />
     <strong style="font-size: 14px;">Adjusted CTC: </strong><span id="adjustedctc"></span><br />
     <strong style="font-size: 14px;">NET: </strong><span id="net"></span>
+    </div>
 </div>

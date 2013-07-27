@@ -2,14 +2,19 @@
 <div class="view" style='font-size: 14px; line-height: 25px;'>
 
     <h1 style="font-size: 20px;"><i class="icon-user" style="margin-top:6px; margin-left:10px;"></i> <?php echo $employee->title . '. ' . $employee->first_name . ' ' . $employee->last_name; ?> [<?php echo $employee->id; ?>]</h1> 
-        
+
+    <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-success', 'style' => 'float:right; margin-top:-20px;margin-right:30px;color:#fff;')); ?>
     <hr />
     <div class="main-headline">COMPANY INFORMATION</div>
     <br />
     <div class="grid-12-12">
+    	<div class="grid-4-12">
+            <strong>Office Location:</strong>
+            <?php echo $employee->branch; ?>
+        </div>
         <div class="grid-4-12">
             <strong>Joining date:</strong>
-            <?php echo $employee->joining_date; ?>
+            <?php echo $employee->jd_date.'-'.$employee->jd_month.'-'.$employee->jd_year; ?>
         </div>    
         <div class="grid-4-12">
             <strong>Leaving date:</strong>
@@ -22,7 +27,7 @@
     <div class="grid-12-12">
         <div class="grid-4-12">
             <strong>Date of Birth:</strong>
-            <?php echo $employee->date_of_birth; ?>
+            <?php echo $employee->dob_date.'-'.$employee->dob_month.'-'.$employee->dob_year; ?>
         </div>
         <div class="grid-4-12">
             <strong>Sex:</strong>
@@ -37,19 +42,20 @@
     <div class="main-headline">CONTACT INFORMATION</div>
     <br />
     <div class="grid-12-12">
-        <div class="grid-4-12">
+        <div class="grid-6-12">
             <strong>Phone:</strong>
             <?php echo $employee->phone; ?>
         </div>
-        <div class="grid-4-12">
+        <div class="grid-6-12">
             <strong>Email:</strong>
             <?php echo $employee->email; ?>
         </div>    
     </div>
-    <div class="grid-12-12">
-        <div class="grid-8-12">
+    
+    <div class="grid-12-12" style="margin-top:5px;">
+        <div class="grid-12-12">
             <strong>Address:</strong>
-            <?php echo $employee->address . ', ' . $employee->city . ', ' . $employee->state . '-' . $employee->pincode; ?>
+            <?php echo $employee->address . ', ' . $employee->city . ', ' . $employee->state . ' ' . $employee->pincode; ?>
         </div>
     </div>    
     <br /><br />
@@ -107,16 +113,18 @@
 
             </div>
         </div>
-        <?php if($employee->activity_status=='active'){
-        echo Html::anchor('banks/edit/' . $employee->bank->employee_id, 'Edit Bank', array('class' => 'btn btn-danger', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
-        } else if($employee->activity_status=='inactive'){
-            echo Html::anchor('salaries/viewArchive/'.$employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;')); 
-        }else{
-              echo Html::anchor('salaries/viewDelete/'.$employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
-        }?>
-            <?php
+        <?php
+        if ($employee->activity_status == 'active') {
+            echo Html::anchor('banks/edit/' . $employee->bank->employee_id, 'Edit Bank', array('class' => 'btn btn-danger', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
+        } else if ($employee->activity_status == 'inactive') {
+            echo Html::anchor('salaries/viewArchive/' . $employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
+        } else {
+            echo Html::anchor('salaries/viewDelete/' . $employee->id, 'View Salary Details', array('class' => 'btn btn-success', 'style' => 'color: #fff; float:right; margin-right:30px; margin-top:-7px;'));
+        }
+        ?>
+        <?php
     else:
-        echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn btn-warning', 'style' => 'float:right; margin-right:30px; margin-top:-7px;'));
+        echo Html::anchor('banks/create/' . $employee->id, 'Create Bank', array('class' => 'btn btn-danger', 'style' => 'color:#fff;float:right; margin-right:30px; margin-top:-7px;'));
     endif;
     ?>
 </div>

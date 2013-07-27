@@ -40,9 +40,9 @@
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
-                    <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/edit/' . $employee->id, '<i class="icon-pencil title="Edit"></i>'); ?></td>
-                    <td><?php echo Html::anchor('employees/archive/' . $employee->id, '<i class="icon-folder-close" title="Archive"></i>', array('onclick' => "return confirm('Are you sure?')")); ?></td>
+                    <td><?php echo Html::anchor('employees/view/' . $employee->id, '<i class="icon-eye-open" title="View"></i>',array('id'=>'popovers','rel'=>'popover','data-content'=>'View','data-original-title'=>'View')); ?></td>
+                    <td><?php echo Html::anchor('employees/edit/' . $employee->id, '<i class="icon-pencil title="Edit"></i>',array('id'=>'popovers','rel'=>'popover','data-content'=>'Edit','data-original-title'=>'Edit')); ?></td>
+                    <td><?php echo Html::anchor('employees/archive/' . $employee->id, '<i class="icon-folder-close" title="Archive"></i>', array('onclick' => "return confirm('Are you sure?')",'id'=>'popovers','rel'=>'popover','data-content'=>'Archive','data-original-title'=>'Archive')); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

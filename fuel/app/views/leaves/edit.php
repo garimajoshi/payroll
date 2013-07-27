@@ -1,45 +1,36 @@
-<div class="headline"><h3>Editing <span class='muted'>Leave</span></h3></div>
+<div class="headline"><h3><?php echo 'Date: '?><span class='muted'><?php echo $leave->date_of_leave; ?></span></h3></div>
 <br>
 
-<?php echo Form::open(array("class" => "formee well")); ?>
-
+<?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
+<div class="grid-8-12">
+    <div class="grid-4-12 ">
+        <?php echo Html::anchor('leaves/view/'.$leave->employee->id, '<< Back', array("style" => "margin-top:25px;", "class" => "btn btn-danger", 'style'=>'color:#fff;')); ?>
+    </div>
+</div>
 <div class="grid-8-12">
     <div class="grid-4-12">
         <?php echo Form::label('Type of Leave <em class="formee-req">*</em>', 'type', array('style' => 'font-weight:700;')); ?>
     </div>
     <div class="grid-4-12">
-        <?php echo Form::select('type', Input::post('type', isset($leave) ? $leave->type : ''), array('sick' => 'Sick Leave', 'vacation' => 'Casual Leave')); ?>
+        <?php echo Form::select('type', Input::post('type', isset($leave) ? $leave->type : ''), array('sick' => 'Sick', 'vacation' => 'Vacation')); ?>
 
     </div>
 </div>
 
-<div class="grid-8-12">
-    <div class="grid-4-12">
-        <?php echo Form::label('Date of Leave <em class="formee-req">*</em>', 'date_of_leave', array('style' => 'font-weight:700;')); ?>
-    </div>
 
-    <div class="grid-2-12">
-        <?php echo createYears(1920, 2500, 'dol_year', date('Y')); ?>
-    </div>
-    <div class="grid-2-12">
-        <?php echo createMonths('dol_month', date('M')); ?>
-    </div>
-    <div class="grid-2-12">
-        <?php echo createDays('dol_day', date('d')); ?>
-    </div></div>
 <div class="grid-8-12">
     <div class="grid-4-12">
         <?php echo Form::label('No of hours <em class="formee-req">*</em>', 'type', array('style' => 'font-weight:700;')); ?>
     </div>
     <div class="grid-4-12">
-        <?php echo Form::select('time', ' ', array('4' => '4', '8' => '8')); ?>
+        <?php echo Form::select('time', Input::post('type', isset($leave) ? $leave->type : ''), array('8' => '8', '4' => '4')); ?>
 
     </div>
 </div>
 
 <div class="grid-6-12">
     <div class="grid-4-12 ">
-        <?php echo Form::submit('submit', 'Save', array("style" => "margin-top:25px;", "class" => "btn btn-success")); ?>
+        <?php echo Form::submit('submit', 'Save', array("style" => "", "class" => "btn btn-success")); ?>
     </div>
 
 </div>

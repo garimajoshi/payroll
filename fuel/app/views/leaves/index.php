@@ -19,7 +19,6 @@
     <table class="table table-striped" style="margin-top:30px;">
         <thead>
             <tr>
-                <th><input type="checkbox" value="" onclick="toggle(this);" /></th>
                 <th>Employee Id</th>
                 <th>Name</th>
                 <th>Phone No</th>
@@ -33,13 +32,12 @@
             <?php echo Form::open(); ?>
             <?php foreach ($employees as $employee): ?>
                 <tr>
-                    <td><input type="checkbox" name="check" value="<?php echo $employee->id; ?>"></td>
                     <td><?php echo $employee->id; ?></td>
                     <td><?php echo $employee->first_name . ' ' . $employee->last_name; ?></td>
                     <td><?php echo $employee->phone; ?></td>
                     <td><?php echo $employee->email; ?></td>
-                    <td><?php echo Html::anchor('leaves/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>'); ?></td>
-                    <td><?php echo Html::anchor('leaves/view/' . $employee->id, '<i class="icon-eye-open title="view"></i>'); ?></td>
+                    <td><?php echo Html::anchor('leaves/create/' . $employee->id, '<i class="icon-plus-sign" title="Add Entry"></i>',array('id'=>'popovers','rel'=>'popover','data-content'=>'Add Leave Entry','data-original-title'=>'Add')); ?></td>
+                    <td><?php echo Html::anchor('leaves/view/' . $employee->id, '<i class="icon-eye-open title="view"></i>',array('id'=>'popovers','rel'=>'popover','data-content'=>'View','data-original-title'=>'View')); ?></td>
 
                 </tr>
             <?php endforeach; ?>
@@ -48,6 +46,6 @@
     <?php echo Form::close(); ?>
 
 <?php else: ?>
-    <p>No Employees.</p>
+    <div class='noexist'><h1>No Employees</h1></div>
 
 <?php endif; ?>

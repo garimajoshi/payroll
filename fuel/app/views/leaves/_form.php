@@ -9,7 +9,7 @@
         <?php echo Form::label('Type <em class="formee-req">*</em>', 'type', array('style' => 'font-weight:700;')); ?>
     </div>
     <div class="grid-4-12">
-        <?php echo Form::select('type', Input::post('type', isset($leave) ? $leave->type : ''), array('sick' => 'Sick Leave', 'vacation' => 'Casual Leave')); ?>
+        <?php echo Form::select('type', Input::post('type', isset($leave) ? $leave->type : ''), array('sick' => 'Sick', 'vacation' => 'Vacation')); ?>
 
     </div>
 </div>
@@ -23,55 +23,62 @@
         <?php echo createYears(1920, 2500, 'dol_year', date('Y')); ?>
     </div>
     <div class="grid-2-12">
-        <?php echo createMonths('dol_month', date('M')); ?>
+        <?php echo createMonths('dol_month', date('m')); ?>
     </div>
 </div>
-<div class="grid-8-12">
+<div class="grid-12-12">
+    <div class="grid-4-12">
+        <?php echo Form::label('Select Dates <em class="formee-req">*</em>', 'dol_date', array('style' => 'font-weight:700;')); ?>
+    </div>
     <div class="grid-9-12" style="font-size: 18px">
-        <input type="checkbox" name="dol_date[]" value="1" /> 1 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="2" /> 2 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="3" /> 3 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="4" /> 4 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="5" /> 5 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="6" /> 6 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="7" /> 7 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="8" /> 8 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="9" /> 9 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="10" /> 10 <br />
-        <input type="checkbox" name="dol_date[]" value="11" /> 11 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="12"/> 12 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="13" /> 13 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="14" /> 14 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="15" /> 15 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="16" /> 16 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="17" /> 17 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="18" /> 18 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="19" /> 19 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="20" /> 20 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="21" /> 21 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="22" /> 22 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="23" /> 23 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="24" /> 24 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="25" /> 25 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="26" /> 26 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="27" /> 27 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="28" /> 28 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="29" /> 29 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="30" /> 30 &nbsp;
-        <input type="checkbox" name="dol_date[]" value="31" /> 31 
-    </div></div>
-<div class="grid-8-12">
-    <div class="grid-3-12">
-        <?php echo Form::label('Hours <em class="formee-req">*</em>', 'type', array('style' => 'font-weight:700;')); ?>
+        <table style="margin-left: -5px;">
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="dol_date[]" value="1" /> 01</td>
+                    <td><input type="checkbox" name="dol_date[]" value="2" /> 02</td>
+                    <td><input type="checkbox" name="dol_date[]" value="3" /> 03</td>
+                    <td><input type="checkbox" name="dol_date[]" value="4" /> 04</td>
+                    <td><input type="checkbox" name="dol_date[]" value="5" /> 05</td>
+                    <td><input type="checkbox" name="dol_date[]" value="6" /> 06</td>
+                    <td><input type="checkbox" name="dol_date[]" value="7" /> 07</td>
+                    <td><input type="checkbox" name="dol_date[]" value="8" /> 08</td>
+                    <td><input type="checkbox" name="dol_date[]" value="9" /> 09</td>
+                    <td><input type="checkbox" name="dol_date[]" value="10" /> 10</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="dol_date[]" value="11" /> 11</td>
+                    <td><input type="checkbox" name="dol_date[]" value="12" /> 12</td>
+                    <td><input type="checkbox" name="dol_date[]" value="13" /> 13</td>
+                    <td><input type="checkbox" name="dol_date[]" value="14" /> 14</td>
+                    <td><input type="checkbox" name="dol_date[]" value="15" /> 15</td>
+                    <td><input type="checkbox" name="dol_date[]" value="16" /> 16</td>
+                    <td><input type="checkbox" name="dol_date[]" value="17" /> 17</td>
+                    <td><input type="checkbox" name="dol_date[]" value="18" /> 18</td>
+                    <td><input type="checkbox" name="dol_date[]" value="19" /> 19</td>
+                    <td><input type="checkbox" name="dol_date[]" value="20" /> 20</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="dol_date[]" value="21" /> 21</td>
+                    <td><input type="checkbox" name="dol_date[]" value="22" /> 22</td>
+                    <td><input type="checkbox" name="dol_date[]" value="23" /> 23</td>
+                    <td><input type="checkbox" name="dol_date[]" value="24" /> 24</td>
+                    <td><input type="checkbox" name="dol_date[]" value="25" /> 25</td>
+                    <td><input type="checkbox" name="dol_date[]" value="26" /> 26</td>
+                    <td><input type="checkbox" name="dol_date[]" value="27" /> 27</td>
+                    <td><input type="checkbox" name="dol_date[]" value="28" /> 28</td>
+                    <td><input type="checkbox" name="dol_date[]" value="29" /> 29</td>
+                    <td><input type="checkbox" name="dol_date[]" value="30" /> 30</td>
+                </tr>    
+                <tr>
+                     <td><input type="checkbox" name="dol_date[]" value="31" /> 31</td>
+                </tr>
+                
+            </tbody>
+        </table>
+         
     </div>
-    <div class="grid-3-12">
-        <?php echo Form::select('time', ' ', array('8' => '8', '4' => '4')); ?>
-
+<div class="grid-2-12 ">
+        <?php echo Form::submit('submit', 'Save', array('style'=>'margin-top:30px',"class" => "btn btn-success")); ?>
     </div>
-    <div class="grid-2-12 ">
-        <?php echo Form::submit('submit', 'Save', array("class" => "btn btn-primary")); ?>
-    </div>
-
 </div>
-
 <?php echo Form::close(); ?>

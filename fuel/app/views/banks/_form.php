@@ -1,7 +1,7 @@
 <?php echo Form::open(array("class" => "formee well", 'style' => "margin-top:20px; margin-left:30px; width:1100px;")); ?>
 <div class="grid-12-12" style="margin-top: 2px;">
     <div class="grid-3-12">
-        <?php echo Html::anchor('employees/', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
+        <?php echo Html::anchor('employees', '<< Back', array('class' => 'btn btn-danger', 'style' => 'color:#fff;')); ?>
     </div>
 </div>
 <div class="grid-12-12">
@@ -11,7 +11,7 @@
     </div>
     <div class="grid-2-12">
         <?php echo Form::label('Account Type', 'account_type'); ?>
-        <?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('current' => 'Current', 'saving' => 'Savings')); ?>
+        <?php echo Form::select('account_type', Input::post('account_type', isset($bank) ? $bank->account_type : ''), array('saving' => 'Savings','current' => 'Current')); ?>
     </div>
     <div class="grid-3-12">
         <?php echo Form::label('Bank <em class="formee-req">*</em>', 'branch'); ?>
