@@ -2,4 +2,5 @@ fuel/app/logs/*/*/*
 fuel/app/cache/*/*
 docs/*/*/*
 fuel/app/config/*/*
+fuel/app/config/development/db.php
 /nbproject/private/

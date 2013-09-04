@@ -6,9 +6,9 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=localhost;dbname=payroll',
+			'dsn'        => 'mysql:host=localhost;dbname=neogenpayroll',
 			'username'   => 'root',
-			'password'   => '',
+			'password'   => 'rmlidg2010',
 		),
 	),
 );
